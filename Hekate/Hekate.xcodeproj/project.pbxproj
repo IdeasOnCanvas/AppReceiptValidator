@@ -12,10 +12,16 @@
 		D1D6F4EC1F5D691400E86FE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1D6F4EA1F5D691400E86FE1 /* Main.storyboard */; };
 		D1D6F4EE1F5D691400E86FE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1D6F4ED1F5D691400E86FE1 /* Assets.xcassets */; };
 		D1D6F4F11F5D691400E86FE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1D6F4EF1F5D691400E86FE1 /* LaunchScreen.storyboard */; };
-		D1D6F5381F5D894900E86FE1 /* Hekate_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D6F4C21F5D687400E86FE1 /* Hekate_macOS.framework */; };
+		D1D6F5381F5D894900E86FE1 /* Hekate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D6F4C21F5D687400E86FE1 /* Hekate.framework */; };
 		D1D6F53F1F5D89D000E86FE1 /* Hekate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F53E1F5D89D000E86FE1 /* Hekate.swift */; };
 		D1D6F5401F5D89D800E86FE1 /* Hekate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F53E1F5D89D000E86FE1 /* Hekate.swift */; };
 		D1D6F5421F5D8A3800E86FE1 /* HekateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F5411F5D8A3800E86FE1 /* HekateTests.swift */; };
+		D1D6F54A1F5D9B1F00E86FE1 /* TestAssetLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F5491F5D9B1F00E86FE1 /* TestAssetLoading.swift */; };
+		D1D6F54B1F5D9D0300E86FE1 /* hannes_mac_mindnode_Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1D6F5441F5D8DF700E86FE1 /* hannes_mac_mindnode_Info.plist */; };
+		D1D6F54C1F5D9D0300E86FE1 /* hannes_mac_mindnode_receipt in Resources */ = {isa = PBXBuildFile; fileRef = D1D6F5461F5D8DF700E86FE1 /* hannes_mac_mindnode_receipt */; };
+		D1D6F54D1F5D9D0300E86FE1 /* hannes_mac_mindnode_pro_Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1D6F5471F5D8DF700E86FE1 /* hannes_mac_mindnode_pro_Info.plist */; };
+		D1D6F54E1F5D9D0300E86FE1 /* hannes_mac_mindnode_pro_receipt in Resources */ = {isa = PBXBuildFile; fileRef = D1D6F5451F5D8DF700E86FE1 /* hannes_mac_mindnode_pro_receipt */; };
+		D1D6F5501F5D9FA900E86FE1 /* not_a_receipt in Resources */ = {isa = PBXBuildFile; fileRef = D1D6F54F1F5D9E8D00E86FE1 /* not_a_receipt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +49,7 @@
 
 /* Begin PBXFileReference section */
 		D1D6F4B51F5D684C00E86FE1 /* Hekate_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hekate_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D1D6F4C21F5D687400E86FE1 /* Hekate_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hekate_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1D6F4C21F5D687400E86FE1 /* Hekate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hekate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D6F4E41F5D691400E86FE1 /* Hekate Demo iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hekate Demo iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D6F4E61F5D691400E86FE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1D6F4E81F5D691400E86FE1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +67,8 @@
 		D1D6F5451F5D8DF700E86FE1 /* hannes_mac_mindnode_pro_receipt */ = {isa = PBXFileReference; lastKnownFileType = file; path = hannes_mac_mindnode_pro_receipt; sourceTree = "<group>"; };
 		D1D6F5461F5D8DF700E86FE1 /* hannes_mac_mindnode_receipt */ = {isa = PBXFileReference; lastKnownFileType = file; path = hannes_mac_mindnode_receipt; sourceTree = "<group>"; };
 		D1D6F5471F5D8DF700E86FE1 /* hannes_mac_mindnode_pro_Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = hannes_mac_mindnode_pro_Info.plist; sourceTree = "<group>"; };
+		D1D6F5491F5D9B1F00E86FE1 /* TestAssetLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAssetLoading.swift; sourceTree = "<group>"; };
+		D1D6F54F1F5D9E8D00E86FE1 /* not_a_receipt */ = {isa = PBXFileReference; lastKnownFileType = text; path = not_a_receipt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1D6F5381F5D894900E86FE1 /* Hekate_macOS.framework in Frameworks */,
+				D1D6F5381F5D894900E86FE1 /* Hekate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,7 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				D1D6F4B51F5D684C00E86FE1 /* Hekate_iOS.framework */,
-				D1D6F4C21F5D687400E86FE1 /* Hekate_macOS.framework */,
+				D1D6F4C21F5D687400E86FE1 /* Hekate.framework */,
 				D1D6F4E41F5D691400E86FE1 /* Hekate Demo iOS.app */,
 				D1D6F5331F5D894900E86FE1 /* Hekate_macOSTests.xctest */,
 			);
@@ -167,6 +175,7 @@
 		D1D6F5341F5D894900E86FE1 /* Hekate_macOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				D1D6F5481F5D9B1100E86FE1 /* Tools */,
 				D1D6F5431F5D8DBC00E86FE1 /* Test Assets */,
 				D1D6F5371F5D894900E86FE1 /* Info.plist */,
 				D1D6F5411F5D8A3800E86FE1 /* HekateTests.swift */,
@@ -181,8 +190,17 @@
 				D1D6F5461F5D8DF700E86FE1 /* hannes_mac_mindnode_receipt */,
 				D1D6F5471F5D8DF700E86FE1 /* hannes_mac_mindnode_pro_Info.plist */,
 				D1D6F5451F5D8DF700E86FE1 /* hannes_mac_mindnode_pro_receipt */,
+				D1D6F54F1F5D9E8D00E86FE1 /* not_a_receipt */,
 			);
 			path = "Test Assets";
+			sourceTree = "<group>";
+		};
+		D1D6F5481F5D9B1100E86FE1 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				D1D6F5491F5D9B1F00E86FE1 /* TestAssetLoading.swift */,
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,7 +258,7 @@
 			);
 			name = "Hekate macOS";
 			productName = Hekate_macOS;
-			productReference = D1D6F4C21F5D687400E86FE1 /* Hekate_macOS.framework */;
+			productReference = D1D6F4C21F5D687400E86FE1 /* Hekate.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		D1D6F4E31F5D691400E86FE1 /* Hekate Demo iOS */ = {
@@ -359,6 +377,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1D6F54E1F5D9D0300E86FE1 /* hannes_mac_mindnode_pro_receipt in Resources */,
+				D1D6F54D1F5D9D0300E86FE1 /* hannes_mac_mindnode_pro_Info.plist in Resources */,
+				D1D6F54C1F5D9D0300E86FE1 /* hannes_mac_mindnode_receipt in Resources */,
+				D1D6F5501F5D9FA900E86FE1 /* not_a_receipt in Resources */,
+				D1D6F54B1F5D9D0300E86FE1 /* hannes_mac_mindnode_Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +449,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1D6F5421F5D8A3800E86FE1 /* HekateTests.swift in Sources */,
+				D1D6F54A1F5D9B1F00E86FE1 /* TestAssetLoading.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -637,7 +661,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ideasoncanvas.Hekate;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = Hekate;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
@@ -664,7 +688,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ideasoncanvas.Hekate;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = Hekate;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
