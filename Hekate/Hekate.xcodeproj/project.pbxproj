@@ -57,6 +57,10 @@
 		D1D6F5371F5D894900E86FE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1D6F53E1F5D89D000E86FE1 /* Hekate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hekate.swift; sourceTree = "<group>"; };
 		D1D6F5411F5D8A3800E86FE1 /* HekateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HekateTests.swift; sourceTree = "<group>"; };
+		D1D6F5441F5D8DF700E86FE1 /* hannes_mac_mindnode_Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = hannes_mac_mindnode_Info.plist; sourceTree = "<group>"; };
+		D1D6F5451F5D8DF700E86FE1 /* hannes_mac_mindnode_pro_receipt */ = {isa = PBXFileReference; lastKnownFileType = file; path = hannes_mac_mindnode_pro_receipt; sourceTree = "<group>"; };
+		D1D6F5461F5D8DF700E86FE1 /* hannes_mac_mindnode_receipt */ = {isa = PBXFileReference; lastKnownFileType = file; path = hannes_mac_mindnode_receipt; sourceTree = "<group>"; };
+		D1D6F5471F5D8DF700E86FE1 /* hannes_mac_mindnode_pro_Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = hannes_mac_mindnode_pro_Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,10 +167,22 @@
 		D1D6F5341F5D894900E86FE1 /* Hekate_macOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				D1D6F5431F5D8DBC00E86FE1 /* Test Assets */,
 				D1D6F5371F5D894900E86FE1 /* Info.plist */,
 				D1D6F5411F5D8A3800E86FE1 /* HekateTests.swift */,
 			);
 			path = Hekate_macOSTests;
+			sourceTree = "<group>";
+		};
+		D1D6F5431F5D8DBC00E86FE1 /* Test Assets */ = {
+			isa = PBXGroup;
+			children = (
+				D1D6F5441F5D8DF700E86FE1 /* hannes_mac_mindnode_Info.plist */,
+				D1D6F5461F5D8DF700E86FE1 /* hannes_mac_mindnode_receipt */,
+				D1D6F5471F5D8DF700E86FE1 /* hannes_mac_mindnode_pro_Info.plist */,
+				D1D6F5451F5D8DF700E86FE1 /* hannes_mac_mindnode_pro_receipt */,
+			);
+			path = "Test Assets";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
