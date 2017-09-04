@@ -20,6 +20,20 @@
                ReferencedContainer = "container:Hekate.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D1D6F5321F5D894900E86FE1"
+               BuildableName = "Hekate_macOSTests.xctest"
+               BlueprintName = "Hekate_macOSTests"
+               ReferencedContainer = "container:Hekate.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
