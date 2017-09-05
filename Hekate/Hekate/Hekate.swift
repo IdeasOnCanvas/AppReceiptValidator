@@ -8,4 +8,9 @@
 
 import Foundation
 
-public struct Hekate {}
+public struct Hekate {
+}
+
+public func doSomething(param: SomeClass) -> Hekate {
+    return Hekate()
+}

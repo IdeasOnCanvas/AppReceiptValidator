@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D11616CE1F5ED32900D966D5 /* SomeClass.h in Headers */ = {isa = PBXBuildFile; fileRef = D11616CC1F5ED32900D966D5 /* SomeClass.h */; };
+		D11616CF1F5ED32900D966D5 /* SomeClass.h in Headers */ = {isa = PBXBuildFile; fileRef = D11616CC1F5ED32900D966D5 /* SomeClass.h */; };
+		D11616D01F5ED32900D966D5 /* SomeClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D11616CD1F5ED32900D966D5 /* SomeClass.m */; };
+		D11616D11F5ED32900D966D5 /* SomeClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D11616CD1F5ED32900D966D5 /* SomeClass.m */; };
 		D1D6F4E71F5D691400E86FE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F4E61F5D691400E86FE1 /* AppDelegate.swift */; };
 		D1D6F4E91F5D691400E86FE1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F4E81F5D691400E86FE1 /* ViewController.swift */; };
 		D1D6F4EC1F5D691400E86FE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1D6F4EA1F5D691400E86FE1 /* Main.storyboard */; };
@@ -25,6 +29,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D11616D21F5ED38A00D966D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D1D6F4931F5D67E600E86FE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D1D6F4B41F5D684C00E86FE1;
+			remoteInfo = "Hekate iOS";
+		};
 		D1D6F5391F5D894900E86FE1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D1D6F4931F5D67E600E86FE1 /* Project object */;
@@ -48,6 +59,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D11616C91F5ED1CA00D966D5 /* Hekate-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hekate-Bridging-Header.h"; sourceTree = "<group>"; };
+		D11616CC1F5ED32900D966D5 /* SomeClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SomeClass.h; sourceTree = "<group>"; };
+		D11616CD1F5ED32900D966D5 /* SomeClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SomeClass.m; sourceTree = "<group>"; };
 		D1D6F4B51F5D684C00E86FE1 /* Hekate_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hekate_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D6F4C21F5D687400E86FE1 /* Hekate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hekate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D6F4E41F5D691400E86FE1 /* Hekate Demo iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hekate Demo iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,6 +155,9 @@
 		D1D6F4FC1F5D696800E86FE1 /* Hekate */ = {
 			isa = PBXGroup;
 			children = (
+				D11616C91F5ED1CA00D966D5 /* Hekate-Bridging-Header.h */,
+				D11616CC1F5ED32900D966D5 /* SomeClass.h */,
+				D11616CD1F5ED32900D966D5 /* SomeClass.m */,
 				D1D6F5271F5D863900E86FE1 /* Supporting Files */,
 				D1D6F53E1F5D89D000E86FE1 /* Hekate.swift */,
 			);
@@ -210,6 +227,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D11616CE1F5ED32900D966D5 /* SomeClass.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +235,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D11616CF1F5ED32900D966D5 /* SomeClass.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +292,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D11616D31F5ED38A00D966D5 /* PBXTargetDependency */,
 			);
 			name = "Hekate Demo iOS";
 			productName = "Demo iOS";
@@ -318,6 +338,7 @@
 					};
 					D1D6F4E31F5D691400E86FE1 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					D1D6F5321F5D894900E86FE1 = {
@@ -424,6 +445,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1D6F53F1F5D89D000E86FE1 /* Hekate.swift in Sources */,
+				D11616D01F5ED32900D966D5 /* SomeClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +454,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1D6F5401F5D89D800E86FE1 /* Hekate.swift in Sources */,
+				D11616D11F5ED32900D966D5 /* SomeClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +479,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D11616D31F5ED38A00D966D5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D1D6F4B41F5D684C00E86FE1 /* Hekate iOS */;
+			targetProxy = D11616D21F5ED38A00D966D5 /* PBXContainerItemProxy */;
+		};
 		D1D6F53A1F5D894900E86FE1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D1D6F4C11F5D687400E86FE1 /* Hekate macOS */;
@@ -609,6 +637,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ideasoncanvas.Hekate;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Hekate/Hekate-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -636,6 +665,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ideasoncanvas.Hekate;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Hekate/Hekate-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -664,6 +694,7 @@
 				PRODUCT_NAME = Hekate;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Hekate/Hekate-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -691,6 +722,7 @@
 				PRODUCT_NAME = Hekate;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Hekate/Hekate-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -701,12 +733,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W6L39UYL6Z;
 				INFOPLIST_FILE = "Demo iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.Demo-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -716,6 +750,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W6L39UYL6Z;
 				INFOPLIST_FILE = "Demo iOS/Info.plist";
