@@ -45,6 +45,7 @@ public enum ReceiptValidationError: Int, Error {
     case malformedReceipt
     case malformedInAppPurchaseReceipt
     case incorrectHash
+    case deviceIdentifierNotDeterminable
 }
 
 public struct ParsedReceipt {
@@ -78,23 +79,55 @@ public enum ReceiptOrigin {
     case data(Data)
 }
 
+public enum ReceiptDeviceIdentifier {
+    case installed
+    case data(Data)
+
+    public init?(base64Encoded: String) {
+        guard let data = Data(base64Encoded: "bEAItZRe") else {
+            return nil
+        }
+        self = .data(data)
+    }
+}
+
 public struct ReceiptValidationParameters {
+    public var receiptOrigin: ReceiptOrigin = .installed
     public var validateSignaturePresence: Bool = true
     public var validateSignatureAuthenticity: Bool = true
     public var validateHash: Bool = true
+    public var deviceIdentifier: ReceiptDeviceIdentifier = .installed
 
-    public static var allValidationsExceptHash: ReceiptValidationParameters {
-        var params = ReceiptValidationParameters()
-        params.validateHash = false
-        return params
+    public func with(block: (inout ReceiptValidationParameters) -> Void) -> ReceiptValidationParameters {
+        var copy = self
+        block(&copy)
+        return copy
     }
 
-    public static var allValidations: ReceiptValidationParameters {
+    public static var allSteps: ReceiptValidationParameters {
         return ReceiptValidationParameters()
     }
 
-    public static var skippingAllValidation: ReceiptValidationParameters {
-        return ReceiptValidationParameters(validateSignaturePresence: false, validateSignatureAuthenticity: false, validateHash: false)
+    func loadReceiptData() throws -> Data {
+        switch receiptOrigin {
+        case .data(let data):
+            return data
+        case .installed:
+            return try ReceiptLoader().loadReceipt()
+        }
+    }
+
+    func getDeviceIdentifierData() throws -> Data {
+        switch deviceIdentifier {
+        case .data(let data):
+            return data
+        case .installed:
+            if let data = ReceiptValidator.installedDeviceIdentifierData {
+                return data
+            } else {
+                throw ReceiptValidationError.deviceIdentifierNotDeterminable
+            }
+        }
     }
 }
 
@@ -103,16 +136,13 @@ public struct ReceiptValidationParameters {
 public struct ReceiptValidator {
     public init() {}
 
-    public func validateReceipt(origin: ReceiptOrigin, parameters: ReceiptValidationParameters) -> ReceiptValidationResult {
+    public func validateReceipt(configuration: (inout ReceiptValidationParameters) -> Void = { params in }) -> ReceiptValidationResult {
+        return validateReceipt(parameters: ReceiptValidationParameters.allSteps.with(block: configuration))
+    }
+
+    public func validateReceipt(parameters: ReceiptValidationParameters) -> ReceiptValidationResult {
         do {
-            let receiptData: Data = try {
-                switch origin {
-                    case .data(let data):
-                        return data
-                case .installed:
-                    return try ReceiptLoader().loadReceipt()
-                }
-            }()
+            let receiptData: Data = try parameters.loadReceiptData()
 
             let receiptContainer = try ReceiptExtractor().extractPKCS7Container(receiptData)
 
@@ -126,7 +156,9 @@ public struct ReceiptValidator {
             let parsedReceipt = try ReceiptParser().parse(receiptContainer)
 
             if parameters.validateHash {
-                try validateHash(receipt: parsedReceipt)
+                let deviceIdentifierData = try parameters.getDeviceIdentifierData()
+                print("Device identifier used (BASE64): \(deviceIdentifierData.base64EncodedString())")
+                try validateHash(receipt: parsedReceipt, deviceIdentifierData: deviceIdentifierData)
             }
             return .success(parsedReceipt)
         } catch {
@@ -134,19 +166,11 @@ public struct ReceiptValidator {
         }
     }
 
-    fileprivate func validateHash(receipt: ParsedReceipt) throws {
+    fileprivate func validateHash(receipt: ParsedReceipt, deviceIdentifierData: Data) throws {
         // Make sure that the ParsedReceipt instances has non-nil values needed for hash comparison
         guard let receiptOpaqueValueData = receipt.opaqueValue else { throw ReceiptValidationError.incorrectHash }
         guard let receiptBundleIdData = receipt.bundleIdData else { throw ReceiptValidationError.incorrectHash }
         guard let receiptHashData = receipt.sha1Hash else { throw ReceiptValidationError.incorrectHash }
-
-        var deviceIdentifier = self.deviceIdentifier?.uuid
-
-        let rawDeviceIdentifierPointer = withUnsafePointer(to: &deviceIdentifier, { (unsafeDeviceIdentifierPointer: UnsafePointer<uuid_t?>) -> UnsafeRawPointer in
-            return UnsafeRawPointer(unsafeDeviceIdentifierPointer)
-        })
-
-        let deviceIdentifierData = NSData(bytes: rawDeviceIdentifierPointer, length: 16)
 
         // Compute the hash for your app & device
 
@@ -155,7 +179,10 @@ public struct ReceiptValidator {
         var sha1Context = SHA_CTX()
 
         SHA1_Init(&sha1Context)
-        SHA1_Update(&sha1Context, deviceIdentifierData.bytes, deviceIdentifierData.length)
+
+        deviceIdentifierData.withUnsafeBytes { pointer -> Void in
+            SHA1_Update(&sha1Context, pointer, deviceIdentifierData.count)
+        }
         SHA1_Update(&sha1Context, receiptOpaqueValueData.bytes, receiptOpaqueValueData.length)
         SHA1_Update(&sha1Context, receiptBundleIdData.bytes, receiptBundleIdData.length)
         SHA1_Final(&computedHash, &sha1Context)
@@ -171,17 +198,14 @@ struct ReceiptLoader {
     let receiptUrl = Bundle.main.appStoreReceiptURL
 
     func loadReceipt() throws -> Data {
-        if receiptFound() {
-            let receiptData = try? Data(contentsOf: receiptUrl!)
-            if let receiptData = receiptData {
-                return receiptData
-            }
+        guard let url = receiptUrl, isReceiptReachable,
+            let receiptData = try? Data(contentsOf: url) else {
+            throw ReceiptValidationError.couldNotFindReceipt
         }
-
-        throw ReceiptValidationError.couldNotFindReceipt
+        return receiptData
     }
 
-    fileprivate func receiptFound() -> Bool {
+    fileprivate var isReceiptReachable: Bool {
         do {
             if let isReachable = try receiptUrl?.checkResourceIsReachable() {
                 return isReachable

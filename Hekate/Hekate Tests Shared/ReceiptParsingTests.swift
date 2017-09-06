@@ -18,11 +18,17 @@ import XCTest
 class ReceiptParsingTests: XCTestCase {
     var receiptValidator = ReceiptValidator()
 
+    let exampleDeviceIdentifier = ReceiptDeviceIdentifier(base64Encoded: "bEAItZRe")!
+
     func testFailedReceiptParsing() {
         guard let data = assertTestAsset(filename: "not_a_receipt") else {
             return
         }
-        let result = receiptValidator.validateReceipt(origin: .data(data), parameters: .skippingAllValidation)
+
+        let result = receiptValidator.validateReceipt(configuration: {
+            $0.receiptOrigin = .data(data)
+        })
+
         guard let error = result.error else {
             XCTFail("Unexpectedly succeeded in parsing a non-receipt")
             return
@@ -36,7 +42,10 @@ class ReceiptParsingTests: XCTestCase {
         guard let data = assertTestAsset(filename: "hannes_mac_mindnode_pro_receipt") else {
             return
         }
-        let result = receiptValidator.validateReceipt(origin: .data(data), parameters: .allValidationsExceptHash)
+        let result = receiptValidator.validateReceipt {
+            $0.receiptOrigin = .data(data)
+            $0.validateHash = false
+        }
         guard let receipt = result.receipt else {
             XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")
             return
@@ -48,7 +57,10 @@ class ReceiptParsingTests: XCTestCase {
         guard let data = assertTestAsset(filename: "hannes_mac_mindnode_receipt") else {
             return
         }
-        let result = receiptValidator.validateReceipt(origin: .data(data), parameters: .allValidations)
+        let result = receiptValidator.validateReceipt {
+            $0.receiptOrigin = .data(data)
+            $0.deviceIdentifier = ReceiptDeviceIdentifier(base64Encoded: "bEAItZRe")!
+        }
         guard let receipt = result.receipt else {
             XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")
             return
