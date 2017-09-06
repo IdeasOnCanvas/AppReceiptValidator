@@ -553,6 +553,7 @@
 					};
 					D1D6F4C11F5D687400E86FE1 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					D1D6F4E31F5D691400E86FE1 = {
@@ -1322,7 +1323,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 79DAB275F2B57F5784EC35B7 /* Pods-Hekate macOS.debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1350,7 +1351,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EA704EE1A2AF907B7582BC63 /* Pods-Hekate macOS.release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;

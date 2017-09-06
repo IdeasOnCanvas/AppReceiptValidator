@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -72,7 +72,7 @@
 		3D37F1D821B8BA526DD7CA72A267A395 /* Pods-Hekate Tests macOS-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Hekate Tests macOS-resources.sh"; sourceTree = "<group>"; };
 		4010007FE44797B419F6E211D36B9B61 /* ui_compat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ui_compat.h; path = "include-ios/openssl/ui_compat.h"; sourceTree = "<group>"; };
 		410076D7A994C35FEE14E760F0E845A7 /* krb5_asn.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = krb5_asn.h; path = "include-ios/openssl/krb5_asn.h"; sourceTree = "<group>"; };
-		457A7EB9C4ADE3045538B76A28A38AD9 /* libPods-Hekate Demo macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-Hekate Demo macOS.a"; path = "libPods-Hekate Demo macOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		457A7EB9C4ADE3045538B76A28A38AD9 /* libPods-Hekate Demo macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Hekate Demo macOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4619D19F4A4A00A535CE6EE31FEB6ABE /* txt_db.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = txt_db.h; path = "include-macos/openssl/txt_db.h"; sourceTree = "<group>"; };
 		464E789EECE6074604BC065037890754 /* bio.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = bio.h; path = "include-ios/openssl/bio.h"; sourceTree = "<group>"; };
 		468EA19A21EFF6C2325087D96E69CEF7 /* crypto.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = crypto.h; path = "include-ios/openssl/crypto.h"; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 		4F60F143337538ABD97294BC1F81C91F /* hmac.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = hmac.h; path = "include-ios/openssl/hmac.h"; sourceTree = "<group>"; };
 		4FCFAD4706C32E18A36DB5BC0D71D931 /* comp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = comp.h; path = "include-macos/openssl/comp.h"; sourceTree = "<group>"; };
 		501B92EA99D36F7F8604B85BAA842A67 /* whrlpool.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = whrlpool.h; path = "include-macos/openssl/whrlpool.h"; sourceTree = "<group>"; };
-		51924B665D337FA2219EF7ABB86FC9AD /* libPods-Hekate Demo iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-Hekate Demo iOS.a"; path = "libPods-Hekate Demo iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		51924B665D337FA2219EF7ABB86FC9AD /* libPods-Hekate Demo iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Hekate Demo iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		51E7569BAFDB4C3F90AC9384C73CB7E4 /* cast.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = cast.h; path = "include-macos/openssl/cast.h"; sourceTree = "<group>"; };
 		5207ECC3FDE10DEE83E64D9B717A4CC7 /* mdc2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mdc2.h; path = "include-ios/openssl/mdc2.h"; sourceTree = "<group>"; };
 		524ED519D2D3E965B96BA84A611CB334 /* md5.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = md5.h; path = "include-ios/openssl/md5.h"; sourceTree = "<group>"; };
@@ -108,7 +108,7 @@
 		6F7D291E36D96DBDEBAC5410663E2F6E /* cast.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = cast.h; path = "include-ios/openssl/cast.h"; sourceTree = "<group>"; };
 		735E3D987E67BE95BA883530A24517B7 /* e_os2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = e_os2.h; path = "include-ios/openssl/e_os2.h"; sourceTree = "<group>"; };
 		7404360E862595CDD756085B32460FC3 /* dh.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = dh.h; path = "include-ios/openssl/dh.h"; sourceTree = "<group>"; };
-		7447E6A25AFA9226BA9FEC1F76F761D2 /* libPods-Hekate Tests macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-Hekate Tests macOS.a"; path = "libPods-Hekate Tests macOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7447E6A25AFA9226BA9FEC1F76F761D2 /* libPods-Hekate Tests macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Hekate Tests macOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75176E5643EFF597ED62F58080C84E51 /* x509v3.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = x509v3.h; path = "include-macos/openssl/x509v3.h"; sourceTree = "<group>"; };
 		76AC0CB03444C2250E64C68F391862EE /* dso.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = dso.h; path = "include-ios/openssl/dso.h"; sourceTree = "<group>"; };
 		77DE085E52C614CD01EAFA541B6E143B /* dso.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = dso.h; path = "include-macos/openssl/dso.h"; sourceTree = "<group>"; };
@@ -139,7 +139,7 @@
 		8F81A1ECF11641370DD46B76AD4619B0 /* ui.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ui.h; path = "include-macos/openssl/ui.h"; sourceTree = "<group>"; };
 		8FE8D2A5319950724667BB549B625578 /* pem2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = pem2.h; path = "include-ios/openssl/pem2.h"; sourceTree = "<group>"; };
 		91A67F8E310422D0880C1AF138FA50E4 /* tls1.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = tls1.h; path = "include-ios/openssl/tls1.h"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		94BABF31DC66F01909133110F7EDD80C /* rand.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = rand.h; path = "include-ios/openssl/rand.h"; sourceTree = "<group>"; };
 		9640C7C7FE9237D2F23F21DFFCCA3D40 /* Pods-Hekate Tests macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Hekate Tests macOS.debug.xcconfig"; sourceTree = "<group>"; };
 		966A18EDE98C6C3BCC53C9B8DFCD43FE /* ripemd.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ripemd.h; path = "include-macos/openssl/ripemd.h"; sourceTree = "<group>"; };
@@ -189,7 +189,7 @@
 		CDDAA23DDA8E082FC77E38FA01601C8F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		CF29DCE992E858BF605828FB03BF997D /* rsa.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = rsa.h; path = "include-ios/openssl/rsa.h"; sourceTree = "<group>"; };
 		CF2F4E086764237D731786C5EAF318EC /* Pods-Hekate Demo iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Hekate Demo iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		D15F712A00F49C817A81CEFE736FCD18 /* libPods-Hekate iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-Hekate iOS.a"; path = "libPods-Hekate iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D15F712A00F49C817A81CEFE736FCD18 /* libPods-Hekate iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Hekate iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D71CA29EB78202F157C3A70908B8230E /* des.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = des.h; path = "include-macos/openssl/des.h"; sourceTree = "<group>"; };
 		D9820637FCB459890426D377ABCBC88F /* err.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = err.h; path = "include-macos/openssl/err.h"; sourceTree = "<group>"; };
 		DA621F3EF1DAAB644DEDBC65801E9497 /* engine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = engine.h; path = "include-macos/openssl/engine.h"; sourceTree = "<group>"; };
@@ -220,10 +220,10 @@
 		F5B4EDABAA8EA9A5951CD3BDC43E84B2 /* blowfish.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = blowfish.h; path = "include-macos/openssl/blowfish.h"; sourceTree = "<group>"; };
 		F66D5B08226C8B66778DDD60BACFC5F8 /* ssl2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ssl2.h; path = "include-macos/openssl/ssl2.h"; sourceTree = "<group>"; };
 		F831CF4C83969C5D5C475FC13AC1E9CC /* blowfish.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = blowfish.h; path = "include-ios/openssl/blowfish.h"; sourceTree = "<group>"; };
-		FB78403DCEFED06BE238E21A4AA9B6C1 /* libPods-Hekate Tests iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-Hekate Tests iOS.a"; path = "libPods-Hekate Tests iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB78403DCEFED06BE238E21A4AA9B6C1 /* libPods-Hekate Tests iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Hekate Tests iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC252F192E303875A0E5D353A0EE9CE6 /* des_old.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = des_old.h; path = "include-macos/openssl/des_old.h"; sourceTree = "<group>"; };
 		FD4012659D92D7D1A2EF3AC2D808601F /* ecdsa.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ecdsa.h; path = "include-macos/openssl/ecdsa.h"; sourceTree = "<group>"; };
-		FDDCD7E85E830DB1313F220E94A68C38 /* libPods-Hekate macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-Hekate macOS.a"; path = "libPods-Hekate macOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDDCD7E85E830DB1313F220E94A68C38 /* libPods-Hekate macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Hekate macOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFF0040AB75AC94B68ABF6F461281009 /* pem2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = pem2.h; path = "include-macos/openssl/pem2.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -588,7 +588,6 @@
 				8F6A37C33D304C021A75C5EFFAFFB069 /* x509v3.h */,
 				CC2EDC937F1EE1CB390B9AB82DF0D5C5 /* Frameworks */,
 			);
-			name = "OpenSSL-Universal";
 			path = "OpenSSL-Universal";
 			sourceTree = "<group>";
 		};
@@ -713,7 +712,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0900;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
