@@ -9,206 +9,7 @@
 import Foundation
 import StoreKit
 
-// Copied and modifier from https://github.com/andrewcbancroft/SwiftyLocalReceiptValidator/blob/master/ReceiptValidator.swift
-
-// MARK: Output
-
-public enum ReceiptValidationResult {
-    case success(ParsedReceipt)
-    case error(ReceiptValidationError)
-
-    public var receipt: ParsedReceipt? {
-        switch self {
-        case .success(let receipt):
-            return receipt
-        case .error:
-            return nil
-        }
-    }
-
-    public var error: ReceiptValidationError? {
-        switch self {
-        case .success:
-            return nil
-        case .error(let error):
-            return error
-        }
-    }
-}
-
-public enum ReceiptValidationError: Int, Error {
-    case couldNotFindReceipt
-    case emptyReceiptContents
-    case receiptNotSigned
-    case appleRootCertificateNotFound
-    case receiptSignatureInvalid
-    case malformedReceipt
-    case malformedInAppPurchaseReceipt
-    case incorrectHash
-    case deviceIdentifierNotDeterminable
-    case malformedAppleRootCertificate
-}
-
-public struct ParsedReceipt {
-    var bundleIdentifier: String?
-    var bundleIdData: Data?
-    var appVersion: String?
-    var opaqueValue: Data?
-    var sha1Hash: Data?
-    var inAppPurchaseReceipts: [ParsedInAppPurchaseReceipt]?
-    var originalAppVersion: String?
-    var receiptCreationDate: Date?
-    var expirationDate: Date?
-
-    public init(bundleIdentifier: String?, bundleIdData: Data?, appVersion: String?, opaqueValue: Data?, sha1Hash: Data?, originalAppVersion: String?, receiptCreationDate: Date?, expirationDate: Date?) {
-        self.bundleIdentifier = bundleIdentifier
-        self.bundleIdData = bundleIdData
-        self.appVersion = appVersion
-        self.opaqueValue = opaqueValue
-        self.sha1Hash = sha1Hash
-        self.originalAppVersion = originalAppVersion
-        self.receiptCreationDate = receiptCreationDate
-        self.expirationDate = expirationDate
-    }
-
-    public init() {}
-}
-
-// MARK: - Equatable
-extension ParsedReceipt: Equatable { }
-
-public func == (lhs: ParsedReceipt, rhs: ParsedReceipt) -> Bool {
-    return lhs.bundleIdentifier == rhs.bundleIdentifier &&
-        lhs.bundleIdData == rhs.bundleIdData &&
-        lhs.appVersion == rhs.appVersion &&
-        lhs.opaqueValue == rhs.opaqueValue &&
-        lhs.sha1Hash == rhs.sha1Hash &&
-        lhs.originalAppVersion == rhs.originalAppVersion &&
-        lhs.receiptCreationDate == rhs.receiptCreationDate &&
-        lhs.expirationDate == rhs.expirationDate
-}
-
-public struct ParsedInAppPurchaseReceipt {
-    var quantity: Int?
-    var productIdentifier: String?
-    var transactionIdentifier: String?
-    var originalTransactionIdentifier: String?
-    var purchaseDate: Date?
-    var originalPurchaseDate: Date?
-    var subscriptionExpirationDate: Date?
-    var cancellationDate: Date?
-    var webOrderLineItemId: Int?
-
-    public init(quantity: Int?, productIdentifier: String?, transactionIdentifier: String?, originalTransactionIdentifier: String?, purchaseDate: Date?, originalPurchaseDate: Date?, subscriptionExpirationDate: Date?, cancellationDate: Date?, webOrderLineItemId: Int?) {
-        self.quantity = quantity
-        self.productIdentifier = productIdentifier
-        self.transactionIdentifier = transactionIdentifier
-        self.originalTransactionIdentifier = originalTransactionIdentifier
-        self.purchaseDate = purchaseDate
-        self.originalPurchaseDate = originalPurchaseDate
-        self.subscriptionExpirationDate = subscriptionExpirationDate
-        self.cancellationDate = cancellationDate
-        self.webOrderLineItemId = webOrderLineItemId
-    }
-
-    public init() {}
-}
-
-// MARK: - Equatable
-extension ParsedInAppPurchaseReceipt: Equatable { }
-
-public func == (lhs: ParsedInAppPurchaseReceipt, rhs: ParsedInAppPurchaseReceipt) -> Bool {
-    return lhs.quantity == rhs.quantity &&
-        lhs.productIdentifier == rhs.productIdentifier &&
-        lhs.transactionIdentifier == rhs.transactionIdentifier &&
-        lhs.originalTransactionIdentifier == rhs.originalTransactionIdentifier &&
-        lhs.purchaseDate == rhs.purchaseDate &&
-        lhs.originalPurchaseDate == rhs.originalPurchaseDate &&
-        lhs.subscriptionExpirationDate == rhs.subscriptionExpirationDate &&
-        lhs.cancellationDate == rhs.cancellationDate &&
-        lhs.webOrderLineItemId == rhs.webOrderLineItemId
-}
-
-// MARK: Parameters
-
-public enum ReceiptOrigin {
-    case installedInMainBundle
-    case data(Data)
-}
-
-public enum ReceiptDeviceIdentifier {
-    case installed
-    case data(Data)
-
-    public init?(base64Encoded: String) {
-        guard let data = Data(base64Encoded: base64Encoded) else {
-            return nil
-        }
-        self = .data(data)
-    }
-}
-
-public enum RootCertificateOrigin {
-    /// Expects a AppleIncRootCertificate.cer in main bundle
-    case cerFileInMainBundle
-}
-
-public struct ReceiptValidationParameters {
-    public var receiptOrigin: ReceiptOrigin = .installedInMainBundle
-    public var validateSignaturePresence: Bool = true
-    public var validateSignatureAuthenticity: Bool = true
-    public var validateHash: Bool = true
-    public var deviceIdentifier: ReceiptDeviceIdentifier = .installed
-    public let rootCertificateOrigin: RootCertificateOrigin = .cerFileInMainBundle
-
-    public func with(block: (inout ReceiptValidationParameters) -> Void) -> ReceiptValidationParameters {
-        var copy = self
-        block(&copy)
-        return copy
-    }
-
-    public static var allSteps: ReceiptValidationParameters {
-        return ReceiptValidationParameters()
-    }
-
-    func loadReceiptData() throws -> Data {
-        switch receiptOrigin {
-        case .data(let data):
-            return data
-        case .installedInMainBundle:
-            guard let receiptUrl = Bundle.main.appStoreReceiptURL,
-                (try? receiptUrl.checkResourceIsReachable()) ?? false,
-                let data = try? Data(contentsOf: receiptUrl) else {
-                throw ReceiptValidationError.couldNotFindReceipt
-            }
-            return data
-        }
-    }
-
-    func loadAppleRootCertificateData() throws -> Data {
-        guard let appleRootCertificateURL = Bundle.main.url(forResource: "AppleIncRootCertificate", withExtension: "cer"),
-            let appleRootCertificateData = try? Data(contentsOf: appleRootCertificateURL) else {
-                throw ReceiptValidationError.appleRootCertificateNotFound
-        }
-        return appleRootCertificateData
-
-    }
-
-    func getDeviceIdentifierData() throws -> Data {
-        switch deviceIdentifier {
-        case .data(let data):
-            return data
-        case .installed:
-            if let data = ReceiptValidator.installedDeviceIdentifierData {
-                return data
-            } else {
-                throw ReceiptValidationError.deviceIdentifierNotDeterminable
-            }
-        }
-    }
-}
-
-// MARK: - Receipt Validator
+// Original inspiration https://github.com/andrewcbancroft/SwiftyLocalReceiptValidator/blob/master/ReceiptValidator.swift
 
 public struct ReceiptValidator {
     public init() {}
@@ -567,6 +368,7 @@ private extension ReceiptValidator {
 
         ASN1_get_object(&stringPointer, &stringLength, &type, &xclass, length)
 
+
         if type == V_ASN1_UTF8STRING {
             let mutableStringPointer = UnsafeMutableRawPointer(mutating: stringPointer!)
             return String(bytesNoCopy: mutableStringPointer, length: stringLength, encoding: String.Encoding.utf8, freeWhenDone: false)
@@ -593,4 +395,43 @@ private extension ReceiptValidator {
 
         return nil
     }
+}
+
+
+// MARK: - ReceiptValidationResult
+
+public enum ReceiptValidationResult {
+    case success(ParsedReceipt)
+    case error(ReceiptValidationError)
+
+    public var receipt: ParsedReceipt? {
+        switch self {
+        case .success(let receipt):
+            return receipt
+        case .error:
+            return nil
+        }
+    }
+
+    public var error: ReceiptValidationError? {
+        switch self {
+        case .success:
+            return nil
+        case .error(let error):
+            return error
+        }
+    }
+}
+// MARK: - ReceiptValidationError
+public enum ReceiptValidationError: Int, Error {
+    case couldNotFindReceipt
+    case emptyReceiptContents
+    case receiptNotSigned
+    case appleRootCertificateNotFound
+    case receiptSignatureInvalid
+    case malformedReceipt
+    case malformedInAppPurchaseReceipt
+    case incorrectHash
+    case deviceIdentifierNotDeterminable
+    case malformedAppleRootCertificate
 }

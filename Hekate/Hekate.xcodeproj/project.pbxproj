@@ -45,6 +45,10 @@
 		D1D6F4F11F5D691400E86FE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1D6F4EF1F5D691400E86FE1 /* LaunchScreen.storyboard */; };
 		D1D6F53F1F5D89D000E86FE1 /* Hekate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F53E1F5D89D000E86FE1 /* Hekate.swift */; };
 		D1D6F5401F5D89D800E86FE1 /* Hekate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F53E1F5D89D000E86FE1 /* Hekate.swift */; };
+		D1FE343D1F604F020029576B /* ParsedReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FE343C1F604F020029576B /* ParsedReceipt.swift */; };
+		D1FE343E1F604F020029576B /* ParsedReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FE343C1F604F020029576B /* ParsedReceipt.swift */; };
+		D1FE34401F604F540029576B /* ReceiptValidationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FE343F1F604F540029576B /* ReceiptValidationParameters.swift */; };
+		D1FE34411F604F540029576B /* ReceiptValidationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FE343F1F604F540029576B /* ReceiptValidationParameters.swift */; };
 		D464E5E4B267E94BB9360BA9 /* libPods-Hekate macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A98D7F9CDB5C0D84EDF3A54 /* libPods-Hekate macOS.a */; };
 		DBDD3727216F284096562274 /* libPods-Hekate Demo macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5236B778A9825A37C70C47F4 /* libPods-Hekate Demo macOS.a */; };
 /* End PBXBuildFile section */
@@ -146,6 +150,8 @@
 		D1D6F5471F5D8DF700E86FE1 /* hannes_mac_mindnode_pro_Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = hannes_mac_mindnode_pro_Info.plist; sourceTree = "<group>"; };
 		D1D6F5491F5D9B1F00E86FE1 /* TestAssetLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAssetLoading.swift; sourceTree = "<group>"; };
 		D1D6F54F1F5D9E8D00E86FE1 /* not_a_receipt */ = {isa = PBXFileReference; lastKnownFileType = text; path = not_a_receipt; sourceTree = "<group>"; };
+		D1FE343C1F604F020029576B /* ParsedReceipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsedReceipt.swift; sourceTree = "<group>"; };
+		D1FE343F1F604F540029576B /* ReceiptValidationParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptValidationParameters.swift; sourceTree = "<group>"; };
 		EA704EE1A2AF907B7582BC63 /* Pods-Hekate macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hekate macOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hekate macOS/Pods-Hekate macOS.release.xcconfig"; sourceTree = "<group>"; };
 		FBAD20A4EA2AB0E756F7A25D /* Pods-Hekate Demo macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hekate Demo macOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hekate Demo macOS/Pods-Hekate Demo macOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -309,6 +315,8 @@
 				D19095BA1F6004D10095729B /* pkcs7_union_accessors.h */,
 				D19095BF1F60158B0095729B /* ReceiptValidator+deviceIdentifier macOS.swift */,
 				D19095C11F6019E70095729B /* ReceiptValidator+deviceIdentifier iOS.swift */,
+				D1FE343C1F604F020029576B /* ParsedReceipt.swift */,
+				D1FE343F1F604F540029576B /* ReceiptValidationParameters.swift */,
 			);
 			path = Hekate;
 			sourceTree = "<group>";
@@ -972,8 +980,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1D6F53F1F5D89D000E86FE1 /* Hekate.swift in Sources */,
+				D1FE343D1F604F020029576B /* ParsedReceipt.swift in Sources */,
 				D19095C31F6019FC0095729B /* ReceiptValidator+deviceIdentifier iOS.swift in Sources */,
 				D19095BC1F6004D10095729B /* pkcs7_union_accessors.c in Sources */,
+				D1FE34401F604F540029576B /* ReceiptValidationParameters.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -982,8 +992,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1D6F5401F5D89D800E86FE1 /* Hekate.swift in Sources */,
+				D1FE343E1F604F020029576B /* ParsedReceipt.swift in Sources */,
 				D19095C01F60158B0095729B /* ReceiptValidator+deviceIdentifier macOS.swift in Sources */,
 				D19095BD1F6004D10095729B /* pkcs7_union_accessors.c in Sources */,
+				D1FE34411F604F540029576B /* ReceiptValidationParameters.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
