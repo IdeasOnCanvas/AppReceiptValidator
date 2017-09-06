@@ -11,10 +11,6 @@
 		777FF412C15A6877A27DE262 /* libPods-Hekate Tests macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E73C5C901768DE64DE3ECF /* libPods-Hekate Tests macOS.a */; };
 		7EFAABB4F7579D8DAB413A85 /* libPods-Hekate Tests iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A82326EB604E9103325912C9 /* libPods-Hekate Tests iOS.a */; };
 		A743EC93F2082E7EBCA498DC /* libPods-Hekate Demo iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A7670E67D6E712EDB0104A /* libPods-Hekate Demo iOS.a */; };
-		D11616CE1F5ED32900D966D5 /* SomeClass.h in Headers */ = {isa = PBXBuildFile; fileRef = D11616CC1F5ED32900D966D5 /* SomeClass.h */; };
-		D11616CF1F5ED32900D966D5 /* SomeClass.h in Headers */ = {isa = PBXBuildFile; fileRef = D11616CC1F5ED32900D966D5 /* SomeClass.h */; };
-		D11616D01F5ED32900D966D5 /* SomeClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D11616CD1F5ED32900D966D5 /* SomeClass.m */; };
-		D11616D11F5ED32900D966D5 /* SomeClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D11616CD1F5ED32900D966D5 /* SomeClass.m */; };
 		D19095841F6000A40095729B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19095831F6000A40095729B /* AppDelegate.swift */; };
 		D19095861F6000A40095729B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19095851F6000A40095729B /* ViewController.swift */; };
 		D19095881F6000A40095729B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D19095871F6000A40095729B /* Assets.xcassets */; };
@@ -107,8 +103,6 @@
 		B8A7670E67D6E712EDB0104A /* libPods-Hekate Demo iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Hekate Demo iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6D797B448B5FB6809BDD61F /* Pods-Hekate Tests iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hekate Tests iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hekate Tests iOS/Pods-Hekate Tests iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		D11616C91F5ED1CA00D966D5 /* Hekate-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hekate-Bridging-Header.h"; sourceTree = "<group>"; };
-		D11616CC1F5ED32900D966D5 /* SomeClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SomeClass.h; sourceTree = "<group>"; };
-		D11616CD1F5ED32900D966D5 /* SomeClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SomeClass.m; sourceTree = "<group>"; };
 		D19095811F6000A40095729B /* Hekate Demo macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hekate Demo macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D19095831F6000A40095729B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D19095851F6000A40095729B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -301,8 +295,6 @@
 			children = (
 				D19095C41F601DEA0095729B /* AppleIncRootCertificate.cer */,
 				D11616C91F5ED1CA00D966D5 /* Hekate-Bridging-Header.h */,
-				D11616CC1F5ED32900D966D5 /* SomeClass.h */,
-				D11616CD1F5ED32900D966D5 /* SomeClass.m */,
 				D1D6F5271F5D863900E86FE1 /* Supporting Files */,
 				D1D6F53E1F5D89D000E86FE1 /* Hekate.swift */,
 				D19095BB1F6004D10095729B /* pkcs7_union_accessors.c */,
@@ -384,7 +376,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D11616CE1F5ED32900D966D5 /* SomeClass.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,7 +383,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D11616CF1F5ED32900D966D5 /* SomeClass.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -967,7 +957,6 @@
 			files = (
 				D1D6F53F1F5D89D000E86FE1 /* Hekate.swift in Sources */,
 				D19095C31F6019FC0095729B /* ReceiptValidator+deviceIdentifier iOS.swift in Sources */,
-				D11616D01F5ED32900D966D5 /* SomeClass.m in Sources */,
 				D19095BC1F6004D10095729B /* pkcs7_union_accessors.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -978,7 +967,6 @@
 			files = (
 				D1D6F5401F5D89D800E86FE1 /* Hekate.swift in Sources */,
 				D19095C01F60158B0095729B /* ReceiptValidator+deviceIdentifier macOS.swift in Sources */,
-				D11616D11F5ED32900D966D5 /* SomeClass.m in Sources */,
 				D19095BD1F6004D10095729B /* pkcs7_union_accessors.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
