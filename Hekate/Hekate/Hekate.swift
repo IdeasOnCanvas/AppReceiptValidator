@@ -46,6 +46,7 @@ public enum ReceiptValidationError: Int, Error {
     case malformedInAppPurchaseReceipt
     case incorrectHash
     case deviceIdentifierNotDeterminable
+    case malformedAppleRootCertificate
 }
 
 public struct ParsedReceipt {
@@ -75,7 +76,7 @@ public struct ParsedInAppPurchaseReceipt {
 // MARK: Parameters
 
 public enum ReceiptOrigin {
-    case installed
+    case installedInMainBundle
     case data(Data)
 }
 
@@ -91,12 +92,18 @@ public enum ReceiptDeviceIdentifier {
     }
 }
 
+public enum RootCertificateOrigin {
+    /// Expects a AppleIncRootCertificate.cer in main bundle
+    case cerFileInMainBundle
+}
+
 public struct ReceiptValidationParameters {
-    public var receiptOrigin: ReceiptOrigin = .installed
+    public var receiptOrigin: ReceiptOrigin = .installedInMainBundle
     public var validateSignaturePresence: Bool = true
     public var validateSignatureAuthenticity: Bool = true
     public var validateHash: Bool = true
     public var deviceIdentifier: ReceiptDeviceIdentifier = .installed
+    public let rootCertificateOrigin: RootCertificateOrigin = .cerFileInMainBundle
 
     public func with(block: (inout ReceiptValidationParameters) -> Void) -> ReceiptValidationParameters {
         var copy = self
@@ -112,9 +119,23 @@ public struct ReceiptValidationParameters {
         switch receiptOrigin {
         case .data(let data):
             return data
-        case .installed:
-            return try ReceiptLoader().loadReceipt()
+        case .installedInMainBundle:
+            guard let receiptUrl = Bundle.main.appStoreReceiptURL,
+                (try? receiptUrl.checkResourceIsReachable()) ?? false,
+                let data = try? Data(contentsOf: receiptUrl) else {
+                throw ReceiptValidationError.couldNotFindReceipt
+            }
+            return data
         }
+    }
+
+    func loadAppleRootCertificateData() throws -> Data {
+        guard let appleRootCertificateURL = Bundle.main.url(forResource: "AppleIncRootCertificate", withExtension: "cer"),
+            let appleRootCertificateData = try? Data(contentsOf: appleRootCertificateURL) else {
+                throw ReceiptValidationError.appleRootCertificateNotFound
+        }
+        return appleRootCertificateData
+
     }
 
     func getDeviceIdentifierData() throws -> Data {
@@ -144,16 +165,16 @@ public struct ReceiptValidator {
         do {
             let receiptData: Data = try parameters.loadReceiptData()
 
-            let receiptContainer = try ReceiptExtractor().extractPKCS7Container(receiptData)
+            let receiptContainer = try extractPKCS7Container(data: receiptData)
 
             if parameters.validateSignaturePresence {
-                try ReceiptSignatureValidator().checkSignaturePresence(receiptContainer)
+                try checkSignaturePresence(pkcs7: receiptContainer)
             }
             if parameters.validateSignatureAuthenticity {
-                try ReceiptSignatureValidator().checkSignatureAuthenticity(receiptContainer)
+                let appleRootCertificateData = try parameters.loadAppleRootCertificateData()
+                try checkSignatureAuthenticity(pkcs7: receiptContainer, appleRootCertificateData: appleRootCertificateData)
             }
-
-            let parsedReceipt = try ReceiptParser().parse(receiptContainer)
+            let parsedReceipt = try parse(pkcs7Container: receiptContainer)
 
             if parameters.validateHash {
                 let deviceIdentifierData = try parameters.getDeviceIdentifierData()
@@ -194,34 +215,12 @@ public struct ReceiptValidator {
     }
 }
 
-struct ReceiptLoader {
-    let receiptUrl = Bundle.main.appStoreReceiptURL
+// MARK: - PKCS7 Extraction
 
-    func loadReceipt() throws -> Data {
-        guard let url = receiptUrl, isReceiptReachable,
-            let receiptData = try? Data(contentsOf: url) else {
-            throw ReceiptValidationError.couldNotFindReceipt
-        }
-        return receiptData
-    }
-
-    fileprivate var isReceiptReachable: Bool {
-        do {
-            if let isReachable = try receiptUrl?.checkResourceIsReachable() {
-                return isReachable
-            }
-        } catch _ {
-            return false
-        }
-
-        return false
-    }
-}
-
-struct ReceiptExtractor {
-    public func extractPKCS7Container(_ receiptData: Data) throws -> UnsafeMutablePointer<PKCS7> {
+private extension ReceiptValidator {
+    func extractPKCS7Container(data: Data) throws -> UnsafeMutablePointer<PKCS7> {
         let receiptBIO = BIO_new(BIO_s_mem())
-        BIO_write(receiptBIO, (receiptData as NSData).bytes, Int32(receiptData.count))
+        BIO_write(receiptBIO, (data as NSData).bytes, Int32(data.count))
         let receiptPKCS7Container = d2i_PKCS7_bio(receiptBIO, nil)
 
         guard receiptPKCS7Container != nil else {
@@ -238,43 +237,33 @@ struct ReceiptExtractor {
     }
 }
 
-struct ReceiptSignatureValidator {
-    func checkSignaturePresence(_ PKCS7Container: UnsafeMutablePointer<PKCS7>) throws {
-        let pkcs7SignedTypeCode = OBJ_obj2nid(PKCS7Container.pointee.type)
+// MARK: - PKCS7 Signature checking
+
+private extension ReceiptValidator {
+    func checkSignaturePresence(pkcs7: UnsafeMutablePointer<PKCS7>) throws {
+        let pkcs7SignedTypeCode = OBJ_obj2nid(pkcs7.pointee.type)
 
         guard pkcs7SignedTypeCode == NID_pkcs7_signed else {
             throw ReceiptValidationError.receiptNotSigned
         }
     }
 
-    func checkSignatureAuthenticity(_ PKCS7Container: UnsafeMutablePointer<PKCS7>) throws {
-        let appleRootCertificateX509 = try loadAppleRootCertificate()
-
-        try verifyAuthenticity(appleRootCertificateX509, PKCS7Container: PKCS7Container)
-    }
-
-    private func loadAppleRootCertificate() throws -> UnsafeMutablePointer<X509> {
-        guard
-            let appleRootCertificateURL = Bundle.main.url(forResource: "AppleIncRootCertificate", withExtension: "cer"),
-            let appleRootCertificateData = try? Data(contentsOf: appleRootCertificateURL)
-            else {
-                throw ReceiptValidationError.appleRootCertificateNotFound
-        }
-
+    func checkSignatureAuthenticity(pkcs7: UnsafeMutablePointer<PKCS7>, appleRootCertificateData: Data) throws {
         let appleRootCertificateBIO = BIO_new(BIO_s_mem())
         BIO_write(appleRootCertificateBIO, (appleRootCertificateData as NSData).bytes, Int32(appleRootCertificateData.count))
-        let appleRootCertificateX509 = d2i_X509_bio(appleRootCertificateBIO, nil)
-
-        return appleRootCertificateX509!
+        guard let appleRootCertificateX509 = d2i_X509_bio(appleRootCertificateBIO, nil) else {
+            throw ReceiptValidationError.malformedAppleRootCertificate
+        }
+        try verifyAuthenticity(x509Certificate: appleRootCertificateX509, pkcs7: pkcs7)
     }
 
-    private func verifyAuthenticity(_ x509Certificate: UnsafeMutablePointer<X509>, PKCS7Container: UnsafeMutablePointer<PKCS7>) throws {
+    private func verifyAuthenticity(x509Certificate: UnsafeMutablePointer<X509>, pkcs7: UnsafeMutablePointer<PKCS7>) throws {
         let x509CertificateStore = X509_STORE_new()
         X509_STORE_add_cert(x509CertificateStore, x509Certificate)
 
         OpenSSL_add_all_digests()
 
-        let result = PKCS7_verify(PKCS7Container, nil, x509CertificateStore, nil, nil, 0)
+        let result = PKCS7_verify(pkcs7, nil, x509CertificateStore, nil, nil, 0)
 
         if result != 1 {
             throw ReceiptValidationError.receiptSignatureInvalid
@@ -282,9 +271,11 @@ struct ReceiptSignatureValidator {
     }
 }
 
-struct ReceiptParser {
+// MARK: - Parsing of properties
+
+private extension ReceiptValidator {
     // swiftlint:disable:next cyclomatic_complexity function_body_length
-    func parse(_ PKCS7Container: UnsafeMutablePointer<PKCS7>) throws -> ParsedReceipt {
+    func parse(pkcs7Container: UnsafeMutablePointer<PKCS7>) throws -> ParsedReceipt {
         var bundleIdentifier: String?
         var bundleIdData: NSData?
         var appVersion: String?
@@ -295,7 +286,7 @@ struct ReceiptParser {
         var receiptCreationDate: Date?
         var expirationDate: Date?
 
-        guard let contents = PKCS7Container.pointee.d.sign.pointee.contents, let octets = contents.pointee.d.data else {
+        guard let contents = pkcs7Container.pointee.d.sign.pointee.contents, let octets = contents.pointee.d.data else {
             throw ReceiptValidationError.malformedReceipt
         }
 
