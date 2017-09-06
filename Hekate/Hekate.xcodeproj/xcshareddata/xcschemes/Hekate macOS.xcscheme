@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D1D6F4C11F5D687400E86FE1"
-               BuildableName = "Hekate.framework"
+               BuildableName = "Hekate_macOS.framework"
                BlueprintName = "Hekate macOS"
                ReferencedContainer = "container:Hekate.xcodeproj">
             </BuildableReference>
@@ -58,7 +58,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D1D6F4C11F5D687400E86FE1"
-            BuildableName = "Hekate.framework"
+            BuildableName = "Hekate_macOS.framework"
             BlueprintName = "Hekate macOS"
             ReferencedContainer = "container:Hekate.xcodeproj">
          </BuildableReference>
@@ -81,7 +81,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D1D6F4C11F5D687400E86FE1"
-            BuildableName = "Hekate.framework"
+            BuildableName = "Hekate_macOS.framework"
             BlueprintName = "Hekate macOS"
             ReferencedContainer = "container:Hekate.xcodeproj">
          </BuildableReference>
@@ -99,7 +99,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D1D6F4C11F5D687400E86FE1"
-            BuildableName = "Hekate.framework"
+            BuildableName = "Hekate_macOS.framework"
             BlueprintName = "Hekate macOS"
             ReferencedContainer = "container:Hekate.xcodeproj">
          </BuildableReference>

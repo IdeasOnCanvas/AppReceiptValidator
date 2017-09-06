@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23553772A0736D88BD20E5FE /* libPods-Hekate iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9569E39EA58D5B7F1530B993 /* libPods-Hekate iOS.a */; };
+		777FF412C15A6877A27DE262 /* libPods-Hekate Tests macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E73C5C901768DE64DE3ECF /* libPods-Hekate Tests macOS.a */; };
+		7EFAABB4F7579D8DAB413A85 /* libPods-Hekate Tests iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A82326EB604E9103325912C9 /* libPods-Hekate Tests iOS.a */; };
+		A743EC93F2082E7EBCA498DC /* libPods-Hekate Demo iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A7670E67D6E712EDB0104A /* libPods-Hekate Demo iOS.a */; };
 		D11616CE1F5ED32900D966D5 /* SomeClass.h in Headers */ = {isa = PBXBuildFile; fileRef = D11616CC1F5ED32900D966D5 /* SomeClass.h */; };
 		D11616CF1F5ED32900D966D5 /* SomeClass.h in Headers */ = {isa = PBXBuildFile; fileRef = D11616CC1F5ED32900D966D5 /* SomeClass.h */; };
 		D11616D01F5ED32900D966D5 /* SomeClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D11616CD1F5ED32900D966D5 /* SomeClass.m */; };
@@ -31,6 +35,8 @@
 		D1D6F4F11F5D691400E86FE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1D6F4EF1F5D691400E86FE1 /* LaunchScreen.storyboard */; };
 		D1D6F53F1F5D89D000E86FE1 /* Hekate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F53E1F5D89D000E86FE1 /* Hekate.swift */; };
 		D1D6F5401F5D89D800E86FE1 /* Hekate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F53E1F5D89D000E86FE1 /* Hekate.swift */; };
+		D464E5E4B267E94BB9360BA9 /* libPods-Hekate macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A98D7F9CDB5C0D84EDF3A54 /* libPods-Hekate macOS.a */; };
+		DBDD3727216F284096562274 /* libPods-Hekate Demo macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5236B778A9825A37C70C47F4 /* libPods-Hekate Demo macOS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +84,22 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		010C2E6D592C8846E53FDE9B /* Pods-Hekate Demo iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hekate Demo iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hekate Demo iOS/Pods-Hekate Demo iOS.release.xcconfig"; sourceTree = "<group>"; };
+		07B5B2B633CF23B5D36B4F17 /* Pods-Hekate Demo macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hekate Demo macOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hekate Demo macOS/Pods-Hekate Demo macOS.release.xcconfig"; sourceTree = "<group>"; };
+		0D0A771A5606B3223538588E /* Pods-Hekate iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hekate iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hekate iOS/Pods-Hekate iOS.release.xcconfig"; sourceTree = "<group>"; };
+		1196F24EFC17E4CC63498D76 /* Pods-Hekate iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hekate iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hekate iOS/Pods-Hekate iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		28FB7CAA37C7E0D624597A63 /* Pods-Hekate Tests macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hekate Tests macOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hekate Tests macOS/Pods-Hekate Tests macOS.debug.xcconfig"; sourceTree = "<group>"; };
+		3A98D7F9CDB5C0D84EDF3A54 /* libPods-Hekate macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Hekate macOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5236B778A9825A37C70C47F4 /* libPods-Hekate Demo macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Hekate Demo macOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		608C43A22BC99B17BD8AFBE7 /* Pods-Hekate Tests iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hekate Tests iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hekate Tests iOS/Pods-Hekate Tests iOS.release.xcconfig"; sourceTree = "<group>"; };
+		67E73C5C901768DE64DE3ECF /* libPods-Hekate Tests macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Hekate Tests macOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		74F07E5CBCEC25ACF427CA45 /* Pods-Hekate Demo iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hekate Demo iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hekate Demo iOS/Pods-Hekate Demo iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		79DAB275F2B57F5784EC35B7 /* Pods-Hekate macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hekate macOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hekate macOS/Pods-Hekate macOS.debug.xcconfig"; sourceTree = "<group>"; };
+		9569E39EA58D5B7F1530B993 /* libPods-Hekate iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Hekate iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A82326EB604E9103325912C9 /* libPods-Hekate Tests iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Hekate Tests iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACB3DB3B89FA43C7F87CF0BE /* Pods-Hekate Tests macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hekate Tests macOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hekate Tests macOS/Pods-Hekate Tests macOS.release.xcconfig"; sourceTree = "<group>"; };
+		B8A7670E67D6E712EDB0104A /* libPods-Hekate Demo iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Hekate Demo iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6D797B448B5FB6809BDD61F /* Pods-Hekate Tests iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hekate Tests iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hekate Tests iOS/Pods-Hekate Tests iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		D11616C91F5ED1CA00D966D5 /* Hekate-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hekate-Bridging-Header.h"; sourceTree = "<group>"; };
 		D11616CC1F5ED32900D966D5 /* SomeClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SomeClass.h; sourceTree = "<group>"; };
 		D11616CD1F5ED32900D966D5 /* SomeClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SomeClass.m; sourceTree = "<group>"; };
@@ -111,6 +133,8 @@
 		D1D6F5471F5D8DF700E86FE1 /* hannes_mac_mindnode_pro_Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = hannes_mac_mindnode_pro_Info.plist; sourceTree = "<group>"; };
 		D1D6F5491F5D9B1F00E86FE1 /* TestAssetLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAssetLoading.swift; sourceTree = "<group>"; };
 		D1D6F54F1F5D9E8D00E86FE1 /* not_a_receipt */ = {isa = PBXFileReference; lastKnownFileType = text; path = not_a_receipt; sourceTree = "<group>"; };
+		EA704EE1A2AF907B7582BC63 /* Pods-Hekate macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hekate macOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hekate macOS/Pods-Hekate macOS.release.xcconfig"; sourceTree = "<group>"; };
+		FBAD20A4EA2AB0E756F7A25D /* Pods-Hekate Demo macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hekate Demo macOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hekate Demo macOS/Pods-Hekate Demo macOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D19095B91F6003AE0095729B /* Hekate_macOS.framework in Frameworks */,
+				DBDD3727216F284096562274 /* libPods-Hekate Demo macOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +151,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				777FF412C15A6877A27DE262 /* libPods-Hekate Tests macOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D19095AE1F6001800095729B /* Hekate_iOS.framework in Frameworks */,
+				7EFAABB4F7579D8DAB413A85 /* libPods-Hekate Tests iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +168,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23553772A0736D88BD20E5FE /* libPods-Hekate iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +176,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D464E5E4B267E94BB9360BA9 /* libPods-Hekate macOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D19095B81F6003AB0095729B /* Hekate_iOS.framework in Frameworks */,
+				A743EC93F2082E7EBCA498DC /* libPods-Hekate Demo iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +234,12 @@
 		D19095B71F6003AB0095729B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B8A7670E67D6E712EDB0104A /* libPods-Hekate Demo iOS.a */,
+				5236B778A9825A37C70C47F4 /* libPods-Hekate Demo macOS.a */,
+				A82326EB604E9103325912C9 /* libPods-Hekate Tests iOS.a */,
+				67E73C5C901768DE64DE3ECF /* libPods-Hekate Tests macOS.a */,
+				9569E39EA58D5B7F1530B993 /* libPods-Hekate iOS.a */,
+				3A98D7F9CDB5C0D84EDF3A54 /* libPods-Hekate macOS.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -219,6 +255,7 @@
 				D19095B61F6001C20095729B /* Hekate Tests Shared */,
 				D1D6F49C1F5D67E600E86FE1 /* Products */,
 				D19095B71F6003AB0095729B /* Frameworks */,
+				FE8BCD1427E186E0AA448AA6 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -305,6 +342,25 @@
 			path = Tools;
 			sourceTree = "<group>";
 		};
+		FE8BCD1427E186E0AA448AA6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				74F07E5CBCEC25ACF427CA45 /* Pods-Hekate Demo iOS.debug.xcconfig */,
+				010C2E6D592C8846E53FDE9B /* Pods-Hekate Demo iOS.release.xcconfig */,
+				FBAD20A4EA2AB0E756F7A25D /* Pods-Hekate Demo macOS.debug.xcconfig */,
+				07B5B2B633CF23B5D36B4F17 /* Pods-Hekate Demo macOS.release.xcconfig */,
+				C6D797B448B5FB6809BDD61F /* Pods-Hekate Tests iOS.debug.xcconfig */,
+				608C43A22BC99B17BD8AFBE7 /* Pods-Hekate Tests iOS.release.xcconfig */,
+				28FB7CAA37C7E0D624597A63 /* Pods-Hekate Tests macOS.debug.xcconfig */,
+				ACB3DB3B89FA43C7F87CF0BE /* Pods-Hekate Tests macOS.release.xcconfig */,
+				1196F24EFC17E4CC63498D76 /* Pods-Hekate iOS.debug.xcconfig */,
+				0D0A771A5606B3223538588E /* Pods-Hekate iOS.release.xcconfig */,
+				79DAB275F2B57F5784EC35B7 /* Pods-Hekate macOS.debug.xcconfig */,
+				EA704EE1A2AF907B7582BC63 /* Pods-Hekate macOS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -331,9 +387,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D190959D1F6000A40095729B /* Build configuration list for PBXNativeTarget "Hekate Demo macOS" */;
 			buildPhases = (
+				862CE1EF5025673902870069 /* [CP] Check Pods Manifest.lock */,
 				D190957D1F6000A40095729B /* Sources */,
 				D190957E1F6000A40095729B /* Frameworks */,
 				D190957F1F6000A40095729B /* Resources */,
+				AE65DCCB19A661161C401FA9 /* [CP] Embed Pods Frameworks */,
+				FB995872E0AD774ED87E96DE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -348,9 +407,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D190959E1F6000A40095729B /* Build configuration list for PBXNativeTarget "Hekate Tests macOS" */;
 			buildPhases = (
+				ABB2C9EA0959FF1C89E11AF6 /* [CP] Check Pods Manifest.lock */,
 				D190958E1F6000A40095729B /* Sources */,
 				D190958F1F6000A40095729B /* Frameworks */,
 				D19095901F6000A40095729B /* Resources */,
+				1E3D4D9312098FC1423DB779 /* [CP] Embed Pods Frameworks */,
+				717BB0379FB6CA45568E57BE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -366,9 +428,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D19095B11F6001800095729B /* Build configuration list for PBXNativeTarget "Hekate Tests iOS" */;
 			buildPhases = (
+				7DF1252558346E4F5986B709 /* [CP] Check Pods Manifest.lock */,
 				D19095A51F6001800095729B /* Sources */,
 				D19095A61F6001800095729B /* Frameworks */,
 				D19095A71F6001800095729B /* Resources */,
+				2C120DDDA14AB4A19989F1F6 /* [CP] Embed Pods Frameworks */,
+				62957CEFEDCBDD0E1A6B8EF5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -385,11 +450,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D1D6F4BA1F5D684C00E86FE1 /* Build configuration list for PBXNativeTarget "Hekate iOS" */;
 			buildPhases = (
+				6CE8BCCE06EE972CCA8E1E3A /* [CP] Check Pods Manifest.lock */,
 				D1D6F4B01F5D684C00E86FE1 /* Sources */,
 				D1D6F4B11F5D684C00E86FE1 /* Frameworks */,
 				D1D6F4B21F5D684C00E86FE1 /* Headers */,
 				D1D6F4B31F5D684C00E86FE1 /* Resources */,
 				D1D6F52D1F5D872200E86FE1 /* Swiftlint */,
+				92AFCF6757BE2E1126214041 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -404,11 +471,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D1D6F4C71F5D687400E86FE1 /* Build configuration list for PBXNativeTarget "Hekate macOS" */;
 			buildPhases = (
+				B7F811FB3167C84A0159CEDC /* [CP] Check Pods Manifest.lock */,
 				D1D6F4BD1F5D687400E86FE1 /* Sources */,
 				D1D6F4BE1F5D687400E86FE1 /* Frameworks */,
 				D1D6F4BF1F5D687400E86FE1 /* Headers */,
 				D1D6F4C01F5D687400E86FE1 /* Resources */,
 				D1D6F52E1F5D872B00E86FE1 /* Swiftlint */,
+				713B68BC1AE93F6EFACE41DA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -423,10 +492,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D1D6F4F31F5D691400E86FE1 /* Build configuration list for PBXNativeTarget "Hekate Demo iOS" */;
 			buildPhases = (
+				908237EB1CEF728086C3EFD0 /* [CP] Check Pods Manifest.lock */,
 				D1D6F4E01F5D691400E86FE1 /* Sources */,
 				D1D6F4E11F5D691400E86FE1 /* Frameworks */,
 				D1D6F4E21F5D691400E86FE1 /* Resources */,
 				D1D6F5071F5D696800E86FE1 /* Embed Frameworks */,
+				40203EE7F2FB4E794AFDA50F /* [CP] Embed Pods Frameworks */,
+				E7B1C0B9AAF49739E9207395 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -557,6 +629,234 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1E3D4D9312098FC1423DB779 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hekate Tests macOS/Pods-Hekate Tests macOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2C120DDDA14AB4A19989F1F6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hekate Tests iOS/Pods-Hekate Tests iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		40203EE7F2FB4E794AFDA50F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hekate Demo iOS/Pods-Hekate Demo iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		62957CEFEDCBDD0E1A6B8EF5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hekate Tests iOS/Pods-Hekate Tests iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6CE8BCCE06EE972CCA8E1E3A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Hekate iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		713B68BC1AE93F6EFACE41DA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hekate macOS/Pods-Hekate macOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		717BB0379FB6CA45568E57BE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hekate Tests macOS/Pods-Hekate Tests macOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7DF1252558346E4F5986B709 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Hekate Tests iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		862CE1EF5025673902870069 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Hekate Demo macOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		908237EB1CEF728086C3EFD0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Hekate Demo iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		92AFCF6757BE2E1126214041 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hekate iOS/Pods-Hekate iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ABB2C9EA0959FF1C89E11AF6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Hekate Tests macOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AE65DCCB19A661161C401FA9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hekate Demo macOS/Pods-Hekate Demo macOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B7F811FB3167C84A0159CEDC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Hekate macOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D1D6F52D1F5D872200E86FE1 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -584,6 +884,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+		E7B1C0B9AAF49739E9207395 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hekate Demo iOS/Pods-Hekate Demo iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB995872E0AD774ED87E96DE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hekate Demo macOS/Pods-Hekate Demo macOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -694,6 +1024,7 @@
 /* Begin XCBuildConfiguration section */
 		D19095991F6000A40095729B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FBAD20A4EA2AB0E756F7A25D /* Pods-Hekate Demo macOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Hekate Demo macOS/Hekate_Demo_macOS.entitlements";
@@ -713,6 +1044,7 @@
 		};
 		D190959A1F6000A40095729B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 07B5B2B633CF23B5D36B4F17 /* Pods-Hekate Demo macOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Hekate Demo macOS/Hekate_Demo_macOS.entitlements";
@@ -732,6 +1064,7 @@
 		};
 		D190959B1F6000A40095729B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28FB7CAA37C7E0D624597A63 /* Pods-Hekate Tests macOS.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -752,6 +1085,7 @@
 		};
 		D190959C1F6000A40095729B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ACB3DB3B89FA43C7F87CF0BE /* Pods-Hekate Tests macOS.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -772,6 +1106,7 @@
 		};
 		D19095B21F6001800095729B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6D797B448B5FB6809BDD61F /* Pods-Hekate Tests iOS.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W6L39UYL6Z;
@@ -787,6 +1122,7 @@
 		};
 		D19095B31F6001800095729B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 608C43A22BC99B17BD8AFBE7 /* Pods-Hekate Tests iOS.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W6L39UYL6Z;
@@ -909,6 +1245,7 @@
 		};
 		D1D6F4BB1F5D684C00E86FE1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1196F24EFC17E4CC63498D76 /* Pods-Hekate iOS.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -937,6 +1274,7 @@
 		};
 		D1D6F4BC1F5D684C00E86FE1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D0A771A5606B3223538588E /* Pods-Hekate iOS.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -964,6 +1302,7 @@
 		};
 		D1D6F4C81F5D687400E86FE1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79DAB275F2B57F5784EC35B7 /* Pods-Hekate macOS.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -992,6 +1331,7 @@
 		};
 		D1D6F4C91F5D687400E86FE1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA704EE1A2AF907B7582BC63 /* Pods-Hekate macOS.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1020,6 +1360,7 @@
 		};
 		D1D6F4F41F5D691400E86FE1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74F07E5CBCEC25ACF427CA45 /* Pods-Hekate Demo iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1037,6 +1378,7 @@
 		};
 		D1D6F4F51F5D691400E86FE1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 010C2E6D592C8846E53FDE9B /* Pods-Hekate Demo iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
