@@ -30,6 +30,8 @@
 		D19095B91F6003AE0095729B /* Hekate_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D6F4C21F5D687400E86FE1 /* Hekate_macOS.framework */; };
 		D19095BC1F6004D10095729B /* pkcs7_union_accessors.c in Sources */ = {isa = PBXBuildFile; fileRef = D19095BB1F6004D10095729B /* pkcs7_union_accessors.c */; };
 		D19095BD1F6004D10095729B /* pkcs7_union_accessors.c in Sources */ = {isa = PBXBuildFile; fileRef = D19095BB1F6004D10095729B /* pkcs7_union_accessors.c */; };
+		D19095C01F60158B0095729B /* ReceiptValidator+deviceIdentifier macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19095BF1F60158B0095729B /* ReceiptValidator+deviceIdentifier macOS.swift */; };
+		D19095C31F6019FC0095729B /* ReceiptValidator+deviceIdentifier iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19095C11F6019E70095729B /* ReceiptValidator+deviceIdentifier iOS.swift */; };
 		D1D6F4E71F5D691400E86FE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F4E61F5D691400E86FE1 /* AppDelegate.swift */; };
 		D1D6F4E91F5D691400E86FE1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F4E81F5D691400E86FE1 /* ViewController.swift */; };
 		D1D6F4EC1F5D691400E86FE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1D6F4EA1F5D691400E86FE1 /* Main.storyboard */; };
@@ -118,6 +120,8 @@
 		D19095AD1F6001800095729B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D19095BA1F6004D10095729B /* pkcs7_union_accessors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pkcs7_union_accessors.h; sourceTree = "<group>"; };
 		D19095BB1F6004D10095729B /* pkcs7_union_accessors.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = pkcs7_union_accessors.c; sourceTree = "<group>"; };
+		D19095BF1F60158B0095729B /* ReceiptValidator+deviceIdentifier macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptValidator+deviceIdentifier macOS.swift"; sourceTree = "<group>"; };
+		D19095C11F6019E70095729B /* ReceiptValidator+deviceIdentifier iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptValidator+deviceIdentifier iOS.swift"; sourceTree = "<group>"; };
 		D1D6F4B51F5D684C00E86FE1 /* Hekate_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hekate_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D6F4C21F5D687400E86FE1 /* Hekate_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hekate_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D6F4E41F5D691400E86FE1 /* Hekate Demo iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hekate Demo iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -299,6 +303,8 @@
 				D1D6F53E1F5D89D000E86FE1 /* Hekate.swift */,
 				D19095BB1F6004D10095729B /* pkcs7_union_accessors.c */,
 				D19095BA1F6004D10095729B /* pkcs7_union_accessors.h */,
+				D19095BF1F60158B0095729B /* ReceiptValidator+deviceIdentifier macOS.swift */,
+				D19095C11F6019E70095729B /* ReceiptValidator+deviceIdentifier iOS.swift */,
 			);
 			path = Hekate;
 			sourceTree = "<group>";
@@ -953,6 +959,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1D6F53F1F5D89D000E86FE1 /* Hekate.swift in Sources */,
+				D19095C31F6019FC0095729B /* ReceiptValidator+deviceIdentifier iOS.swift in Sources */,
 				D11616D01F5ED32900D966D5 /* SomeClass.m in Sources */,
 				D19095BC1F6004D10095729B /* pkcs7_union_accessors.c in Sources */,
 			);
@@ -963,6 +970,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1D6F5401F5D89D800E86FE1 /* Hekate.swift in Sources */,
+				D19095C01F60158B0095729B /* ReceiptValidator+deviceIdentifier macOS.swift in Sources */,
 				D11616D11F5ED32900D966D5 /* SomeClass.m in Sources */,
 				D19095BD1F6004D10095729B /* pkcs7_union_accessors.c in Sources */,
 			);
@@ -1327,7 +1335,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Hekate/Supporting Files/macOS/Info-macOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ideasoncanvas.Hekate;
 				PRODUCT_NAME = Hekate_macOS;
 				SDKROOT = macosx;
@@ -1355,7 +1363,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Hekate/Supporting Files/macOS/Info-macOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ideasoncanvas.Hekate;
 				PRODUCT_NAME = Hekate_macOS;
 				SDKROOT = macosx;

@@ -84,7 +84,7 @@ struct ReceiptValidator {
         guard let receiptBundleIdData = receipt.bundleIdData else { throw ReceiptValidationError.incorrectHash }
         guard let receiptHashData = receipt.sha1Hash else { throw ReceiptValidationError.incorrectHash }
 
-        var deviceIdentifier = UIDevice.current.identifierForVendor?.uuid
+        var deviceIdentifier = self.deviceIdentifier?.uuid
 
         let rawDeviceIdentifierPointer = withUnsafePointer(to: &deviceIdentifier, {
             (unsafeDeviceIdentifierPointer: UnsafePointer<uuid_t?>) -> UnsafeRawPointer in
