@@ -19,7 +19,7 @@ enum ReceiptValidationResult {
     case error(ReceiptValidationError)
 }
 
-enum ReceiptValidationError : Error {
+enum ReceiptValidationError: Error {
     case couldNotFindReceipt
     case emptyReceiptContents
     case receiptNotSigned
@@ -74,7 +74,7 @@ struct ReceiptValidator {
 
             return .success(parsedReceipt)
         } catch {
-            return .error(error as! ReceiptValidationError)
+            return .error(error as! ReceiptValidationError) // swiftlint:disable:this force_cast
         }
     }
 
@@ -86,8 +86,7 @@ struct ReceiptValidator {
 
         var deviceIdentifier = self.deviceIdentifier?.uuid
 
-        let rawDeviceIdentifierPointer = withUnsafePointer(to: &deviceIdentifier, {
-            (unsafeDeviceIdentifierPointer: UnsafePointer<uuid_t?>) -> UnsafeRawPointer in
+        let rawDeviceIdentifierPointer = withUnsafePointer(to: &deviceIdentifier, { (unsafeDeviceIdentifierPointer: UnsafePointer<uuid_t?>) -> UnsafeRawPointer in
             return UnsafeRawPointer(unsafeDeviceIdentifierPointer)
         })
 
@@ -96,7 +95,7 @@ struct ReceiptValidator {
         // Compute the hash for your app & device
 
         // Set up the hasing context
-        var computedHash = Array<UInt8>(repeating: 0, count: 20)
+        var computedHash = [UInt8](repeating: 0, count: 20)
         var sha1Context = SHA_CTX()
 
         SHA1_Init(&sha1Context)
@@ -116,7 +115,7 @@ struct ReceiptLoader {
     let receiptUrl = Bundle.main.appStoreReceiptURL
 
     func loadReceipt() throws -> Data {
-        if(receiptFound()) {
+        if receiptFound() {
             let receiptData = try? Data(contentsOf: receiptUrl!)
             if let receiptData = receiptData {
                 return receiptData
@@ -204,6 +203,7 @@ struct ReceiptSignatureValidator {
 }
 
 struct ReceiptParser {
+    // swiftlint:disable:next cyclomatic_complexity function_body_length
     func parse(_ PKCS7Container: UnsafeMutablePointer<PKCS7>) throws -> ParsedReceipt {
         var bundleIdentifier: String?
         var bundleIdData: NSData?
@@ -226,7 +226,7 @@ struct ReceiptParser {
         var xclass = Int32(0)
         var length = 0
 
-        ASN1_get_object(&currentASN1PayloadLocation, &length, &type, &xclass,Int(octets.pointee.length))
+        ASN1_get_object(&currentASN1PayloadLocation, &length, &type, &xclass, Int(octets.pointee.length))
 
         // Payload must be an ASN1 Set
         guard type == V_ASN1_SET else {
@@ -246,12 +246,12 @@ struct ReceiptParser {
             }
 
             // Attribute type of ASN1 Sequence must be an Integer
-            guard let attributeType = DecodeASN1Integer(startOfInt: &currentASN1PayloadLocation, length: currentASN1PayloadLocation!.distance(to: endOfPayload)) else {
+            guard let attributeType = decodeASN1Integer(startOfInt: &currentASN1PayloadLocation, length: currentASN1PayloadLocation!.distance(to: endOfPayload)) else {
                 throw ReceiptValidationError.malformedReceipt
             }
 
             // Attribute version of ASN1 Sequence must be an Integer
-            guard DecodeASN1Integer(startOfInt: &currentASN1PayloadLocation, length: currentASN1PayloadLocation!.distance(to: endOfPayload)) != nil else {
+            guard decodeASN1Integer(startOfInt: &currentASN1PayloadLocation, length: currentASN1PayloadLocation!.distance(to: endOfPayload)) != nil else {
                 throw ReceiptValidationError.malformedReceipt
             }
 
@@ -268,10 +268,10 @@ struct ReceiptParser {
             case 2:
                 var startOfBundleId = currentASN1PayloadLocation
                 bundleIdData = NSData(bytes: startOfBundleId, length: length)
-                bundleIdentifier = DecodeASN1String(startOfString: &startOfBundleId, length: length)
+                bundleIdentifier = decodeASN1String(startOfString: &startOfBundleId, length: length)
             case 3:
                 var startOfAppVersion = currentASN1PayloadLocation
-                appVersion = DecodeASN1String(startOfString: &startOfAppVersion, length: length)
+                appVersion = decodeASN1String(startOfString: &startOfAppVersion, length: length)
             case 4:
                 let startOfOpaqueValue = currentASN1PayloadLocation
                 opaqueValue = NSData(bytes: startOfOpaqueValue, length: length)
@@ -287,7 +287,7 @@ struct ReceiptParser {
                 receiptCreationDate = decodeASN1Date(startOfDate: &startOfReceiptCreationDate, length: length)
             case 19:
                 var startOfOriginalAppVersion = currentASN1PayloadLocation
-                originalAppVersion = DecodeASN1String(startOfString: &startOfOriginalAppVersion, length: length)
+                originalAppVersion = decodeASN1String(startOfString: &startOfOriginalAppVersion, length: length)
             case 21:
                 var startOfExpirationDate = currentASN1PayloadLocation
                 expirationDate = decodeASN1Date(startOfDate: &startOfExpirationDate, length: length)
@@ -309,6 +309,7 @@ struct ReceiptParser {
                              expirationDate: expirationDate)
     }
 
+    // swiftlint:disable:next cyclomatic_complexity function_body_length
     func parseInAppPurchaseReceipt(currentInAppPurchaseASN1PayloadLocation: inout UnsafePointer<UInt8>?, payloadLength: Int) throws -> ParsedInAppPurchaseReceipt {
         var quantity: Int?
         var productIdentifier: String?
@@ -345,12 +346,12 @@ struct ReceiptParser {
             }
 
             // Attribute type of ASN1 Sequence must be an Integer
-            guard let attributeType = DecodeASN1Integer(startOfInt: &currentInAppPurchaseASN1PayloadLocation, length: currentInAppPurchaseASN1PayloadLocation!.distance(to: endOfPayload)) else {
+            guard let attributeType = decodeASN1Integer(startOfInt: &currentInAppPurchaseASN1PayloadLocation, length: currentInAppPurchaseASN1PayloadLocation!.distance(to: endOfPayload)) else {
                 throw ReceiptValidationError.malformedInAppPurchaseReceipt
             }
 
             // Attribute version of ASN1 Sequence must be an Integer
-            guard DecodeASN1Integer(startOfInt: &currentInAppPurchaseASN1PayloadLocation, length: currentInAppPurchaseASN1PayloadLocation!.distance(to: endOfPayload)) != nil else {
+            guard decodeASN1Integer(startOfInt: &currentInAppPurchaseASN1PayloadLocation, length: currentInAppPurchaseASN1PayloadLocation!.distance(to: endOfPayload)) != nil else {
                 throw ReceiptValidationError.malformedInAppPurchaseReceipt
             }
 
@@ -366,16 +367,16 @@ struct ReceiptParser {
             switch attributeType {
             case 1701:
                 var startOfQuantity = currentInAppPurchaseASN1PayloadLocation
-                quantity = DecodeASN1Integer(startOfInt: &startOfQuantity , length: length)
+                quantity = decodeASN1Integer(startOfInt: &startOfQuantity, length: length)
             case 1702:
                 var startOfProductIdentifier = currentInAppPurchaseASN1PayloadLocation
-                productIdentifier = DecodeASN1String(startOfString: &startOfProductIdentifier, length: length)
+                productIdentifier = decodeASN1String(startOfString: &startOfProductIdentifier, length: length)
             case 1703:
                 var startOfTransactionIdentifier = currentInAppPurchaseASN1PayloadLocation
-                transactionIdentifier = DecodeASN1String(startOfString: &startOfTransactionIdentifier, length: length)
+                transactionIdentifier = decodeASN1String(startOfString: &startOfTransactionIdentifier, length: length)
             case 1705:
                 var startOfOriginalTransactionIdentifier = currentInAppPurchaseASN1PayloadLocation
-                originalTransactionIdentifier = DecodeASN1String(startOfString: &startOfOriginalTransactionIdentifier, length: length)
+                originalTransactionIdentifier = decodeASN1String(startOfString: &startOfOriginalTransactionIdentifier, length: length)
             case 1704:
                 var startOfPurchaseDate = currentInAppPurchaseASN1PayloadLocation
                 purchaseDate = decodeASN1Date(startOfDate: &startOfPurchaseDate, length: length)
@@ -390,7 +391,7 @@ struct ReceiptParser {
                 cancellationDate = decodeASN1Date(startOfDate: &startOfCancellationDate, length: length)
             case 1711:
                 var startOfWebOrderLineItemId = currentInAppPurchaseASN1PayloadLocation
-                webOrderLineItemId = DecodeASN1Integer(startOfInt: &startOfWebOrderLineItemId, length: length)
+                webOrderLineItemId = decodeASN1Integer(startOfInt: &startOfWebOrderLineItemId, length: length)
             default:
                 break
             }
@@ -409,7 +410,7 @@ struct ReceiptParser {
                                           webOrderLineItemId: webOrderLineItemId)
     }
 
-    func DecodeASN1Integer(startOfInt intPointer: inout UnsafePointer<UInt8>?, length: Int) -> Int? {
+    func decodeASN1Integer(startOfInt intPointer: inout UnsafePointer<UInt8>?, length: Int) -> Int? {
         // These will be set by ASN1_get_object
         var type = Int32(0)
         var xclass = Int32(0)
@@ -428,7 +429,7 @@ struct ReceiptParser {
         return result
     }
 
-    func DecodeASN1String(startOfString stringPointer: inout UnsafePointer<UInt8>?, length: Int) -> String? {
+    func decodeASN1String(startOfString stringPointer: inout UnsafePointer<UInt8>?, length: Int) -> String? {
         // These will be set by ASN1_get_object
         var type = Int32(0)
         var xclass = Int32(0)
@@ -456,11 +457,10 @@ struct ReceiptParser {
         dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"
         dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
 
-        if let dateString = DecodeASN1String(startOfString: &datePointer, length:length) {
+        if let dateString = decodeASN1String(startOfString: &datePointer, length:length) {
             return dateFormatter.date(from: dateString)
         }
 
         return nil
     }
 }
-
