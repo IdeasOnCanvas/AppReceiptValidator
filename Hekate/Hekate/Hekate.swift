@@ -7,19 +7,18 @@
 //
 
 import Foundation
-
-import Foundation
 import StoreKit
 
 // Copied and modifier from https://github.com/andrewcbancroft/SwiftyLocalReceiptValidator/blob/master/ReceiptValidator.swift
 
 // MARK: Output
-enum ReceiptValidationResult {
+
+public enum ReceiptValidationResult {
     case success(ParsedReceipt)
     case error(ReceiptValidationError)
 }
 
-enum ReceiptValidationError: Error {
+public enum ReceiptValidationError: Error {
     case couldNotFindReceipt
     case emptyReceiptContents
     case receiptNotSigned
@@ -30,7 +29,7 @@ enum ReceiptValidationError: Error {
     case incorrectHash
 }
 
-struct ParsedReceipt {
+public struct ParsedReceipt {
     let bundleIdentifier: String?
     let bundleIdData: NSData?
     let appVersion: String?
@@ -42,7 +41,7 @@ struct ParsedReceipt {
     let expirationDate: Date?
 }
 
-struct ParsedInAppPurchaseReceipt {
+public struct ParsedInAppPurchaseReceipt {
     let quantity: Int?
     let productIdentifier: String?
     let transactionIdentifier: String?
@@ -54,24 +53,47 @@ struct ParsedInAppPurchaseReceipt {
     let webOrderLineItemId: Int?
 }
 
-// MARK: Receipt Validator and supporting Types
-struct ReceiptValidator {
-    let receiptLoader = ReceiptLoader()
-    let receiptExtractor = ReceiptExtractor()
-    let receiptSignatureValidator = ReceiptSignatureValidator()
-    let receiptParser = ReceiptParser()
+// MARK: Parameters
 
-    func validateReceipt() -> ReceiptValidationResult {
+public enum ReceiptOrigin {
+    case installed
+    case data(Data)
+}
+
+public struct ReceiptValidationParameters {
+    var validateSignaturePresence = true
+    var validateSignatureAuthenticity = true
+    var validateHash = true
+}
+
+// MARK: - Receipt Validator
+
+public struct ReceiptValidator {
+    public func validateReceipt(origin: ReceiptOrigin, paramters: ReceiptValidationParameters) -> ReceiptValidationResult {
         do {
-            let receiptData = try receiptLoader.loadReceipt()
-            let receiptContainer = try receiptExtractor.extractPKCS7Container(receiptData)
+            let receiptData: Data = try {
+                switch origin {
+                    case .data(let data):
+                        return data
+                case .installed:
+                    return try ReceiptLoader().loadReceipt()
+                }
+            }()
 
-            try receiptSignatureValidator.checkSignaturePresence(receiptContainer)
-            try receiptSignatureValidator.checkSignatureAuthenticity(receiptContainer)
+            let receiptContainer = try ReceiptExtractor().extractPKCS7Container(receiptData)
 
-            let parsedReceipt = try receiptParser.parse(receiptContainer)
-            try validateHash(receipt: parsedReceipt)
+            if paramters.validateSignaturePresence {
+                try ReceiptSignatureValidator().checkSignaturePresence(receiptContainer)
+            }
+            if paramters.validateSignatureAuthenticity {
+                try ReceiptSignatureValidator().checkSignatureAuthenticity(receiptContainer)
+            }
 
+            let parsedReceipt = try ReceiptParser().parse(receiptContainer)
+
+            if paramters.validateHash {
+                try validateHash(receipt: parsedReceipt)
+            }
             return .success(parsedReceipt)
         } catch {
             return .error(error as! ReceiptValidationError) // swiftlint:disable:this force_cast
@@ -139,7 +161,7 @@ struct ReceiptLoader {
 }
 
 struct ReceiptExtractor {
-    func extractPKCS7Container(_ receiptData: Data) throws -> UnsafeMutablePointer<PKCS7> {
+    public func extractPKCS7Container(_ receiptData: Data) throws -> UnsafeMutablePointer<PKCS7> {
         let receiptBIO = BIO_new(BIO_s_mem())
         BIO_write(receiptBIO, (receiptData as NSData).bytes, Int32(receiptData.count))
         let receiptPKCS7Container = d2i_PKCS7_bio(receiptBIO, nil)
@@ -173,7 +195,7 @@ struct ReceiptSignatureValidator {
         try verifyAuthenticity(appleRootCertificateX509, PKCS7Container: PKCS7Container)
     }
 
-    fileprivate func loadAppleRootCertificate() throws -> UnsafeMutablePointer<X509> {
+    private func loadAppleRootCertificate() throws -> UnsafeMutablePointer<X509> {
         guard
             let appleRootCertificateURL = Bundle.main.url(forResource: "AppleIncRootCertificate", withExtension: "cer"),
             let appleRootCertificateData = try? Data(contentsOf: appleRootCertificateURL)
@@ -188,7 +210,7 @@ struct ReceiptSignatureValidator {
         return appleRootCertificateX509!
     }
 
-    fileprivate func verifyAuthenticity(_ x509Certificate: UnsafeMutablePointer<X509>, PKCS7Container: UnsafeMutablePointer<PKCS7>) throws {
+    private func verifyAuthenticity(_ x509Certificate: UnsafeMutablePointer<X509>, PKCS7Container: UnsafeMutablePointer<PKCS7>) throws {
         let x509CertificateStore = X509_STORE_new()
         X509_STORE_add_cert(x509CertificateStore, x509Certificate)
 
@@ -310,7 +332,7 @@ struct ReceiptParser {
     }
 
     // swiftlint:disable:next cyclomatic_complexity function_body_length
-    func parseInAppPurchaseReceipt(currentInAppPurchaseASN1PayloadLocation: inout UnsafePointer<UInt8>?, payloadLength: Int) throws -> ParsedInAppPurchaseReceipt {
+    private func parseInAppPurchaseReceipt(currentInAppPurchaseASN1PayloadLocation: inout UnsafePointer<UInt8>?, payloadLength: Int) throws -> ParsedInAppPurchaseReceipt {
         var quantity: Int?
         var productIdentifier: String?
         var transactionIdentifier: String?
@@ -410,7 +432,7 @@ struct ReceiptParser {
                                           webOrderLineItemId: webOrderLineItemId)
     }
 
-    func decodeASN1Integer(startOfInt intPointer: inout UnsafePointer<UInt8>?, length: Int) -> Int? {
+    private func decodeASN1Integer(startOfInt intPointer: inout UnsafePointer<UInt8>?, length: Int) -> Int? {
         // These will be set by ASN1_get_object
         var type = Int32(0)
         var xclass = Int32(0)
@@ -429,7 +451,7 @@ struct ReceiptParser {
         return result
     }
 
-    func decodeASN1String(startOfString stringPointer: inout UnsafePointer<UInt8>?, length: Int) -> String? {
+    private func decodeASN1String(startOfString stringPointer: inout UnsafePointer<UInt8>?, length: Int) -> String? {
         // These will be set by ASN1_get_object
         var type = Int32(0)
         var xclass = Int32(0)
@@ -450,7 +472,7 @@ struct ReceiptParser {
         return nil
     }
 
-    func decodeASN1Date(startOfDate datePointer: inout UnsafePointer<UInt8>?, length: Int) -> Date? {
+    private func decodeASN1Date(startOfDate datePointer: inout UnsafePointer<UInt8>?, length: Int) -> Date? {
         // Date formatter code from https://www.objc.io/issues/17-security/receipt-validation/#parsing-the-receipt
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
