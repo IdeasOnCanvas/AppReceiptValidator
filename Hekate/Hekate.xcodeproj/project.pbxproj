@@ -36,6 +36,8 @@
 		D19095CA1F601E5D0095729B /* hannes_mac_mindnode_pro_Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1D6F5471F5D8DF700E86FE1 /* hannes_mac_mindnode_pro_Info.plist */; };
 		D19095CB1F601E5D0095729B /* hannes_mac_mindnode_pro_receipt in Resources */ = {isa = PBXBuildFile; fileRef = D1D6F5451F5D8DF700E86FE1 /* hannes_mac_mindnode_pro_receipt */; };
 		D19095CC1F601E5D0095729B /* not_a_receipt in Resources */ = {isa = PBXBuildFile; fileRef = D1D6F54F1F5D9E8D00E86FE1 /* not_a_receipt */; };
+		D19095CD1F601E960095729B /* ReceiptParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F5411F5D8A3800E86FE1 /* ReceiptParsingTests.swift */; };
+		D19095CE1F601E980095729B /* ReceiptParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F5411F5D8A3800E86FE1 /* ReceiptParsingTests.swift */; };
 		D1D6F4E71F5D691400E86FE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F4E61F5D691400E86FE1 /* AppDelegate.swift */; };
 		D1D6F4E91F5D691400E86FE1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F4E81F5D691400E86FE1 /* ViewController.swift */; };
 		D1D6F4EC1F5D691400E86FE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1D6F4EA1F5D691400E86FE1 /* Main.storyboard */; };
@@ -137,7 +139,7 @@
 		D1D6F4FE1F5D696800E86FE1 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
 		D1D6F5221F5D859100E86FE1 /* Info-macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-macOS.plist"; sourceTree = "<group>"; };
 		D1D6F53E1F5D89D000E86FE1 /* Hekate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hekate.swift; sourceTree = "<group>"; };
-		D1D6F5411F5D8A3800E86FE1 /* HekateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HekateTests.swift; sourceTree = "<group>"; };
+		D1D6F5411F5D8A3800E86FE1 /* ReceiptParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptParsingTests.swift; sourceTree = "<group>"; };
 		D1D6F5441F5D8DF700E86FE1 /* hannes_mac_mindnode_Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = hannes_mac_mindnode_Info.plist; sourceTree = "<group>"; };
 		D1D6F5451F5D8DF700E86FE1 /* hannes_mac_mindnode_pro_receipt */ = {isa = PBXFileReference; lastKnownFileType = file; path = hannes_mac_mindnode_pro_receipt; sourceTree = "<group>"; };
 		D1D6F5461F5D8DF700E86FE1 /* hannes_mac_mindnode_receipt */ = {isa = PBXFileReference; lastKnownFileType = file; path = hannes_mac_mindnode_receipt; sourceTree = "<group>"; };
@@ -219,7 +221,6 @@
 		D19095951F6000A40095729B /* Hekate Tests macOS */ = {
 			isa = PBXGroup;
 			children = (
-				D1D6F5411F5D8A3800E86FE1 /* HekateTests.swift */,
 				D19095981F6000A40095729B /* Info.plist */,
 			);
 			path = "Hekate Tests macOS";
@@ -236,6 +237,7 @@
 		D19095B61F6001C20095729B /* Hekate Tests Shared */ = {
 			isa = PBXGroup;
 			children = (
+				D1D6F5411F5D8A3800E86FE1 /* ReceiptParsingTests.swift */,
 				D1D6F5481F5D9B1100E86FE1 /* Tools */,
 				D1D6F5431F5D8DBC00E86FE1 /* Test Assets */,
 			);
@@ -952,6 +954,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D190959F1F6000DE0095729B /* TestAssetLoading.swift in Sources */,
+				D19095CD1F601E960095729B /* ReceiptParsingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -960,6 +963,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D19095C71F601E580095729B /* TestAssetLoading.swift in Sources */,
+				D19095CE1F601E980095729B /* ReceiptParsingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

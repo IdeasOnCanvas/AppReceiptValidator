@@ -16,9 +16,27 @@ import StoreKit
 public enum ReceiptValidationResult {
     case success(ParsedReceipt)
     case error(ReceiptValidationError)
+
+    public var receipt: ParsedReceipt? {
+        switch self {
+        case .success(let receipt):
+            return receipt
+        case .error:
+            return nil
+        }
+    }
+
+    public var error: ReceiptValidationError? {
+        switch self {
+        case .success:
+            return nil
+        case .error(let error):
+            return error
+        }
+    }
 }
 
-public enum ReceiptValidationError: Error {
+public enum ReceiptValidationError: Int, Error {
     case couldNotFindReceipt
     case emptyReceiptContents
     case receiptNotSigned
@@ -61,15 +79,31 @@ public enum ReceiptOrigin {
 }
 
 public struct ReceiptValidationParameters {
-    var validateSignaturePresence = true
-    var validateSignatureAuthenticity = true
-    var validateHash = true
+    public var validateSignaturePresence: Bool = true
+    public var validateSignatureAuthenticity: Bool = true
+    public var validateHash: Bool = true
+
+    public static var allValidationsExceptHash: ReceiptValidationParameters {
+        var params = ReceiptValidationParameters()
+        params.validateHash = false
+        return params
+    }
+
+    public static var allValidations: ReceiptValidationParameters {
+        return ReceiptValidationParameters()
+    }
+
+    public static var skippingAllValidation: ReceiptValidationParameters {
+        return ReceiptValidationParameters(validateSignaturePresence: false, validateSignatureAuthenticity: false, validateHash: false)
+    }
 }
 
 // MARK: - Receipt Validator
 
 public struct ReceiptValidator {
-    public func validateReceipt(origin: ReceiptOrigin, paramters: ReceiptValidationParameters) -> ReceiptValidationResult {
+    public init() {}
+
+    public func validateReceipt(origin: ReceiptOrigin, parameters: ReceiptValidationParameters) -> ReceiptValidationResult {
         do {
             let receiptData: Data = try {
                 switch origin {
@@ -82,16 +116,16 @@ public struct ReceiptValidator {
 
             let receiptContainer = try ReceiptExtractor().extractPKCS7Container(receiptData)
 
-            if paramters.validateSignaturePresence {
+            if parameters.validateSignaturePresence {
                 try ReceiptSignatureValidator().checkSignaturePresence(receiptContainer)
             }
-            if paramters.validateSignatureAuthenticity {
+            if parameters.validateSignatureAuthenticity {
                 try ReceiptSignatureValidator().checkSignatureAuthenticity(receiptContainer)
             }
 
             let parsedReceipt = try ReceiptParser().parse(receiptContainer)
 
-            if paramters.validateHash {
+            if parameters.validateHash {
                 try validateHash(receipt: parsedReceipt)
             }
             return .success(parsedReceipt)
@@ -116,7 +150,7 @@ public struct ReceiptValidator {
 
         // Compute the hash for your app & device
 
-        // Set up the hasing context
+        // Set up the hashing context
         var computedHash = [UInt8](repeating: 0, count: 20)
         var sha1Context = SHA_CTX()
 

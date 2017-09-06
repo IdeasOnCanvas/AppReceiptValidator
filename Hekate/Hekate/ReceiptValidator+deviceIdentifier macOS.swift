@@ -6,6 +6,7 @@
 //  Copyright © 2017 IdeasOnCanvas GmbH. All rights reserved.
 //
 
+import Foundation
 import IOKit
 
 extension ReceiptValidator {
