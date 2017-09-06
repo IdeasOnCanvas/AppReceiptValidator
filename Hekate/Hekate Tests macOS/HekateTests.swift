@@ -10,6 +10,3 @@ import Hekate
 import XCTest
 
 //swiftlint:disable force_try
-class HekateTests: XCTestCase {
-
-}
