@@ -186,7 +186,9 @@ extern "C" {
 #  define BN_BYTES        8
 #  define BN_BITS2        64
 #  define BN_BITS4        32
-#  define BN_MASK         (0xffffffffffffffffffffffffffffffffLL)
+// Following line is commented out (diverging from Pod) because this causes
+// "Integer literal is too large to be represented in any integer type" on macOS compilation
+// #  define BN_MASK         (0xffffffffffffffffffffffffffffffffLL)
 #  define BN_MASK2        (0xffffffffffffffffL)
 #  define BN_MASK2l       (0xffffffffL)
 #  define BN_MASK2h       (0xffffffff00000000L)
