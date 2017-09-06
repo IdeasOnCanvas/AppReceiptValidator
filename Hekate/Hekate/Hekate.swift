@@ -51,10 +51,10 @@ public enum ReceiptValidationError: Int, Error {
 
 public struct ParsedReceipt {
     let bundleIdentifier: String?
-    let bundleIdData: NSData?
+    let bundleIdData: Data?
     let appVersion: String?
-    let opaqueValue: NSData?
-    let sha1Hash: NSData?
+    let opaqueValue: Data?
+    let sha1Hash: Data?
     let inAppPurchaseReceipts: [ParsedInAppPurchaseReceipt]?
     let originalAppVersion: String?
     let receiptCreationDate: Date?
@@ -85,7 +85,7 @@ public enum ReceiptDeviceIdentifier {
     case data(Data)
 
     public init?(base64Encoded: String) {
-        guard let data = Data(base64Encoded: "bEAItZRe") else {
+        guard let data = Data(base64Encoded: base64Encoded) else {
             return nil
         }
         self = .data(data)
@@ -204,8 +204,12 @@ public struct ReceiptValidator {
         deviceIdentifierData.withUnsafeBytes { pointer -> Void in
             SHA1_Update(&sha1Context, pointer, deviceIdentifierData.count)
         }
-        SHA1_Update(&sha1Context, receiptOpaqueValueData.bytes, receiptOpaqueValueData.length)
-        SHA1_Update(&sha1Context, receiptBundleIdData.bytes, receiptBundleIdData.length)
+        receiptOpaqueValueData.withUnsafeBytes { pointer -> Void in
+            SHA1_Update(&sha1Context, pointer, receiptOpaqueValueData.count)
+        }
+        receiptBundleIdData.withUnsafeBytes { pointer -> Void in
+            SHA1_Update(&sha1Context, pointer, receiptBundleIdData.count)
+        }
         SHA1_Final(&computedHash, &sha1Context)
 
         let computedHashData = NSData(bytes: &computedHash, length: 20)
@@ -277,10 +281,10 @@ private extension ReceiptValidator {
     // swiftlint:disable:next cyclomatic_complexity function_body_length
     func parse(pkcs7Container: UnsafeMutablePointer<PKCS7>) throws -> ParsedReceipt {
         var bundleIdentifier: String?
-        var bundleIdData: NSData?
+        var bundleIdData: Data?
         var appVersion: String?
-        var opaqueValue: NSData?
-        var sha1Hash: NSData?
+        var opaqueValue: Data?
+        var sha1Hash: Data?
         var inAppPurchaseReceipts = [ParsedInAppPurchaseReceipt]()
         var originalAppVersion: String?
         var receiptCreationDate: Date?
@@ -329,6 +333,8 @@ private extension ReceiptValidator {
             // Get ASN1 Sequence value
             ASN1_get_object(&currentASN1PayloadLocation, &length, &type, &xclass, currentASN1PayloadLocation!.distance(to: endOfPayload))
 
+            guard let bytes = currentASN1PayloadLocation else { break }
+
             // ASN1 Sequence value must be an ASN1 Octet String
             guard type == V_ASN1_OCTET_STRING else {
                 throw ReceiptValidationError.malformedReceipt
@@ -338,17 +344,15 @@ private extension ReceiptValidator {
             switch attributeType {
             case 2:
                 var startOfBundleId = currentASN1PayloadLocation
-                bundleIdData = NSData(bytes: startOfBundleId, length: length)
+                bundleIdData = Data(bytes: bytes, count: length)
                 bundleIdentifier = decodeASN1String(startOfString: &startOfBundleId, length: length)
             case 3:
                 var startOfAppVersion = currentASN1PayloadLocation
                 appVersion = decodeASN1String(startOfString: &startOfAppVersion, length: length)
             case 4:
-                let startOfOpaqueValue = currentASN1PayloadLocation
-                opaqueValue = NSData(bytes: startOfOpaqueValue, length: length)
+                opaqueValue = Data(bytes: bytes, count: length)
             case 5:
-                let startOfSha1Hash = currentASN1PayloadLocation
-                sha1Hash = NSData(bytes: startOfSha1Hash, length: length)
+                sha1Hash = Data(bytes: bytes, count: length)
             case 17:
                 var startOfInAppPurchaseReceipt = currentASN1PayloadLocation
                 let iapReceipt = try parseInAppPurchaseReceipt(currentInAppPurchaseASN1PayloadLocation: &startOfInAppPurchaseReceipt, payloadLength: length)
@@ -370,10 +374,10 @@ private extension ReceiptValidator {
         }
 
         return ParsedReceipt(bundleIdentifier: bundleIdentifier,
-                             bundleIdData: bundleIdData,
+                             bundleIdData: bundleIdData as Data?,
                              appVersion: appVersion,
-                             opaqueValue: opaqueValue,
-                             sha1Hash: sha1Hash,
+                             opaqueValue: opaqueValue as Data?,
+                             sha1Hash: sha1Hash as Data?,
                              inAppPurchaseReceipts: inAppPurchaseReceipts,
                              originalAppVersion: originalAppVersion,
                              receiptCreationDate: receiptCreationDate,
