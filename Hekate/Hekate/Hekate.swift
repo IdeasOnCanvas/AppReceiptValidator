@@ -50,27 +50,83 @@ public enum ReceiptValidationError: Int, Error {
 }
 
 public struct ParsedReceipt {
-    let bundleIdentifier: String?
-    let bundleIdData: Data?
-    let appVersion: String?
-    let opaqueValue: Data?
-    let sha1Hash: Data?
-    let inAppPurchaseReceipts: [ParsedInAppPurchaseReceipt]?
-    let originalAppVersion: String?
-    let receiptCreationDate: Date?
-    let expirationDate: Date?
+    var bundleIdentifier: String?
+    var bundleIdData: Data?
+    var appVersion: String?
+    var opaqueValue: Data?
+    var sha1Hash: Data?
+    var inAppPurchaseReceipts: [ParsedInAppPurchaseReceipt]?
+    var originalAppVersion: String?
+    var receiptCreationDate: Date?
+    var expirationDate: Date?
+
+    public init(bundleIdentifier: String?, bundleIdData: Data?, appVersion: String?, opaqueValue: Data?, sha1Hash: Data?, originalAppVersion: String?, receiptCreationDate: Date?, expirationDate: Date?) {
+        self.bundleIdentifier = bundleIdentifier
+        self.bundleIdData = bundleIdData
+        self.appVersion = appVersion
+        self.opaqueValue = opaqueValue
+        self.sha1Hash = sha1Hash
+        self.originalAppVersion = originalAppVersion
+        self.receiptCreationDate = receiptCreationDate
+        self.expirationDate = expirationDate
+    }
+
+    public init() {}
+}
+
+// MARK: - Equatable
+extension ParsedReceipt: Equatable { }
+
+public func == (lhs: ParsedReceipt, rhs: ParsedReceipt) -> Bool {
+    return lhs.bundleIdentifier == rhs.bundleIdentifier &&
+        lhs.bundleIdData == rhs.bundleIdData &&
+        lhs.appVersion == rhs.appVersion &&
+        lhs.opaqueValue == rhs.opaqueValue &&
+        lhs.sha1Hash == rhs.sha1Hash &&
+        lhs.originalAppVersion == rhs.originalAppVersion &&
+        lhs.receiptCreationDate == rhs.receiptCreationDate &&
+        lhs.expirationDate == rhs.expirationDate
 }
 
 public struct ParsedInAppPurchaseReceipt {
-    let quantity: Int?
-    let productIdentifier: String?
-    let transactionIdentifier: String?
-    let originalTransactionIdentifier: String?
-    let purchaseDate: Date?
-    let originalPurchaseDate: Date?
-    let subscriptionExpirationDate: Date?
-    let cancellationDate: Date?
-    let webOrderLineItemId: Int?
+    var quantity: Int?
+    var productIdentifier: String?
+    var transactionIdentifier: String?
+    var originalTransactionIdentifier: String?
+    var purchaseDate: Date?
+    var originalPurchaseDate: Date?
+    var subscriptionExpirationDate: Date?
+    var cancellationDate: Date?
+    var webOrderLineItemId: Int?
+
+    public init(quantity: Int?, productIdentifier: String?, transactionIdentifier: String?, originalTransactionIdentifier: String?, purchaseDate: Date?, originalPurchaseDate: Date?, subscriptionExpirationDate: Date?, cancellationDate: Date?, webOrderLineItemId: Int?) {
+        self.quantity = quantity
+        self.productIdentifier = productIdentifier
+        self.transactionIdentifier = transactionIdentifier
+        self.originalTransactionIdentifier = originalTransactionIdentifier
+        self.purchaseDate = purchaseDate
+        self.originalPurchaseDate = originalPurchaseDate
+        self.subscriptionExpirationDate = subscriptionExpirationDate
+        self.cancellationDate = cancellationDate
+        self.webOrderLineItemId = webOrderLineItemId
+    }
+
+    public init() {}
+}
+
+// MARK: - Equatable
+extension ParsedInAppPurchaseReceipt: Equatable { }
+
+public func == (lhs: ParsedInAppPurchaseReceipt, rhs: ParsedInAppPurchaseReceipt) -> Bool {
+    return lhs.quantity == rhs.quantity &&
+        lhs.productIdentifier == rhs.productIdentifier &&
+        lhs.transactionIdentifier == rhs.transactionIdentifier &&
+        lhs.originalTransactionIdentifier == rhs.originalTransactionIdentifier &&
+        lhs.purchaseDate == rhs.purchaseDate &&
+        lhs.originalPurchaseDate == rhs.originalPurchaseDate &&
+        lhs.subscriptionExpirationDate == rhs.subscriptionExpirationDate &&
+        lhs.cancellationDate == rhs.cancellationDate &&
+        lhs.webOrderLineItemId == rhs.webOrderLineItemId
 }
 
 // MARK: Parameters
@@ -374,11 +430,10 @@ private extension ReceiptValidator {
         }
 
         return ParsedReceipt(bundleIdentifier: bundleIdentifier,
-                             bundleIdData: bundleIdData as Data?,
+                             bundleIdData: bundleIdData,
                              appVersion: appVersion,
-                             opaqueValue: opaqueValue as Data?,
-                             sha1Hash: sha1Hash as Data?,
-                             inAppPurchaseReceipts: inAppPurchaseReceipts,
+                             opaqueValue: opaqueValue,
+                             sha1Hash: sha1Hash,
                              originalAppVersion: originalAppVersion,
                              receiptCreationDate: receiptCreationDate,
                              expirationDate: expirationDate)
