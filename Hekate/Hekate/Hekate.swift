@@ -253,25 +253,6 @@ private extension ReceiptValidator {
             pointer = sequenceObject.pointerAfter
         }
     }
-
-    private func decodeASN1Integer(advancingPointer pointer: inout UnsafePointer<UInt8>?, length: Int) -> Int? {
-        let object = ASN1Object.next(byAdvancingPointer: &pointer, maxLength: length)
-        pointer = object.pointerAfter
-        return object.intValue
-    }
-
-    private func decodeASN1String(pointer: inout UnsafePointer<UInt8>?, length: Int) -> String? {
-        let object = ASN1Object.next(byAdvancingPointer: &pointer, maxLength: length)
-        pointer = object.pointerAfter
-        return object.stringValue
-    }
-
-    private func decodeASN1Date(startOfDate datePointer: inout UnsafePointer<UInt8>?, length: Int) -> Date? {
-        if let dateString = decodeASN1String(pointer: &datePointer, length:length) {
-            return ReceiptValidator.asn1DateFormatter.date(from: dateString)
-        }
-        return nil
-    }
 }
 
 // MARK: - ReceiptValidationResult
