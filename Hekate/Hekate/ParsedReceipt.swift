@@ -36,17 +36,7 @@ public struct ParsedReceipt {
 
 // MARK: - Equatable
 
-extension ParsedReceipt: Equatable { }
-
-public func == (lhs: ParsedReceipt, rhs: ParsedReceipt) -> Bool {
-    return lhs.bundleIdentifier == rhs.bundleIdentifier &&
-        lhs.bundleIdData == rhs.bundleIdData &&
-        lhs.appVersion == rhs.appVersion &&
-        lhs.opaqueValue == rhs.opaqueValue &&
-        lhs.sha1Hash == rhs.sha1Hash &&
-        lhs.originalAppVersion == rhs.originalAppVersion &&
-        lhs.receiptCreationDate == rhs.receiptCreationDate &&
-        lhs.expirationDate == rhs.expirationDate
+extension ParsedReceipt: AutoEquatable {}
 
 extension ParsedReceipt: CustomStringConvertible {
     public var description: String {
@@ -95,18 +85,7 @@ public struct ParsedInAppPurchaseReceipt {
 
 // MARK: - Equatable
 
-extension ParsedInAppPurchaseReceipt: Equatable { }
-
-public func == (lhs: ParsedInAppPurchaseReceipt, rhs: ParsedInAppPurchaseReceipt) -> Bool {
-    return lhs.quantity == rhs.quantity &&
-        lhs.productIdentifier == rhs.productIdentifier &&
-        lhs.transactionIdentifier == rhs.transactionIdentifier &&
-        lhs.originalTransactionIdentifier == rhs.originalTransactionIdentifier &&
-        lhs.purchaseDate == rhs.purchaseDate &&
-        lhs.originalPurchaseDate == rhs.originalPurchaseDate &&
-        lhs.subscriptionExpirationDate == rhs.subscriptionExpirationDate &&
-        lhs.cancellationDate == rhs.cancellationDate &&
-        lhs.webOrderLineItemId == rhs.webOrderLineItemId
+extension ParsedInAppPurchaseReceipt: AutoEquatable {}
 
 // MARK: - CustomStringConvertible
 
