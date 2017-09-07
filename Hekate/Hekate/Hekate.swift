@@ -182,7 +182,16 @@ private extension ReceiptValidator {
         // Step through payload (ASN1 Set) and parse each ASN1 Sequence within (ASN1 Sets contain one or more ASN1 Sequences)
         while currentASN1PayloadLocation! < endOfPayload {
 
-            // Get next ASN1 Sequence
+            /// ↓ (currentASN1PayloadLocation)
+            /// |TYPE = SEQUENCE | LENGTH  |   ATTR TYPE   |   ATTR VERS   |      ATTR VALUE      |
+            /// +----------------+---------+---------------+---------------+----------------------+
+            /// |    ASN1_INT    |ASN1_INT |   ASN1_INT    |   ASN1_INT    |   ASN1_OCTETSTRING   |
+            /// +----------------+---------+---------------+---------------+----------------------+
+            ///                    length  |  determines   |  (ignored)    |   actual value data  |
+            ///                      of    |  attribute    |
+            ///                     VALUE  |  value type   |
+
+            // Get next ASN1 Object. Parses length and type, and moves the pointer further to ATTR TYPE
             ASN1_get_object(&currentASN1PayloadLocation, &length, &type, &xclass, currentASN1PayloadLocation!.distance(to: endOfPayload))
 
             // ASN1 Object type must be an ASN1 Sequence
@@ -190,57 +199,81 @@ private extension ReceiptValidator {
                 throw ReceiptValidationError.malformedReceipt
             }
 
+            ///                            ↓ (currentASN1PayloadLocation)
+            /// +----------------+---------+---------------+---------------+----------------------+
+            /// |TYPE = SEQUENCE | LENGTH  |   ATTR TYPE   |   ATTR VERS   |      ATTR VALUE      |
+            /// +----------------+---------+---------------+---------------+----------------------+
             // Attribute type of ASN1 Sequence must be an Integer
             guard let attributeType = decodeASN1Integer(startOfInt: &currentASN1PayloadLocation, length: currentASN1PayloadLocation!.distance(to: endOfPayload)) else {
                 throw ReceiptValidationError.malformedReceipt
             }
 
+            ///                                            ↓ (currentASN1PayloadLocation)
+            /// +----------------+---------+---------------+---------------+----------------------+
+            /// |TYPE = SEQUENCE | LENGTH  |   ATTR TYPE   |   ATTR VERS   |      ATTR VALUE      |
+            /// +----------------+---------+---------------+---------------+----------------------+
             // Attribute version of ASN1 Sequence must be an Integer
             guard decodeASN1Integer(startOfInt: &currentASN1PayloadLocation, length: currentASN1PayloadLocation!.distance(to: endOfPayload)) != nil else {
                 throw ReceiptValidationError.malformedReceipt
             }
 
-            // Get ASN1 Sequence value
-            ASN1_get_object(&currentASN1PayloadLocation, &length, &type, &xclass, currentASN1PayloadLocation!.distance(to: endOfPayload))
+            ///                                                            ↓ (currentASN1PayloadLocation) updated
+            /// +----------------+---------+---------------+---------------+----------------------+
+            /// |TYPE = SEQUENCE | LENGTH  |   ATTR TYPE   |   ATTR VERS   |      ATTR VALUE      |
+            /// +----------------+---------+---------------+---------------+----------------------+
 
-            guard let bytes = currentASN1PayloadLocation else { break }
+            // Begin looking at the value
+
+            var valueLength = 0
+            var valueType = Int32(0)
+            // The value is supposed to be an ASN1_OCTETSTRING object of the following form:
+            /// ↓ (currentASN1PayloadLocation)
+            /// +------------------------+---------------+----------------+---------------+
+            /// |TYPE = ASN1_OCTETSTRING | VALUE_LENGTH  |   VALUE_TYPE   |   VALUE_BYTES |
+            /// +------------------------+---------------+----------------+---------------+
+            // Reads valueLength and valueType and moves pointer forward to VALUE_BYTES
+            ASN1_get_object(&currentASN1PayloadLocation, &valueLength, &valueType, &xclass, currentASN1PayloadLocation!.distance(to: endOfPayload))
 
             // ASN1 Sequence value must be an ASN1 Octet String
-            guard type == V_ASN1_OCTET_STRING else {
+            guard valueType == V_ASN1_OCTET_STRING else {
                 throw ReceiptValidationError.malformedReceipt
             }
 
-            // Decode attributes
+            guard let valueLocation = currentASN1PayloadLocation else { break }
+            var mutableValueLocation = currentASN1PayloadLocation
+            ///                                                           ↓ (currentASN1PayloadLocation = bytes = mutableValueLocation)
+            /// +------------------------+---------------+----------------+---------------+
+            /// |TYPE = ASN1_OCTETSTRING | VALUE_LENGTH  |   VALUE_TYPE   |   VALUE_BYTES |
+            /// +------------------------+---------------+----------------+---------------+
+
+            // Decode values
+
             switch attributeType {
             case 2:
-                var startOfBundleId = currentASN1PayloadLocation
-                bundleIdData = Data(bytes: bytes, count: length)
-                bundleIdentifier = decodeASN1String(startOfString: &startOfBundleId, length: length)
+                bundleIdData = Data(bytes: valueLocation, count: valueLength)
+                bundleIdentifier = decodeASN1String(startOfString: &mutableValueLocation, length: valueLength)
             case 3:
-                var startOfAppVersion = currentASN1PayloadLocation
-                appVersion = decodeASN1String(startOfString: &startOfAppVersion, length: length)
+                appVersion = decodeASN1String(startOfString: &mutableValueLocation, length: valueLength)
             case 4:
-                opaqueValue = Data(bytes: bytes, count: length)
+                opaqueValue = Data(bytes: valueLocation, count: valueLength)
             case 5:
-                sha1Hash = Data(bytes: bytes, count: length)
+                sha1Hash = Data(bytes: valueLocation, count: valueLength)
             case 17:
-                var startOfInAppPurchaseReceipt = currentASN1PayloadLocation
-                let iapReceipt = try parseInAppPurchaseReceipt(currentInAppPurchaseASN1PayloadLocation: &startOfInAppPurchaseReceipt, payloadLength: length)
+                let iapReceipt = try parseInAppPurchaseReceipt(currentInAppPurchaseASN1PayloadLocation: &mutableValueLocation, payloadLength: valueLength)
                 inAppPurchaseReceipts.append(iapReceipt)
             case 12:
-                var startOfReceiptCreationDate = currentASN1PayloadLocation
-                receiptCreationDate = decodeASN1Date(startOfDate: &startOfReceiptCreationDate, length: length)
+                receiptCreationDate = decodeASN1Date(startOfDate: &mutableValueLocation, length: valueLength)
             case 19:
-                var startOfOriginalAppVersion = currentASN1PayloadLocation
-                originalAppVersion = decodeASN1String(startOfString: &startOfOriginalAppVersion, length: length)
+                originalAppVersion = decodeASN1String(startOfString: &mutableValueLocation, length: valueLength)
             case 21:
-                var startOfExpirationDate = currentASN1PayloadLocation
-                expirationDate = decodeASN1Date(startOfDate: &startOfExpirationDate, length: length)
+                expirationDate = decodeASN1Date(startOfDate: &mutableValueLocation, length: valueLength)
             default:
+                print("Unknown attributeType: \(attributeType), length: \(valueLength)")
                 break
             }
 
-            currentASN1PayloadLocation = currentASN1PayloadLocation?.advanced(by: length)
+            currentASN1PayloadLocation = currentASN1PayloadLocation?.advanced(by: valueLength)
+
         }
 
         return ParsedReceipt(bundleIdentifier: bundleIdentifier,
@@ -382,18 +415,20 @@ private extension ReceiptValidator {
 
         ASN1_get_object(&stringPointer, &stringLength, &type, &xclass, length)
 
-
-        if type == V_ASN1_UTF8STRING {
-            let mutableStringPointer = UnsafeMutableRawPointer(mutating: stringPointer!)
-            return String(bytesNoCopy: mutableStringPointer, length: stringLength, encoding: String.Encoding.utf8, freeWhenDone: false)
+        guard let bytes = stringPointer else {
+            return nil
         }
 
-        if type == V_ASN1_IA5STRING {
-            let mutableStringPointer = UnsafeMutableRawPointer(mutating: stringPointer!)
-            return String(bytesNoCopy: mutableStringPointer, length: stringLength, encoding: String.Encoding.ascii, freeWhenDone: false)
+        switch type {
+        case V_ASN1_UTF8STRING:
+            let data = Data(bytes: bytes, count: stringLength)
+            return String(data: data, encoding: .utf8)
+        case V_ASN1_IA5STRING:
+            let data = Data(bytes: bytes, count: stringLength)
+            return String(data: data, encoding: .ascii)
+        default:
+            return nil
         }
-
-        return nil
     }
 
     private func decodeASN1Date(startOfDate datePointer: inout UnsafePointer<UInt8>?, length: Int) -> Date? {
