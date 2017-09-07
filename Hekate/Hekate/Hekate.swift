@@ -11,6 +11,7 @@ import StoreKit
 
 // Original inspiration https://github.com/andrewcbancroft/SwiftyLocalReceiptValidator/blob/master/ReceiptValidator.swift
 
+/// - Note: If on iOS, use this only on Main Queue, because UIDevice is called
 public struct ReceiptValidator {
     public init() {}
 
@@ -224,7 +225,7 @@ private extension ReceiptValidator {
         return parsedInAppPurchaseReceipt
     }
 
-    private func parseASN1Set(pointer initialPointer: UnsafePointer<UInt8>, length: Int, valueAttributeAction: (Int32, ASN1Object) throws -> Void) throws {
+    private func parseASN1Set(pointer initialPointer: UnsafePointer<UInt8>, length: Int, valueAttributeAction: (_ attributeType: Int32, _ value: ASN1Object) throws -> Void) throws {
         var pointer: UnsafePointer<UInt8>? = initialPointer
         let limit = initialPointer.advanced(by: length)
 

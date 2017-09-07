@@ -14,7 +14,7 @@ public struct ParsedReceipt {
     /// Use this value to validate if the receipt was indeed generated for your app. ASN.1 Field Type 2.
     public var bundleIdentifier: String?
 
-    /// The app’s bundle identifier as bytes.
+    /// The app’s bundle identifier as bytes, used, with other data, to compute the SHA-1 hash during validation.
     public var bundleIdData: Data?
 
     /// The app’s version number.
