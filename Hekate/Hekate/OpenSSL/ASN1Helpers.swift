@@ -21,6 +21,7 @@ struct ASN1Object {
     fileprivate(set) var pointerBefore: UnsafePointer<UInt8>?
     fileprivate(set) var valuePointer: UnsafePointer<UInt8>?
     fileprivate(set) var pointerAfter: UnsafePointer<UInt8>?
+    fileprivate(set) var dataEndPointer: UnsafePointer<UInt8>?
 
     fileprivate init() {}
 }
@@ -37,6 +38,7 @@ extension ASN1Object {
     static func next(byAdvancingPointer pointer: inout UnsafePointer<UInt8>?, maxLength: Int) -> ASN1Object {
         var objectInfo = ASN1Object()
         objectInfo.pointerBefore = pointer
+        objectInfo.dataEndPointer = pointer?.advanced(by: maxLength)
         ASN1_get_object(&pointer, &objectInfo.length, &objectInfo.type, &objectInfo.xclass, maxLength)
         objectInfo.valuePointer = pointer
         objectInfo.pointerAfter = pointer?.advanced(by: objectInfo.length)
@@ -48,10 +50,6 @@ extension ASN1Object {
 
 extension ASN1Object {
     func sequence(byAdvancingPointer pointer: inout UnsafePointer<UInt8>?, notBeyond limit: UnsafePointer<UInt8>) -> ASN1Sequence? {
-        guard type == V_ASN1_SEQUENCE else {
-            return nil
-        }
-
         // ASN1 Object type must be an ASN1 Sequence
         guard type == V_ASN1_SEQUENCE else {
             return nil
@@ -70,15 +68,13 @@ extension ASN1Object {
         }
 
         /// Pointer is now here
-        ///                                            ↓ (pointer)
+        ///                                                            ↓ (pointer)
         /// +----------------+---------+---------------+---------------+----------------------+
         /// |TYPE = SEQUENCE | LENGTH  |   ATTR TYPE   |   ATTR VERS   |      ATTR VALUE      |
         /// +----------------+---------+---------------+---------------+----------------------+
-
-        // Begin looking at the value
-
+        // Zooming in:
         // The value in ATTR VALUE is supposed to be an ASN1_OCTETSTRING object of the following form:
-        /// ↓ (currentASN1PayloadLocation)
+        /// ↓ (pointer)
         /// +------------------------+---------------+----------------+---------------+
         /// |TYPE = ASN1_OCTETSTRING | VALUE_LENGTH  |   VALUE_TYPE   |   VALUE_BYTES |
         /// +------------------------+---------------+----------------+---------------+
@@ -92,6 +88,45 @@ extension ASN1Object {
         return ASN1Sequence(attributeType: Int32(attributeType), attributeVersion: Int32(attributeVersion), valueObject: valueObject)
     }
 }
+
+// MARK: - Wrapped
+
+extension ASN1Object {
+    var unwrapped: ASN1Object? {
+        var innerPointer = valuePointer
+        return ASN1Object.next(byAdvancingPointer: &innerPointer, maxLength: length)
+    }
+}
+
+// MARK: - Data
+
+extension ASN1Object {
+    var dataValue: Data? {
+        guard let pointer = self.valuePointer else {
+            return nil
+        }
+        return Data(bytes: pointer, count: length)
+    }
+}
+
+// MARK: - Date
+
+extension ASN1Object {
+
+    /// If a date-string is wrapped in an V_ASN1_OCTET_STRING, use this instead of `dateValue`
+    var unwrappedDateValue: Date? {
+        return unwrapped?.dateValue
+    }
+
+
+    var dateValue: Date? {
+        guard let string = stringValue else {
+            return nil
+        }
+        return ReceiptValidator.asn1DateFormatter.date(from: string)
+    }
+}
+
 
 // MARK: - IntValue
 
@@ -109,8 +144,9 @@ extension ASN1Object {
         return result
     }
 
-    func intValue(byAdvancingPointer pointer: inout UnsafePointer<UInt8>?) -> Int? {
-        pointer = pointer?.advanced(by: self.length)
+    func intValue(byAdvancingPointer pointer: inout UnsafePointer<UInt8>?, length: Int? = nil) -> Int? {
+        let length = length ?? self.length
+        pointer = pointer?.advanced(by: length)
         guard let intValue = self.intValue else {
             return nil
         }
@@ -121,6 +157,11 @@ extension ASN1Object {
 // MARK: - StringValue
 
 extension ASN1Object {
+    /// If a string is wrapped in an V_ASN1_OCTET_STRING, use this instead of `stringValue`
+    var unwrappedStringValue: String? {
+        return unwrapped?.stringValue
+    }
+
     var stringValue: String? {
         guard let bytes = valuePointer else {
             return nil

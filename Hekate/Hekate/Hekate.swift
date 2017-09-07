@@ -153,26 +153,19 @@ private extension ReceiptValidator {
 // MARK: - Parsing of properties
 
 private extension ReceiptValidator {
-    // swiftlint:disable:next cyclomatic_complexity function_body_length
+    // swiftlint:disable:next cyclomatic_complexity
     func parse(pkcs7: PKCS7Wrapper) throws -> ParsedReceipt {
-        var bundleIdentifier: String?
-        var bundleIdData: Data?
-        var appVersion: String?
-        var opaqueValue: Data?
-        var sha1Hash: Data?
-        var inAppPurchaseReceipts = [ParsedInAppPurchaseReceipt]()
-        var originalAppVersion: String?
-        var receiptCreationDate: Date?
-        var expirationDate: Date?
+
+        var parsedReceipt = ParsedReceipt()
 
         guard let contents = pkcs7.pkcs7.pointee.d.sign.pointee.contents, let octets = contents.pointee.d.data else {
             throw ReceiptValidationError.malformedReceipt
         }
 
-        var currentASN1PayloadLocation = UnsafePointer(octets.pointee.data)
-        let endOfPayload = currentASN1PayloadLocation!.advanced(by: Int(octets.pointee.length))
+        var pointer = UnsafePointer(octets.pointee.data)
+        let endOfPayload = pointer!.advanced(by: Int(octets.pointee.length))
 
-        let set = ASN1Object.next(byAdvancingPointer: &currentASN1PayloadLocation, notBeyond: endOfPayload)
+        let set = ASN1Object.next(byAdvancingPointer: &pointer, notBeyond: endOfPayload)
 
         // Payload must be an ASN1 Set
         guard set.type == V_ASN1_SET else {
@@ -181,7 +174,7 @@ private extension ReceiptValidator {
 
         // Decode Payload
         // Step through payload (ASN1 Set) and parse each ASN1 Sequence within (ASN1 Sets contain one or more ASN1 Sequences)
-        while currentASN1PayloadLocation! < endOfPayload {
+        while pointer != nil && pointer! < endOfPayload {
 
             /// ↓ (currentASN1PayloadLocation)
             /// |TYPE = SEQUENCE | LENGTH  |   ATTR TYPE   |   ATTR VERS   |      ATTR VALUE      |
@@ -193,60 +186,42 @@ private extension ReceiptValidator {
             ///                     VALUE  |  value type   |
 
             // Get next ASN1 Object. Parses length and type, and moves the pointer further to ATTR TYPE
-            let sequenceObject = ASN1Object.next(byAdvancingPointer: &currentASN1PayloadLocation, notBeyond: endOfPayload)
-            guard let sequence = sequenceObject.sequence(byAdvancingPointer: &currentASN1PayloadLocation, notBeyond: endOfPayload) else {
+            let sequenceObject = ASN1Object.next(byAdvancingPointer: &pointer, notBeyond: endOfPayload)
+            guard let sequence = sequenceObject.sequence(byAdvancingPointer: &pointer, notBeyond: endOfPayload) else {
                 throw ReceiptValidationError.malformedReceipt
             }
-
-            // Reads valueLength and valueType and moves pointer forward to VALUE_BYTES
             let value = sequence.valueObject
-
-            guard let valueLocation = currentASN1PayloadLocation else { break }
-            var mutableValueLocation = currentASN1PayloadLocation
-            ///                                                           ↓ (currentASN1PayloadLocation = bytes = mutableValueLocation)
-            /// +------------------------+---------------+----------------+---------------+
-            /// |TYPE = ASN1_OCTETSTRING | VALUE_LENGTH  |   VALUE_TYPE   |   VALUE_BYTES |
-            /// +------------------------+---------------+----------------+---------------+
 
             // Decode values
 
             switch sequence.attributeType {
             case 2:
-                bundleIdData = Data(bytes: valueLocation, count: value.length)
-                bundleIdentifier = decodeASN1String(pointer: &mutableValueLocation, length: value.length)
+                parsedReceipt.bundleIdData = value.dataValue
+                parsedReceipt.bundleIdentifier = value.unwrappedStringValue
             case 3:
-                appVersion = decodeASN1String(pointer: &mutableValueLocation, length: value.length)
+                parsedReceipt.appVersion = value.unwrappedStringValue
             case 4:
-                opaqueValue = Data(bytes: valueLocation, count: value.length)
+                parsedReceipt.opaqueValue = value.dataValue
             case 5:
-                sha1Hash = Data(bytes: valueLocation, count: value.length)
+                parsedReceipt.sha1Hash = value.dataValue
             case 17:
+                var mutableValueLocation = value.valuePointer
                 let iapReceipt = try parseInAppPurchaseReceipt(currentInAppPurchaseASN1PayloadLocation: &mutableValueLocation, payloadLength: value.length)
-                inAppPurchaseReceipts.append(iapReceipt)
+                parsedReceipt.inAppPurchaseReceipts.append(iapReceipt)
             case 12:
-                receiptCreationDate = decodeASN1Date(startOfDate: &mutableValueLocation, length: value.length)
+                parsedReceipt.receiptCreationDate = value.unwrappedDateValue
             case 19:
-                originalAppVersion = decodeASN1String(pointer: &mutableValueLocation, length: value.length)
+                parsedReceipt.originalAppVersion = value.unwrappedStringValue
             case 21:
-                expirationDate = decodeASN1Date(startOfDate: &mutableValueLocation, length: value.length)
+                parsedReceipt.expirationDate = value.unwrappedDateValue
             default:
                 print("Unknown attributeType: \(sequence.attributeType), length: \(value.length)")
                 break
             }
-
-            currentASN1PayloadLocation = currentASN1PayloadLocation?.advanced(by: value.length)
-
+            pointer = sequenceObject.pointerAfter
         }
 
-        return ParsedReceipt(bundleIdentifier: bundleIdentifier,
-                             bundleIdData: bundleIdData,
-                             appVersion: appVersion,
-                             opaqueValue: opaqueValue,
-                             sha1Hash: sha1Hash,
-                             originalAppVersion: originalAppVersion,
-                             receiptCreationDate: receiptCreationDate,
-                             expirationDate: expirationDate,
-                             inAppPurchaseReceipts: inAppPurchaseReceipts)
+        return parsedReceipt
     }
 
     // swiftlint:disable:next cyclomatic_complexity function_body_length
@@ -356,7 +331,7 @@ private extension ReceiptValidator {
         return object.intValue
     }
 
-    private func decodeASN1String(pointer pointer: inout UnsafePointer<UInt8>?, length: Int) -> String? {
+    private func decodeASN1String(pointer: inout UnsafePointer<UInt8>?, length: Int) -> String? {
         let object = ASN1Object.next(byAdvancingPointer: &pointer, maxLength: length)
         pointer = object.pointerAfter
         return object.stringValue
