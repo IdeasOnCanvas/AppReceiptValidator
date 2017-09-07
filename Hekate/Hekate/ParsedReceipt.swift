@@ -38,6 +38,8 @@ public struct ParsedReceipt {
 
 extension ParsedReceipt: AutoEquatable {}
 
+// MARK: - CustomStringConvertible
+
 extension ParsedReceipt: CustomStringConvertible {
     public var description: String {
         let formatter = StringFormatter()
@@ -58,6 +60,7 @@ extension ParsedReceipt: CustomStringConvertible {
 
 
 // MARK: - ParsedInAppPurchaseReceipt
+
 public struct ParsedInAppPurchaseReceipt {
     public var quantity: Int?
     public var productIdentifier: String?
