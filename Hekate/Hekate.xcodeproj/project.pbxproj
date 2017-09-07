@@ -34,8 +34,8 @@
 		D19095B91F6003AE0095729B /* Hekate_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D6F4C21F5D687400E86FE1 /* Hekate_macOS.framework */; };
 		D19095BC1F6004D10095729B /* pkcs7_union_accessors.c in Sources */ = {isa = PBXBuildFile; fileRef = D19095BB1F6004D10095729B /* pkcs7_union_accessors.c */; };
 		D19095BD1F6004D10095729B /* pkcs7_union_accessors.c in Sources */ = {isa = PBXBuildFile; fileRef = D19095BB1F6004D10095729B /* pkcs7_union_accessors.c */; };
-		D19095C01F60158B0095729B /* ReceiptValidator+deviceIdentifier macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19095BF1F60158B0095729B /* ReceiptValidator+deviceIdentifier macOS.swift */; };
-		D19095C31F6019FC0095729B /* ReceiptValidator+deviceIdentifier iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19095C11F6019E70095729B /* ReceiptValidator+deviceIdentifier iOS.swift */; };
+		D19095C01F60158B0095729B /* ReceiptValidationParameters+deviceIdentifier macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19095BF1F60158B0095729B /* ReceiptValidationParameters+deviceIdentifier macOS.swift */; };
+		D19095C31F6019FC0095729B /* ReceiptValidationParameters+deviceIdentifier iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19095C11F6019E70095729B /* ReceiptValidationParameters+deviceIdentifier iOS.swift */; };
 		D19095C51F601DF10095729B /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = D19095C41F601DEA0095729B /* AppleIncRootCertificate.cer */; };
 		D19095C61F601DF20095729B /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = D19095C41F601DEA0095729B /* AppleIncRootCertificate.cer */; };
 		D19095C71F601E580095729B /* TestAssetLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F5491F5D9B1F00E86FE1 /* TestAssetLoading.swift */; };
@@ -141,8 +141,8 @@
 		D19095AD1F6001800095729B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D19095BA1F6004D10095729B /* pkcs7_union_accessors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pkcs7_union_accessors.h; sourceTree = "<group>"; };
 		D19095BB1F6004D10095729B /* pkcs7_union_accessors.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = pkcs7_union_accessors.c; sourceTree = "<group>"; };
-		D19095BF1F60158B0095729B /* ReceiptValidator+deviceIdentifier macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptValidator+deviceIdentifier macOS.swift"; sourceTree = "<group>"; };
-		D19095C11F6019E70095729B /* ReceiptValidator+deviceIdentifier iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptValidator+deviceIdentifier iOS.swift"; sourceTree = "<group>"; };
+		D19095BF1F60158B0095729B /* ReceiptValidationParameters+deviceIdentifier macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptValidationParameters+deviceIdentifier macOS.swift"; sourceTree = "<group>"; };
+		D19095C11F6019E70095729B /* ReceiptValidationParameters+deviceIdentifier iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReceiptValidationParameters+deviceIdentifier iOS.swift"; sourceTree = "<group>"; };
 		D19095C41F601DEA0095729B /* AppleIncRootCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleIncRootCertificate.cer; sourceTree = "<group>"; };
 		D1D6F4B51F5D684C00E86FE1 /* Hekate_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hekate_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D6F4C21F5D687400E86FE1 /* Hekate_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hekate_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -358,13 +358,13 @@
 				D19095C41F601DEA0095729B /* AppleIncRootCertificate.cer */,
 				D11616C91F5ED1CA00D966D5 /* Hekate-Bridging-Header.h */,
 				D1D6F5271F5D863900E86FE1 /* Supporting Files */,
-				D1D6F53E1F5D89D000E86FE1 /* Hekate.swift */,
 				D19095BB1F6004D10095729B /* pkcs7_union_accessors.c */,
 				D19095BA1F6004D10095729B /* pkcs7_union_accessors.h */,
-				D19095BF1F60158B0095729B /* ReceiptValidator+deviceIdentifier macOS.swift */,
-				D19095C11F6019E70095729B /* ReceiptValidator+deviceIdentifier iOS.swift */,
+				D1D6F53E1F5D89D000E86FE1 /* Hekate.swift */,
 				D1FE343C1F604F020029576B /* ParsedReceipt.swift */,
 				D1FE343F1F604F540029576B /* ReceiptValidationParameters.swift */,
+				D19095BF1F60158B0095729B /* ReceiptValidationParameters+deviceIdentifier macOS.swift */,
+				D19095C11F6019E70095729B /* ReceiptValidationParameters+deviceIdentifier iOS.swift */,
 				D14FA72E1F6143C400545540 /* Date+Convenience.swift */,
 			);
 			path = Hekate;
@@ -1035,7 +1035,7 @@
 				D14FA7271F61351000545540 /* AutoEquatable.swift in Sources */,
 				D14FA7291F61351400545540 /* AutoEquatable.generated.swift in Sources */,
 				D1FE343D1F604F020029576B /* ParsedReceipt.swift in Sources */,
-				D19095C31F6019FC0095729B /* ReceiptValidator+deviceIdentifier iOS.swift in Sources */,
+				D19095C31F6019FC0095729B /* ReceiptValidationParameters+deviceIdentifier iOS.swift in Sources */,
 				D19095BC1F6004D10095729B /* pkcs7_union_accessors.c in Sources */,
 				D1FE34401F604F540029576B /* ReceiptValidationParameters.swift in Sources */,
 				D14FA72F1F6143C400545540 /* Date+Convenience.swift in Sources */,
@@ -1049,7 +1049,7 @@
 				D1D6F5401F5D89D800E86FE1 /* Hekate.swift in Sources */,
 				D1FE343E1F604F020029576B /* ParsedReceipt.swift in Sources */,
 				D14FA72A1F61351500545540 /* AutoEquatable.generated.swift in Sources */,
-				D19095C01F60158B0095729B /* ReceiptValidator+deviceIdentifier macOS.swift in Sources */,
+				D19095C01F60158B0095729B /* ReceiptValidationParameters+deviceIdentifier macOS.swift in Sources */,
 				D14FA7261F61350F00545540 /* AutoEquatable.swift in Sources */,
 				D19095BD1F6004D10095729B /* pkcs7_union_accessors.c in Sources */,
 				D1FE34411F604F540029576B /* ReceiptValidationParameters.swift in Sources */,

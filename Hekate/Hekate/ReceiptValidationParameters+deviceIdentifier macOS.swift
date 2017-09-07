@@ -1,5 +1,5 @@
 //
-//  GetMacAddress.swift
+//  ReceiptValidationParameters+deviceIdentifier macOS.swift
 //  Hekate macOS
 //
 //  Created by Hannes Oud on 06.09.17.
@@ -9,7 +9,8 @@
 import Foundation
 import IOKit
 
-extension ReceiptValidator {
+extension ReceiptValidationParameters {
+    /// On mac this is the primary network interface's MAC Adress as bytes
     static var installedDeviceIdentifierData: Data? {
         return getPrimaryNetworkMACAddress()?.data
     }

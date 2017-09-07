@@ -54,7 +54,7 @@ public struct ReceiptValidationParameters {
         case .data(let data):
             return data
         case .installed:
-            if let data = ReceiptValidator.installedDeviceIdentifierData {
+            if let data = ReceiptValidationParameters.installedDeviceIdentifierData {
                 return data
             } else {
                 throw ReceiptValidationError.deviceIdentifierNotDeterminable
