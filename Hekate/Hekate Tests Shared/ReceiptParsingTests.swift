@@ -41,21 +41,44 @@ class ReceiptParsingTests: XCTestCase {
         guard let data = assertTestAsset(filename: "hannes_mac_mindnode_pro_receipt") else {
             return
         }
+        let expected = ParsedReceipt(
+            bundleIdentifier: "com.mindnode.MindNodePro",
+            bundleIdData: Data(base64Encoded: "DBhjb20ubWluZG5vZGUuTWluZE5vZGVQcm8=")!,
+            appVersion: "1.11.5",
+            opaqueValue: Data(base64Encoded: "/cPmDfuyFyluvodJXQRvig=="),
+            sha1Hash: Data(base64Encoded: "MDBF4hAt6Y+7IlAydxroa/SQeY4="),
+            originalAppVersion: "1.10.6",
+            receiptCreationDate: Date.demoDate(string: "2016-02-12T10:57:42Z"),
+            expirationDate: nil,
+            inAppPurchaseReceipts: []
+        )
         let result = receiptValidator.validateReceipt {
             $0.receiptOrigin = .data(data)
-            $0.validateHash = false
+            $0.validateHash = false // the original device identifier is unknown
         }
         guard let receipt = result.receipt else {
             XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")
             return
         }
         print(receipt)
+        XCTAssertEqual(receipt, expected)
     }
 
     func testMindNodeMacReceiptParsing() {
         guard let data = assertTestAsset(filename: "hannes_mac_mindnode_receipt") else {
             return
         }
+        let expected = ParsedReceipt(
+            bundleIdentifier: "com.ideasoncanvas.MindNodeMac",
+            bundleIdData: Data(base64Encoded: "DB1jb20uaWRlYXNvbmNhbnZhcy5NaW5kTm9kZU1hYw==")!,
+            appVersion: "2.5.5",
+            opaqueValue: Data(base64Encoded: "mjF2f4xnFu/L4J3msJ1fxQ=="),
+            sha1Hash: Data(base64Encoded: "gfM0Izu/eKMBRLbJqlTXtNvvmss="),
+            originalAppVersion: "2.5.5",
+            receiptCreationDate: Date.demoDate(string: "2017-09-04T09:01:20Z"),
+            expirationDate: nil,
+            inAppPurchaseReceipts: []
+        )
         let result = receiptValidator.validateReceipt {
             $0.receiptOrigin = .data(data)
             $0.deviceIdentifier = ReceiptDeviceIdentifier(base64Encoded: "bEAItZRe")!
@@ -65,5 +88,6 @@ class ReceiptParsingTests: XCTestCase {
             return
         }
         print(receipt)
+        XCTAssertEqual(receipt, expected)
     }
 }
