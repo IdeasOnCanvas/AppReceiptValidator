@@ -14,7 +14,6 @@ import Hekate_macOS
 
 import XCTest
 
-//swiftlint:disable force_try
 class ReceiptParsingTests: XCTestCase {
     var receiptValidator = ReceiptValidator()
 

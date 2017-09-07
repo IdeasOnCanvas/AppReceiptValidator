@@ -91,4 +91,3 @@ public func == (lhs: ParsedInAppPurchaseReceipt, rhs: ParsedInAppPurchaseReceipt
         lhs.cancellationDate == rhs.cancellationDate &&
         lhs.webOrderLineItemId == rhs.webOrderLineItemId
 }
-
