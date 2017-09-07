@@ -14,7 +14,7 @@ extension XCTestCase {
         do {
             return try loadTestAsset(filename: filename, requester: self)
         } catch {
-            XCTFail("Failed to load test asset file \(filename), make sure you added it to the test target", file: file, line: line)
+            XCTFail("Failed to load test asset file \(filename), make sure you added it to the test target(s)", file: file, line: line)
             return nil
         }
     }

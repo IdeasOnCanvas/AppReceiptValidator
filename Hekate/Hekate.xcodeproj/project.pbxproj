@@ -17,6 +17,8 @@
 		D14FA72A1F61351500545540 /* AutoEquatable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA71E1F6134CF00545540 /* AutoEquatable.generated.swift */; };
 		D14FA72F1F6143C400545540 /* Date+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA72E1F6143C400545540 /* Date+Convenience.swift */; };
 		D14FA7301F6143CF00545540 /* Date+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA72E1F6143C400545540 /* Date+Convenience.swift */; };
+		D14FA7321F61476700545540 /* mac_mindnode_rebought_receipt in Resources */ = {isa = PBXBuildFile; fileRef = D14FA7311F61472400545540 /* mac_mindnode_rebought_receipt */; };
+		D14FA7331F61476800545540 /* mac_mindnode_rebought_receipt in Resources */ = {isa = PBXBuildFile; fileRef = D14FA7311F61472400545540 /* mac_mindnode_rebought_receipt */; };
 		D19095841F6000A40095729B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19095831F6000A40095729B /* AppDelegate.swift */; };
 		D19095861F6000A40095729B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19095851F6000A40095729B /* ViewController.swift */; };
 		D19095881F6000A40095729B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D19095871F6000A40095729B /* Assets.xcassets */; };
@@ -125,6 +127,7 @@
 		D14FA71F1F6134CF00545540 /* AutoEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoEquatable.swift; sourceTree = "<group>"; };
 		D14FA7221F6134CF00545540 /* AutoEquatable.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = AutoEquatable.stencil; sourceTree = "<group>"; };
 		D14FA72E1F6143C400545540 /* Date+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Convenience.swift"; sourceTree = "<group>"; };
+		D14FA7311F61472400545540 /* mac_mindnode_rebought_receipt */ = {isa = PBXFileReference; lastKnownFileType = file; path = mac_mindnode_rebought_receipt; sourceTree = "<group>"; };
 		D19095811F6000A40095729B /* Hekate Demo macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hekate Demo macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D19095831F6000A40095729B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D19095851F6000A40095729B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -395,6 +398,7 @@
 		D1D6F5431F5D8DBC00E86FE1 /* Test Assets */ = {
 			isa = PBXGroup;
 			children = (
+				D14FA7311F61472400545540 /* mac_mindnode_rebought_receipt */,
 				D1D6F5441F5D8DF700E86FE1 /* hannes_mac_mindnode_Info.plist */,
 				D1D6F5461F5D8DF700E86FE1 /* hannes_mac_mindnode_receipt */,
 				D1D6F5471F5D8DF700E86FE1 /* hannes_mac_mindnode_pro_Info.plist */,
@@ -658,6 +662,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D19095A31F6000DE0095729B /* hannes_mac_mindnode_pro_receipt in Resources */,
+				D14FA7331F61476800545540 /* mac_mindnode_rebought_receipt in Resources */,
 				D19095A21F6000DE0095729B /* hannes_mac_mindnode_pro_Info.plist in Resources */,
 				D19095A11F6000DE0095729B /* hannes_mac_mindnode_receipt in Resources */,
 				D19095A41F6000DE0095729B /* not_a_receipt in Resources */,
@@ -670,6 +675,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D19095CB1F601E5D0095729B /* hannes_mac_mindnode_pro_receipt in Resources */,
+				D14FA7321F61476700545540 /* mac_mindnode_rebought_receipt in Resources */,
 				D19095CA1F601E5D0095729B /* hannes_mac_mindnode_pro_Info.plist in Resources */,
 				D19095C91F601E5D0095729B /* hannes_mac_mindnode_receipt in Resources */,
 				D19095CC1F601E5D0095729B /* not_a_receipt in Resources */,

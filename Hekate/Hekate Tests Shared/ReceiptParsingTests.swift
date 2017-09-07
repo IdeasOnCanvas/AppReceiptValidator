@@ -64,6 +64,33 @@ class ReceiptParsingTests: XCTestCase {
         XCTAssertEqual(receipt, expected)
     }
 
+    func testCustomerReceiptParsing() {
+        // "Receipt von einem User der gestern gekauft hat nachdem er vor 2 Jahren einen Refund von Apple requested hat. Könnte also spannend sein"
+        guard let data = assertTestAsset(filename: "mac_mindnode_rebought_receipt") else {
+            return
+        }
+        let expected = ParsedReceipt(
+            bundleIdentifier: "com.ideasoncanvas.MindNodeMac",
+            bundleIdData: Data(base64Encoded: "DB1jb20uaWRlYXNvbmNhbnZhcy5NaW5kTm9kZU1hYw==")!,
+            appVersion: "2.5.5",
+            opaqueValue: Data(base64Encoded: "VzgcF3QeYC6RGBfGC5rP+A=="),
+            sha1Hash: Data(base64Encoded: "fqauHWwZo7XrxhQJcksK447Fzvg="),
+            originalAppVersion: "2.5.5",
+            receiptCreationDate: Date.demoDate(string: "2017-09-04T14:45:30Z"),
+            expirationDate: nil,
+            inAppPurchaseReceipts: []
+        )
+        let result = receiptValidator.validateReceipt {
+            $0.receiptOrigin = .data(data)
+            $0.validateHash = false // the original device identifier is unknown
+        }
+        guard let receipt = result.receipt else {
+            XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")
+            return
+        }
+        XCTAssertEqual(receipt, expected)
+    }
+
     func testMindNodeMacReceiptParsing() {
         guard let data = assertTestAsset(filename: "hannes_mac_mindnode_receipt") else {
             return
