@@ -8,15 +8,48 @@
 
 import Foundation
 
+/// Receipts are made up of a number of fields. This represents all fields that are available locally when parsing a receipt file in ASN.1 form.
 public struct ParsedReceipt {
+    /// The app’s bundle identifier. This corresponds to the value of `CFBundleIdentifier` in the Info.plist file.
+    /// Use this value to validate if the receipt was indeed generated for your app. ASN.1 Field Type 2.
     public var bundleIdentifier: String?
+
+    /// The app’s bundle identifier as bytes.
     public var bundleIdData: Data?
+
+    /// The app’s version number.
+    /// This corresponds to the value of `CFBundleVersion` (in iOS) or `CFBundleShortVersionString` (in macOS) in the Info.plist.
+    /// ASN.1 Field Type 3.
     public var appVersion: String?
+
+    /// An opaque value used, with other data, to compute the SHA-1 hash during validation. ASN.1 Field Type 4.
     public var opaqueValue: Data?
+
+    /// A SHA-1 hash, used to validate the receipt. ASN.1 Field Type 5.
     public var sha1Hash: Data?
+
+    /// The version of the app that was originally purchased.
+    /// This corresponds to the value of `CFBundleVersion` (in iOS) or `CFBundleShortVersionString` (in macOS) in the Info.plist
+    /// file when the purchase was originally made. ASN.1 Field Type 19.
+    /// - Note: In the sandbox environment, the value of this field is always “1.0”.
     public var originalAppVersion: String?
+
+    /// The date when the app receipt was created. ASN.1 Field Type 12.
+    /// - Note: When validating a receipt, use this date to validate the receipt’s signature.
     public var receiptCreationDate: Date?
+
+    /// The date that the app receipt expires. ASN.1 Field Type 21.
+    /// - Note: This key is present only for apps purchased through the Volume Purchase Program. If this key is not present, the receipt does not expire.
+    /// - Note: When validating a receipt, compare this date to the current date to determine whether the receipt is expired. Do not try to use this date to calculate any other information, such as the time remaining before expiration.
     public var expirationDate: Date?
+
+    /// The receipt for a in-app purchases. ASN.1 Field Type 17.
+    /// - Note: In the ASN.1 file, there are multiple fields that all have type 17, each of which contains a single in-app purchase receipt.
+    /// - Note: The in-app purchase receipt for a consumable product is added to the receipt when the purchase is made.
+    ///         It is kept in the receipt until your app finishes that transaction.
+    ///         After that point, it is removed from the receipt the next time the receipt is updated - for example,
+    ///         when the user makes another purchase or if your app explicitly refreshes the receipt.
+    ///         The in-app purchase receipt for a non-consumable product, auto-renewable subscription, non-renewing subscription, or free subscription remains in the receipt indefinitely.
     public var inAppPurchaseReceipts: [ParsedInAppPurchaseReceipt] = []
 
     public init(bundleIdentifier: String?, bundleIdData: Data?, appVersion: String?, opaqueValue: Data?, sha1Hash: Data?, originalAppVersion: String?, receiptCreationDate: Date?, expirationDate: Date?, inAppPurchaseReceipts: [ParsedInAppPurchaseReceipt]) {
@@ -58,19 +91,79 @@ extension ParsedReceipt: CustomStringConvertible {
     }
 }
 
-
 // MARK: - ParsedInAppPurchaseReceipt
 
+/// An In-App-Purchase Receipt as Parsed from a receipt file.
+///
+/// Documentation was obtained from: https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Chapters/ReceiptFields.html
+///
+/// The following fields are part of JSON communication but not part of the parsed version (matched Sept 2017):
+/// - Subscription Expiration Intent
+/// - Subscription Retry Flag
+/// - Subscription Trial Period
+/// - Cancellation Reason
+/// - App Item ID
+/// - External Version Identifier
+/// - Subscription Auto Renew Status
+/// - Subscription Auto Renew Preference
+/// - Subscription Price Consent Status
 public struct ParsedInAppPurchaseReceipt {
+    /// The number of items purchased. ASN.1 Field Type 1701.
+    /// This value corresponds to the quantity property of the `SKPayment` object stored in the transaction’s payment property.
     public var quantity: Int?
+
+    /// The product identifier of the item that was purchased. ASN.1 Field Type 1702.
+    /// This value corresponds to the `productIdentifier` property of the `SKPayment` object stored in the transaction’s `payment` property.
     public var productIdentifier: String?
+
+    /// The transaction identifier of the item that was purchased. This value corresponds to the transaction’s `transactionIdentifier` property. ASN.1 Field Type 1703.
+    /// - Note: For a transaction that restores a previous transaction, this value is different from the transaction identifier
+    ///   of the original purchase transaction. In an auto-renewable subscription receipt, a new value for the transaction identifier
+    ///   is generated every time the subscription automatically renews or is restored on a new device.
     public var transactionIdentifier: String?
+
+    /// For a **transaction that restores a previous transaction**, the transaction identifier of the original transaction.
+    /// **Otherwise**, identical to the transaction identifier.
+    /// This value corresponds to the original transaction’s `transactionIdentifier` property. ASN.1 Field Type 1705.
+    /// - Note: This value is the same for all receipts that have been generated for a specific subscription.
+    ///         This value is useful for relating together multiple iOS 6 style transaction receipts for the same individual customer’s subscription.
     public var originalTransactionIdentifier: String?
+
+    /// The date and time that the item was purchased. This value corresponds to the transaction’s `transactionDate` property. ASN.1 Field Type 1704.
+    ///
+    /// For a **transaction that restores a previous transaction**, the purchase date is the same as the original purchase date.
+    /// Use Original Purchase Date to get the date of the original transaction.
+    ///
+    /// In an **auto-renewable subscription receipt**, the purchase date is the date when the subscription was either purchased or renewed (with or without a lapse).
+    ///
+    /// For an **automatic renewal** that occurs on the expiration date of the current period, the purchase date is the start date of the next period,
+    /// which is identical to the end date of the current period.
     public var purchaseDate: Date?
+
+    /// For a **transaction that restores a previous transaction**, the date of the original transaction.
+    /// This value corresponds to the original transaction’s `transactionDate` property. ASN.1 Field Type 1706.
+    ///
+    /// In an **auto-renewable subscription receipt**, this indicates the beginning of the subscription period, even if the subscription has been renewed.
     public var originalPurchaseDate: Date?
+
+    /// This key is only present for **auto-renewable subscription receipts**. ASN.1 Field Type 1708.
+    ///
+    /// Use this value to identify the date when the subscription will renew or expire, to determine if a customer should have access
+    /// to content or service. After validating the latest receipt, if the subscription expiration date for the latest renewal
+    /// transaction is a past date, it is safe to assume that the subscription has expired.
     public var subscriptionExpirationDate: Date?
+
+    /// For a **transaction that was canceled by Apple customer support**, the time and date of the cancellation.
+    /// For an **auto-renewable subscription plan that was upgraded**, the time and date of the upgrade transaction.
+    /// ASN.1 Field Type 1712.
+    /// - Note: A canceled in-app purchase remains in the receipt indefinitely. Only applicable if the refund was for a non-consumable product,
+    ///         an auto-renewable subscription, a non-renewing subscription, or for a free subscription.
     public var cancellationDate: Date?
+
+    /// The primary key for identifying subscription purchases. ASN.1 Field Type 1711.
+    /// This value is a unique ID that identifies purchase events across devices, including subscription renewal purchase events.
     public var webOrderLineItemId: Int?
+
     public init(quantity: Int?, productIdentifier: String?, transactionIdentifier: String?, originalTransactionIdentifier: String?, purchaseDate: Date?, originalPurchaseDate: Date?, subscriptionExpirationDate: Date?, cancellationDate: Date?, webOrderLineItemId: Int?) {
         self.quantity = quantity
         self.productIdentifier = productIdentifier
@@ -112,6 +205,7 @@ extension ParsedInAppPurchaseReceipt: CustomStringConvertible {
 
 // MARK: - Custom String Conversion
 
+/// Private Helper for formatting the Receipts descriptions
 private struct StringFormatter {
     let fallback = "nil"
 
