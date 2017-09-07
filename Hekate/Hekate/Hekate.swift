@@ -31,7 +31,7 @@ public struct ReceiptValidator {
                 let appleRootCertificateData = try parameters.loadAppleRootCertificateData()
                 try checkSignatureAuthenticity(pkcs7: receiptContainer, appleRootCertificateData: appleRootCertificateData)
             }
-            let parsedReceipt = try parse(pkcs7Container: receiptContainer)
+            let parsedReceipt = try parse(pkcs7: receiptContainer)
 
             if parameters.validateHash {
                 let deviceIdentifierData = try parameters.getDeviceIdentifierData()
@@ -88,16 +88,16 @@ public struct ReceiptValidator {
 // MARK: - PKCS7 Extraction
 
 private extension ReceiptValidator {
-    func extractPKCS7Container(data: Data) throws -> UnsafeMutablePointer<PKCS7> {
-        let receiptBIO = BIO_new(BIO_s_mem())
-        data.withUnsafeBytes { bytes -> Void in
-            BIO_write(receiptBIO, bytes, Int32(data.count))
-        }
-        let receiptPKCS7Container = d2i_PKCS7_bio(receiptBIO, nil)
+    func extractPKCS7Container(data: Data) throws -> PKCS7Wrapper {
+        let receiptBIO = BIOWrapper(data: data)
 
-        guard receiptPKCS7Container != nil else {
+        let receiptPKCS7Container = d2i_PKCS7_bio(receiptBIO.bio, nil)
+
+        guard let nonNullReceiptPKCS7Container = receiptPKCS7Container else {
             throw ReceiptValidationError.emptyReceiptContents
         }
+
+        let pkcs7Wrapper = PKCS7Wrapper(pkcs7: nonNullReceiptPKCS7Container)
 
         let pkcs7DataTypeCode = OBJ_obj2nid(pkcs7_d_sign(receiptPKCS7Container).pointee.contents.pointee.type)
 
@@ -105,39 +105,43 @@ private extension ReceiptValidator {
             throw ReceiptValidationError.emptyReceiptContents
         }
 
-        return receiptPKCS7Container!
+        return pkcs7Wrapper
     }
 }
 
 // MARK: - PKCS7 Signature checking
 
 private extension ReceiptValidator {
-    func checkSignaturePresence(pkcs7: UnsafeMutablePointer<PKCS7>) throws {
-        let pkcs7SignedTypeCode = OBJ_obj2nid(pkcs7.pointee.type)
+    func checkSignaturePresence(pkcs7: PKCS7Wrapper) throws {
+        let pkcs7SignedTypeCode = OBJ_obj2nid(pkcs7.pkcs7.pointee.type)
 
         guard pkcs7SignedTypeCode == NID_pkcs7_signed else {
             throw ReceiptValidationError.receiptNotSigned
         }
     }
 
-    func checkSignatureAuthenticity(pkcs7: UnsafeMutablePointer<PKCS7>, appleRootCertificateData: Data) throws {
-        let appleRootCertificateBIO = BIO_new(BIO_s_mem())
-        appleRootCertificateData.withUnsafeBytes { bytes -> Void in
-            BIO_write(appleRootCertificateBIO, bytes, Int32(appleRootCertificateData.count))
-        }
-        guard let appleRootCertificateX509 = d2i_X509_bio(appleRootCertificateBIO, nil) else {
+    func checkSignatureAuthenticity(pkcs7: PKCS7Wrapper, appleRootCertificateData: Data) throws {
+        let appleRootCertificateBIO = BIOWrapper(data: appleRootCertificateData)
+
+        guard let appleRootCertificateX509 = d2i_X509_bio(appleRootCertificateBIO.bio, nil) else {
             throw ReceiptValidationError.malformedAppleRootCertificate
+        }
+        defer {
+            X509_free(appleRootCertificateX509)
         }
         try verifyAuthenticity(x509Certificate: appleRootCertificateX509, pkcs7: pkcs7)
     }
 
-    private func verifyAuthenticity(x509Certificate: UnsafeMutablePointer<X509>, pkcs7: UnsafeMutablePointer<PKCS7>) throws {
+    private func verifyAuthenticity(x509Certificate: UnsafeMutablePointer<X509>, pkcs7: PKCS7Wrapper) throws {
         let x509CertificateStore = X509_STORE_new()
+        defer {
+            X509_STORE_free(x509CertificateStore)
+        }
         X509_STORE_add_cert(x509CertificateStore, x509Certificate)
 
         OpenSSL_add_all_digests()
 
-        let result = PKCS7_verify(pkcs7, nil, x509CertificateStore, nil, nil, 0)
+        let result = PKCS7_verify(pkcs7.pkcs7, nil, x509CertificateStore, nil, nil, 0)
 
         if result != 1 {
             throw ReceiptValidationError.receiptSignatureInvalid
@@ -149,7 +153,7 @@ private extension ReceiptValidator {
 
 private extension ReceiptValidator {
     // swiftlint:disable:next cyclomatic_complexity function_body_length
-    func parse(pkcs7Container: UnsafeMutablePointer<PKCS7>) throws -> ParsedReceipt {
+    func parse(pkcs7: PKCS7Wrapper) throws -> ParsedReceipt {
         var bundleIdentifier: String?
         var bundleIdData: Data?
         var appVersion: String?
@@ -160,7 +164,7 @@ private extension ReceiptValidator {
         var receiptCreationDate: Date?
         var expirationDate: Date?
 
-        guard let contents = pkcs7Container.pointee.d.sign.pointee.contents, let octets = contents.pointee.d.data else {
+        guard let contents = pkcs7.pkcs7.pointee.d.sign.pointee.contents, let octets = contents.pointee.d.data else {
             throw ReceiptValidationError.malformedReceipt
         }
 
