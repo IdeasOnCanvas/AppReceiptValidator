@@ -8,6 +8,8 @@
 
 import Foundation
 
+/// Describes how to validate a receipt, and how/where to obtain the dependencies (receipt, deviceIdentifier, apple root certificate)
+/// Use .allSteps to initialize the standard parameters.
 public struct ReceiptValidationParameters {
     public var receiptOrigin: ReceiptOrigin = .installedInMainBundle
     public var validateSignaturePresence: Bool = true
@@ -16,11 +18,15 @@ public struct ReceiptValidationParameters {
     public var deviceIdentifier: ReceiptDeviceIdentifier = .installed
     public let rootCertificateOrigin: RootCertificateOrigin = .cerFileInMainBundle
 
+    /// Configure an instance with a block
     public func with(block: (inout ReceiptValidationParameters) -> Void) -> ReceiptValidationParameters {
         var copy = self
         block(&copy)
         return copy
     }
+
+    /// Use .allSteps to initialize
+    private init() {}
 
     public static var allSteps: ReceiptValidationParameters {
         return ReceiptValidationParameters()
