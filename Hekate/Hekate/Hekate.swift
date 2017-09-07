@@ -41,7 +41,14 @@ public struct ReceiptValidator {
             }
             return .success(parsedReceipt)
         } catch {
-            return .error(error as! ReceiptValidationError) // swiftlint:disable:this force_cast
+            guard let receiptValidationError = error as? ReceiptValidationError else {
+                #if DEBUG
+                fatalError("Unexpected error type, expected ReceiptValidationError but was \(error)")
+                #else
+                return .error(ReceiptValidationError.unknown)
+                #endif
+            }
+            return .error(receiptValidationError) // swiftlint:disable:this force_cast
         }
     }
 
@@ -295,4 +302,5 @@ public enum ReceiptValidationError: Int, Error {
     case incorrectHash
     case deviceIdentifierNotDeterminable
     case malformedAppleRootCertificate
+    case unknown
 }
