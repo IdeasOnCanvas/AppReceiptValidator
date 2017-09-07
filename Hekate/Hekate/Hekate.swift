@@ -185,7 +185,7 @@ private extension ReceiptValidator {
                 parsedReceipt.sha1Hash = value.dataValue
             case 17:
                 guard let pointer = value.valuePointer else {
-                    return
+                    break
                 }
                 let iapReceipt = try parseInAppPurchaseReceipt(pointer: pointer, length: value.length)
                 parsedReceipt.inAppPurchaseReceipts.append(iapReceipt)
