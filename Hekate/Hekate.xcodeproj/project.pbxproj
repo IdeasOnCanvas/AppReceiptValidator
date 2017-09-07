@@ -11,6 +11,12 @@
 		777FF412C15A6877A27DE262 /* libPods-Hekate Tests macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E73C5C901768DE64DE3ECF /* libPods-Hekate Tests macOS.a */; };
 		7EFAABB4F7579D8DAB413A85 /* libPods-Hekate Tests iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A82326EB604E9103325912C9 /* libPods-Hekate Tests iOS.a */; };
 		A743EC93F2082E7EBCA498DC /* libPods-Hekate Demo iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A7670E67D6E712EDB0104A /* libPods-Hekate Demo iOS.a */; };
+		D14FA7251F6134FC00545540 /* AutoDiffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA7241F6134FC00545540 /* AutoDiffable.swift */; };
+		D14FA7261F61350F00545540 /* AutoEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA71F1F6134CF00545540 /* AutoEquatable.swift */; };
+		D14FA7271F61351000545540 /* AutoEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA71F1F6134CF00545540 /* AutoEquatable.swift */; };
+		D14FA7281F61351200545540 /* AutoDiffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA7241F6134FC00545540 /* AutoDiffable.swift */; };
+		D14FA7291F61351400545540 /* AutoEquatable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA71E1F6134CF00545540 /* AutoEquatable.generated.swift */; };
+		D14FA72A1F61351500545540 /* AutoEquatable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA71E1F6134CF00545540 /* AutoEquatable.generated.swift */; };
 		D19095841F6000A40095729B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19095831F6000A40095729B /* AppDelegate.swift */; };
 		D19095861F6000A40095729B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19095851F6000A40095729B /* ViewController.swift */; };
 		D19095881F6000A40095729B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D19095871F6000A40095729B /* Assets.xcassets */; };
@@ -115,6 +121,11 @@
 		B8A7670E67D6E712EDB0104A /* libPods-Hekate Demo iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Hekate Demo iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6D797B448B5FB6809BDD61F /* Pods-Hekate Tests iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hekate Tests iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hekate Tests iOS/Pods-Hekate Tests iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		D11616C91F5ED1CA00D966D5 /* Hekate-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hekate-Bridging-Header.h"; sourceTree = "<group>"; };
+		D14FA71E1F6134CF00545540 /* AutoEquatable.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoEquatable.generated.swift; sourceTree = "<group>"; };
+		D14FA71F1F6134CF00545540 /* AutoEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoEquatable.swift; sourceTree = "<group>"; };
+		D14FA7211F6134CF00545540 /* AutoDiffable.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = AutoDiffable.stencil; sourceTree = "<group>"; };
+		D14FA7221F6134CF00545540 /* AutoEquatable.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = AutoEquatable.stencil; sourceTree = "<group>"; };
+		D14FA7241F6134FC00545540 /* AutoDiffable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoDiffable.swift; sourceTree = "<group>"; };
 		D19095811F6000A40095729B /* Hekate Demo macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hekate Demo macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D19095831F6000A40095729B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D19095851F6000A40095729B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +222,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D14FA71B1F6134CF00545540 /* Sourcery */ = {
+			isa = PBXGroup;
+			children = (
+				D14FA7231F6134EC00545540 /* Protocols */,
+				D14FA71D1F6134CF00545540 /* Generated */,
+				D14FA7201F6134CF00545540 /* Templates */,
+			);
+			path = Sourcery;
+			sourceTree = "<group>";
+		};
+		D14FA71D1F6134CF00545540 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				D14FA71E1F6134CF00545540 /* AutoEquatable.generated.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
+		D14FA7201F6134CF00545540 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				D14FA7211F6134CF00545540 /* AutoDiffable.stencil */,
+				D14FA7221F6134CF00545540 /* AutoEquatable.stencil */,
+			);
+			path = Templates;
+			sourceTree = "<group>";
+		};
+		D14FA7231F6134EC00545540 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D14FA71F1F6134CF00545540 /* AutoEquatable.swift */,
+				D14FA7241F6134FC00545540 /* AutoDiffable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		D19095821F6000A40095729B /* Hekate Demo macOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,6 +313,7 @@
 		D1D6F4921F5D67E600E86FE1 = {
 			isa = PBXGroup;
 			children = (
+				D14FA71B1F6134CF00545540 /* Sourcery */,
 				D1D6F4FC1F5D696800E86FE1 /* Hekate */,
 				D1D6F4E51F5D691400E86FE1 /* Hekate Demo iOS */,
 				D19095821F6000A40095729B /* Hekate Demo macOS */,
@@ -980,6 +1028,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1D6F53F1F5D89D000E86FE1 /* Hekate.swift in Sources */,
+				D14FA7271F61351000545540 /* AutoEquatable.swift in Sources */,
+				D14FA7291F61351400545540 /* AutoEquatable.generated.swift in Sources */,
+				D14FA7251F6134FC00545540 /* AutoDiffable.swift in Sources */,
 				D1FE343D1F604F020029576B /* ParsedReceipt.swift in Sources */,
 				D19095C31F6019FC0095729B /* ReceiptValidator+deviceIdentifier iOS.swift in Sources */,
 				D19095BC1F6004D10095729B /* pkcs7_union_accessors.c in Sources */,
@@ -993,7 +1044,10 @@
 			files = (
 				D1D6F5401F5D89D800E86FE1 /* Hekate.swift in Sources */,
 				D1FE343E1F604F020029576B /* ParsedReceipt.swift in Sources */,
+				D14FA72A1F61351500545540 /* AutoEquatable.generated.swift in Sources */,
+				D14FA7281F61351200545540 /* AutoDiffable.swift in Sources */,
 				D19095C01F60158B0095729B /* ReceiptValidator+deviceIdentifier macOS.swift in Sources */,
+				D14FA7261F61350F00545540 /* AutoEquatable.swift in Sources */,
 				D19095BD1F6004D10095729B /* pkcs7_union_accessors.c in Sources */,
 				D1FE34411F604F540029576B /* ReceiptValidationParameters.swift in Sources */,
 			);
