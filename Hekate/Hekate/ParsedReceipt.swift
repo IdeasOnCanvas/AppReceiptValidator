@@ -14,12 +14,12 @@ public struct ParsedReceipt {
     public var appVersion: String?
     public var opaqueValue: Data?
     public var sha1Hash: Data?
-    public var inAppPurchaseReceipts: [ParsedInAppPurchaseReceipt]?
     public var originalAppVersion: String?
     public var receiptCreationDate: Date?
     public var expirationDate: Date?
+    public var inAppPurchaseReceipts: [ParsedInAppPurchaseReceipt] = []
 
-    public init(bundleIdentifier: String?, bundleIdData: Data?, appVersion: String?, opaqueValue: Data?, sha1Hash: Data?, originalAppVersion: String?, receiptCreationDate: Date?, expirationDate: Date?) {
+    public init(bundleIdentifier: String?, bundleIdData: Data?, appVersion: String?, opaqueValue: Data?, sha1Hash: Data?, originalAppVersion: String?, receiptCreationDate: Date?, expirationDate: Date?, inAppPurchaseReceipts: [ParsedInAppPurchaseReceipt]) {
         self.bundleIdentifier = bundleIdentifier
         self.bundleIdData = bundleIdData
         self.appVersion = appVersion
@@ -28,6 +28,7 @@ public struct ParsedReceipt {
         self.originalAppVersion = originalAppVersion
         self.receiptCreationDate = receiptCreationDate
         self.expirationDate = expirationDate
+        self.inAppPurchaseReceipts = inAppPurchaseReceipts
     }
 
     public init() {}

@@ -249,7 +249,8 @@ private extension ReceiptValidator {
                              sha1Hash: sha1Hash,
                              originalAppVersion: originalAppVersion,
                              receiptCreationDate: receiptCreationDate,
-                             expirationDate: expirationDate)
+                             expirationDate: expirationDate,
+                             inAppPurchaseReceipts: inAppPurchaseReceipts)
     }
 
     // swiftlint:disable:next cyclomatic_complexity function_body_length
