@@ -15,7 +15,7 @@ public struct ReceiptValidationParameters {
     public var validateSignaturePresence: Bool = true
     public var validateSignatureAuthenticity: Bool = true
     public var validateHash: Bool = true
-    public var deviceIdentifier: ReceiptDeviceIdentifier = .installed
+    public var deviceIdentifier: ReceiptDeviceIdentifier = .currentDevice
     public let rootCertificateOrigin: RootCertificateOrigin = .cerFileInMainBundle
 
     /// Configure an instance with a block
@@ -59,7 +59,7 @@ public struct ReceiptValidationParameters {
         switch deviceIdentifier {
         case .data(let data):
             return data
-        case .installed:
+        case .currentDevice:
             if let data = ReceiptValidationParameters.installedDeviceIdentifierData {
                 return data
             } else {
@@ -79,7 +79,7 @@ public enum ReceiptOrigin {
 // MARK: - ReceiptDeviceIdentifier
 
 public enum ReceiptDeviceIdentifier {
-    case installed
+    case currentDevice
     case data(Data)
 
     public init?(base64Encoded: String) {
