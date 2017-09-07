@@ -74,6 +74,14 @@ public struct ReceiptValidator {
         // Compare the computed hash with the receipt's hash
         guard computedHashData == receiptHashData else { throw ReceiptValidationError.incorrectHash }
     }
+
+    public static let asn1DateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        return dateFormatter
+    }()
 }
 
 // MARK: - PKCS7 Extraction
@@ -388,19 +396,14 @@ private extension ReceiptValidator {
 
     private func decodeASN1Date(startOfDate datePointer: inout UnsafePointer<UInt8>?, length: Int) -> Date? {
         // Date formatter code from https://www.objc.io/issues/17-security/receipt-validation/#parsing-the-receipt
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"
-        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
 
         if let dateString = decodeASN1String(startOfString: &datePointer, length:length) {
-            return dateFormatter.date(from: dateString)
+            return ReceiptValidator.asn1DateFormatter.date(from: dateString)
         }
 
         return nil
     }
 }
-
 
 // MARK: - ReceiptValidationResult
 
