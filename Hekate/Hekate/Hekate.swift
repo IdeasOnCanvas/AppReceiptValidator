@@ -75,6 +75,7 @@ public struct ReceiptValidator {
         guard computedHashData == receiptHashData else { throw ReceiptValidationError.incorrectHash }
     }
 
+    /// Uses receipt-conform representation of dates like "2017-01-01T12:00:00Z"
     public static let asn1DateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
