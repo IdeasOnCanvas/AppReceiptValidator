@@ -122,12 +122,12 @@
 		ACB3DB3B89FA43C7F87CF0BE /* Pods-Hekate Tests macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hekate Tests macOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hekate Tests macOS/Pods-Hekate Tests macOS.release.xcconfig"; sourceTree = "<group>"; };
 		B8A7670E67D6E712EDB0104A /* libPods-Hekate Demo iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Hekate Demo iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6D797B448B5FB6809BDD61F /* Pods-Hekate Tests iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hekate Tests iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hekate Tests iOS/Pods-Hekate Tests iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		D11616C91F5ED1CA00D966D5 /* Hekate-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hekate-Bridging-Header.h"; sourceTree = "<group>"; };
 		D14FA71E1F6134CF00545540 /* AutoEquatable.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoEquatable.generated.swift; sourceTree = "<group>"; };
 		D14FA71F1F6134CF00545540 /* AutoEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoEquatable.swift; sourceTree = "<group>"; };
 		D14FA7221F6134CF00545540 /* AutoEquatable.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = AutoEquatable.stencil; sourceTree = "<group>"; };
 		D14FA72E1F6143C400545540 /* Date+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Convenience.swift"; sourceTree = "<group>"; };
 		D14FA7311F61472400545540 /* mac_mindnode_rebought_receipt */ = {isa = PBXFileReference; lastKnownFileType = file; path = mac_mindnode_rebought_receipt; sourceTree = "<group>"; };
+		D14FA7361F614C4E00545540 /* Hekate-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hekate-Bridging-Header.h"; sourceTree = "<group>"; };
 		D19095811F6000A40095729B /* Hekate Demo macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hekate Demo macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D19095831F6000A40095729B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D19095851F6000A40095729B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -258,6 +258,15 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		D14FA7341F614A9C00545540 /* OpenSSL */ = {
+			isa = PBXGroup;
+			children = (
+				D19095BB1F6004D10095729B /* pkcs7_union_accessors.c */,
+				D19095BA1F6004D10095729B /* pkcs7_union_accessors.h */,
+			);
+			path = OpenSSL;
+			sourceTree = "<group>";
+		};
 		D19095821F6000A40095729B /* Hekate Demo macOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -355,11 +364,10 @@
 		D1D6F4FC1F5D696800E86FE1 /* Hekate */ = {
 			isa = PBXGroup;
 			children = (
+				D14FA7361F614C4E00545540 /* Hekate-Bridging-Header.h */,
 				D19095C41F601DEA0095729B /* AppleIncRootCertificate.cer */,
-				D11616C91F5ED1CA00D966D5 /* Hekate-Bridging-Header.h */,
+				D14FA7341F614A9C00545540 /* OpenSSL */,
 				D1D6F5271F5D863900E86FE1 /* Supporting Files */,
-				D19095BB1F6004D10095729B /* pkcs7_union_accessors.c */,
-				D19095BA1F6004D10095729B /* pkcs7_union_accessors.h */,
 				D1D6F53E1F5D89D000E86FE1 /* Hekate.swift */,
 				D1FE343C1F604F020029576B /* ParsedReceipt.swift */,
 				D1FE343F1F604F540029576B /* ReceiptValidationParameters.swift */,
