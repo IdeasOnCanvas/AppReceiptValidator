@@ -69,10 +69,10 @@ public struct ReceiptValidator {
         }
         SHA1_Final(&computedHash, &sha1Context)
 
-        let computedHashData = NSData(bytes: &computedHash, length: 20)
+        let computedHashData = Data(bytes: &computedHash, count: 20)
 
         // Compare the computed hash with the receipt's hash
-        guard computedHashData.isEqual(to: receiptHashData as Data) else { throw ReceiptValidationError.incorrectHash }
+        guard computedHashData == receiptHashData else { throw ReceiptValidationError.incorrectHash }
     }
 }
 
@@ -81,7 +81,9 @@ public struct ReceiptValidator {
 private extension ReceiptValidator {
     func extractPKCS7Container(data: Data) throws -> UnsafeMutablePointer<PKCS7> {
         let receiptBIO = BIO_new(BIO_s_mem())
-        BIO_write(receiptBIO, (data as NSData).bytes, Int32(data.count))
+        data.withUnsafeBytes { bytes -> Void in
+            BIO_write(receiptBIO, bytes, Int32(data.count))
+        }
         let receiptPKCS7Container = d2i_PKCS7_bio(receiptBIO, nil)
 
         guard receiptPKCS7Container != nil else {
@@ -111,7 +113,9 @@ private extension ReceiptValidator {
 
     func checkSignatureAuthenticity(pkcs7: UnsafeMutablePointer<PKCS7>, appleRootCertificateData: Data) throws {
         let appleRootCertificateBIO = BIO_new(BIO_s_mem())
-        BIO_write(appleRootCertificateBIO, (appleRootCertificateData as NSData).bytes, Int32(appleRootCertificateData.count))
+        appleRootCertificateData.withUnsafeBytes { bytes -> Void in
+            BIO_write(appleRootCertificateBIO, bytes, Int32(appleRootCertificateData.count))
+        }
         guard let appleRootCertificateX509 = d2i_X509_bio(appleRootCertificateBIO, nil) else {
             throw ReceiptValidationError.malformedAppleRootCertificate
         }
@@ -422,7 +426,9 @@ public enum ReceiptValidationResult {
         }
     }
 }
+
 // MARK: - ReceiptValidationError
+
 public enum ReceiptValidationError: Int, Error {
     case couldNotFindReceipt
     case emptyReceiptContents
