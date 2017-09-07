@@ -115,11 +115,14 @@ extension ParsedInAppPurchaseReceipt: CustomStringConvertible {
 private struct StringFormatter {
     let fallback = "nil"
 
-    func format(_ inAppPurchaseReceipts: [ParsedInAppPurchaseReceipt]?) -> String {
+    func format(_ inAppPurchaseReceipts: [ParsedInAppPurchaseReceipt]?, indentation: String = "    ") -> String {
         guard let inAppPurchaseReceipts = inAppPurchaseReceipts else {
             return fallback
         }
-        return "[\n" + inAppPurchaseReceipts.map({ $0.description }).joined(separator: ",\n") + "\n]"
+        guard !inAppPurchaseReceipts.isEmpty else {
+            return "[]"
+        }
+        return "[\n" + inAppPurchaseReceipts.map({ $0.description.replacingOccurrences(of: "\n", with: "\n" + indentation) }).joined(separator: ",\n") + "\n]"
     }
 
     func format(_ pairs: [(String, String)]) -> String {
@@ -135,8 +138,8 @@ private struct StringFormatter {
         return "\(int)"
     }
 
-    func format(key: String, value: String) -> String {
-        return "\(key): \(value)"
+    func format(key: String, value: String, indentation: String = "    ") -> String {
+        return "\(indentation)\(key): \(value)"
     }
 
     func format(_ data: Data?) -> String {
