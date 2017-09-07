@@ -48,7 +48,7 @@ public struct ReceiptValidator {
                 return .error(ReceiptValidationError.unknown)
                 #endif
             }
-            return .error(receiptValidationError) // swiftlint:disable:this force_cast
+            return .error(receiptValidationError)
         }
     }
 
