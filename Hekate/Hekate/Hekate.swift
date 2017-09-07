@@ -189,7 +189,7 @@ private extension ReceiptValidator {
             case 21:
                 parsedReceipt.expirationDate = value.unwrappedDateValue
             default:
-                print("Unknown attributeType: \(attributeType), length: \(value.length)")
+                print("Unknown receipt attributeType: \(attributeType), length: \(value.length)")
                 break
             }
         }
@@ -219,6 +219,7 @@ private extension ReceiptValidator {
             case 1711:
                 parsedInAppPurchaseReceipt.webOrderLineItemId = value.intValue
             default:
+                print("Unknown inAppPurchaseReceipt attributeType: \(attributeType), length: \(value.length)")
                 break
             }
         }
