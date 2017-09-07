@@ -47,10 +47,27 @@ public func == (lhs: ParsedReceipt, rhs: ParsedReceipt) -> Bool {
         lhs.originalAppVersion == rhs.originalAppVersion &&
         lhs.receiptCreationDate == rhs.receiptCreationDate &&
         lhs.expirationDate == rhs.expirationDate
+
+extension ParsedReceipt: CustomStringConvertible {
+    public var description: String {
+        let formatter = StringFormatter()
+        let props: [(String, String)]  = [
+            ("bundleIdentifier", formatter.format(bundleIdentifier)),
+            ("bundleIdData", formatter.format(bundleIdData)),
+            ("appVersion", formatter.format(appVersion)),
+            ("opaqueValue", formatter.format(opaqueValue)),
+            ("sha1Hash", formatter.format(sha1Hash)),
+            ("originalAppVersion", formatter.format(originalAppVersion)),
+            ("receiptCreationDate", formatter.format(receiptCreationDate)),
+            ("expirationDate", formatter.format(expirationDate)),
+            ("inAppPurchaseReceipts", formatter.format(inAppPurchaseReceipts))
+        ]
+        return "ParsedReceipt(\n" + formatter.format(props) + "\n)"
+    }
 }
 
-// MARK: - ParsedInAppPurchaseReceipt
 
+// MARK: - ParsedInAppPurchaseReceipt
 public struct ParsedInAppPurchaseReceipt {
     public var quantity: Int?
     public var productIdentifier: String?
@@ -61,7 +78,6 @@ public struct ParsedInAppPurchaseReceipt {
     public var subscriptionExpirationDate: Date?
     public var cancellationDate: Date?
     public var webOrderLineItemId: Int?
-
     public init(quantity: Int?, productIdentifier: String?, transactionIdentifier: String?, originalTransactionIdentifier: String?, purchaseDate: Date?, originalPurchaseDate: Date?, subscriptionExpirationDate: Date?, cancellationDate: Date?, webOrderLineItemId: Int?) {
         self.quantity = quantity
         self.productIdentifier = productIdentifier
@@ -91,4 +107,71 @@ public func == (lhs: ParsedInAppPurchaseReceipt, rhs: ParsedInAppPurchaseReceipt
         lhs.subscriptionExpirationDate == rhs.subscriptionExpirationDate &&
         lhs.cancellationDate == rhs.cancellationDate &&
         lhs.webOrderLineItemId == rhs.webOrderLineItemId
+
+// MARK: - CustomStringConvertible
+
+extension ParsedInAppPurchaseReceipt: CustomStringConvertible {
+    public var description: String {
+        let formatter = StringFormatter()
+        let props: [(String, String)]  = [
+            ("quantity", formatter.format(quantity)),
+            ("productIdentifier", formatter.format(productIdentifier)),
+            ("transactionIdentifier", formatter.format(transactionIdentifier)),
+            ("originalTransactionIdentifier", formatter.format(originalTransactionIdentifier)),
+            ("purchaseDate", formatter.format(purchaseDate)),
+            ("originalPurchaseDate", formatter.format(originalPurchaseDate)),
+            ("subscriptionExpirationDate", formatter.format(subscriptionExpirationDate)),
+            ("cancellationDate", formatter.format(cancellationDate)),
+            ("webOrderLineItemId", formatter.format(webOrderLineItemId))
+        ]
+        return "ParsedInAppPurchaseReceipt(\n" + formatter.format(props) + "\n)"
+    }
+}
+
+// MARK: - Custom String Conversion
+
+private struct StringFormatter {
+    let fallback = "nil"
+
+    func format(_ inAppPurchaseReceipts: [ParsedInAppPurchaseReceipt]?) -> String {
+        guard let inAppPurchaseReceipts = inAppPurchaseReceipts else {
+            return fallback
+        }
+        return "[\n" + inAppPurchaseReceipts.map({ $0.description }).joined(separator: ",\n") + "\n]"
+    }
+
+    func format(_ pairs: [(String, String)]) -> String {
+        return pairs.map({ (key, value) -> String in
+            return self.format(key: key, value: value)
+        }).joined(separator: ",\n")
+    }
+
+    func format(_ int: Int?) -> String {
+        guard let int = int else {
+            return fallback
+        }
+        return "\(int)"
+    }
+
+    func format(key: String, value: String) -> String {
+        return "\(key): \(value)"
+    }
+
+    func format(_ data: Data?) -> String {
+        guard let data = data else {
+            return fallback
+        }
+        return data.base64EncodedString()
+    }
+
+    func format(_ date: Date?) -> String {
+        guard let date = date else {
+            return fallback
+        }
+        return ReceiptValidator.asn1DateFormatter.string(from: date)
+    }
+
+    func format(_ string: String?) -> String {
+        return string ?? fallback
+    }
 }
