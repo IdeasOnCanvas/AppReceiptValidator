@@ -17,26 +17,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hekate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztw-nl-Vba">
-                                <rect key="frame" x="160" y="333" width="55" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="ycc-vI-8g6">
+                                <rect key="frame" x="20" y="40" width="335" height="607"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hekate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDJ-Q7-MuR">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="I7S-AU-qti">
+                                        <rect key="frame" x="0.0" y="20.5" width="335" height="536.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="(no data)" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GRW-kL-w14">
+                                        <rect key="frame" x="0.0" y="557" width="335" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ztw-nl-Vba" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="DSb-6i-DR7"/>
-                            <constraint firstItem="ztw-nl-Vba" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="uko-eE-f31"/>
+                            <constraint firstItem="MPn-6g-0qv" firstAttribute="bottom" secondItem="ycc-vI-8g6" secondAttribute="bottom" constant="20" id="J1k-CU-xyi"/>
+                            <constraint firstItem="MPn-6g-0qv" firstAttribute="trailing" secondItem="ycc-vI-8g6" secondAttribute="trailing" constant="20" id="KiK-CX-iz8"/>
+                            <constraint firstItem="ycc-vI-8g6" firstAttribute="leading" secondItem="MPn-6g-0qv" secondAttribute="leading" constant="20" id="ZbF-Cm-dp2"/>
+                            <constraint firstItem="ycc-vI-8g6" firstAttribute="top" secondItem="MPn-6g-0qv" secondAttribute="top" constant="20" id="r2h-em-aKZ"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <edgeInsets key="layoutMargins" top="20" left="20" bottom="20" right="20"/>
+                        <viewLayoutGuide key="safeArea" id="MPn-6g-0qv"/>
                     </view>
                     <connections>
-                        <outlet property="label" destination="ztw-nl-Vba" id="NN7-ZN-FbO"/>
+                        <outlet property="receiptDataTextView" destination="GRW-kL-w14" id="zMl-tu-gie"/>
+                        <outlet property="textView" destination="I7S-AU-qti" id="PPF-3A-8xS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="140" y="132.68365817091455"/>
         </scene>
     </scenes>
 </document>
