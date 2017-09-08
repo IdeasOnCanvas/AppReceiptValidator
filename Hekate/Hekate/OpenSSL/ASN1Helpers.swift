@@ -8,20 +8,34 @@
 
 import Foundation
 
+/// An ASN1 Sequence Object. Of interest are the attributeType and the valueObject.
+/// The attributeType determines how to interpret the valueObject.
+///
+///     +----------------+---------+-----------------+----------------------+------------------------------+
+///     |TYPE = SEQUENCE | LENGTH  |  attributeType  |   attributeVersion   | attributeValue = valueObject |
+///     +----------------+---------+-----------------+----------------------+------------------------------+
 struct ASN1Sequence {
     var attributeType = Int32(0)
     var attributeVersion = Int32(0)
     var valueObject = ASN1Object()
 }
 
+/// An ASN1 Object in the form TLV (Type, Length, Value), where Value is located at the valuePointer.
+///
+///     ↓ pointerBefore            ↓ valuePointer     ↓ pointerAfter
+///     +----------------+---------+------------------+---------------
+///     |type            | length  |   value          |  …
+///     +----------------+---------+------------------+---------------
+///
+/// - Note: This object cannot ensure that it's pointers are safe, guarantee this from the outside.
 struct ASN1Object {
     fileprivate(set) var type = Int32(0)
-    fileprivate(set) var xclass = Int32(0)
     fileprivate(set) var length = 0
+    fileprivate var xclass = Int32(0) // only needed for calling into OpenSSL
+
     fileprivate(set) var pointerBefore: UnsafePointer<UInt8>?
     fileprivate(set) var valuePointer: UnsafePointer<UInt8>?
     fileprivate(set) var pointerAfter: UnsafePointer<UInt8>?
-    fileprivate(set) var dataEndPointer: UnsafePointer<UInt8>?
 
     fileprivate init() {}
 }
@@ -38,7 +52,6 @@ extension ASN1Object {
     static func next(byAdvancingPointer pointer: inout UnsafePointer<UInt8>?, maxLength: Int) -> ASN1Object {
         var objectInfo = ASN1Object()
         objectInfo.pointerBefore = pointer
-        objectInfo.dataEndPointer = pointer?.advanced(by: maxLength)
         ASN1_get_object(&pointer, &objectInfo.length, &objectInfo.type, &objectInfo.xclass, maxLength)
         objectInfo.valuePointer = pointer
         objectInfo.pointerAfter = pointer?.advanced(by: objectInfo.length)
@@ -46,7 +59,7 @@ extension ASN1Object {
     }
 }
 
-// MARK: - ASN1Sequence
+// MARK: - Sequence
 
 extension ASN1Object {
     func sequence(byAdvancingPointer pointer: inout UnsafePointer<UInt8>?, notBeyond limit: UnsafePointer<UInt8>) -> ASN1Sequence? {
@@ -68,10 +81,10 @@ extension ASN1Object {
         }
 
         /// Pointer is now here
-        ///                                                            ↓ (pointer)
-        /// +----------------+---------+---------------+---------------+----------------------+
-        /// |TYPE = SEQUENCE | LENGTH  |   ATTR TYPE   |   ATTR VERS   |      ATTR VALUE      |
-        /// +----------------+---------+---------------+---------------+----------------------+
+        ///                                                                     ↓ (pointer)
+        /// +----------------+---------+-----------------+----------------------+------------------------------+
+        /// |TYPE = SEQUENCE | LENGTH  |  attributeType  |   attributeVersion   | attributeValue = valueObject |
+        /// +----------------+---------+-----------------+----------------------+------------------------------+
         // Zooming in:
         // The value in ATTR VALUE is supposed to be an ASN1_OCTETSTRING object of the following form:
         /// ↓ (pointer)
