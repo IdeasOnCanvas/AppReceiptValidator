@@ -50,4 +50,5 @@ struct HekateDemoViewModel {
         lastReceiptData = ReceiptOrigin.installedInMainBundle.loadData()
         lastValidationResult = LocalReceiptValidator().validateReceipt(parameters: ReceiptValidationParameters.allSteps)
     }
+
 }
