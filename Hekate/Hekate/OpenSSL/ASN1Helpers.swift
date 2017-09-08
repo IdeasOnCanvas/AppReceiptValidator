@@ -59,10 +59,18 @@ extension ASN1Object {
     }
 }
 
+// MARK: - Set
+
+extension ASN1Object {
+    var isOfASN1SetType: Bool {
+        return type == V_ASN1_SET
+    }
+}
+
 // MARK: - Sequence
 
 extension ASN1Object {
-    func sequence(byAdvancingPointer pointer: inout UnsafePointer<UInt8>?, notBeyond limit: UnsafePointer<UInt8>) -> ASN1Sequence? {
+    func sequenceValue(byAdvancingPointer pointer: inout UnsafePointer<UInt8>?, notBeyond limit: UnsafePointer<UInt8>) -> ASN1Sequence? {
         // ASN1 Object type must be an ASN1 Sequence
         guard type == V_ASN1_SEQUENCE else {
             return nil

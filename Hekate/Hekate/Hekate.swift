@@ -248,10 +248,8 @@ private extension ReceiptValidator {
         var pointer: UnsafePointer<UInt8>? = initialPointer
         let limit = initialPointer.advanced(by: length)
 
-        let set = ASN1Object.next(byAdvancingPointer: &pointer, notBeyond: limit)
-
-        // Payload must be an ASN1 Set
-        guard set.type == V_ASN1_SET else {
+        /// Make sure we're pointing to an ASN1 Set, and move the pointer forward
+        guard ASN1Object.next(byAdvancingPointer: &pointer, notBeyond: limit).isOfASN1SetType else {
             throw ReceiptValidationError.malformedReceipt
         }
 
@@ -259,17 +257,18 @@ private extension ReceiptValidator {
 
         // Step through payload (ASN1 Set) and parse each ASN1 Sequence within (ASN1 Sets contain one or more ASN1 Sequences)
         while pointer != nil && pointer! < limit {
-            // Get next ASN1 Object. Parses length and type, and moves the pointer further
+            // Get next ASN1 Object. Parses length and type, and moves the pointer forward
             let sequenceObject = ASN1Object.next(byAdvancingPointer: &pointer, notBeyond: limit)
 
             // Attempt to interpret it as a ASN1 Sequence
-            guard let sequence = sequenceObject.sequence(byAdvancingPointer: &pointer, notBeyond: limit) else {
+            guard let sequence = sequenceObject.sequenceValue(byAdvancingPointer: &pointer, notBeyond: limit) else {
                 throw ReceiptValidationError.malformedReceipt
             }
 
             // Extract and assign value from the current sequence
             try valueAttributeAction(sequence.attributeType, sequence.valueObject)
 
+            // move pointer to end of current sequence
             pointer = sequenceObject.pointerAfter
         }
     }
