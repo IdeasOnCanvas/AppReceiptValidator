@@ -11,6 +11,7 @@ import StoreKit
 import UIKit
 
 class ViewController: UIViewController {
+    var storeKitHelper = StoreKitHelper()
 
     var viewModel = HekateDemoViewModel() {
         didSet {
@@ -24,11 +25,21 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.update()
+        storeKitHelper.refreshCompletedAction = { [weak self] _ in
+            self?.updateViewModel()
+        }
+        updateViewModel()
     }
 
     private func updateViewFromViewModel() {
         textView.text = viewModel.descriptionText
         receiptDataTextView.text = viewModel.receiptDataBase64Text
+    }
+    private func updateViewModel() {
+        viewModel.update()
+    }
+
+    @IBAction func refreshReceiptFromStoreTapped() {
+        storeKitHelper.refresh()
     }
 }
