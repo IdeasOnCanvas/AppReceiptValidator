@@ -11,6 +11,7 @@ import StoreKit
 
 /// Apple guide: https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Introduction.html
 /// Original inspiration for the Code https://github.com/andrewcbancroft/SwiftyLocalReceiptValidator/blob/master/ReceiptValidator.swift
+/// More: See README.md
 
 /// - Note: If on iOS, use this only on Main Queue, because UIDevice is called
 public struct LocalReceiptValidator {
