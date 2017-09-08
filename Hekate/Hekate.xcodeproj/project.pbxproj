@@ -23,6 +23,7 @@
 		D14FA7391F6181D000545540 /* OpenSSLWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA7371F6181C700545540 /* OpenSSLWrappers.swift */; };
 		D14FA73B1F618B0100545540 /* ASN1Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA73A1F618B0100545540 /* ASN1Helpers.swift */; };
 		D14FA73C1F618B0100545540 /* ASN1Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA73A1F618B0100545540 /* ASN1Helpers.swift */; };
+		D15358EF1F62D2C100F297D0 /* Hekate_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D1D6F4B51F5D684C00E86FE1 /* Hekate_iOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D19095841F6000A40095729B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19095831F6000A40095729B /* AppDelegate.swift */; };
 		D19095861F6000A40095729B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19095851F6000A40095729B /* ViewController.swift */; };
 		D19095881F6000A40095729B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D19095871F6000A40095729B /* Assets.xcassets */; };
@@ -103,6 +104,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				D15358EF1F62D2C100F297D0 /* Hekate_iOS.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
