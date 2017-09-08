@@ -1,5 +1,5 @@
 //
-//  HekateTests.swift
+//  LocalReceiptValidationTests.swift
 //  Hekate_macOSTests
 //
 //  Created by Hannes Oud on 04.09.17.
@@ -14,8 +14,8 @@ import Hekate_macOS
 
 import XCTest
 
-class ReceiptParsingTests: XCTestCase {
-    var receiptValidator = ReceiptValidator()
+class LocalReceiptValidationTests: XCTestCase {
+    var receiptValidator = LocalReceiptValidator()
 
     let exampleDeviceIdentifier = ReceiptDeviceIdentifier(base64Encoded: "bEAItZRe")!
 
@@ -91,7 +91,7 @@ class ReceiptParsingTests: XCTestCase {
         XCTAssertEqual(receipt, expected)
     }
 
-    func testMindNodeMacReceiptParsing() {
+    func testMindNodeMacReceiptParsingWithFullValidation() {
         guard let data = assertTestAsset(filename: "hannes_mac_mindnode_receipt") else {
             return
         }
@@ -117,4 +117,5 @@ class ReceiptParsingTests: XCTestCase {
         print(receipt)
         XCTAssertEqual(receipt, expected)
     }
+
 }

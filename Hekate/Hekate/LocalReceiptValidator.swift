@@ -1,5 +1,5 @@
 //
-//  Hekate.swift
+//  LocalReceiptValidator.swift
 //  Hekate iOS
 //
 //  Created by Hannes Oud on 04.09.17.
@@ -9,10 +9,11 @@
 import Foundation
 import StoreKit
 
-// Original inspiration https://github.com/andrewcbancroft/SwiftyLocalReceiptValidator/blob/master/ReceiptValidator.swift
+/// Apple guide: https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Introduction.html
+/// Original inspiration for the Code https://github.com/andrewcbancroft/SwiftyLocalReceiptValidator/blob/master/ReceiptValidator.swift
 
 /// - Note: If on iOS, use this only on Main Queue, because UIDevice is called
-public struct ReceiptValidator {
+public struct LocalReceiptValidator {
     public init() {}
 
     /// Validates a local receipt and returns the result using the parameters `ReceiptValidationParameters.allSteps`, which can be furhter configured in the passed block.
@@ -98,7 +99,7 @@ public struct ReceiptValidator {
 
 // MARK: - PKCS7 Extraction
 
-private extension ReceiptValidator {
+private extension LocalReceiptValidator {
     func extractPKCS7Container(data: Data) throws -> PKCS7Wrapper {
         let receiptBIO = BIOWrapper(data: data)
 
@@ -122,7 +123,7 @@ private extension ReceiptValidator {
 
 // MARK: - PKCS7 Signature checking
 
-private extension ReceiptValidator {
+private extension LocalReceiptValidator {
     func checkSignaturePresence(pkcs7: PKCS7Wrapper) throws {
         let pkcs7SignedTypeCode = OBJ_obj2nid(pkcs7.pkcs7.pointee.type)
 
@@ -162,7 +163,7 @@ private extension ReceiptValidator {
 
 // MARK: - Parsing of properties
 
-private extension ReceiptValidator {
+private extension LocalReceiptValidator {
     // swiftlint:disable:next cyclomatic_complexity
     func parseReceipt(pkcs7: PKCS7Wrapper) throws -> ParsedReceipt {
         guard let contents = pkcs7.pkcs7.pointee.d.sign.pointee.contents, let octets = contents.pointee.d.data else {
@@ -202,6 +203,7 @@ private extension ReceiptValidator {
                 if let stringValue = value.unwrappedStringValue {
                     print("String Value: \(stringValue)")
                 }
+                /// See ParsedReceipt.swift for details and a link to Apple reference
                 // Unofficial list found (not necessarily complete):
                 // - 18: some date in the past
                 // - 8: some date in the past, same as receiptCreationDate possibly
@@ -237,6 +239,7 @@ private extension ReceiptValidator {
             case 1711:
                 parsedInAppPurchaseReceipt.webOrderLineItemId = value.intValue
             default:
+                /// See ParsedReceipt.swift for details and a link to Apple reference
                 print("Unknown inAppPurchaseReceipt attributeType: \(attributeType), length: \(value.length)")
                 break
             }

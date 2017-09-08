@@ -151,7 +151,7 @@ extension ASN1Object {
         guard let string = stringValue else {
             return nil
         }
-        return ReceiptValidator.asn1DateFormatter.date(from: string)
+        return LocalReceiptValidator.asn1DateFormatter.date(from: string)
     }
 }
 

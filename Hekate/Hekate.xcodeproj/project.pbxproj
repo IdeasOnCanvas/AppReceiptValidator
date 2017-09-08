@@ -48,15 +48,15 @@
 		D19095CA1F601E5D0095729B /* hannes_mac_mindnode_pro_Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1D6F5471F5D8DF700E86FE1 /* hannes_mac_mindnode_pro_Info.plist */; };
 		D19095CB1F601E5D0095729B /* hannes_mac_mindnode_pro_receipt in Resources */ = {isa = PBXBuildFile; fileRef = D1D6F5451F5D8DF700E86FE1 /* hannes_mac_mindnode_pro_receipt */; };
 		D19095CC1F601E5D0095729B /* not_a_receipt in Resources */ = {isa = PBXBuildFile; fileRef = D1D6F54F1F5D9E8D00E86FE1 /* not_a_receipt */; };
-		D19095CD1F601E960095729B /* ReceiptParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F5411F5D8A3800E86FE1 /* ReceiptParsingTests.swift */; };
-		D19095CE1F601E980095729B /* ReceiptParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F5411F5D8A3800E86FE1 /* ReceiptParsingTests.swift */; };
+		D19095CD1F601E960095729B /* LocalReceiptValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F5411F5D8A3800E86FE1 /* LocalReceiptValidationTests.swift */; };
+		D19095CE1F601E980095729B /* LocalReceiptValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F5411F5D8A3800E86FE1 /* LocalReceiptValidationTests.swift */; };
 		D1D6F4E71F5D691400E86FE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F4E61F5D691400E86FE1 /* AppDelegate.swift */; };
 		D1D6F4E91F5D691400E86FE1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F4E81F5D691400E86FE1 /* ViewController.swift */; };
 		D1D6F4EC1F5D691400E86FE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1D6F4EA1F5D691400E86FE1 /* Main.storyboard */; };
 		D1D6F4EE1F5D691400E86FE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1D6F4ED1F5D691400E86FE1 /* Assets.xcassets */; };
 		D1D6F4F11F5D691400E86FE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1D6F4EF1F5D691400E86FE1 /* LaunchScreen.storyboard */; };
-		D1D6F53F1F5D89D000E86FE1 /* Hekate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F53E1F5D89D000E86FE1 /* Hekate.swift */; };
-		D1D6F5401F5D89D800E86FE1 /* Hekate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F53E1F5D89D000E86FE1 /* Hekate.swift */; };
+		D1D6F53F1F5D89D000E86FE1 /* LocalReceiptValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F53E1F5D89D000E86FE1 /* LocalReceiptValidator.swift */; };
+		D1D6F5401F5D89D800E86FE1 /* LocalReceiptValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F53E1F5D89D000E86FE1 /* LocalReceiptValidator.swift */; };
 		D1FE343D1F604F020029576B /* ParsedReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FE343C1F604F020029576B /* ParsedReceipt.swift */; };
 		D1FE343E1F604F020029576B /* ParsedReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FE343C1F604F020029576B /* ParsedReceipt.swift */; };
 		D1FE34401F604F540029576B /* ReceiptValidationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FE343F1F604F540029576B /* ReceiptValidationParameters.swift */; };
@@ -161,8 +161,8 @@
 		D1D6F4F21F5D691400E86FE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1D6F4FE1F5D696800E86FE1 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
 		D1D6F5221F5D859100E86FE1 /* Info-macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-macOS.plist"; sourceTree = "<group>"; };
-		D1D6F53E1F5D89D000E86FE1 /* Hekate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hekate.swift; sourceTree = "<group>"; };
-		D1D6F5411F5D8A3800E86FE1 /* ReceiptParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptParsingTests.swift; sourceTree = "<group>"; };
+		D1D6F53E1F5D89D000E86FE1 /* LocalReceiptValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalReceiptValidator.swift; sourceTree = "<group>"; };
+		D1D6F5411F5D8A3800E86FE1 /* LocalReceiptValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalReceiptValidationTests.swift; sourceTree = "<group>"; };
 		D1D6F5441F5D8DF700E86FE1 /* hannes_mac_mindnode_Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = hannes_mac_mindnode_Info.plist; sourceTree = "<group>"; };
 		D1D6F5451F5D8DF700E86FE1 /* hannes_mac_mindnode_pro_receipt */ = {isa = PBXFileReference; lastKnownFileType = file; path = hannes_mac_mindnode_pro_receipt; sourceTree = "<group>"; };
 		D1D6F5461F5D8DF700E86FE1 /* hannes_mac_mindnode_receipt */ = {isa = PBXFileReference; lastKnownFileType = file; path = hannes_mac_mindnode_receipt; sourceTree = "<group>"; };
@@ -307,7 +307,7 @@
 		D19095B61F6001C20095729B /* Hekate Tests Shared */ = {
 			isa = PBXGroup;
 			children = (
-				D1D6F5411F5D8A3800E86FE1 /* ReceiptParsingTests.swift */,
+				D1D6F5411F5D8A3800E86FE1 /* LocalReceiptValidationTests.swift */,
 				D1D6F5481F5D9B1100E86FE1 /* Tools */,
 				D1D6F5431F5D8DBC00E86FE1 /* Test Assets */,
 			);
@@ -376,7 +376,7 @@
 				D19095C41F601DEA0095729B /* AppleIncRootCertificate.cer */,
 				D14FA7341F614A9C00545540 /* OpenSSL */,
 				D1D6F5271F5D863900E86FE1 /* Supporting Files */,
-				D1D6F53E1F5D89D000E86FE1 /* Hekate.swift */,
+				D1D6F53E1F5D89D000E86FE1 /* LocalReceiptValidator.swift */,
 				D1FE343C1F604F020029576B /* ParsedReceipt.swift */,
 				D1FE343F1F604F540029576B /* ReceiptValidationParameters.swift */,
 				D19095BF1F60158B0095729B /* ReceiptValidationParameters+deviceIdentifier macOS.swift */,
@@ -1030,7 +1030,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D190959F1F6000DE0095729B /* TestAssetLoading.swift in Sources */,
-				D19095CD1F601E960095729B /* ReceiptParsingTests.swift in Sources */,
+				D19095CD1F601E960095729B /* LocalReceiptValidationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1039,7 +1039,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D19095C71F601E580095729B /* TestAssetLoading.swift in Sources */,
-				D19095CE1F601E980095729B /* ReceiptParsingTests.swift in Sources */,
+				D19095CE1F601E980095729B /* LocalReceiptValidationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1047,7 +1047,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1D6F53F1F5D89D000E86FE1 /* Hekate.swift in Sources */,
+				D1D6F53F1F5D89D000E86FE1 /* LocalReceiptValidator.swift in Sources */,
 				D14FA7271F61351000545540 /* AutoEquatable.swift in Sources */,
 				D14FA7291F61351400545540 /* AutoEquatable.generated.swift in Sources */,
 				D1FE343D1F604F020029576B /* ParsedReceipt.swift in Sources */,
@@ -1064,7 +1064,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1D6F5401F5D89D800E86FE1 /* Hekate.swift in Sources */,
+				D1D6F5401F5D89D800E86FE1 /* LocalReceiptValidator.swift in Sources */,
 				D1FE343E1F604F020029576B /* ParsedReceipt.swift in Sources */,
 				D14FA72A1F61351500545540 /* AutoEquatable.generated.swift in Sources */,
 				D19095C01F60158B0095729B /* ReceiptValidationParameters+deviceIdentifier macOS.swift in Sources */,

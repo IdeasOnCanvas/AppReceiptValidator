@@ -9,6 +9,8 @@
 import Foundation
 
 /// Receipts are made up of a number of fields. This represents all fields that are available locally when parsing a receipt file in ASN.1 form.
+///
+/// See [Apple Reference](https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Chapters/ReceiptFields.html)
 public struct ParsedReceipt {
     /// The app’s bundle identifier. This corresponds to the value of `CFBundleIdentifier` in the Info.plist file.
     /// Use this value to validate if the receipt was indeed generated for your app. ASN.1 Field Type 2.
@@ -247,7 +249,7 @@ private struct StringFormatter {
         guard let date = date else {
             return fallback
         }
-        return ReceiptValidator.asn1DateFormatter.string(from: date)
+        return LocalReceiptValidator.asn1DateFormatter.string(from: date)
     }
 
     func format(_ string: String?) -> String {
