@@ -169,6 +169,7 @@ public struct ParsedInAppPurchaseReceipt {
     /// This value is a unique ID that identifies purchase events across devices, including subscription renewal purchase events.
     public internal(set) var webOrderLineItemId: Int?
 
+    /// For documentation see ParsedInAppPurchaseReceipt itself.
     public init(quantity: Int?, productIdentifier: String?, transactionIdentifier: String?, originalTransactionIdentifier: String?, purchaseDate: Date?, originalPurchaseDate: Date?, subscriptionExpirationDate: Date?, cancellationDate: Date?, webOrderLineItemId: Int?) {
         self.quantity = quantity
         self.productIdentifier = productIdentifier
