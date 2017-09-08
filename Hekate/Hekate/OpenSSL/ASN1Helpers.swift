@@ -41,15 +41,17 @@ struct ASN1Object {
 }
 
 extension ASN1Object {
+    /// Reads the TLV tuple using OpenSSL, and advances the Pointer to the Value part.
+    ///
+    /// - Parameters:
+    ///   - pointer: pointer to the begin of the Type
+    ///   - limit: pointer to the end of the payload of interest (passed to OpenSSL)
+    /// - Returns: The type, length and pointers to value begin and end are returned as an ASN1Object.
     static func next(byAdvancingPointer pointer: inout UnsafePointer<UInt8>?, notBeyond limit: UnsafePointer<UInt8>) -> ASN1Object {
         guard let nonNilPointer = pointer else {
-            let object = ASN1Object()
-            return object
+            return ASN1Object()
         }
-        return ASN1Object.next(byAdvancingPointer: &pointer, maxLength: nonNilPointer.distance(to: limit))
-    }
-
-    static func next(byAdvancingPointer pointer: inout UnsafePointer<UInt8>?, maxLength: Int) -> ASN1Object {
+        let maxLength = nonNilPointer.distance(to: limit)
         var objectInfo = ASN1Object()
         objectInfo.pointerBefore = pointer
         ASN1_get_object(&pointer, &objectInfo.length, &objectInfo.type, &objectInfo.xclass, maxLength)
@@ -62,6 +64,7 @@ extension ASN1Object {
 // MARK: - Set
 
 extension ASN1Object {
+    /// true if it is an ASN1 Set
     var isOfASN1SetType: Bool {
         return type == V_ASN1_SET
     }
@@ -70,6 +73,8 @@ extension ASN1Object {
 // MARK: - Sequence
 
 extension ASN1Object {
+
+    /// Parses a sequence and it's value container, moves the pointer to the attribute value's value portion.
     func sequenceValue(byAdvancingPointer pointer: inout UnsafePointer<UInt8>?, notBeyond limit: UnsafePointer<UInt8>) -> ASN1Sequence? {
         // ASN1 Object type must be an ASN1 Sequence
         guard type == V_ASN1_SEQUENCE else {
@@ -114,8 +119,11 @@ extension ASN1Object {
 
 extension ASN1Object {
     var unwrapped: ASN1Object? {
+        guard let endPointer = valuePointer?.advanced(by: length) else {
+            return nil
+        }
         var innerPointer = valuePointer
-        return ASN1Object.next(byAdvancingPointer: &innerPointer, maxLength: length)
+        return ASN1Object.next(byAdvancingPointer: &innerPointer, notBeyond: endPointer)
     }
 }
 
@@ -138,7 +146,6 @@ extension ASN1Object {
     var unwrappedDateValue: Date? {
         return unwrapped?.dateValue
     }
-
 
     var dateValue: Date? {
         guard let string = stringValue else {
