@@ -23,9 +23,11 @@ public struct LocalReceiptValidator {
     }
 
     /// Validates a local receipt and returns the result using the passed parameters.
-    public func validateReceipt(parameters: ReceiptValidationParameters) -> ReceiptValidationResult {
+    public func validateReceipt(parameters: ReceiptValidationParameters = ReceiptValidationParameters.allSteps) -> ReceiptValidationResult {
         do {
-            let receiptData: Data = try parameters.loadReceiptData()
+            guard let receiptData = parameters.receiptOrigin.loadData() else {
+                throw ReceiptValidationError.couldNotFindReceipt
+            }
 
             let receiptContainer = try extractPKCS7Container(data: receiptData)
 
@@ -33,13 +35,17 @@ public struct LocalReceiptValidator {
                 try checkSignaturePresence(pkcs7: receiptContainer)
             }
             if parameters.validateSignatureAuthenticity {
-                let appleRootCertificateData = try parameters.loadAppleRootCertificateData()
+                guard let appleRootCertificateData = try parameters.rootCertificateOrigin.loadData() else {
+                    throw ReceiptValidationError.appleRootCertificateNotFound
+                }
                 try checkSignatureAuthenticity(pkcs7: receiptContainer, appleRootCertificateData: appleRootCertificateData)
             }
             let parsedReceipt = try parseReceipt(pkcs7: receiptContainer)
 
             if parameters.validateHash {
-                let deviceIdentifierData = try parameters.getDeviceIdentifierData()
+                guard let deviceIdentifierData = parameters.deviceIdentifier.getData() else {
+                    throw ReceiptValidationError.deviceIdentifierNotDeterminable
+                }
                 print("Device identifier used (BASE64): \(deviceIdentifierData.base64EncodedString())")
                 try validateHash(receipt: parsedReceipt, deviceIdentifierData: deviceIdentifierData)
             }

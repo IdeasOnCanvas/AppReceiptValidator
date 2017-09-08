@@ -31,42 +31,6 @@ public struct ReceiptValidationParameters {
     public static var allSteps: ReceiptValidationParameters {
         return ReceiptValidationParameters()
     }
-
-    func loadReceiptData() throws -> Data {
-        switch receiptOrigin {
-        case .data(let data):
-            return data
-        case .installedInMainBundle:
-            guard let receiptUrl = Bundle.main.appStoreReceiptURL,
-                (try? receiptUrl.checkResourceIsReachable()) ?? false,
-                let data = try? Data(contentsOf: receiptUrl) else {
-                    throw ReceiptValidationError.couldNotFindReceipt
-            }
-            return data
-        }
-    }
-
-    func loadAppleRootCertificateData() throws -> Data {
-        guard let appleRootCertificateURL = Bundle.main.url(forResource: "AppleIncRootCertificate", withExtension: "cer"),
-            let appleRootCertificateData = try? Data(contentsOf: appleRootCertificateURL) else {
-                throw ReceiptValidationError.appleRootCertificateNotFound
-        }
-        return appleRootCertificateData
-
-    }
-
-    func getDeviceIdentifierData() throws -> Data {
-        switch deviceIdentifier {
-        case .data(let data):
-            return data
-        case .currentDevice:
-            if let data = ReceiptValidationParameters.installedDeviceIdentifierData {
-                return data
-            } else {
-                throw ReceiptValidationError.deviceIdentifierNotDeterminable
-            }
-        }
-    }
 }
 
 // MARK: - ReceiptOrigin
@@ -74,6 +38,20 @@ public struct ReceiptValidationParameters {
 public enum ReceiptOrigin {
     case installedInMainBundle
     case data(Data)
+
+    public func loadData() -> Data? {
+        switch self {
+        case .data(let data):
+            return data
+        case .installedInMainBundle:
+            guard let receiptUrl = Bundle.main.appStoreReceiptURL,
+                (try? receiptUrl.checkResourceIsReachable()) ?? false,
+                let data = try? Data(contentsOf: receiptUrl) else {
+                    return nil
+            }
+            return data
+        }
+    }
 }
 
 // MARK: - ReceiptDeviceIdentifier
@@ -88,6 +66,19 @@ public enum ReceiptDeviceIdentifier {
         }
         self = .data(data)
     }
+
+    public func getData() -> Data? {
+        switch self {
+        case .data(let data):
+            return data
+        case .currentDevice:
+            if let data = ReceiptDeviceIdentifier.installedDeviceIdentifierData {
+                return data
+            } else {
+                return nil
+            }
+        }
+    }
 }
 
 // MARK: - RootCertificateOrigin
@@ -95,4 +86,14 @@ public enum ReceiptDeviceIdentifier {
 public enum RootCertificateOrigin {
     /// Expects a AppleIncRootCertificate.cer in main bundle
     case cerFileInMainBundle
+
+    public func loadData() -> Data? {
+        guard let appleRootCertificateURL = Bundle.main.url(forResource: "AppleIncRootCertificate", withExtension: "cer"),
+            let appleRootCertificateData = try? Data(contentsOf: appleRootCertificateURL) else {
+                return nil
+        }
+        return appleRootCertificateData
+
+    }
 }
+
