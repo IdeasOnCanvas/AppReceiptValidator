@@ -231,7 +231,7 @@ private struct StringFormatter {
 
     func format(_ int: Int?) -> String {
         guard let int = int else { return fallback }
-        
+
         return "\(int)"
     }
 
