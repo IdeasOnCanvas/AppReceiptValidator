@@ -27,9 +27,7 @@ extension ReceiptDeviceIdentifier {
         var servicesIterator: io_iterator_t = 0
         defer { IOObjectRelease(servicesIterator) }
 
-        guard IOServiceGetMatchingServices(kIOMasterPortDefault, matching, &servicesIterator) == KERN_SUCCESS else {
-            return nil
-        }
+        guard IOServiceGetMatchingServices(kIOMasterPortDefault, matching, &servicesIterator) == KERN_SUCCESS else { return nil }
 
         var address: [UInt8] = [0, 0, 0, 0, 0, 0]
         var service = IOIteratorNext(servicesIterator)
@@ -43,15 +41,11 @@ extension ReceiptDeviceIdentifier {
                 service = IOIteratorNext(servicesIterator)
             }
 
-            guard IORegistryEntryGetParentEntry(service, "IOService", &controllerService) == KERN_SUCCESS else {
-                continue
-            }
+            guard IORegistryEntryGetParentEntry(service, "IOService", &controllerService) == KERN_SUCCESS else { continue }
 
             let ref = IORegistryEntryCreateCFProperty(controllerService, "IOMACAddress" as CFString, kCFAllocatorDefault, 0)
 
-            guard let data = ref?.takeRetainedValue() as? Data else {
-                continue
-            }
+            guard let data = ref?.takeRetainedValue() as? Data else { continue }
 
             data.copyBytes(to: &address, count: address.count)
         }

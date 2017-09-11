@@ -20,9 +20,7 @@ class LocalReceiptValidationTests: XCTestCase {
     private let exampleDeviceIdentifier = ReceiptDeviceIdentifier(base64Encoded: "bEAItZRe")!
 
     func testFailedReceiptParsing() {
-        guard let data = assertTestAsset(filename: "not_a_receipt") else {
-            return
-        }
+        guard let data = assertTestAsset(filename: "not_a_receipt") else { return }
 
         let result = receiptValidator.validateReceipt(configuration: {
             $0.receiptOrigin = .data(data)
@@ -32,15 +30,15 @@ class LocalReceiptValidationTests: XCTestCase {
             XCTFail("Unexpectedly succeeded in parsing a non-receipt")
             return
         }
+
         if error != ReceiptValidationError.emptyReceiptContents {
             XCTFail("Unexpected error, expected ReceiptValidationError.emptyReceiptContents, got \(error)")
         }
     }
 
     func testMindNodeProMacReceiptParsing() {
-        guard let data = assertTestAsset(filename: "hannes_mac_mindnode_pro_receipt") else {
-            return
-        }
+        guard let data = assertTestAsset(filename: "hannes_mac_mindnode_pro_receipt") else { return }
+
         let expected = ParsedReceipt(
             bundleIdentifier: "com.mindnode.MindNodePro",
             bundleIdData: Data(base64Encoded: "DBhjb20ubWluZG5vZGUuTWluZE5vZGVQcm8=")!,
@@ -60,15 +58,15 @@ class LocalReceiptValidationTests: XCTestCase {
             XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")
             return
         }
+
         print(receipt)
         XCTAssertEqual(receipt, expected)
     }
 
     func testCustomerReceiptParsing() {
         // "Receipt that was bought by a user recently, after having a refund requested 2 years ago", obtained by Marcus
-        guard let data = assertTestAsset(filename: "mac_mindnode_rebought_receipt") else {
-            return
-        }
+        guard let data = assertTestAsset(filename: "mac_mindnode_rebought_receipt") else { return }
+
         let expected = ParsedReceipt(
             bundleIdentifier: "com.ideasoncanvas.MindNodeMac",
             bundleIdData: Data(base64Encoded: "DB1jb20uaWRlYXNvbmNhbnZhcy5NaW5kTm9kZU1hYw==")!,
@@ -88,13 +86,13 @@ class LocalReceiptValidationTests: XCTestCase {
             XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")
             return
         }
+
         XCTAssertEqual(receipt, expected)
     }
 
     func testMindNodeMacReceiptParsingWithFullValidation() {
-        guard let data = assertTestAsset(filename: "hannes_mac_mindnode_receipt") else {
-            return
-        }
+        guard let data = assertTestAsset(filename: "hannes_mac_mindnode_receipt") else { return }
+
         let expected = ParsedReceipt(
             bundleIdentifier: "com.ideasoncanvas.MindNodeMac",
             bundleIdData: Data(base64Encoded: "DB1jb20uaWRlYXNvbmNhbnZhcy5NaW5kTm9kZU1hYw==")!,
@@ -119,9 +117,8 @@ class LocalReceiptValidationTests: XCTestCase {
     }
 
     func testMindNodeMacReceiptParsingWithoutValidation() {
-        guard let data = assertTestAsset(filename: "hannes_mac_mindnode_receipt") else {
-            return
-        }
+        guard let data = assertTestAsset(filename: "hannes_mac_mindnode_receipt") else { return }
+
         let expected = ParsedReceipt(
             bundleIdentifier: "com.ideasoncanvas.MindNodeMac",
             bundleIdData: Data(base64Encoded: "DB1jb20uaWRlYXNvbmNhbnZhcy5NaW5kTm9kZU1hYw==")!,
@@ -143,6 +140,7 @@ class LocalReceiptValidationTests: XCTestCase {
             XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")
             return
         }
+        
         print(receipt)
         XCTAssertEqual(receipt, expected)
     }

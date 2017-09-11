@@ -51,9 +51,8 @@ extension ASN1Object {
     ///   - limit: pointer to the end of the payload of interest (passed to OpenSSL)
     /// - Returns: The type, length and pointers to value begin and end are returned as an ASN1Object.
     static func next(byAdvancingPointer pointer: inout UnsafePointer<UInt8>?, notBeyond limit: UnsafePointer<UInt8>) -> ASN1Object {
-        guard let nonNilPointer = pointer else {
-            return ASN1Object()
-        }
+        guard let nonNilPointer = pointer else { return ASN1Object() }
+
         let maxLength = nonNilPointer.distance(to: limit)
         var objectInfo = ASN1Object()
         objectInfo.pointerBefore = pointer
@@ -81,21 +80,15 @@ extension ASN1Object {
     /// Parses a sequence and it's value container, moves the pointer to the attribute value's value portion.
     func sequenceValue(byAdvancingPointer pointer: inout UnsafePointer<UInt8>?, notBeyond limit: UnsafePointer<UInt8>) -> ASN1Sequence? {
         // ASN1 Object type must be an ASN1 Sequence
-        guard type == V_ASN1_SEQUENCE else {
-            return nil
-        }
+        guard type == V_ASN1_SEQUENCE else { return nil }
 
         // Get Attribute value
         let attributeTypeObject = ASN1Object.next(byAdvancingPointer: &pointer, notBeyond: limit)
-        guard let attributeType = attributeTypeObject.intValue(byAdvancingPointer: &pointer) else {
-            return nil
-        }
+        guard let attributeType = attributeTypeObject.intValue(byAdvancingPointer: &pointer) else { return nil }
 
         // Get Attribute Version
         let attributeVersionObject = ASN1Object.next(byAdvancingPointer: &pointer, notBeyond: limit)
-        guard let attributeVersion = attributeVersionObject.intValue(byAdvancingPointer: &pointer) else {
-            return nil
-        }
+        guard let attributeVersion = attributeVersionObject.intValue(byAdvancingPointer: &pointer) else { return nil }
 
         /// Pointer is now here
         ///                                                                     ↓ (pointer)
@@ -112,9 +105,8 @@ extension ASN1Object {
         let valueObject = ASN1Object.next(byAdvancingPointer: &pointer, notBeyond: limit)
 
         // ASN1 Sequence value must be an ASN1 Octet String
-        guard valueObject.type == V_ASN1_OCTET_STRING else {
-            return nil
-        }
+        guard valueObject.type == V_ASN1_OCTET_STRING else { return nil }
+
         return ASN1Sequence(attributeType: Int32(attributeType), attributeVersion: Int32(attributeVersion), valueObject: valueObject)
     }
 }
@@ -124,9 +116,8 @@ extension ASN1Object {
 extension ASN1Object {
 
     var unwrapped: ASN1Object? {
-        guard let endPointer = valuePointer?.advanced(by: length) else {
-            return nil
-        }
+        guard let endPointer = valuePointer?.advanced(by: length) else { return nil }
+
         var innerPointer = valuePointer
         return ASN1Object.next(byAdvancingPointer: &innerPointer, notBeyond: endPointer)
     }
@@ -137,9 +128,8 @@ extension ASN1Object {
 extension ASN1Object {
 
     var dataValue: Data? {
-        guard let pointer = self.valuePointer else {
-            return nil
-        }
+        guard let pointer = self.valuePointer else { return nil }
+
         return Data(bytes: pointer, count: length)
     }
 }
@@ -154,9 +144,8 @@ extension ASN1Object {
     }
 
     var dateValue: Date? {
-        guard let string = self.stringValue else {
-            return nil
-        }
+        guard let string = self.stringValue else { return nil }
+
         return LocalReceiptValidator.asn1DateFormatter.date(from: string)
     }
 }
@@ -167,9 +156,8 @@ extension ASN1Object {
 extension ASN1Object {
 
     var intValue: Int? {
-        guard self.type == V_ASN1_INTEGER else {
-            return nil
-        }
+        guard self.type == V_ASN1_INTEGER else { return nil }
+
         var pointer = self.valuePointer
         let integer = c2i_ASN1_INTEGER(nil, &pointer, self.length)
         defer {
@@ -182,9 +170,8 @@ extension ASN1Object {
     func intValue(byAdvancingPointer pointer: inout UnsafePointer<UInt8>?, length: Int? = nil) -> Int? {
         let length = length ?? self.length
         pointer = pointer?.advanced(by: length)
-        guard let intValue = self.intValue else {
-            return nil
-        }
+        guard let intValue = self.intValue else { return nil }
+
         return intValue
     }
 }
@@ -199,9 +186,8 @@ extension ASN1Object {
     }
 
     var stringValue: String? {
-        guard let bytes = self.valuePointer else {
-            return nil
-        }
+        guard let bytes = self.valuePointer else { return nil }
+
         switch self.type {
         case V_ASN1_UTF8STRING:
             let data = Data(bytes: bytes, count: self.length)

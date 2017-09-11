@@ -217,12 +217,9 @@ private struct StringFormatter {
     let fallback = "nil"
 
     func format(_ inAppPurchaseReceipts: [ParsedInAppPurchaseReceipt]?, indentation: String = "    ") -> String {
-        guard let inAppPurchaseReceipts = inAppPurchaseReceipts else {
-            return fallback
-        }
-        guard !inAppPurchaseReceipts.isEmpty else {
-            return "[]"
-        }
+        guard let inAppPurchaseReceipts = inAppPurchaseReceipts else { return fallback }
+        guard !inAppPurchaseReceipts.isEmpty else { return "[]" }
+
         return "[\n" + inAppPurchaseReceipts.map({ $0.description.replacingOccurrences(of: "\n", with: "\n" + indentation) }).joined(separator: ",\n") + "\n]"
     }
 
@@ -233,9 +230,8 @@ private struct StringFormatter {
     }
 
     func format(_ int: Int?) -> String {
-        guard let int = int else {
-            return fallback
-        }
+        guard let int = int else { return fallback }
+        
         return "\(int)"
     }
 
@@ -244,16 +240,14 @@ private struct StringFormatter {
     }
 
     func format(_ data: Data?) -> String {
-        guard let data = data else {
-            return fallback
-        }
+        guard let data = data else { return fallback }
+
         return data.base64EncodedString()
     }
 
     func format(_ date: Date?) -> String {
-        guard let date = date else {
-            return fallback
-        }
+        guard let date = date else { return fallback }
+
         return LocalReceiptValidator.asn1DateFormatter.string(from: date)
     }
 
