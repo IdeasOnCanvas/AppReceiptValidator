@@ -65,7 +65,7 @@ class LocalReceiptValidationTests: XCTestCase {
     }
 
     func testCustomerReceiptParsing() {
-        // "Receipt von einem User der gestern gekauft hat nachdem er vor 2 Jahren einen Refund von Apple requested hat. Könnte also spannend sein"
+        // "Receipt that was bought by a user recently, after having a refund requested 2 years ago", obtained by Marcus
         guard let data = assertTestAsset(filename: "mac_mindnode_rebought_receipt") else {
             return
         }
