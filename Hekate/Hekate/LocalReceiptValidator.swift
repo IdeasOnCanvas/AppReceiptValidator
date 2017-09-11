@@ -36,7 +36,7 @@ public struct LocalReceiptValidator {
                 try checkSignaturePresence(pkcs7: receiptContainer)
             }
             if parameters.validateSignatureAuthenticity {
-                guard let appleRootCertificateData = try parameters.rootCertificateOrigin.loadData() else {
+                guard let appleRootCertificateData = parameters.rootCertificateOrigin.loadData() else {
                     throw ReceiptValidationError.appleRootCertificateNotFound
                 }
                 try checkSignatureAuthenticity(pkcs7: receiptContainer, appleRootCertificateData: appleRootCertificateData)
