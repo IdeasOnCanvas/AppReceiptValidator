@@ -10,9 +10,10 @@ import Foundation
 import StoreKit
 
 /// Apple guide: https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Introduction.html
-/// Original inspiration for the Code https://github.com/andrewcbancroft/SwiftyLocalReceiptValidator/blob/master/ReceiptValidator.swift
+///
+/// Original inspiration for the Code: https://github.com/andrewcbancroft/SwiftyLocalReceiptValidator/blob/master/ReceiptValidator.swift
+///
 /// More: See README.md
-
 /// - Note: If on iOS, use this only on Main Queue, because UIDevice is called
 public struct LocalReceiptValidator {
 
@@ -44,6 +45,7 @@ public struct LocalReceiptValidator {
                 guard let deviceIdentifierData = parameters.deviceIdentifier.getData() else { throw ReceiptValidationError.deviceIdentifierNotDeterminable }
 
                 print("Device identifier used (BASE64): \(deviceIdentifierData.base64EncodedString())")
+
                 try self.validateHash(receipt: parsedReceipt, deviceIdentifierData: deviceIdentifierData)
             }
             return .success(parsedReceipt)
@@ -57,6 +59,19 @@ public struct LocalReceiptValidator {
             }
             return .error(receiptValidationError)
         }
+    }
+
+    /// Parse a local receipt without any validation.
+    ///
+    /// - Parameter origin: How to load the receipt.
+    /// - Returns: The Parsed receipt.
+    /// - Throws: A ReceiptValidationError. Especially ReceiptValidationError.couldNotFindReceipt if the receipt cannot be loaded/found.
+    public func parseReceipt(origin: ReceiptOrigin) throws -> ParsedReceipt {
+        guard let receiptData = origin.loadData() else {
+            throw ReceiptValidationError.couldNotFindReceipt
+        }
+        let receiptContainer = try extractPKCS7Container(data: receiptData)
+        return try parseReceipt(pkcs7: receiptContainer)
     }
 
     fileprivate func validateHash(receipt: ParsedReceipt, deviceIdentifierData: Data) throws {

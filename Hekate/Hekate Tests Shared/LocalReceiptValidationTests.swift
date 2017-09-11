@@ -19,7 +19,7 @@ class LocalReceiptValidationTests: XCTestCase {
 
     private let exampleDeviceIdentifier = ReceiptDeviceIdentifier(base64Encoded: "bEAItZRe")!
 
-    func testFailedReceiptParsing() {
+    func testFailedReceiptValidating() {
         guard let data = assertTestAsset(filename: "not_a_receipt") else { return }
 
         let result = receiptValidator.validateReceipt(configuration: {
@@ -33,6 +33,21 @@ class LocalReceiptValidationTests: XCTestCase {
 
         if error != ReceiptValidationError.emptyReceiptContents {
             XCTFail("Unexpected error, expected ReceiptValidationError.emptyReceiptContents, got \(error)")
+        }
+    }
+
+    func testFailedReceiptParsing() {
+        guard let data = assertTestAsset(filename: "not_a_receipt") else {
+            return
+        }
+        do {
+            _ = try receiptValidator.parseReceipt(origin: .data(data))
+            XCTFail("Unexpectedly succeeded in parsing a non-receipt")
+        } catch {
+            guard let e = error as? ReceiptValidationError, e == ReceiptValidationError.emptyReceiptContents else {
+                XCTFail("Unexpected error, expeced ReceiptValidationError.emptyReceiptContents, got \(error)")
+                return
+            }
         }
     }
 
@@ -141,6 +156,29 @@ class LocalReceiptValidationTests: XCTestCase {
             return
         }
 
+        print(receipt)
+        XCTAssertEqual(receipt, expected)
+    }
+
+    func testMindNodeMacReceiptParsingWithParseMethod() {
+        guard let data = assertTestAsset(filename: "hannes_mac_mindnode_receipt") else {
+            return
+        }
+        let expected = ParsedReceipt(
+            bundleIdentifier: "com.ideasoncanvas.MindNodeMac",
+            bundleIdData: Data(base64Encoded: "DB1jb20uaWRlYXNvbmNhbnZhcy5NaW5kTm9kZU1hYw==")!,
+            appVersion: "2.5.5",
+            opaqueValue: Data(base64Encoded: "mjF2f4xnFu/L4J3msJ1fxQ=="),
+            sha1Hash: Data(base64Encoded: "gfM0Izu/eKMBRLbJqlTXtNvvmss="),
+            originalAppVersion: "2.5.5",
+            receiptCreationDate: Date.demoDate(string: "2017-09-04T09:01:20Z"),
+            expirationDate: nil,
+            inAppPurchaseReceipts: []
+        )
+        guard let receipt = try? receiptValidator.parseReceipt(origin: .data(data)) else {
+            XCTFail("Unexpectedly failed parsing a receipt")
+            return
+        }
         print(receipt)
         XCTAssertEqual(receipt, expected)
     }

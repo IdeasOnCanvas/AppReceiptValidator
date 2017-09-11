@@ -17,14 +17,42 @@ import XCTest
 class LocalReceiptValidationInAppPurchaseTests: XCTestCase {
     var receiptValidator = LocalReceiptValidator()
 
-    func testNonMindNodeReceiptParsingWithMultipleInAppPurchases() { // swiftlint:disable:this function_body_length
+    func testNonMindNodeReceiptParsingWithoutValidation() {
+        guard let data = assertB64TestAsset(filename: "grandUnifiedExpiredAppleCert_receipt.b64") else {
+            return
+        }
+        do {
+            let receipt = try receiptValidator.parseReceipt(origin: .data(data))
+            XCTAssertEqual(receipt, nonMindNodeReceipt)
+            print(receipt)
+        } catch {
+            XCTFail("Unexpectedly failed parsing a receipt \(error)")
+        }
+
+    }
+
+    func testNonMindNodeReceiptParsingWithMultipleInAppPurchases() {
         // From https://stackoverflow.com/questions/33843281/apple-receipt-data-sample "Grand Unified Receipt (multiple transactions)"
         // note that the "deprecated transaction (single transaction) style receipt" from the same page doesn't work (base64 problem?)
         guard let data = assertB64TestAsset(filename: "grandUnifiedExpiredAppleCert_receipt.b64") else {
             return
         }
 
-        let expected = ParsedReceipt(
+        let result = receiptValidator.validateReceipt {
+            $0.receiptOrigin = .data(data)
+            $0.validateHash = false
+            $0.validateSignatureAuthenticity = false
+        }
+        guard let receipt = result.receipt else {
+            XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")
+            return
+        }
+        XCTAssertEqual(receipt, nonMindNodeReceipt)
+        print(receipt)
+    }
+
+    private var nonMindNodeReceipt: ParsedReceipt {
+        return ParsedReceipt(
             bundleIdentifier: "com.mbaasy.ios.demo",
             bundleIdData: Data(base64Encoded: "DBNjb20ubWJhYXN5Lmlvcy5kZW1v"),
             appVersion: "1",
@@ -112,18 +140,5 @@ class LocalReceiptValidationInAppPurchaseTests: XCTestCase {
                     webOrderLineItemId: nil
                 )
             ])
-        let result = receiptValidator.validateReceipt {
-            $0.receiptOrigin = .data(data)
-            $0.validateHash = false
-            $0.validateSignatureAuthenticity = false
-        }
-        guard let receipt = result.receipt else {
-            XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")
-            return
-        }
-        XCTAssertEqual(receipt, expected)
-
-
-        print(receipt)
     }
 }

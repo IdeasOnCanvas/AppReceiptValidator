@@ -36,6 +36,10 @@ public struct ReceiptValidationParameters {
 
 // MARK: - ReceiptOrigin
 
+/// Used for obtaining the receipt data to parse or validate.
+///
+/// - installedInMainBundle: Loads it from Bundle.main.appStoreReceiptURL.
+/// - data: Loads specific data.
 public enum ReceiptOrigin {
 
     case installedInMainBundle
@@ -56,6 +60,10 @@ public enum ReceiptOrigin {
 
 // MARK: - ReceiptDeviceIdentifier
 
+/// Used for calculating/validating the SHA1-Hash part of a receipt.
+///
+/// - currentDevice: Obtains it from the system location: MAC Adress on macOS, deviceIdentifierForVendor on iOS
+/// - data: Specific Data to use
 public enum ReceiptDeviceIdentifier {
 
     case currentDevice
@@ -86,16 +94,24 @@ public enum ReceiptDeviceIdentifier {
 
 // MARK: - RootCertificateOrigin
 
+/// Instructs how to find the Apple root certificate for receipt validation.
+///
+/// - cerFileInMainBundle: Expects a AppleIncRootCertificate.cer in main bundle with the name "AppleIncRootCertificate.cer"
+/// - data: Specific Data to use
 public enum RootCertificateOrigin {
-
-    /// Expects a AppleIncRootCertificate.cer in main bundle
     case cerFileInMainBundle
+    case data(Data)
 
     public func loadData() -> Data? {
-        guard let appleRootCertificateURL = Bundle.main.url(forResource: "AppleIncRootCertificate", withExtension: "cer") else { return nil }
-        guard let appleRootCertificateData = try? Data(contentsOf: appleRootCertificateURL) else { return nil }
+        switch self {
+        case .data(let data):
+            return data
+        case .cerFileInMainBundle:
+            guard let appleRootCertificateURL = Bundle.main.url(forResource: "AppleIncRootCertificate", withExtension: "cer") else { return nil }
+            guard let appleRootCertificateData = try? Data(contentsOf: appleRootCertificateURL) else { return nil }
 
-        return appleRootCertificateData
+            return appleRootCertificateData
+        }
     }
 }
 
