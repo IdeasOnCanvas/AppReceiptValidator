@@ -15,9 +15,9 @@ import Hekate_macOS
 import XCTest
 
 class LocalReceiptValidationTests: XCTestCase {
-    var receiptValidator = LocalReceiptValidator()
+    private let receiptValidator = LocalReceiptValidator()
 
-    let exampleDeviceIdentifier = ReceiptDeviceIdentifier(base64Encoded: "bEAItZRe")!
+    private let exampleDeviceIdentifier = ReceiptDeviceIdentifier(base64Encoded: "bEAItZRe")!
 
     func testFailedReceiptParsing() {
         guard let data = assertTestAsset(filename: "not_a_receipt") else {
