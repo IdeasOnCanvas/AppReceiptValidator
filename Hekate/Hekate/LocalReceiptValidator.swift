@@ -109,13 +109,11 @@ private extension LocalReceiptValidator {
 
     func extractPKCS7Container(data: Data) throws -> PKCS7Wrapper {
         let receiptBIO = BIOWrapper(data: data)
-
         let receiptPKCS7Container = d2i_PKCS7_bio(receiptBIO.bio, nil)
 
         guard let nonNullReceiptPKCS7Container = receiptPKCS7Container else { throw ReceiptValidationError.emptyReceiptContents }
 
         let pkcs7Wrapper = PKCS7Wrapper(pkcs7: nonNullReceiptPKCS7Container)
-
         let pkcs7DataTypeCode = OBJ_obj2nid(pkcs7_d_sign(receiptPKCS7Container).pointee.contents.pointee.type)
 
         guard pkcs7DataTypeCode == NID_pkcs7_data else { throw ReceiptValidationError.emptyReceiptContents }
