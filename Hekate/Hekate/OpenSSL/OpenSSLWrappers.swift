@@ -9,6 +9,7 @@
 import Foundation
 
 final class BIOWrapper {
+
     let bio = BIO_new(BIO_s_mem())
 
     init(data: Data) {
@@ -26,6 +27,7 @@ final class BIOWrapper {
 
 
 final class PKCS7Wrapper {
+
     var pkcs7: UnsafeMutablePointer<PKCS7>
 
     init(pkcs7: UnsafeMutablePointer<PKCS7>) {

@@ -9,6 +9,7 @@
 import Foundation
 
 extension Date {
+
     /// Returns a demo date which is independent of the current date.
     /// - Parameter string: Example "2018-07-12T10:57:42Z", defaults to "2017-01-01T12:00:00Z"
     /// - Returns: The date

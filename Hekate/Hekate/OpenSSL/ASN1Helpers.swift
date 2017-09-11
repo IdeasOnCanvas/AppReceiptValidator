@@ -15,6 +15,7 @@ import Foundation
 ///     |TYPE = SEQUENCE | LENGTH  |  attributeType  |   attributeVersion   | attributeValue = valueObject |
 ///     +----------------+---------+-----------------+----------------------+------------------------------+
 struct ASN1Sequence {
+
     var attributeType = Int32(0)
     var attributeVersion = Int32(0)
     var valueObject = ASN1Object()
@@ -29,6 +30,7 @@ struct ASN1Sequence {
 ///
 /// - Note: This object cannot ensure that it's pointers are safe, guarantee this from the outside.
 struct ASN1Object {
+
     fileprivate(set) var type = Int32(0)
     fileprivate(set) var length = 0
     fileprivate var xclass = Int32(0) // only needed for calling into OpenSSL
@@ -41,6 +43,7 @@ struct ASN1Object {
 }
 
 extension ASN1Object {
+
     /// Reads the TLV tuple using OpenSSL, and advances the Pointer to the Value part.
     ///
     /// - Parameters:
@@ -64,6 +67,7 @@ extension ASN1Object {
 // MARK: - Set
 
 extension ASN1Object {
+
     /// true if it is an ASN1 Set
     var isOfASN1SetType: Bool {
         return type == V_ASN1_SET
@@ -118,6 +122,7 @@ extension ASN1Object {
 // MARK: - Wrapped
 
 extension ASN1Object {
+
     var unwrapped: ASN1Object? {
         guard let endPointer = valuePointer?.advanced(by: length) else {
             return nil
@@ -130,6 +135,7 @@ extension ASN1Object {
 // MARK: - Data
 
 extension ASN1Object {
+
     var dataValue: Data? {
         guard let pointer = self.valuePointer else {
             return nil
@@ -159,6 +165,7 @@ extension ASN1Object {
 // MARK: - IntValue
 
 extension ASN1Object {
+
     var intValue: Int? {
         guard type == V_ASN1_INTEGER else {
             return nil
@@ -185,6 +192,7 @@ extension ASN1Object {
 // MARK: - StringValue
 
 extension ASN1Object {
+
     /// If a string is wrapped in an V_ASN1_OCTET_STRING, use this instead of `stringValue`
     var unwrappedStringValue: String? {
         return unwrapped?.stringValue

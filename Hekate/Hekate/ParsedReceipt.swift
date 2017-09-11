@@ -12,6 +12,7 @@ import Foundation
 ///
 /// See [Apple Reference](https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Chapters/ReceiptFields.html)
 public struct ParsedReceipt {
+
     /// The app’s bundle identifier. This corresponds to the value of `CFBundleIdentifier` in the Info.plist file.
     /// Use this value to validate if the receipt was indeed generated for your app. ASN.1 Field Type 2.
     public internal(set) var bundleIdentifier: String?
@@ -76,6 +77,7 @@ extension ParsedReceipt: AutoEquatable {}
 // MARK: - CustomStringConvertible
 
 extension ParsedReceipt: CustomStringConvertible {
+
     public var description: String {
         let formatter = StringFormatter()
         let props: [(String, String)]  = [
@@ -110,6 +112,7 @@ extension ParsedReceipt: CustomStringConvertible {
 /// - Subscription Auto Renew Preference
 /// - Subscription Price Consent Status
 public struct ParsedInAppPurchaseReceipt {
+
     /// The number of items purchased. ASN.1 Field Type 1701.
     /// This value corresponds to the quantity property of the `SKPayment` object stored in the transaction’s payment property.
     public internal(set) var quantity: Int?
@@ -188,6 +191,7 @@ extension ParsedInAppPurchaseReceipt: AutoEquatable {}
 // MARK: - CustomStringConvertible
 
 extension ParsedInAppPurchaseReceipt: CustomStringConvertible {
+
     public var description: String {
         let formatter = StringFormatter()
         let props: [(String, String)]  = [
@@ -209,6 +213,7 @@ extension ParsedInAppPurchaseReceipt: CustomStringConvertible {
 
 /// Private Helper for formatting the Receipts descriptions
 private struct StringFormatter {
+
     let fallback = "nil"
 
     func format(_ inAppPurchaseReceipts: [ParsedInAppPurchaseReceipt]?, indentation: String = "    ") -> String {

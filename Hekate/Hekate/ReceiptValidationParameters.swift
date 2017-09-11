@@ -11,6 +11,7 @@ import Foundation
 /// Describes how to validate a receipt, and how/where to obtain the dependencies (receipt, deviceIdentifier, apple root certificate)
 /// Use .allSteps to initialize the standard parameters.
 public struct ReceiptValidationParameters {
+
     public var receiptOrigin: ReceiptOrigin = .installedInMainBundle
     public var validateSignaturePresence: Bool = true
     public var validateSignatureAuthenticity: Bool = true
@@ -36,6 +37,7 @@ public struct ReceiptValidationParameters {
 // MARK: - ReceiptOrigin
 
 public enum ReceiptOrigin {
+
     case installedInMainBundle
     case data(Data)
 
@@ -57,6 +59,7 @@ public enum ReceiptOrigin {
 // MARK: - ReceiptDeviceIdentifier
 
 public enum ReceiptDeviceIdentifier {
+
     case currentDevice
     case data(Data)
 
@@ -84,6 +87,7 @@ public enum ReceiptDeviceIdentifier {
 // MARK: - RootCertificateOrigin
 
 public enum RootCertificateOrigin {
+
     /// Expects a AppleIncRootCertificate.cer in main bundle
     case cerFileInMainBundle
 

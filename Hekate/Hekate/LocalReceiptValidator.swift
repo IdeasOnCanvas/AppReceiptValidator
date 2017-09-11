@@ -15,6 +15,7 @@ import StoreKit
 
 /// - Note: If on iOS, use this only on Main Queue, because UIDevice is called
 public struct LocalReceiptValidator {
+
     public init() {}
 
     /// Validates a local receipt and returns the result using the parameters `ReceiptValidationParameters.allSteps`, which can be furhter configured in the passed block.
@@ -107,6 +108,7 @@ public struct LocalReceiptValidator {
 // MARK: - PKCS7 Extraction
 
 private extension LocalReceiptValidator {
+
     func extractPKCS7Container(data: Data) throws -> PKCS7Wrapper {
         let receiptBIO = BIOWrapper(data: data)
 
@@ -131,6 +133,7 @@ private extension LocalReceiptValidator {
 // MARK: - PKCS7 Signature checking
 
 private extension LocalReceiptValidator {
+
     func checkSignaturePresence(pkcs7: PKCS7Wrapper) throws {
         let pkcs7SignedTypeCode = OBJ_obj2nid(pkcs7.pkcs7.pointee.type)
 
@@ -171,6 +174,7 @@ private extension LocalReceiptValidator {
 // MARK: - Parsing of properties
 
 private extension LocalReceiptValidator {
+
     // swiftlint:disable:next cyclomatic_complexity
     func parseReceipt(pkcs7: PKCS7Wrapper) throws -> ParsedReceipt {
         guard let contents = pkcs7.pkcs7.pointee.d.sign.pointee.contents, let octets = contents.pointee.d.data else {
@@ -287,6 +291,7 @@ private extension LocalReceiptValidator {
 // MARK: - ReceiptValidationResult
 
 public enum ReceiptValidationResult {
+
     case success(ParsedReceipt)
     case error(ReceiptValidationError)
 
@@ -312,6 +317,7 @@ public enum ReceiptValidationResult {
 // MARK: - ReceiptValidationError
 
 public enum ReceiptValidationError: Int, Error {
+
     case couldNotFindReceipt
     case emptyReceiptContents
     case receiptNotSigned

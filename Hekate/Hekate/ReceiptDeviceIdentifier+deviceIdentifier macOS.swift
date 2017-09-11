@@ -10,6 +10,7 @@ import Foundation
 import IOKit
 
 extension ReceiptDeviceIdentifier {
+
     /// On mac this is the primary network interface's MAC Adress as bytes
     static var installedDeviceIdentifierData: Data? {
         return getPrimaryNetworkMACAddress()?.data
