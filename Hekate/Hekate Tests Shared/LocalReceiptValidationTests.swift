@@ -33,7 +33,7 @@ class LocalReceiptValidationTests: XCTestCase {
             return
         }
         if error != ReceiptValidationError.emptyReceiptContents {
-            XCTFail("Unexpected error, expeced ReceiptValidationError.emptyReceiptContents, got \(error)")
+            XCTFail("Unexpected error, expected ReceiptValidationError.emptyReceiptContents, got \(error)")
         }
     }
 
