@@ -15,15 +15,3 @@ extension ReceiptDeviceIdentifier {
         return UIDevice.current.identifierForVendor?.data
     }
 }
-
-private extension UUID {
-
-    /// Get's the raw bytes of a Foundation UUID
-    var data: Data {
-        var rawUUID = self.uuid
-        let data = withUnsafePointer(to: &rawUUID) {
-            Data(bytes: $0, count: MemoryLayout.size(ofValue: uuid))
-        }
-        return data
-    }
-}

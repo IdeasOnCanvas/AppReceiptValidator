@@ -15,8 +15,7 @@ extension XCTestCase {
         guard let data = assertTestAsset(filename: filename, file: file, line: line) else {
             return nil
         }
-
-        guard let decoded = Data(base64Encoded: data)  else {
+        guard let decoded = Data(base64Encoded: data, options: Data.Base64DecodingOptions.ignoreUnknownCharacters)  else {
             XCTFail("Failed to decode base64 of test asset file \(filename)", file: file, line: line)
             return nil
         }

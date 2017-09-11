@@ -23,6 +23,10 @@
 		D14FA7391F6181D000545540 /* OpenSSLWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA7371F6181C700545540 /* OpenSSLWrappers.swift */; };
 		D14FA73B1F618B0100545540 /* ASN1Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA73A1F618B0100545540 /* ASN1Helpers.swift */; };
 		D14FA73C1F618B0100545540 /* ASN1Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA73A1F618B0100545540 /* ASN1Helpers.swift */; };
+		D150A0E31F6694970026ED04 /* mindnode_ios_michaelsandbox_receipt1.b64 in Resources */ = {isa = PBXBuildFile; fileRef = D150A0E21F66936B0026ED04 /* mindnode_ios_michaelsandbox_receipt1.b64 */; };
+		D150A0E41F6694990026ED04 /* mindnode_ios_michaelsandbox_receipt1.b64 in Resources */ = {isa = PBXBuildFile; fileRef = D150A0E21F66936B0026ED04 /* mindnode_ios_michaelsandbox_receipt1.b64 */; };
+		D150A0E91F66989A0026ED04 /* mindnode_ios_michaelsandbox_receipt2.b64 in Resources */ = {isa = PBXBuildFile; fileRef = D150A0E81F6698950026ED04 /* mindnode_ios_michaelsandbox_receipt2.b64 */; };
+		D150A0EA1F66989A0026ED04 /* mindnode_ios_michaelsandbox_receipt2.b64 in Resources */ = {isa = PBXBuildFile; fileRef = D150A0E81F6698950026ED04 /* mindnode_ios_michaelsandbox_receipt2.b64 */; };
 		D15358AA1F62C12400F297D0 /* grandUnifiedExpiredAppleCert_receipt.b64 in Resources */ = {isa = PBXBuildFile; fileRef = D15358A51F62BEC100F297D0 /* grandUnifiedExpiredAppleCert_receipt.b64 */; };
 		D15358AE1F62C12500F297D0 /* grandUnifiedExpiredAppleCert_receipt.b64 in Resources */ = {isa = PBXBuildFile; fileRef = D15358A51F62BEC100F297D0 /* grandUnifiedExpiredAppleCert_receipt.b64 */; };
 		D15358B41F62C47400F297D0 /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 in Resources */ = {isa = PBXBuildFile; fileRef = D15358B11F62C3C400F297D0 /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 */; };
@@ -142,6 +146,8 @@
 		D14FA7361F614C4E00545540 /* Hekate-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hekate-Bridging-Header.h"; sourceTree = "<group>"; };
 		D14FA7371F6181C700545540 /* OpenSSLWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSSLWrappers.swift; sourceTree = "<group>"; };
 		D14FA73A1F618B0100545540 /* ASN1Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASN1Helpers.swift; sourceTree = "<group>"; };
+		D150A0E21F66936B0026ED04 /* mindnode_ios_michaelsandbox_receipt1.b64 */ = {isa = PBXFileReference; lastKnownFileType = text; path = mindnode_ios_michaelsandbox_receipt1.b64; sourceTree = "<group>"; };
+		D150A0E81F6698950026ED04 /* mindnode_ios_michaelsandbox_receipt2.b64 */ = {isa = PBXFileReference; lastKnownFileType = text; path = mindnode_ios_michaelsandbox_receipt2.b64; sourceTree = "<group>"; };
 		D15358A51F62BEC100F297D0 /* grandUnifiedExpiredAppleCert_receipt.b64 */ = {isa = PBXFileReference; lastKnownFileType = text; path = grandUnifiedExpiredAppleCert_receipt.b64; sourceTree = "<group>"; };
 		D15358B11F62C3C400F297D0 /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 */ = {isa = PBXFileReference; lastKnownFileType = text; path = deprecatedSinglesTypeExpiredAppleCert_receipt.b64; sourceTree = "<group>"; };
 		D15358F01F62D43400F297D0 /* HekateDemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HekateDemoViewModel.swift; sourceTree = "<group>"; };
@@ -451,6 +457,8 @@
 				D1D6F5461F5D8DF700E86FE1 /* hannes_mac_mindnode_receipt */,
 				D1D6F5471F5D8DF700E86FE1 /* hannes_mac_mindnode_pro_Info.plist */,
 				D1D6F5451F5D8DF700E86FE1 /* hannes_mac_mindnode_pro_receipt */,
+				D150A0E21F66936B0026ED04 /* mindnode_ios_michaelsandbox_receipt1.b64 */,
+				D150A0E81F6698950026ED04 /* mindnode_ios_michaelsandbox_receipt2.b64 */,
 				D1D6F54F1F5D9E8D00E86FE1 /* not_a_receipt */,
 			);
 			path = "Test Assets";
@@ -715,8 +723,10 @@
 				D19095A11F6000DE0095729B /* hannes_mac_mindnode_receipt in Resources */,
 				D15358AA1F62C12400F297D0 /* grandUnifiedExpiredAppleCert_receipt.b64 in Resources */,
 				D19095A41F6000DE0095729B /* not_a_receipt in Resources */,
+				D150A0E91F66989A0026ED04 /* mindnode_ios_michaelsandbox_receipt2.b64 in Resources */,
 				D19095A01F6000DE0095729B /* hannes_mac_mindnode_Info.plist in Resources */,
 				D15358B51F62C47500F297D0 /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 in Resources */,
+				D150A0E31F6694970026ED04 /* mindnode_ios_michaelsandbox_receipt1.b64 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -730,8 +740,10 @@
 				D19095C91F601E5D0095729B /* hannes_mac_mindnode_receipt in Resources */,
 				D15358AE1F62C12500F297D0 /* grandUnifiedExpiredAppleCert_receipt.b64 in Resources */,
 				D19095CC1F601E5D0095729B /* not_a_receipt in Resources */,
+				D150A0EA1F66989A0026ED04 /* mindnode_ios_michaelsandbox_receipt2.b64 in Resources */,
 				D19095C81F601E5D0095729B /* hannes_mac_mindnode_Info.plist in Resources */,
 				D15358B41F62C47400F297D0 /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 in Resources */,
+				D150A0E41F6694990026ED04 /* mindnode_ios_michaelsandbox_receipt1.b64 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

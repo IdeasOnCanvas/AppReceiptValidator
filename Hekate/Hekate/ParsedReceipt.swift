@@ -34,7 +34,7 @@ public struct ParsedReceipt {
     /// The version of the app that was originally purchased.
     /// This corresponds to the value of `CFBundleVersion` (in iOS) or `CFBundleShortVersionString` (in macOS) in the Info.plist
     /// file when the purchase was originally made. ASN.1 Field Type 19.
-    /// - Note: In the sandbox environment, the value of this field is always “1.0”.
+    /// - Note: In the **sandbox** environment, the value of this field is **always “1.0”**.
     public internal(set) var originalAppVersion: String?
 
     /// The date when the app receipt was created. ASN.1 Field Type 12.
