@@ -21,11 +21,12 @@ extension XCTestCase {
 }
 
 private func loadTestAsset(filename: String, requester: AnyObject) throws -> Data {
-    if let path = Bundle(for: type(of: requester)).path(forResource: filename, ofType: nil),
-        let data = try? Data(contentsOf: URL(fileURLWithPath: path)) {
-        return data
+    guard let path = Bundle(for: type(of: requester)).path(forResource: filename, ofType: nil),
+        let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
+        throw TestAssetLoadingError.fileNotReadable(filename: filename)
     }
-    throw TestAssetLoadingError.fileNotReadable(filename: filename)
+
+    return data
 }
 
 enum TestAssetLoadingError: Error {
