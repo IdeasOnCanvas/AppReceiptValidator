@@ -27,6 +27,8 @@
 		D150A0E41F6694990026ED04 /* mindnode_ios_michaelsandbox_receipt1.b64 in Resources */ = {isa = PBXBuildFile; fileRef = D150A0E21F66936B0026ED04 /* mindnode_ios_michaelsandbox_receipt1.b64 */; };
 		D150A0E91F66989A0026ED04 /* mindnode_ios_michaelsandbox_receipt2.b64 in Resources */ = {isa = PBXBuildFile; fileRef = D150A0E81F6698950026ED04 /* mindnode_ios_michaelsandbox_receipt2.b64 */; };
 		D150A0EA1F66989A0026ED04 /* mindnode_ios_michaelsandbox_receipt2.b64 in Resources */ = {isa = PBXBuildFile; fileRef = D150A0E81F6698950026ED04 /* mindnode_ios_michaelsandbox_receipt2.b64 */; };
+		D150A0EE1F669A880026ED04 /* LocalReceiptValidationInAppPurchaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D150A0ED1F669A880026ED04 /* LocalReceiptValidationInAppPurchaseTests.swift */; };
+		D150A0EF1F669A880026ED04 /* LocalReceiptValidationInAppPurchaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D150A0ED1F669A880026ED04 /* LocalReceiptValidationInAppPurchaseTests.swift */; };
 		D15358AA1F62C12400F297D0 /* grandUnifiedExpiredAppleCert_receipt.b64 in Resources */ = {isa = PBXBuildFile; fileRef = D15358A51F62BEC100F297D0 /* grandUnifiedExpiredAppleCert_receipt.b64 */; };
 		D15358AE1F62C12500F297D0 /* grandUnifiedExpiredAppleCert_receipt.b64 in Resources */ = {isa = PBXBuildFile; fileRef = D15358A51F62BEC100F297D0 /* grandUnifiedExpiredAppleCert_receipt.b64 */; };
 		D15358B41F62C47400F297D0 /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 in Resources */ = {isa = PBXBuildFile; fileRef = D15358B11F62C3C400F297D0 /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 */; };
@@ -148,6 +150,7 @@
 		D14FA73A1F618B0100545540 /* ASN1Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASN1Helpers.swift; sourceTree = "<group>"; };
 		D150A0E21F66936B0026ED04 /* mindnode_ios_michaelsandbox_receipt1.b64 */ = {isa = PBXFileReference; lastKnownFileType = text; path = mindnode_ios_michaelsandbox_receipt1.b64; sourceTree = "<group>"; };
 		D150A0E81F6698950026ED04 /* mindnode_ios_michaelsandbox_receipt2.b64 */ = {isa = PBXFileReference; lastKnownFileType = text; path = mindnode_ios_michaelsandbox_receipt2.b64; sourceTree = "<group>"; };
+		D150A0ED1F669A880026ED04 /* LocalReceiptValidationInAppPurchaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalReceiptValidationInAppPurchaseTests.swift; sourceTree = "<group>"; };
 		D15358A51F62BEC100F297D0 /* grandUnifiedExpiredAppleCert_receipt.b64 */ = {isa = PBXFileReference; lastKnownFileType = text; path = grandUnifiedExpiredAppleCert_receipt.b64; sourceTree = "<group>"; };
 		D15358B11F62C3C400F297D0 /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 */ = {isa = PBXFileReference; lastKnownFileType = text; path = deprecatedSinglesTypeExpiredAppleCert_receipt.b64; sourceTree = "<group>"; };
 		D15358F01F62D43400F297D0 /* HekateDemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HekateDemoViewModel.swift; sourceTree = "<group>"; };
@@ -343,6 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				D1D6F5411F5D8A3800E86FE1 /* LocalReceiptValidationTests.swift */,
+				D150A0ED1F669A880026ED04 /* LocalReceiptValidationInAppPurchaseTests.swift */,
 				D1D6F5481F5D9B1100E86FE1 /* Tools */,
 				D1D6F5431F5D8DBC00E86FE1 /* Test Assets */,
 			);
@@ -1079,6 +1083,7 @@
 			files = (
 				D190959F1F6000DE0095729B /* TestAssetLoading.swift in Sources */,
 				D19095CD1F601E960095729B /* LocalReceiptValidationTests.swift in Sources */,
+				D150A0EF1F669A880026ED04 /* LocalReceiptValidationInAppPurchaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1088,6 +1093,7 @@
 			files = (
 				D19095C71F601E580095729B /* TestAssetLoading.swift in Sources */,
 				D19095CE1F601E980095729B /* LocalReceiptValidationTests.swift in Sources */,
+				D150A0EE1F669A880026ED04 /* LocalReceiptValidationInAppPurchaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

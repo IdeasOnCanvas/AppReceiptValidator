@@ -189,19 +189,6 @@ class LocalReceiptValidationTests: XCTestCase {
         XCTAssertEqual(receipt, expected)
     }
 
-    func testiOSParsingPerformance() {
-        guard let data = assertB64TestAsset(filename: "mindnode_ios_michaelsandbox_receipt1.b64") else {
-            return
-        }
-        let parameters = ReceiptValidationParameters.allSteps.with {
-            $0.receiptOrigin = .data(data)
-            $0.deviceIdentifier = ReceiptDeviceIdentifier(uuid: UUID(uuidString: "3B76A7BD-8F5B-46A4-BCB1-CCE8DBD1B3CD")!)
-        }
-        measure {
-            _ = receiptValidator.validateReceipt(parameters: parameters)
-        }
-    }
-
     func testMindNodeiOSSandBoxReceipt2ParsingAndValidation() {
         guard let data = assertB64TestAsset(filename: "mindnode_ios_michaelsandbox_receipt2.b64") else {
             return
@@ -229,113 +216,17 @@ class LocalReceiptValidationTests: XCTestCase {
         XCTAssertEqual(receipt, expected)
     }
 
-    func testNonMindNodeReceiptParsingWithMultipleInAppPurchases() { // swiftlint:disable:this function_body_length
-        // from https://stackoverflow.com/questions/33843281/apple-receipt-data-sample "Grand Unified Receipt (multiple transactions)"
-        // note that the "deprecated transaction (single transaction) style receipt" from the same page doesn't work (base64 problem?)
-        guard let data = assertB64TestAsset(filename: "grandUnifiedExpiredAppleCert_receipt.b64") else {
+
+    func testiOSParsingPerformance() {
+        guard let data = assertB64TestAsset(filename: "mindnode_ios_michaelsandbox_receipt1.b64") else {
             return
         }
-
-        let expected = ParsedReceipt(
-            bundleIdentifier: "com.mbaasy.ios.demo",
-            bundleIdData: Data(base64Encoded: "DBNjb20ubWJhYXN5Lmlvcy5kZW1v"),
-            appVersion: "1",
-            opaqueValue: Data(base64Encoded: "xN1AVLC2Gge+tYX2qELgSA=="),
-            sha1Hash: Data(base64Encoded: "LgoRW+rBxXAjpb03NJlVqa2Z200="),
-            originalAppVersion: "1.0",
-            receiptCreationDate: Date.demoDate(string: "2015-08-13T07:50:46Z"),
-            expirationDate: nil,
-            inAppPurchaseReceipts: [
-                ParsedInAppPurchaseReceipt(
-                    quantity: nil,
-                    productIdentifier: "consumable",
-                    transactionIdentifier: "1000000166865231",
-                    originalTransactionIdentifier: "1000000166865231",
-                    purchaseDate: Date.demoDate(string: "2015-08-07T20:37:55Z"),
-                    originalPurchaseDate: Date.demoDate(string: "2015-08-07T20:37:55Z"),
-                    subscriptionExpirationDate: nil,
-                    cancellationDate: nil,
-                    webOrderLineItemId: nil
-                ),
-                ParsedInAppPurchaseReceipt(
-                    quantity: nil,
-                    productIdentifier: "monthly",
-                    transactionIdentifier: "1000000166965150",
-                    originalTransactionIdentifier: "1000000166965150",
-                    purchaseDate: Date.demoDate(string: "2015-08-10T06:49:32Z"),
-                    originalPurchaseDate: Date.demoDate(string: "2015-08-10T06:49:33Z"),
-                    subscriptionExpirationDate: Date.demoDate(string: "2015-08-10T06:54:32Z"),
-                    cancellationDate: nil,
-                    webOrderLineItemId: nil
-                ),
-                ParsedInAppPurchaseReceipt( // restores
-                    quantity: nil,
-                    productIdentifier: "monthly",
-                    transactionIdentifier: "1000000166965327",
-                    originalTransactionIdentifier: "1000000166965150",
-                    purchaseDate: Date.demoDate(string: "2015-08-10T06:54:32Z"),
-                    originalPurchaseDate: Date.demoDate(string: "2015-08-10T06:53:18Z"),
-                    subscriptionExpirationDate: Date.demoDate(string: "2015-08-10T06:59:32Z"),
-                    cancellationDate: nil,
-                    webOrderLineItemId: nil
-                ),
-                ParsedInAppPurchaseReceipt(
-                    quantity: nil,
-                    productIdentifier: "monthly",
-                    transactionIdentifier: "1000000166965895",
-                    originalTransactionIdentifier: "1000000166965150",
-                    purchaseDate: Date.demoDate(string: "2015-08-10T06:59:32Z"),
-                    originalPurchaseDate: Date.demoDate(string: "2015-08-10T06:57:34Z"),
-                    subscriptionExpirationDate: Date.demoDate(string: "2015-08-10T07:04:32Z"),
-                    cancellationDate: nil,
-                    webOrderLineItemId: nil
-                ),
-                ParsedInAppPurchaseReceipt(
-                    quantity: nil,
-                    productIdentifier: "monthly",
-                    transactionIdentifier: "1000000166967152",
-                    originalTransactionIdentifier: "1000000166965150",
-                    purchaseDate: Date.demoDate(string: "2015-08-10T07:04:32Z"),
-                    originalPurchaseDate: Date.demoDate(string: "2015-08-10T07:02:33Z"),
-                    subscriptionExpirationDate: Date.demoDate(string: "2015-08-10T07:09:32Z"),
-                    cancellationDate: nil,
-                    webOrderLineItemId: nil
-                ),
-                ParsedInAppPurchaseReceipt(
-                    quantity: nil,
-                    productIdentifier: "monthly",
-                    transactionIdentifier: "1000000166967484",
-                    originalTransactionIdentifier: "1000000166965150",
-                    purchaseDate: Date.demoDate(string: "2015-08-10T07:09:32Z"),
-                    originalPurchaseDate: Date.demoDate(string: "2015-08-10T07:08:30Z"),
-                    subscriptionExpirationDate: Date.demoDate(string: "2015-08-10T07:14:32Z"),
-                    cancellationDate: nil,
-                    webOrderLineItemId: nil
-                ),
-                ParsedInAppPurchaseReceipt(
-                    quantity: nil,
-                    productIdentifier: "monthly",
-                    transactionIdentifier: "1000000166967782",
-                    originalTransactionIdentifier: "1000000166965150",
-                    purchaseDate: Date.demoDate(string: "2015-08-10T07:14:32Z"),
-                    originalPurchaseDate: Date.demoDate(string: "2015-08-10T07:12:34Z"),
-                    subscriptionExpirationDate: Date.demoDate(string: "2015-08-10T07:19:32Z"),
-                    cancellationDate: nil,
-                    webOrderLineItemId: nil
-                )
-            ])
-        let result = receiptValidator.validateReceipt {
+        let parameters = ReceiptValidationParameters.allSteps.with {
             $0.receiptOrigin = .data(data)
-            $0.validateHash = false
-            $0.validateSignatureAuthenticity = false
+            $0.deviceIdentifier = ReceiptDeviceIdentifier(uuid: UUID(uuidString: "3B76A7BD-8F5B-46A4-BCB1-CCE8DBD1B3CD")!)
         }
-        guard let receipt = result.receipt else {
-            XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")
-            return
+        measure {
+            _ = receiptValidator.validateReceipt(parameters: parameters)
         }
-        XCTAssertEqual(receipt, expected)
-
-
-        print(receipt)
     }
 }
