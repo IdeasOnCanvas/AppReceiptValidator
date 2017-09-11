@@ -30,16 +30,16 @@ public struct LocalReceiptValidator {
                 throw ReceiptValidationError.couldNotFindReceipt
             }
 
-            let receiptContainer = try extractPKCS7Container(data: receiptData)
+            let receiptContainer = try self.extractPKCS7Container(data: receiptData)
 
             if parameters.validateSignaturePresence {
-                try checkSignaturePresence(pkcs7: receiptContainer)
+                try self.checkSignaturePresence(pkcs7: receiptContainer)
             }
             if parameters.validateSignatureAuthenticity {
                 guard let appleRootCertificateData = parameters.rootCertificateOrigin.loadData() else {
                     throw ReceiptValidationError.appleRootCertificateNotFound
                 }
-                try checkSignatureAuthenticity(pkcs7: receiptContainer, appleRootCertificateData: appleRootCertificateData)
+                try self.checkSignatureAuthenticity(pkcs7: receiptContainer, appleRootCertificateData: appleRootCertificateData)
             }
             let parsedReceipt = try parseReceipt(pkcs7: receiptContainer)
 
@@ -48,7 +48,7 @@ public struct LocalReceiptValidator {
                     throw ReceiptValidationError.deviceIdentifierNotDeterminable
                 }
                 print("Device identifier used (BASE64): \(deviceIdentifierData.base64EncodedString())")
-                try validateHash(receipt: parsedReceipt, deviceIdentifierData: deviceIdentifierData)
+                try self.validateHash(receipt: parsedReceipt, deviceIdentifierData: deviceIdentifierData)
             }
             return .success(parsedReceipt)
         } catch {
@@ -151,7 +151,7 @@ private extension LocalReceiptValidator {
         defer {
             X509_free(appleRootCertificateX509)
         }
-        try verifyAuthenticity(x509Certificate: appleRootCertificateX509, pkcs7: pkcs7)
+        try self.verifyAuthenticity(x509Certificate: appleRootCertificateX509, pkcs7: pkcs7)
     }
 
     private func verifyAuthenticity(x509Certificate: UnsafeMutablePointer<X509>, pkcs7: PKCS7Wrapper) throws {
@@ -186,7 +186,7 @@ private extension LocalReceiptValidator {
         let length = Int(octets.pointee.length)
         var parsedReceipt = ParsedReceipt()
 
-        try parseASN1Set(pointer: initialPointer, length: length) { (attributeType: Int32, value: ASN1Object) in
+        try self.parseASN1Set(pointer: initialPointer, length: length) { (attributeType: Int32, value: ASN1Object) in
             switch attributeType {
             case 2:
                 parsedReceipt.bundleIdData = value.dataValue
@@ -229,7 +229,7 @@ private extension LocalReceiptValidator {
 
     private func parseInAppPurchaseReceipt(pointer: UnsafePointer<UInt8>, length: Int) throws -> ParsedInAppPurchaseReceipt {
         var parsedInAppPurchaseReceipt = ParsedInAppPurchaseReceipt()
-        try parseASN1Set(pointer: pointer, length: length) { (attributeType, value) in
+        try self.parseASN1Set(pointer: pointer, length: length) { (attributeType, value) in
             switch attributeType {
             case 1701:
                 parsedInAppPurchaseReceipt.quantity = value.intValue

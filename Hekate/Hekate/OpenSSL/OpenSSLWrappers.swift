@@ -14,14 +14,14 @@ final class BIOWrapper {
 
     init(data: Data) {
         data.withUnsafeBytes { pointer -> Void in
-            BIO_write(bio, pointer, Int32(data.count))
+            BIO_write(self.bio, pointer, Int32(data.count))
         }
     }
 
     init() {}
 
     deinit {
-        BIO_free(bio)
+        BIO_free(self.bio)
     }
 }
 
@@ -35,6 +35,6 @@ final class PKCS7Wrapper {
     }
 
     deinit {
-        PKCS7_free(pkcs7)
+        PKCS7_free(self.pkcs7)
     }
 }

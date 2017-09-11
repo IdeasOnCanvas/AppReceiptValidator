@@ -150,11 +150,11 @@ extension ASN1Object {
 
     /// If a date-string is wrapped in an V_ASN1_OCTET_STRING, use this instead of `dateValue`
     var unwrappedDateValue: Date? {
-        return unwrapped?.dateValue
+        return self.unwrapped?.dateValue
     }
 
     var dateValue: Date? {
-        guard let string = stringValue else {
+        guard let string = self.stringValue else {
             return nil
         }
         return LocalReceiptValidator.asn1DateFormatter.date(from: string)
@@ -167,11 +167,11 @@ extension ASN1Object {
 extension ASN1Object {
 
     var intValue: Int? {
-        guard type == V_ASN1_INTEGER else {
+        guard self.type == V_ASN1_INTEGER else {
             return nil
         }
-        var pointer = valuePointer
-        let integer = c2i_ASN1_INTEGER(nil, &pointer, length)
+        var pointer = self.valuePointer
+        let integer = c2i_ASN1_INTEGER(nil, &pointer, self.length)
         defer {
             ASN1_INTEGER_free(integer)
         }
@@ -195,19 +195,19 @@ extension ASN1Object {
 
     /// If a string is wrapped in an V_ASN1_OCTET_STRING, use this instead of `stringValue`
     var unwrappedStringValue: String? {
-        return unwrapped?.stringValue
+        return self.unwrapped?.stringValue
     }
 
     var stringValue: String? {
-        guard let bytes = valuePointer else {
+        guard let bytes = self.valuePointer else {
             return nil
         }
-        switch type {
+        switch self.type {
         case V_ASN1_UTF8STRING:
-            let data = Data(bytes: bytes, count: length)
+            let data = Data(bytes: bytes, count: self.length)
             return String(data: data, encoding: .utf8)
         case V_ASN1_IA5STRING:
-            let data = Data(bytes: bytes, count: length)
+            let data = Data(bytes: bytes, count: self.length)
             return String(data: data, encoding: .ascii)
         default:
             return nil

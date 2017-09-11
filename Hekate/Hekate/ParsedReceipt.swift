@@ -81,15 +81,15 @@ extension ParsedReceipt: CustomStringConvertible {
     public var description: String {
         let formatter = StringFormatter()
         let props: [(String, String)]  = [
-            ("bundleIdentifier", formatter.format(bundleIdentifier)),
-            ("bundleIdData", formatter.format(bundleIdData)),
-            ("appVersion", formatter.format(appVersion)),
-            ("opaqueValue", formatter.format(opaqueValue)),
-            ("sha1Hash", formatter.format(sha1Hash)),
-            ("originalAppVersion", formatter.format(originalAppVersion)),
-            ("receiptCreationDate", formatter.format(receiptCreationDate)),
-            ("expirationDate", formatter.format(expirationDate)),
-            ("inAppPurchaseReceipts", formatter.format(inAppPurchaseReceipts))
+            ("bundleIdentifier", formatter.format(self.bundleIdentifier)),
+            ("bundleIdData", formatter.format(self.bundleIdData)),
+            ("appVersion", formatter.format(self.appVersion)),
+            ("opaqueValue", formatter.format(self.opaqueValue)),
+            ("sha1Hash", formatter.format(self.sha1Hash)),
+            ("originalAppVersion", formatter.format(self.originalAppVersion)),
+            ("receiptCreationDate", formatter.format(self.receiptCreationDate)),
+            ("expirationDate", formatter.format(self.expirationDate)),
+            ("inAppPurchaseReceipts", formatter.format(self.inAppPurchaseReceipts))
         ]
         return "ParsedReceipt(\n" + formatter.format(props) + "\n)"
     }
@@ -195,15 +195,15 @@ extension ParsedInAppPurchaseReceipt: CustomStringConvertible {
     public var description: String {
         let formatter = StringFormatter()
         let props: [(String, String)]  = [
-            ("quantity", formatter.format(quantity)),
-            ("productIdentifier", formatter.format(productIdentifier)),
-            ("transactionIdentifier", formatter.format(transactionIdentifier)),
-            ("originalTransactionIdentifier", formatter.format(originalTransactionIdentifier)),
-            ("purchaseDate", formatter.format(purchaseDate)),
-            ("originalPurchaseDate", formatter.format(originalPurchaseDate)),
-            ("subscriptionExpirationDate", formatter.format(subscriptionExpirationDate)),
-            ("cancellationDate", formatter.format(cancellationDate)),
-            ("webOrderLineItemId", formatter.format(webOrderLineItemId))
+            ("quantity", formatter.format(self.quantity)),
+            ("productIdentifier", formatter.format(self.productIdentifier)),
+            ("transactionIdentifier", formatter.format(self.transactionIdentifier)),
+            ("originalTransactionIdentifier", formatter.format(self.originalTransactionIdentifier)),
+            ("purchaseDate", formatter.format(self.purchaseDate)),
+            ("originalPurchaseDate", formatter.format(self.originalPurchaseDate)),
+            ("subscriptionExpirationDate", formatter.format(self.subscriptionExpirationDate)),
+            ("cancellationDate", formatter.format(self.cancellationDate)),
+            ("webOrderLineItemId", formatter.format(self.webOrderLineItemId))
         ]
         return "ParsedInAppPurchaseReceipt(\n" + formatter.format(props) + "\n)"
     }
