@@ -66,6 +66,10 @@ public enum ReceiptDeviceIdentifier {
         self = .data(data)
     }
 
+    public init(uuid: UUID) {
+        self = .data(uuid.data)
+    }
+
     public func getData() -> Data? {
         switch self {
         case .data(let data):
@@ -92,5 +96,18 @@ public enum RootCertificateOrigin {
         guard let appleRootCertificateData = try? Data(contentsOf: appleRootCertificateURL) else { return nil }
 
         return appleRootCertificateData
+    }
+}
+
+// MARK: - UUID + data
+
+extension UUID {
+    /// Get's the raw bytes of a Foundation UUID
+    var data: Data {
+        var rawUUID = self.uuid
+        let data = withUnsafePointer(to: &rawUUID) {
+            Data(bytes: $0, count: MemoryLayout.size(ofValue: uuid))
+        }
+        return data
     }
 }
