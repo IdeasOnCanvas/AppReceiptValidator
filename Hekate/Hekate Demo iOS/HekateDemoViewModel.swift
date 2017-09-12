@@ -15,7 +15,7 @@ struct HekateDemoViewModel {
     }
 
     var lastReceiptData: Data?
-    var lastValidationResult: ReceiptValidationResult?
+    var lastValidationResult: LocalReceiptValidator.Result?
 
     var receiptIsValid: Bool {
         guard let result = lastValidationResult else { return false }

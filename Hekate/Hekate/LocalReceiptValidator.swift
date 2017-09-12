@@ -24,12 +24,12 @@ public struct LocalReceiptValidator {
     // MARK: - Local Receipt Validation
 
     /// Validates a local receipt and returns the result using the parameters `LocalReceiptValidator.Parameters.allSteps`, which can be further configured in the passed block.
-    public func validateReceipt(configuration: (inout Parameters) -> Void) -> ReceiptValidationResult {
+    public func validateReceipt(configuration: (inout Parameters) -> Void) -> Result {
         return validateReceipt(parameters: Parameters.allSteps.with(block: configuration))
     }
 
     /// Validates a local receipt and returns the result using the passed parameters.
-    public func validateReceipt(parameters: Parameters = Parameters.allSteps) -> ReceiptValidationResult {
+    public func validateReceipt(parameters: Parameters = Parameters.allSteps) -> Result {
         do {
             guard let receiptData = parameters.receiptOrigin.loadData() else { throw ReceiptValidationError.couldNotFindReceipt }
 
@@ -287,28 +287,30 @@ private extension LocalReceiptValidator {
     }
 }
 
-// MARK: - ReceiptValidationResult
+// MARK: - Result
 
-public enum ReceiptValidationResult {
+extension LocalReceiptValidator {
+    public enum Result {
 
-    case success(ParsedReceipt)
-    case error(ReceiptValidationError)
+        case success(ParsedReceipt)
+        case error(ReceiptValidationError)
 
-    public var receipt: ParsedReceipt? {
-        switch self {
-        case .success(let receipt):
-            return receipt
-        case .error:
-            return nil
+        public var receipt: ParsedReceipt? {
+            switch self {
+            case .success(let receipt):
+                return receipt
+            case .error:
+                return nil
+            }
         }
-    }
 
-    public var error: ReceiptValidationError? {
-        switch self {
-        case .success:
-            return nil
-        case .error(let error):
-            return error
+        public var error: ReceiptValidationError? {
+            switch self {
+            case .success:
+                return nil
+            case .error(let error):
+                return error
+            }
         }
     }
 }
