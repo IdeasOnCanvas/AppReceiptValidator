@@ -17,7 +17,11 @@ import StoreKit
 /// - Note: If on iOS, use this only on Main Queue, because UIDevice is called
 public struct LocalReceiptValidator {
 
+    // MARK: - Lifecycle
+
     public init() {}
+
+    // MARK: - Local Receipt Validation
 
     /// Validates a local receipt and returns the result using the parameters `ReceiptValidationParameters.allSteps`, which can be further configured in the passed block.
     public func validateReceipt(configuration: (inout ReceiptValidationParameters) -> Void) -> ReceiptValidationResult {
