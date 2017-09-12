@@ -18,9 +18,8 @@ class LocalReceiptValidationInAppPurchaseTests: XCTestCase {
     var receiptValidator = LocalReceiptValidator()
 
     func testNonMindNodeReceiptParsingWithoutValidation() {
-        guard let data = assertB64TestAsset(filename: "grandUnifiedExpiredAppleCert_receipt.b64") else {
-            return
-        }
+        guard let data = assertB64TestAsset(filename: "grandUnifiedExpiredAppleCert_receipt.b64") else { return }
+
         do {
             let receipt = try receiptValidator.parseReceipt(origin: .data(data))
             XCTAssertEqual(receipt, nonMindNodeReceipt)
@@ -34,9 +33,7 @@ class LocalReceiptValidationInAppPurchaseTests: XCTestCase {
     func testNonMindNodeReceiptParsingWithMultipleInAppPurchases() {
         // From https://stackoverflow.com/questions/33843281/apple-receipt-data-sample "Grand Unified Receipt (multiple transactions)"
         // note that the "deprecated transaction (single transaction) style receipt" from the same page doesn't work (base64 problem?)
-        guard let data = assertB64TestAsset(filename: "grandUnifiedExpiredAppleCert_receipt.b64") else {
-            return
-        }
+        guard let data = assertB64TestAsset(filename: "grandUnifiedExpiredAppleCert_receipt.b64") else { return }
 
         let result = receiptValidator.validateReceipt {
             $0.receiptOrigin = .data(data)

@@ -37,9 +37,8 @@ class LocalReceiptValidationTests: XCTestCase {
     }
 
     func testFailedReceiptParsing() {
-        guard let data = assertTestAsset(filename: "not_a_receipt") else {
-            return
-        }
+        guard let data = assertTestAsset(filename: "not_a_receipt") else { return }
+
         do {
             _ = try receiptValidator.parseReceipt(origin: .data(data))
             XCTFail("Unexpectedly succeeded in parsing a non-receipt")
@@ -161,9 +160,8 @@ class LocalReceiptValidationTests: XCTestCase {
     }
 
     func testMindNodeMacReceiptParsingWithParseMethod() {
-        guard let data = assertTestAsset(filename: "hannes_mac_mindnode_receipt") else {
-            return
-        }
+        guard let data = assertTestAsset(filename: "hannes_mac_mindnode_receipt") else { return }
+        
         let expected = ParsedReceipt(
             bundleIdentifier: "com.ideasoncanvas.MindNodeMac",
             bundleIdData: Data(base64Encoded: "DB1jb20uaWRlYXNvbmNhbnZhcy5NaW5kTm9kZU1hYw==")!,
@@ -184,9 +182,8 @@ class LocalReceiptValidationTests: XCTestCase {
     }
 
     func testNonMindNodeFailingDeprecatedSinglesTypeExpiredAppleCertParsing() {
-        guard let data = assertB64TestAsset(filename: "deprecatedSinglesTypeExpiredAppleCert_receipt.b64") else {
-            return
-        }
+        guard let data = assertB64TestAsset(filename: "deprecatedSinglesTypeExpiredAppleCert_receipt.b64") else { return }
+
         let result = receiptValidator.validateReceipt { (parameters: inout ReceiptValidationParameters) -> Void in
             parameters.receiptOrigin = .data(data)
         }
@@ -200,9 +197,8 @@ class LocalReceiptValidationTests: XCTestCase {
     }
 
     func testMindNodeiOSSandBoxReceipt1ParsingAndValidation() {
-        guard let data = assertB64TestAsset(filename: "mindnode_ios_michaelsandbox_receipt1.b64") else {
-            return
-        }
+        guard let data = assertB64TestAsset(filename: "mindnode_ios_michaelsandbox_receipt1.b64") else { return }
+
         let result = receiptValidator.validateReceipt { (parameters: inout ReceiptValidationParameters) -> Void in
             parameters.receiptOrigin = .data(data)
             parameters.deviceIdentifier = ReceiptDeviceIdentifier(uuid: UUID(uuidString: "3B76A7BD-8F5B-46A4-BCB1-CCE8DBD1B3CD")!)
@@ -228,9 +224,8 @@ class LocalReceiptValidationTests: XCTestCase {
     }
 
     func testMindNodeiOSSandBoxReceipt2ParsingAndValidation() {
-        guard let data = assertB64TestAsset(filename: "mindnode_ios_michaelsandbox_receipt2.b64") else {
-            return
-        }
+        guard let data = assertB64TestAsset(filename: "mindnode_ios_michaelsandbox_receipt2.b64") else { return }
+
         let result = receiptValidator.validateReceipt { (parameters: inout ReceiptValidationParameters) -> Void in
             parameters.receiptOrigin = .data(data)
             parameters.validateHash = false // unknown device identifier
@@ -256,9 +251,8 @@ class LocalReceiptValidationTests: XCTestCase {
 
 
     func testiOSParsingPerformance() {
-        guard let data = assertB64TestAsset(filename: "mindnode_ios_michaelsandbox_receipt1.b64") else {
-            return
-        }
+        guard let data = assertB64TestAsset(filename: "mindnode_ios_michaelsandbox_receipt1.b64") else { return }
+
         let parameters = ReceiptValidationParameters.allSteps.with {
             $0.receiptOrigin = .data(data)
             $0.deviceIdentifier = ReceiptDeviceIdentifier(uuid: UUID(uuidString: "3B76A7BD-8F5B-46A4-BCB1-CCE8DBD1B3CD")!)
