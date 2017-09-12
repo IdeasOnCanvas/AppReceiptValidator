@@ -1,5 +1,5 @@
 //
-//  ReceiptDeviceIdentifier+deviceIdentifier iOS.swift
+//  DeviceIdentifier+installedDeviceIdentifier_iOS.swift
 //  Hekate macOS
 //
 //  Created by Hannes Oud on 06.09.17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension ReceiptDeviceIdentifier {
+extension LocalReceiptValidator.Parameters.DeviceIdentifier {
 
     /// On iOS this is the UIDevice's identifierForVendor UUID data
     static var installedDeviceIdentifierData: Data? {

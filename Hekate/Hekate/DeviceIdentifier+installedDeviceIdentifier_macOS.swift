@@ -1,5 +1,5 @@
 //
-//  ReceiptDeviceIdentifier+deviceIdentifier macOS.swift
+//  DeviceIdentifier+installedDeviceIdentifier macOS.swift
 //  Hekate macOS
 //
 //  Created by Hannes Oud on 06.09.17.
@@ -9,7 +9,7 @@
 import Foundation
 import IOKit
 
-extension ReceiptDeviceIdentifier {
+extension LocalReceiptValidator.Parameters.DeviceIdentifier {
 
     /// On mac this is the primary network interface's MAC Adress as bytes
     static var installedDeviceIdentifierData: Data? {

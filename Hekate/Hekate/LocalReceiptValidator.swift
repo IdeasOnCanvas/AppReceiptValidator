@@ -23,13 +23,13 @@ public struct LocalReceiptValidator {
 
     // MARK: - Local Receipt Validation
 
-    /// Validates a local receipt and returns the result using the parameters `ReceiptValidationParameters.allSteps`, which can be further configured in the passed block.
-    public func validateReceipt(configuration: (inout ReceiptValidationParameters) -> Void) -> ReceiptValidationResult {
-        return validateReceipt(parameters: ReceiptValidationParameters.allSteps.with(block: configuration))
+    /// Validates a local receipt and returns the result using the parameters `LocalReceiptValidator.Parameters.allSteps`, which can be further configured in the passed block.
+    public func validateReceipt(configuration: (inout Parameters) -> Void) -> ReceiptValidationResult {
+        return validateReceipt(parameters: Parameters.allSteps.with(block: configuration))
     }
 
     /// Validates a local receipt and returns the result using the passed parameters.
-    public func validateReceipt(parameters: ReceiptValidationParameters = ReceiptValidationParameters.allSteps) -> ReceiptValidationResult {
+    public func validateReceipt(parameters: Parameters = Parameters.allSteps) -> ReceiptValidationResult {
         do {
             guard let receiptData = parameters.receiptOrigin.loadData() else { throw ReceiptValidationError.couldNotFindReceipt }
 
@@ -64,7 +64,7 @@ public struct LocalReceiptValidator {
     /// - Parameter origin: How to load the receipt.
     /// - Returns: The Parsed receipt.
     /// - Throws: A ReceiptValidationError. Especially ReceiptValidationError.couldNotFindReceipt if the receipt cannot be loaded/found.
-    public func parseReceipt(origin: ReceiptOrigin) throws -> ParsedReceipt {
+    public func parseReceipt(origin: Parameters.ReceiptOrigin) throws -> ParsedReceipt {
         guard let receiptData = origin.loadData() else {
             throw ReceiptValidationError.couldNotFindReceipt
         }
