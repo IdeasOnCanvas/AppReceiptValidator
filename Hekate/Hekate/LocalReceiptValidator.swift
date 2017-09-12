@@ -64,11 +64,27 @@ public struct LocalReceiptValidator {
         guard let receiptData = origin.loadData() else {
             throw ReceiptValidationError.couldNotFindReceipt
         }
+
         let receiptContainer = try extractPKCS7Container(data: receiptData)
         return try parseReceipt(pkcs7: receiptContainer)
     }
 
-    fileprivate func validateHash(receipt: ParsedReceipt, deviceIdentifierData: Data) throws {
+    /// Uses receipt-conform representation of dates like "2017-01-01T12:00:00Z"
+    public static let asn1DateFormatter: DateFormatter = {
+        // Date formatter code from https://www.objc.io/issues/17-security/receipt-validation/#parsing-the-receipt
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        return dateFormatter
+    }()
+}
+
+// MARK: - Full Validation
+
+private extension LocalReceiptValidator {
+
+    func validateHash(receipt: ParsedReceipt, deviceIdentifierData: Data) throws {
         // Make sure that the ParsedReceipt instances has non-nil values needed for hash comparison
         guard let receiptOpaqueValueData = receipt.opaqueValue else { throw ReceiptValidationError.incorrectHash }
         guard let receiptBundleIdData = receipt.bundleIdData else { throw ReceiptValidationError.incorrectHash }
@@ -100,16 +116,6 @@ public struct LocalReceiptValidator {
             throw ReceiptValidationError.incorrectHash
         }
     }
-
-    /// Uses receipt-conform representation of dates like "2017-01-01T12:00:00Z"
-    public static let asn1DateFormatter: DateFormatter = {
-        // Date formatter code from https://www.objc.io/issues/17-security/receipt-validation/#parsing-the-receipt
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"
-        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-        return dateFormatter
-    }()
 }
 
 // MARK: - PKCS7 Extraction
