@@ -21,7 +21,6 @@ extension ReceiptDeviceIdentifier {
     ///
     /// - Returns: The MAC Address as Data and String representation
     private static func getPrimaryNetworkMACAddress() -> (data: Data, addressString: String)? {
-
         let matching = IOServiceMatching("IOEthernetInterface") as NSMutableDictionary
         matching[kIOPropertyMatchKey] = ["IOPrimaryInterface": true]
         var servicesIterator: io_iterator_t = 0
