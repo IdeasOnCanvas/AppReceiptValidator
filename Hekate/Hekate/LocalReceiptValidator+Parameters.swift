@@ -14,9 +14,9 @@ public extension LocalReceiptValidator {
     public struct Parameters {
 
         public var receiptOrigin: ReceiptOrigin = .installedInMainBundle
-        public var validateSignaturePresence: Bool = true
-        public var validateSignatureAuthenticity: Bool = true
-        public var validateHash: Bool = true
+        public var shouldValidateSignaturePresence: Bool = true
+        public var shouldValidateSignatureAuthenticity: Bool = true
+        public var shouldValidateHash: Bool = true
         public var deviceIdentifier: DeviceIdentifier = .currentDevice
         public let rootCertificateOrigin: RootCertificateOrigin = .cerFileInMainBundle
 

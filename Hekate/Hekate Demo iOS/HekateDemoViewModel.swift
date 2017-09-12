@@ -10,6 +10,7 @@ import Foundation
 import Hekate_iOS
 
 struct HekateDemoViewModel {
+
     var hasReceipt: Bool {
         return lastReceiptData != nil
     }
@@ -19,6 +20,7 @@ struct HekateDemoViewModel {
 
     var receiptIsValid: Bool {
         guard let result = lastValidationResult else { return false }
+
         switch result {
         case .success:
             return true
@@ -31,6 +33,7 @@ struct HekateDemoViewModel {
         guard let result = lastValidationResult else {
             return "(No result)"
         }
+
         switch result {
         case .success(let receipt):
             return "Valid\n" + receipt.description
@@ -40,9 +43,8 @@ struct HekateDemoViewModel {
     }
 
     var receiptDataBase64Text: String {
-        guard let data = lastReceiptData else {
-            return "(no data)"
-        }
+        guard let data = lastReceiptData else { return "(no data)" }
+
         return data.base64EncodedString(options: [.lineLength64Characters])
     }
 

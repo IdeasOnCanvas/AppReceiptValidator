@@ -67,7 +67,7 @@ class LocalReceiptValidationTests: XCTestCase {
         )
         let result = receiptValidator.validateReceipt {
             $0.receiptOrigin = .data(data)
-            $0.validateHash = false // the original device identifier is unknown
+            $0.shouldValidateHash = false // the original device identifier is unknown
         }
         guard let receipt = result.receipt else {
             XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")
@@ -95,7 +95,7 @@ class LocalReceiptValidationTests: XCTestCase {
         )
         let result = receiptValidator.validateReceipt {
             $0.receiptOrigin = .data(data)
-            $0.validateHash = false // the original device identifier is unknown
+            $0.shouldValidateHash = false // the original device identifier is unknown
         }
         guard let receipt = result.receipt else {
             XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")
@@ -147,9 +147,9 @@ class LocalReceiptValidationTests: XCTestCase {
         )
         let result = receiptValidator.validateReceipt {
             $0.receiptOrigin = .data(data)
-            $0.validateHash = false
-            $0.validateSignaturePresence = false
-            $0.validateSignatureAuthenticity = false
+            $0.shouldValidateHash = false
+            $0.shouldValidateSignaturePresence = false
+            $0.shouldValidateSignatureAuthenticity = false
         }
         guard let receipt = result.receipt else {
             XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")
@@ -229,7 +229,7 @@ class LocalReceiptValidationTests: XCTestCase {
 
         let result = receiptValidator.validateReceipt { (parameters: inout LocalReceiptValidator.Parameters) -> Void in
             parameters.receiptOrigin = .data(data)
-            parameters.validateHash = false // unknown device identifier
+            parameters.shouldValidateHash = false // unknown device identifier
         }
         let expected = ParsedReceipt(
             bundleIdentifier: "com.mindnode.mindnodetouch",

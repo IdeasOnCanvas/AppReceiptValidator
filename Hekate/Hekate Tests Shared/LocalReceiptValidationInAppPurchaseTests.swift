@@ -38,8 +38,8 @@ class LocalReceiptValidationInAppPurchaseTests: XCTestCase {
 
         let result = receiptValidator.validateReceipt {
             $0.receiptOrigin = .data(data)
-            $0.validateHash = false
-            $0.validateSignatureAuthenticity = false
+            $0.shouldValidateHash = false
+            $0.shouldValidateSignatureAuthenticity = false
         }
         guard let receipt = result.receipt else {
             XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")

@@ -35,17 +35,17 @@ public struct LocalReceiptValidator {
 
             let receiptContainer = try self.extractPKCS7Container(data: receiptData)
 
-            if parameters.validateSignaturePresence {
+            if parameters.shouldValidateSignaturePresence {
                 try self.checkSignaturePresence(pkcs7: receiptContainer)
             }
-            if parameters.validateSignatureAuthenticity {
+            if parameters.shouldValidateSignatureAuthenticity {
                 guard let appleRootCertificateData = parameters.rootCertificateOrigin.loadData() else { throw Error.appleRootCertificateNotFound }
 
                 try self.checkSignatureAuthenticity(pkcs7: receiptContainer, appleRootCertificateData: appleRootCertificateData)
             }
             let parsedReceipt = try parseReceipt(pkcs7: receiptContainer)
 
-            if parameters.validateHash {
+            if parameters.shouldValidateHash {
                 guard let deviceIdentifierData = parameters.deviceIdentifier.getData() else { throw Error.deviceIdentifierNotDeterminable }
 
                 print("Device identifier used (BASE64): \(deviceIdentifierData.base64EncodedString())")

@@ -11,6 +11,7 @@ import StoreKit
 import UIKit
 
 class ViewController: UIViewController {
+
     var storeKitHelper = StoreKitHelper()
 
     var viewModel = HekateDemoViewModel() {
