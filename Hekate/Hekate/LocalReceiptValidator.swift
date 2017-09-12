@@ -31,7 +31,7 @@ public struct LocalReceiptValidator {
     /// Validates a local receipt and returns the result using the passed parameters.
     public func validateReceipt(parameters: Parameters = Parameters.allSteps) -> Result {
         do {
-            guard let receiptData = parameters.receiptOrigin.loadData() else { throw ReceiptValidationError.couldNotFindReceipt }
+            guard let receiptData = parameters.receiptOrigin.loadData() else { throw Error.couldNotFindReceipt }
 
             let receiptContainer = try self.extractPKCS7Container(data: receiptData)
 
@@ -39,14 +39,14 @@ public struct LocalReceiptValidator {
                 try self.checkSignaturePresence(pkcs7: receiptContainer)
             }
             if parameters.validateSignatureAuthenticity {
-                guard let appleRootCertificateData = parameters.rootCertificateOrigin.loadData() else { throw ReceiptValidationError.appleRootCertificateNotFound }
+                guard let appleRootCertificateData = parameters.rootCertificateOrigin.loadData() else { throw Error.appleRootCertificateNotFound }
 
                 try self.checkSignatureAuthenticity(pkcs7: receiptContainer, appleRootCertificateData: appleRootCertificateData)
             }
             let parsedReceipt = try parseReceipt(pkcs7: receiptContainer)
 
             if parameters.validateHash {
-                guard let deviceIdentifierData = parameters.deviceIdentifier.getData() else { throw ReceiptValidationError.deviceIdentifierNotDeterminable }
+                guard let deviceIdentifierData = parameters.deviceIdentifier.getData() else { throw Error.deviceIdentifierNotDeterminable }
 
                 print("Device identifier used (BASE64): \(deviceIdentifierData.base64EncodedString())")
 
@@ -54,8 +54,8 @@ public struct LocalReceiptValidator {
             }
             return .success(parsedReceipt)
         } catch {
-            assert(error is ReceiptValidationError)
-            return .error(error as? ReceiptValidationError ?? ReceiptValidationError.unknown)
+            assert(error is LocalReceiptValidator.Error)
+            return .error(error as? LocalReceiptValidator.Error ?? .unknown)
         }
     }
 
@@ -63,10 +63,10 @@ public struct LocalReceiptValidator {
     ///
     /// - Parameter origin: How to load the receipt.
     /// - Returns: The Parsed receipt.
-    /// - Throws: A ReceiptValidationError. Especially ReceiptValidationError.couldNotFindReceipt if the receipt cannot be loaded/found.
+    /// - Throws: A Error. Especially Error.couldNotFindReceipt if the receipt cannot be loaded/found.
     public func parseReceipt(origin: Parameters.ReceiptOrigin) throws -> ParsedReceipt {
         guard let receiptData = origin.loadData() else {
-            throw ReceiptValidationError.couldNotFindReceipt
+            throw Error.couldNotFindReceipt
         }
 
         let receiptContainer = try extractPKCS7Container(data: receiptData)
@@ -90,9 +90,9 @@ private extension LocalReceiptValidator {
 
     func validateHash(receipt: ParsedReceipt, deviceIdentifierData: Data) throws {
         // Make sure that the ParsedReceipt instances has non-nil values needed for hash comparison
-        guard let receiptOpaqueValueData = receipt.opaqueValue else { throw ReceiptValidationError.incorrectHash }
-        guard let receiptBundleIdData = receipt.bundleIdData else { throw ReceiptValidationError.incorrectHash }
-        guard let receiptHashData = receipt.sha1Hash else { throw ReceiptValidationError.incorrectHash }
+        guard let receiptOpaqueValueData = receipt.opaqueValue else { throw Error.incorrectHash }
+        guard let receiptBundleIdData = receipt.bundleIdData else { throw Error.incorrectHash }
+        guard let receiptHashData = receipt.sha1Hash else { throw Error.incorrectHash }
 
         // Compute the hash for your app & device
 
@@ -117,7 +117,7 @@ private extension LocalReceiptValidator {
 
         // Compare the computed hash with the receipt's hash
         if computedHashData != receiptHashData {
-            throw ReceiptValidationError.incorrectHash
+            throw Error.incorrectHash
         }
     }
 }
@@ -130,12 +130,12 @@ private extension LocalReceiptValidator {
         let receiptBIO = BIOWrapper(data: data)
         let receiptPKCS7Container = d2i_PKCS7_bio(receiptBIO.bio, nil)
 
-        guard let nonNullReceiptPKCS7Container = receiptPKCS7Container else { throw ReceiptValidationError.emptyReceiptContents }
+        guard let nonNullReceiptPKCS7Container = receiptPKCS7Container else { throw Error.emptyReceiptContents }
 
         let pkcs7Wrapper = PKCS7Wrapper(pkcs7: nonNullReceiptPKCS7Container)
         let pkcs7DataTypeCode = OBJ_obj2nid(pkcs7_d_sign(receiptPKCS7Container).pointee.contents.pointee.type)
 
-        guard pkcs7DataTypeCode == NID_pkcs7_data else { throw ReceiptValidationError.emptyReceiptContents }
+        guard pkcs7DataTypeCode == NID_pkcs7_data else { throw Error.emptyReceiptContents }
 
         return pkcs7Wrapper
     }
@@ -148,13 +148,13 @@ private extension LocalReceiptValidator {
     func checkSignaturePresence(pkcs7: PKCS7Wrapper) throws {
         let pkcs7SignedTypeCode = OBJ_obj2nid(pkcs7.pkcs7.pointee.type)
 
-        guard pkcs7SignedTypeCode == NID_pkcs7_signed else { throw ReceiptValidationError.receiptNotSigned }
+        guard pkcs7SignedTypeCode == NID_pkcs7_signed else { throw Error.receiptNotSigned }
     }
 
     func checkSignatureAuthenticity(pkcs7: PKCS7Wrapper, appleRootCertificateData: Data) throws {
         let appleRootCertificateBIO = BIOWrapper(data: appleRootCertificateData)
 
-        guard let appleRootCertificateX509 = d2i_X509_bio(appleRootCertificateBIO.bio, nil) else { throw ReceiptValidationError.malformedAppleRootCertificate }
+        guard let appleRootCertificateX509 = d2i_X509_bio(appleRootCertificateBIO.bio, nil) else { throw Error.malformedAppleRootCertificate }
 
         defer {
             X509_free(appleRootCertificateX509)
@@ -174,7 +174,7 @@ private extension LocalReceiptValidator {
         let result = PKCS7_verify(pkcs7.pkcs7, nil, x509CertificateStore, nil, nil, 0)
 
         if result != 1 {
-            throw ReceiptValidationError.receiptSignatureInvalid
+            throw Error.receiptSignatureInvalid
         }
     }
 }
@@ -185,8 +185,8 @@ private extension LocalReceiptValidator {
 
     // swiftlint:disable:next cyclomatic_complexity
     func parseReceipt(pkcs7: PKCS7Wrapper) throws -> ParsedReceipt {
-        guard let contents = pkcs7.pkcs7.pointee.d.sign.pointee.contents, let octets = contents.pointee.d.data else { throw ReceiptValidationError.malformedReceipt }
-        guard let initialPointer = UnsafePointer(octets.pointee.data) else { throw ReceiptValidationError.malformedReceipt }
+        guard let contents = pkcs7.pkcs7.pointee.d.sign.pointee.contents, let octets = contents.pointee.d.data else { throw Error.malformedReceipt }
+        guard let initialPointer = UnsafePointer(octets.pointee.data) else { throw Error.malformedReceipt }
         let length = Int(octets.pointee.length)
         var parsedReceipt = ParsedReceipt()
 
@@ -266,7 +266,7 @@ private extension LocalReceiptValidator {
         let limit = initialPointer.advanced(by: length)
 
         /// Make sure we're pointing to an ASN1 Set, and move the pointer forward
-        guard ASN1Object.next(byAdvancingPointer: &pointer, notBeyond: limit).isOfASN1SetType else { throw ReceiptValidationError.malformedReceipt }
+        guard ASN1Object.next(byAdvancingPointer: &pointer, notBeyond: limit).isOfASN1SetType else { throw Error.malformedReceipt }
 
         // Decode Payload
 
@@ -276,7 +276,7 @@ private extension LocalReceiptValidator {
             let sequenceObject = ASN1Object.next(byAdvancingPointer: &pointer, notBeyond: limit)
 
             // Attempt to interpret it as a ASN1 Sequence
-            guard let sequence = sequenceObject.sequenceValue(byAdvancingPointer: &pointer, notBeyond: limit) else { throw ReceiptValidationError.malformedReceipt }
+            guard let sequence = sequenceObject.sequenceValue(byAdvancingPointer: &pointer, notBeyond: limit) else { throw Error.malformedReceipt }
 
             // Extract and assign value from the current sequence
             try valueAttributeAction(sequence.attributeType, sequence.valueObject)
@@ -290,10 +290,11 @@ private extension LocalReceiptValidator {
 // MARK: - Result
 
 extension LocalReceiptValidator {
+
     public enum Result {
 
         case success(ParsedReceipt)
-        case error(ReceiptValidationError)
+        case error(LocalReceiptValidator.Error)
 
         public var receipt: ParsedReceipt? {
             switch self {
@@ -304,7 +305,7 @@ extension LocalReceiptValidator {
             }
         }
 
-        public var error: ReceiptValidationError? {
+        public var error: LocalReceiptValidator.Error? {
             switch self {
             case .success:
                 return nil
@@ -315,19 +316,21 @@ extension LocalReceiptValidator {
     }
 }
 
-// MARK: - ReceiptValidationError
+// MARK: - Error
 
-public enum ReceiptValidationError: Int, Error {
+extension LocalReceiptValidator {
 
-    case couldNotFindReceipt
-    case emptyReceiptContents
-    case receiptNotSigned
-    case appleRootCertificateNotFound
-    case receiptSignatureInvalid
-    case malformedReceipt
-    case malformedInAppPurchaseReceipt
-    case incorrectHash
-    case deviceIdentifierNotDeterminable
-    case malformedAppleRootCertificate
-    case unknown
+    public enum Error: Int, Swift.Error {
+        case couldNotFindReceipt
+        case emptyReceiptContents
+        case receiptNotSigned
+        case appleRootCertificateNotFound
+        case receiptSignatureInvalid
+        case malformedReceipt
+        case malformedInAppPurchaseReceipt
+        case incorrectHash
+        case deviceIdentifierNotDeterminable
+        case malformedAppleRootCertificate
+        case unknown
+    }
 }

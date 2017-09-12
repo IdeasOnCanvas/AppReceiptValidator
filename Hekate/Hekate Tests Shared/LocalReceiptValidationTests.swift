@@ -32,8 +32,8 @@ class LocalReceiptValidationTests: XCTestCase {
             return
         }
 
-        if error != ReceiptValidationError.emptyReceiptContents {
-            XCTFail("Unexpected error, expected ReceiptValidationError.emptyReceiptContents, got \(error)")
+        if error != LocalReceiptValidator.Error.emptyReceiptContents {
+            XCTFail("Unexpected error, expected .emptyReceiptContents, got \(error)")
         }
     }
 
@@ -44,8 +44,8 @@ class LocalReceiptValidationTests: XCTestCase {
             _ = try receiptValidator.parseReceipt(origin: .data(data))
             XCTFail("Unexpectedly succeeded in parsing a non-receipt")
         } catch {
-            guard let e = error as? ReceiptValidationError, e == ReceiptValidationError.emptyReceiptContents else {
-                XCTFail("Unexpected error, expeced ReceiptValidationError.emptyReceiptContents, got \(error)")
+            guard let e = error as? LocalReceiptValidator.Error, e == LocalReceiptValidator.Error.emptyReceiptContents else {
+                XCTFail("Unexpected error, expeced .emptyReceiptContents, got \(error)")
                 return
             }
         }
@@ -192,8 +192,8 @@ class LocalReceiptValidationTests: XCTestCase {
             XCTFail("Unexpectedly succeeded in parsing a non-receipt")
             return
         }
-        if error != ReceiptValidationError.emptyReceiptContents {
-            XCTFail("Unexpected error, expeced ReceiptValidationError.emptyReceiptContents, got \(error)")
+        if error != LocalReceiptValidator.Error.emptyReceiptContents {
+            XCTFail("Unexpected error, expeced .emptyReceiptContents, got \(error)")
         }
     }
 
