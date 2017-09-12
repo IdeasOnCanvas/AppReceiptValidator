@@ -127,6 +127,7 @@ class LocalReceiptValidationTests: XCTestCase {
             XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")
             return
         }
+
         print(receipt)
         XCTAssertEqual(receipt, expected)
     }
@@ -178,6 +179,7 @@ class LocalReceiptValidationTests: XCTestCase {
             XCTFail("Unexpectedly failed parsing a receipt")
             return
         }
+
         print(receipt)
         XCTAssertEqual(receipt, expected)
     }
@@ -192,6 +194,7 @@ class LocalReceiptValidationTests: XCTestCase {
             XCTFail("Unexpectedly succeeded in parsing a non-receipt")
             return
         }
+
         if error != LocalReceiptValidator.Error.emptyReceiptContents {
             XCTFail("Unexpected error, expeced .emptyReceiptContents, got \(error)")
         }
@@ -200,9 +203,9 @@ class LocalReceiptValidationTests: XCTestCase {
     func testMindNodeiOSSandBoxReceipt1ParsingAndValidation() {
         guard let data = assertB64TestAsset(filename: "mindnode_ios_michaelsandbox_receipt1.b64") else { return }
 
-        let result = receiptValidator.validateReceipt { (parameters: inout LocalReceiptValidator.Parameters) -> Void in
-            parameters.receiptOrigin = .data(data)
-            parameters.deviceIdentifier = LocalReceiptValidator.Parameters.DeviceIdentifier(uuid: UUID(uuidString: "3B76A7BD-8F5B-46A4-BCB1-CCE8DBD1B3CD")!)
+        let result = receiptValidator.validateReceipt {
+            $0.receiptOrigin = .data(data)
+            $0.deviceIdentifier = LocalReceiptValidator.Parameters.DeviceIdentifier(uuid: UUID(uuidString: "3B76A7BD-8F5B-46A4-BCB1-CCE8DBD1B3CD")!)
         }
         let expected = Receipt(
             bundleIdentifier: "com.mindnode.mindnodetouch",
@@ -227,9 +230,9 @@ class LocalReceiptValidationTests: XCTestCase {
     func testMindNodeiOSSandBoxReceipt2ParsingAndValidation() {
         guard let data = assertB64TestAsset(filename: "mindnode_ios_michaelsandbox_receipt2.b64") else { return }
 
-        let result = receiptValidator.validateReceipt { (parameters: inout LocalReceiptValidator.Parameters) -> Void in
-            parameters.receiptOrigin = .data(data)
-            parameters.shouldValidateHash = false // unknown device identifier
+        let result = receiptValidator.validateReceipt {
+            $0.receiptOrigin = .data(data)
+            $0.shouldValidateHash = false // unknown device identifier
         }
         let expected = Receipt(
             bundleIdentifier: "com.mindnode.mindnodetouch",
