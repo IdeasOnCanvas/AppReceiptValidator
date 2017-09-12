@@ -190,40 +190,30 @@ private extension LocalReceiptValidator {
         let length = Int(octets.pointee.length)
         var parsedReceipt = ParsedReceipt()
 
-        try self.parseASN1Set(pointer: initialPointer, length: length) { (attributeType: Int32, value: ASN1Object) in
-            switch attributeType {
-            case 2:
+        try self.parseASN1Set(pointer: initialPointer, length: length) { attributeType, value in
+            guard let attribute = KnownReceiptAttribute(rawValue: attributeType) else { return }
+
+            switch attribute {
+            case .bundleIdentifier:
                 parsedReceipt.bundleIdData = value.dataValue
                 parsedReceipt.bundleIdentifier = value.unwrappedStringValue
-            case 3:
+            case .appVersion:
                 parsedReceipt.appVersion = value.unwrappedStringValue
-            case 4:
+            case .opaqueValue:
                 parsedReceipt.opaqueValue = value.dataValue
-            case 5:
+            case .sha1Hash:
                 parsedReceipt.sha1Hash = value.dataValue
-            case 17:
+            case .inAppPurchaseReceipts:
                 guard let pointer = value.valuePointer else { break }
 
                 let iapReceipt = try parseInAppPurchaseReceipt(pointer: pointer, length: value.length)
                 parsedReceipt.inAppPurchaseReceipts.append(iapReceipt)
-            case 12:
+            case .receiptCreationDate:
                 parsedReceipt.receiptCreationDate = value.unwrappedDateValue
-            case 19:
+            case .originalAppVersion:
                 parsedReceipt.originalAppVersion = value.unwrappedStringValue
-            case 21:
+            case .expirationDate:
                 parsedReceipt.expirationDate = value.unwrappedDateValue
-            default:
-                print("Unknown receipt attributeType: \(attributeType), length: \(value.length)")
-                if let stringValue = value.unwrappedStringValue {
-                    print("String Value: \(stringValue)")
-                }
-                /// See ParsedReceipt.swift for details and a link to Apple reference
-                // Unofficial list found (not necessarily complete):
-                // - 18: some date in the past
-                // - 8: some date in the past, same as receiptCreationDate possibly
-                // - 0: String, probably Provisioning-Type, Encountered Values: "Production", "ProductionSandbox"
-                // - 10: String, probably Age Description, example Value "4+"
-                // - and of unknown type 14(L=3), 25(L=3), 11(L=4), 13(L=4), 1(L=6), 9(L=6), 16(L=6), 15(L=8), 7(L=66), 6(L=69 variable)
                 break
             }
         }
@@ -232,30 +222,28 @@ private extension LocalReceiptValidator {
 
     private func parseInAppPurchaseReceipt(pointer: UnsafePointer<UInt8>, length: Int) throws -> ParsedInAppPurchaseReceipt {
         var parsedInAppPurchaseReceipt = ParsedInAppPurchaseReceipt()
-        try self.parseASN1Set(pointer: pointer, length: length) { (attributeType, value) in
-            switch attributeType {
-            case 1701:
+        try self.parseASN1Set(pointer: pointer, length: length) { attributeType, value in
+            guard let attribute = KnownInAppPurchaseAttribute(rawValue: attributeType) else { return }
+
+            switch attribute {
+            case .quantity:
                 parsedInAppPurchaseReceipt.quantity = value.intValue
-            case 1702:
+            case .productIdentifier:
                 parsedInAppPurchaseReceipt.productIdentifier = value.unwrappedStringValue
-            case 1703:
+            case .transactionIdentifier:
                 parsedInAppPurchaseReceipt.transactionIdentifier = value.unwrappedStringValue
-            case 1705:
+            case .originalTransactionIdentifier:
                 parsedInAppPurchaseReceipt.originalTransactionIdentifier = value.unwrappedStringValue
-            case 1704:
+            case .purchaseDate:
                 parsedInAppPurchaseReceipt.purchaseDate = value.unwrappedDateValue
-            case 1706:
+            case .originalPurchaseDate:
                 parsedInAppPurchaseReceipt.originalPurchaseDate = value.unwrappedDateValue
-            case 1708:
+            case .subscriptionExpirationDate:
                 parsedInAppPurchaseReceipt.subscriptionExpirationDate = value.unwrappedDateValue
-            case 1712:
+            case .cancellationDate:
                 parsedInAppPurchaseReceipt.cancellationDate = value.unwrappedDateValue
-            case 1711:
+            case .webOrderLineItemId:
                 parsedInAppPurchaseReceipt.webOrderLineItemId = value.intValue
-            default:
-                /// See ParsedReceipt.swift for details and a link to Apple reference
-                print("Unknown inAppPurchaseReceipt attributeType: \(attributeType), length: \(value.length)")
-                break
             }
         }
         return parsedInAppPurchaseReceipt
@@ -284,6 +272,43 @@ private extension LocalReceiptValidator {
             // move pointer to end of current sequence
             pointer = sequenceObject.pointerAfter
         }
+    }
+}
+
+// MARK: Receipt ASN1 Sequence Attribute Types
+
+private extension LocalReceiptValidator {
+
+    /// See ParsedReceipt.swift for details and a link to Apple reference
+    enum KnownReceiptAttribute: Int32 {
+        case bundleIdentifier = 2
+        case appVersion = 3
+        case opaqueValue = 4
+        case sha1Hash = 5
+        case inAppPurchaseReceipts = 17
+        case receiptCreationDate = 12
+        case originalAppVersion = 19
+        case expirationDate = 21
+
+        // Unofficial list found (not necessarily complete):
+        // - 18: some date in the past
+        // - 8: some date in the past, same as receiptCreationDate possibly
+        // - 0: String, probably Provisioning-Type, Encountered Values: "Production", "ProductionSandbox"
+        // - 10: String, probably Age Description, example Value "4+"
+        // - and of unknown type 14(L=3), 25(L=3), 11(L=4), 13(L=4), 1(L=6), 9(L=6), 16(L=6), 15(L=8), 7(L=66), 6(L=69 variable)
+    }
+
+    /// See ParsedReceipt.swift for details and a link to Apple reference
+    enum KnownInAppPurchaseAttribute: Int32 {
+        case quantity = 1701
+        case productIdentifier = 1702
+        case transactionIdentifier = 1703
+        case originalTransactionIdentifier = 1705
+        case purchaseDate = 1704
+        case originalPurchaseDate = 1706
+        case subscriptionExpirationDate = 1708
+        case cancellationDate = 1712
+        case webOrderLineItemId = 1711
     }
 }
 
