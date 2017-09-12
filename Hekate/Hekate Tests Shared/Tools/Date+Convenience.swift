@@ -7,10 +7,15 @@
 //
 
 import Foundation
+#if os(iOS)
+    import Hekate_iOS
+#elseif os(OSX)
+    import Hekate_macOS
+#endif
 
 extension Date {
 
-    /// Returns a demo date which is independent of the current date.
+    /// Returns a date which is independent of the current date, based on the LocalReceiptValidators dataformatter. Useful for tests.
     /// - Parameter string: Example "2018-07-12T10:57:42Z", defaults to "2017-01-01T12:00:00Z"
     /// - Returns: The date
     public static func demoDate(string: String = "2017-01-01T12:00:00Z") -> Date {

@@ -15,8 +15,6 @@
 		D14FA7271F61351000545540 /* AutoEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA71F1F6134CF00545540 /* AutoEquatable.swift */; };
 		D14FA7291F61351400545540 /* AutoEquatable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA71E1F6134CF00545540 /* AutoEquatable.generated.swift */; };
 		D14FA72A1F61351500545540 /* AutoEquatable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA71E1F6134CF00545540 /* AutoEquatable.generated.swift */; };
-		D14FA72F1F6143C400545540 /* Date+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA72E1F6143C400545540 /* Date+Convenience.swift */; };
-		D14FA7301F6143CF00545540 /* Date+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA72E1F6143C400545540 /* Date+Convenience.swift */; };
 		D14FA7321F61476700545540 /* mac_mindnode_rebought_receipt in Resources */ = {isa = PBXBuildFile; fileRef = D14FA7311F61472400545540 /* mac_mindnode_rebought_receipt */; };
 		D14FA7331F61476800545540 /* mac_mindnode_rebought_receipt in Resources */ = {isa = PBXBuildFile; fileRef = D14FA7311F61472400545540 /* mac_mindnode_rebought_receipt */; };
 		D14FA7381F6181C700545540 /* OpenSSLWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA7371F6181C700545540 /* OpenSSLWrappers.swift */; };
@@ -29,6 +27,8 @@
 		D150A0EA1F66989A0026ED04 /* mindnode_ios_michaelsandbox_receipt2.b64 in Resources */ = {isa = PBXBuildFile; fileRef = D150A0E81F6698950026ED04 /* mindnode_ios_michaelsandbox_receipt2.b64 */; };
 		D150A0EE1F669A880026ED04 /* LocalReceiptValidationInAppPurchaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D150A0ED1F669A880026ED04 /* LocalReceiptValidationInAppPurchaseTests.swift */; };
 		D150A0EF1F669A880026ED04 /* LocalReceiptValidationInAppPurchaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D150A0ED1F669A880026ED04 /* LocalReceiptValidationInAppPurchaseTests.swift */; };
+		D150A0F01F67E0990026ED04 /* Date+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA72E1F6143C400545540 /* Date+Convenience.swift */; };
+		D150A0F11F67E0990026ED04 /* Date+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA72E1F6143C400545540 /* Date+Convenience.swift */; };
 		D15358AA1F62C12400F297D0 /* grandUnifiedExpiredAppleCert_receipt.b64 in Resources */ = {isa = PBXBuildFile; fileRef = D15358A51F62BEC100F297D0 /* grandUnifiedExpiredAppleCert_receipt.b64 */; };
 		D15358AE1F62C12500F297D0 /* grandUnifiedExpiredAppleCert_receipt.b64 in Resources */ = {isa = PBXBuildFile; fileRef = D15358A51F62BEC100F297D0 /* grandUnifiedExpiredAppleCert_receipt.b64 */; };
 		D15358B41F62C47400F297D0 /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 in Resources */ = {isa = PBXBuildFile; fileRef = D15358B11F62C3C400F297D0 /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 */; };
@@ -422,7 +422,6 @@
 				D1FE343F1F604F540029576B /* ReceiptValidationParameters.swift */,
 				D19095BF1F60158B0095729B /* ReceiptDeviceIdentifier+deviceIdentifier macOS.swift */,
 				D19095C11F6019E70095729B /* ReceiptDeviceIdentifier+deviceIdentifier iOS.swift */,
-				D14FA72E1F6143C400545540 /* Date+Convenience.swift */,
 			);
 			path = Hekate;
 			sourceTree = "<group>";
@@ -471,6 +470,7 @@
 		D1D6F5481F5D9B1100E86FE1 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				D14FA72E1F6143C400545540 /* Date+Convenience.swift */,
 				D1D6F5491F5D9B1F00E86FE1 /* TestAssetLoading.swift */,
 			);
 			path = Tools;
@@ -1084,6 +1084,7 @@
 				D190959F1F6000DE0095729B /* TestAssetLoading.swift in Sources */,
 				D19095CD1F601E960095729B /* LocalReceiptValidationTests.swift in Sources */,
 				D150A0EF1F669A880026ED04 /* LocalReceiptValidationInAppPurchaseTests.swift in Sources */,
+				D150A0F01F67E0990026ED04 /* Date+Convenience.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1094,6 +1095,7 @@
 				D19095C71F601E580095729B /* TestAssetLoading.swift in Sources */,
 				D19095CE1F601E980095729B /* LocalReceiptValidationTests.swift in Sources */,
 				D150A0EE1F669A880026ED04 /* LocalReceiptValidationInAppPurchaseTests.swift in Sources */,
+				D150A0F11F67E0990026ED04 /* Date+Convenience.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1110,7 +1112,6 @@
 				D19095C31F6019FC0095729B /* ReceiptDeviceIdentifier+deviceIdentifier iOS.swift in Sources */,
 				D19095BC1F6004D10095729B /* pkcs7_union_accessors.c in Sources */,
 				D1FE34401F604F540029576B /* ReceiptValidationParameters.swift in Sources */,
-				D14FA72F1F6143C400545540 /* Date+Convenience.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1127,7 +1128,6 @@
 				D14FA7261F61350F00545540 /* AutoEquatable.swift in Sources */,
 				D19095BD1F6004D10095729B /* pkcs7_union_accessors.c in Sources */,
 				D1FE34411F604F540029576B /* ReceiptValidationParameters.swift in Sources */,
-				D14FA7301F6143CF00545540 /* Date+Convenience.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

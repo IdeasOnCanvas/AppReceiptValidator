@@ -161,7 +161,7 @@ class LocalReceiptValidationTests: XCTestCase {
 
     func testMindNodeMacReceiptParsingWithParseMethod() {
         guard let data = assertTestAsset(filename: "hannes_mac_mindnode_receipt") else { return }
-        
+
         let expected = ParsedReceipt(
             bundleIdentifier: "com.ideasoncanvas.MindNodeMac",
             bundleIdData: Data(base64Encoded: "DB1jb20uaWRlYXNvbmNhbnZhcy5NaW5kTm9kZU1hYw==")!,
