@@ -221,13 +221,11 @@ private struct StringFormatter {
         guard let inAppPurchaseReceipts = inAppPurchaseReceipts else { return fallback }
         guard !inAppPurchaseReceipts.isEmpty else { return "[]" }
 
-        return "[\n" + inAppPurchaseReceipts.map({ $0.description.replacingOccurrences(of: "\n", with: "\n" + indentation) }).joined(separator: ",\n") + "\n]"
+        return "[\n" + inAppPurchaseReceipts.map { $0.description.replacingOccurrences(of: "\n", with: "\n" + indentation) }.joined(separator: ",\n") + "\n]"
     }
 
     func format(_ pairs: [(String, String)]) -> String {
-        return pairs.map({ (key, value) -> String in
-            return self.format(key: key, value: value)
-        }).joined(separator: ",\n")
+        return pairs.map { self.format(key: $0, value: $1) }.joined(separator: ",\n")
     }
 
     func format(_ int: Int?) -> String {
