@@ -48,7 +48,7 @@ struct HekateDemoViewModel {
 
     mutating func update() {
         lastReceiptData = LocalReceiptValidator.Parameters.ReceiptOrigin.installedInMainBundle.loadData()
-        lastValidationResult = LocalReceiptValidator().validateReceipt(parameters: LocalReceiptValidator.Parameters.allSteps)
+        lastValidationResult = LocalReceiptValidator().validateReceipt()
     }
 
 }
