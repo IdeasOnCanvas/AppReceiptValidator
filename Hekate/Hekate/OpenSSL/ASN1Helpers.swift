@@ -150,7 +150,6 @@ extension ASN1Object {
     }
 }
 
-
 // MARK: - IntValue
 
 extension ASN1Object {

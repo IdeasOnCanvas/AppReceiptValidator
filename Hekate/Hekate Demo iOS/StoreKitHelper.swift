@@ -53,6 +53,7 @@ final class StoreKitHelper: NSObject {
 
 /// Encapsules SKRequestDelegate so it is not exposed if not necessary
 private final class DelegateHolder: NSObject, SKRequestDelegate {
+
     var refreshCompletedAction: ((NSError?) -> Void)?
 
     func requestDidFinish(_ request: SKRequest) {

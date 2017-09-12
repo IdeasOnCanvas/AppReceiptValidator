@@ -9,6 +9,7 @@
 import Foundation
 
 public extension LocalReceiptValidator {
+
     /// Describes how to validate a receipt, and how/where to obtain the dependencies (receipt, deviceIdentifier, apple root certificate)
     /// Use .allSteps to initialize the standard parameters.
     public struct Parameters {
@@ -43,6 +44,7 @@ public extension LocalReceiptValidator {
 /// - installedInMainBundle: Loads it from Bundle.main.appStoreReceiptURL.
 /// - data: Loads specific data.
 extension LocalReceiptValidator.Parameters {
+
     public enum ReceiptOrigin {
 
         case installedInMainBundle
@@ -69,6 +71,7 @@ extension LocalReceiptValidator.Parameters {
 /// - currentDevice: Obtains it from the system location: MAC Adress on macOS, deviceIdentifierForVendor on iOS
 /// - data: Specific Data to use
 public extension LocalReceiptValidator.Parameters {
+
     public enum DeviceIdentifier {
 
         case currentDevice
@@ -105,6 +108,7 @@ public extension LocalReceiptValidator.Parameters {
 /// - cerFileInMainBundle: Expects a AppleIncRootCertificate.cer in main bundle with the name "AppleIncRootCertificate.cer"
 /// - data: Specific Data to use
 extension LocalReceiptValidator.Parameters {
+
     public enum RootCertificateOrigin {
         case cerFileInMainBundle
         case data(Data)
@@ -126,6 +130,7 @@ extension LocalReceiptValidator.Parameters {
 // MARK: - UUID + data
 
 extension UUID {
+
     /// Get's the raw bytes of a Foundation UUID
     var data: Data {
         var rawUUID = self.uuid
