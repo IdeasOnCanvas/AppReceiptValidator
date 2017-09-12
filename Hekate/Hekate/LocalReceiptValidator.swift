@@ -65,9 +65,7 @@ public struct LocalReceiptValidator {
     /// - Returns: The Parsed receipt.
     /// - Throws: A Error. Especially Error.couldNotFindReceipt if the receipt cannot be loaded/found.
     public func parseReceipt(origin: Parameters.ReceiptOrigin) throws -> Receipt {
-        guard let receiptData = origin.loadData() else {
-            throw Error.couldNotFindReceipt
-        }
+        guard let receiptData = origin.loadData() else { throw Error.couldNotFindReceipt }
 
         let receiptContainer = try extractPKCS7Container(data: receiptData)
         return try parseReceipt(pkcs7: receiptContainer)

@@ -12,14 +12,12 @@ import XCTest
 extension XCTestCase {
 
     func assertB64TestAsset(filename: String, file: StaticString = #file, line: UInt = #line) -> Data? {
-
-        guard let data = assertTestAsset(filename: filename, file: file, line: line) else {
-            return nil
-        }
+        guard let data = assertTestAsset(filename: filename, file: file, line: line) else { return nil }
         guard let decoded = Data(base64Encoded: data, options: Data.Base64DecodingOptions.ignoreUnknownCharacters)  else {
             XCTFail("Failed to decode base64 of test asset file \(filename)", file: file, line: line)
             return nil
         }
+
         return decoded
     }
 

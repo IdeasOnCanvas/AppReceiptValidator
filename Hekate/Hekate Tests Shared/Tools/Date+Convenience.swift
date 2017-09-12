@@ -22,6 +22,7 @@ extension Date {
         guard let date = LocalReceiptValidator.asn1DateFormatter.date(from: string) else {
             fatalError("Failed to deserialize expected date \(string), use format like '2017-01-01T12:00:00Z'")
         }
+
         return date
     }
 }

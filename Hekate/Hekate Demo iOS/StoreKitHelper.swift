@@ -41,12 +41,9 @@ final class StoreKitHelper: NSObject {
     }
 
     public var receiptData: Data? {
-        guard let url = Bundle.main.appStoreReceiptURL else {
-            return nil
-        }
-        guard let data = try? Data(contentsOf: url) else {
-            return nil
-        }
+        guard let url = Bundle.main.appStoreReceiptURL else { return nil }
+        guard let data = try? Data(contentsOf: url) else { return nil }
+        
         return data
     }
 }

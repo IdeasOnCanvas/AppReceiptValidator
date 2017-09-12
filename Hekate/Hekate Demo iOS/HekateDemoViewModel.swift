@@ -30,9 +30,7 @@ struct HekateDemoViewModel {
     }
 
     var descriptionText: String {
-        guard let result = lastValidationResult else {
-            return "(No result)"
-        }
+        guard let result = lastValidationResult else { return "(No result)" }
 
         switch result {
         case .success(let receipt):
