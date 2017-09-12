@@ -50,14 +50,8 @@ public struct LocalReceiptValidator {
             }
             return .success(parsedReceipt)
         } catch {
-            guard let receiptValidationError = error as? ReceiptValidationError else {
-                #if DEBUG
-                fatalError("Unexpected error type, expected ReceiptValidationError but was \(error)")
-                #else
-                return .error(ReceiptValidationError.unknown)
-                #endif
-            }
-            return .error(receiptValidationError)
+            assert(error is ReceiptValidationError)
+            return .error(error as? ReceiptValidationError ?? ReceiptValidationError.unknown)
         }
     }
 
