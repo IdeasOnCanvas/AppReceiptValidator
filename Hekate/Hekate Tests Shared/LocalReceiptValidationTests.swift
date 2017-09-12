@@ -54,7 +54,7 @@ class LocalReceiptValidationTests: XCTestCase {
     func testMindNodeProMacReceiptParsing() {
         guard let data = assertTestAsset(filename: "hannes_mac_mindnode_pro_receipt") else { return }
 
-        let expected = ParsedReceipt(
+        let expected = Receipt(
             bundleIdentifier: "com.mindnode.MindNodePro",
             bundleIdData: Data(base64Encoded: "DBhjb20ubWluZG5vZGUuTWluZE5vZGVQcm8=")!,
             appVersion: "1.11.5",
@@ -82,7 +82,7 @@ class LocalReceiptValidationTests: XCTestCase {
         // "Receipt that was bought by a user recently, after having a refund requested 2 years ago", obtained by Marcus
         guard let data = assertTestAsset(filename: "mac_mindnode_rebought_receipt") else { return }
 
-        let expected = ParsedReceipt(
+        let expected = Receipt(
             bundleIdentifier: "com.ideasoncanvas.MindNodeMac",
             bundleIdData: Data(base64Encoded: "DB1jb20uaWRlYXNvbmNhbnZhcy5NaW5kTm9kZU1hYw==")!,
             appVersion: "2.5.5",
@@ -108,7 +108,7 @@ class LocalReceiptValidationTests: XCTestCase {
     func testMindNodeMacReceiptParsingWithFullValidation() {
         guard let data = assertTestAsset(filename: "hannes_mac_mindnode_receipt") else { return }
 
-        let expected = ParsedReceipt(
+        let expected = Receipt(
             bundleIdentifier: "com.ideasoncanvas.MindNodeMac",
             bundleIdData: Data(base64Encoded: "DB1jb20uaWRlYXNvbmNhbnZhcy5NaW5kTm9kZU1hYw==")!,
             appVersion: "2.5.5",
@@ -134,7 +134,7 @@ class LocalReceiptValidationTests: XCTestCase {
     func testMindNodeMacReceiptParsingWithoutValidation() {
         guard let data = assertTestAsset(filename: "hannes_mac_mindnode_receipt") else { return }
 
-        let expected = ParsedReceipt(
+        let expected = Receipt(
             bundleIdentifier: "com.ideasoncanvas.MindNodeMac",
             bundleIdData: Data(base64Encoded: "DB1jb20uaWRlYXNvbmNhbnZhcy5NaW5kTm9kZU1hYw==")!,
             appVersion: "2.5.5",
@@ -163,7 +163,7 @@ class LocalReceiptValidationTests: XCTestCase {
     func testMindNodeMacReceiptParsingWithParseMethod() {
         guard let data = assertTestAsset(filename: "hannes_mac_mindnode_receipt") else { return }
 
-        let expected = ParsedReceipt(
+        let expected = Receipt(
             bundleIdentifier: "com.ideasoncanvas.MindNodeMac",
             bundleIdData: Data(base64Encoded: "DB1jb20uaWRlYXNvbmNhbnZhcy5NaW5kTm9kZU1hYw==")!,
             appVersion: "2.5.5",
@@ -204,7 +204,7 @@ class LocalReceiptValidationTests: XCTestCase {
             parameters.receiptOrigin = .data(data)
             parameters.deviceIdentifier = LocalReceiptValidator.Parameters.DeviceIdentifier(uuid: UUID(uuidString: "3B76A7BD-8F5B-46A4-BCB1-CCE8DBD1B3CD")!)
         }
-        let expected = ParsedReceipt(
+        let expected = Receipt(
             bundleIdentifier: "com.mindnode.mindnodetouch",
             bundleIdData: Data(base64Encoded: "DBpjb20ubWluZG5vZGUubWluZG5vZGV0b3VjaA==")!,
             appVersion: "3394",
@@ -231,7 +231,7 @@ class LocalReceiptValidationTests: XCTestCase {
             parameters.receiptOrigin = .data(data)
             parameters.shouldValidateHash = false // unknown device identifier
         }
-        let expected = ParsedReceipt(
+        let expected = Receipt(
             bundleIdentifier: "com.mindnode.mindnodetouch",
             bundleIdData: Data(base64Encoded: "DBpjb20ubWluZG5vZGUubWluZG5vZGV0b3VjaA==")!,
             appVersion: "3392",
@@ -249,7 +249,6 @@ class LocalReceiptValidationTests: XCTestCase {
         print(receipt)
         XCTAssertEqual(receipt, expected)
     }
-
 
     func testiOSParsingPerformance() {
         guard let data = assertB64TestAsset(filename: "mindnode_ios_michaelsandbox_receipt1.b64") else { return }

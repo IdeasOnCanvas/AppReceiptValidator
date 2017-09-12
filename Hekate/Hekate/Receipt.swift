@@ -1,5 +1,5 @@
 //
-//  ParsedReceipt.swift
+//  Receipt.swift
 //  Hekate
 //
 //  Created by Hannes Oud on 06.09.17.
@@ -11,7 +11,7 @@ import Foundation
 /// Receipts are made up of a number of fields. This represents all fields that are available locally when parsing a receipt file in ASN.1 form.
 ///
 /// See [Apple Reference](https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Chapters/ReceiptFields.html)
-public struct ParsedReceipt {
+public struct Receipt {
 
     /// The app’s bundle identifier. This corresponds to the value of `CFBundleIdentifier` in the Info.plist file.
     /// Use this value to validate if the receipt was indeed generated for your app. ASN.1 Field Type 2.
@@ -53,9 +53,9 @@ public struct ParsedReceipt {
     ///         After that point, it is removed from the receipt the next time the receipt is updated - for example,
     ///         when the user makes another purchase or if your app explicitly refreshes the receipt.
     ///         The in-app purchase receipt for a non-consumable product, auto-renewable subscription, non-renewing subscription, or free subscription remains in the receipt indefinitely.
-    public internal(set) var inAppPurchaseReceipts: [ParsedInAppPurchaseReceipt] = []
+    public internal(set) var inAppPurchaseReceipts: [InAppPurchaseReceipt] = []
 
-    public init(bundleIdentifier: String?, bundleIdData: Data?, appVersion: String?, opaqueValue: Data?, sha1Hash: Data?, originalAppVersion: String?, receiptCreationDate: Date?, expirationDate: Date?, inAppPurchaseReceipts: [ParsedInAppPurchaseReceipt]) {
+    public init(bundleIdentifier: String?, bundleIdData: Data?, appVersion: String?, opaqueValue: Data?, sha1Hash: Data?, originalAppVersion: String?, receiptCreationDate: Date?, expirationDate: Date?, inAppPurchaseReceipts: [InAppPurchaseReceipt]) {
         self.bundleIdentifier = bundleIdentifier
         self.bundleIdData = bundleIdData
         self.appVersion = appVersion
@@ -72,11 +72,11 @@ public struct ParsedReceipt {
 
 // MARK: - Equatable
 
-extension ParsedReceipt: AutoEquatable {}
+extension Receipt: AutoEquatable {}
 
 // MARK: - CustomStringConvertible
 
-extension ParsedReceipt: CustomStringConvertible {
+extension Receipt: CustomStringConvertible {
 
     public var description: String {
         let formatter = StringFormatter()
@@ -111,7 +111,7 @@ extension ParsedReceipt: CustomStringConvertible {
 /// - Subscription Auto Renew Status
 /// - Subscription Auto Renew Preference
 /// - Subscription Price Consent Status
-public struct ParsedInAppPurchaseReceipt {
+public struct InAppPurchaseReceipt {
 
     /// The number of items purchased. ASN.1 Field Type 1701.
     /// This value corresponds to the quantity property of the `SKPayment` object stored in the transaction’s payment property.
@@ -187,11 +187,11 @@ public struct ParsedInAppPurchaseReceipt {
 
 // MARK: - Equatable
 
-extension ParsedInAppPurchaseReceipt: AutoEquatable {}
+extension InAppPurchaseReceipt: AutoEquatable {}
 
 // MARK: - CustomStringConvertible
 
-extension ParsedInAppPurchaseReceipt: CustomStringConvertible {
+extension InAppPurchaseReceipt: CustomStringConvertible {
 
     public var description: String {
         let formatter = StringFormatter()
@@ -217,7 +217,7 @@ private struct StringFormatter {
 
     let fallback = "nil"
 
-    func format(_ inAppPurchaseReceipts: [ParsedInAppPurchaseReceipt]?, indentation: String = "    ") -> String {
+    func format(_ inAppPurchaseReceipts: [InAppPurchaseReceipt]?, indentation: String = "    ") -> String {
         guard let inAppPurchaseReceipts = inAppPurchaseReceipts else { return fallback }
         guard !inAppPurchaseReceipts.isEmpty else { return "[]" }
 

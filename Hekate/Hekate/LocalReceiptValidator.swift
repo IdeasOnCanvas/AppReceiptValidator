@@ -64,7 +64,7 @@ public struct LocalReceiptValidator {
     /// - Parameter origin: How to load the receipt.
     /// - Returns: The Parsed receipt.
     /// - Throws: A Error. Especially Error.couldNotFindReceipt if the receipt cannot be loaded/found.
-    public func parseReceipt(origin: Parameters.ReceiptOrigin) throws -> ParsedReceipt {
+    public func parseReceipt(origin: Parameters.ReceiptOrigin) throws -> Receipt {
         guard let receiptData = origin.loadData() else {
             throw Error.couldNotFindReceipt
         }
@@ -88,7 +88,7 @@ public struct LocalReceiptValidator {
 
 private extension LocalReceiptValidator {
 
-    func validateHash(receipt: ParsedReceipt, deviceIdentifierData: Data) throws {
+    func validateHash(receipt: Receipt, deviceIdentifierData: Data) throws {
         // Make sure that the ParsedReceipt instances has non-nil values needed for hash comparison
         guard let receiptOpaqueValueData = receipt.opaqueValue else { throw Error.incorrectHash }
         guard let receiptBundleIdData = receipt.bundleIdData else { throw Error.incorrectHash }
@@ -184,11 +184,11 @@ private extension LocalReceiptValidator {
 private extension LocalReceiptValidator {
 
     // swiftlint:disable:next cyclomatic_complexity
-    func parseReceipt(pkcs7: PKCS7Wrapper) throws -> ParsedReceipt {
+    func parseReceipt(pkcs7: PKCS7Wrapper) throws -> Receipt {
         guard let contents = pkcs7.pkcs7.pointee.d.sign.pointee.contents, let octets = contents.pointee.d.data else { throw Error.malformedReceipt }
         guard let initialPointer = UnsafePointer(octets.pointee.data) else { throw Error.malformedReceipt }
         let length = Int(octets.pointee.length)
-        var parsedReceipt = ParsedReceipt()
+        var parsedReceipt = Receipt()
 
         try self.parseASN1Set(pointer: initialPointer, length: length) { attributeType, value in
             guard let attribute = KnownReceiptAttribute(rawValue: attributeType) else { return }
@@ -220,8 +220,8 @@ private extension LocalReceiptValidator {
         return parsedReceipt
     }
 
-    private func parseInAppPurchaseReceipt(pointer: UnsafePointer<UInt8>, length: Int) throws -> ParsedInAppPurchaseReceipt {
-        var parsedInAppPurchaseReceipt = ParsedInAppPurchaseReceipt()
+    private func parseInAppPurchaseReceipt(pointer: UnsafePointer<UInt8>, length: Int) throws -> InAppPurchaseReceipt {
+        var parsedInAppPurchaseReceipt = InAppPurchaseReceipt()
         try self.parseASN1Set(pointer: pointer, length: length) { attributeType, value in
             guard let attribute = KnownInAppPurchaseAttribute(rawValue: attributeType) else { return }
 
@@ -318,10 +318,10 @@ extension LocalReceiptValidator {
 
     public enum Result {
 
-        case success(ParsedReceipt)
+        case success(Receipt)
         case error(LocalReceiptValidator.Error)
 
-        public var receipt: ParsedReceipt? {
+        public var receipt: Receipt? {
             switch self {
             case .success(let receipt):
                 return receipt

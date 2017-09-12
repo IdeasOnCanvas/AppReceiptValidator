@@ -49,8 +49,8 @@ class LocalReceiptValidationInAppPurchaseTests: XCTestCase {
         print(receipt)
     }
 
-    private var nonMindNodeReceipt: ParsedReceipt {
-        return ParsedReceipt(
+    private var nonMindNodeReceipt: Receipt {
+        return Receipt(
             bundleIdentifier: "com.mbaasy.ios.demo",
             bundleIdData: Data(base64Encoded: "DBNjb20ubWJhYXN5Lmlvcy5kZW1v"),
             appVersion: "1",
@@ -60,7 +60,7 @@ class LocalReceiptValidationInAppPurchaseTests: XCTestCase {
             receiptCreationDate: Date.demoDate(string: "2015-08-13T07:50:46Z"),
             expirationDate: nil,
             inAppPurchaseReceipts: [
-                ParsedInAppPurchaseReceipt(
+                InAppPurchaseReceipt(
                     quantity: nil,
                     productIdentifier: "consumable",
                     transactionIdentifier: "1000000166865231",
@@ -71,7 +71,7 @@ class LocalReceiptValidationInAppPurchaseTests: XCTestCase {
                     cancellationDate: nil,
                     webOrderLineItemId: nil
                 ),
-                ParsedInAppPurchaseReceipt(
+                InAppPurchaseReceipt(
                     quantity: nil,
                     productIdentifier: "monthly",
                     transactionIdentifier: "1000000166965150",
@@ -82,7 +82,7 @@ class LocalReceiptValidationInAppPurchaseTests: XCTestCase {
                     cancellationDate: nil,
                     webOrderLineItemId: nil
                 ),
-                ParsedInAppPurchaseReceipt( // restores
+                InAppPurchaseReceipt( // restores
                     quantity: nil,
                     productIdentifier: "monthly",
                     transactionIdentifier: "1000000166965327",
@@ -93,7 +93,7 @@ class LocalReceiptValidationInAppPurchaseTests: XCTestCase {
                     cancellationDate: nil,
                     webOrderLineItemId: nil
                 ),
-                ParsedInAppPurchaseReceipt(
+                InAppPurchaseReceipt(
                     quantity: nil,
                     productIdentifier: "monthly",
                     transactionIdentifier: "1000000166965895",
@@ -104,7 +104,7 @@ class LocalReceiptValidationInAppPurchaseTests: XCTestCase {
                     cancellationDate: nil,
                     webOrderLineItemId: nil
                 ),
-                ParsedInAppPurchaseReceipt(
+                InAppPurchaseReceipt(
                     quantity: nil,
                     productIdentifier: "monthly",
                     transactionIdentifier: "1000000166967152",
@@ -115,7 +115,7 @@ class LocalReceiptValidationInAppPurchaseTests: XCTestCase {
                     cancellationDate: nil,
                     webOrderLineItemId: nil
                 ),
-                ParsedInAppPurchaseReceipt(
+                InAppPurchaseReceipt(
                     quantity: nil,
                     productIdentifier: "monthly",
                     transactionIdentifier: "1000000166967484",
@@ -126,7 +126,7 @@ class LocalReceiptValidationInAppPurchaseTests: XCTestCase {
                     cancellationDate: nil,
                     webOrderLineItemId: nil
                 ),
-                ParsedInAppPurchaseReceipt(
+                InAppPurchaseReceipt(
                     quantity: nil,
                     productIdentifier: "monthly",
                     transactionIdentifier: "1000000166967782",

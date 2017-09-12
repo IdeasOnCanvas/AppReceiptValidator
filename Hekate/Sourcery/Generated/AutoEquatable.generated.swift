@@ -2,7 +2,7 @@
 // DO NOT EDIT
 
 // swiftlint:disable file_length
-fileprivate func compareOptionals<T>(lhs: T?, rhs: T?, compare: (_ lhs: T, _ rhs: T) -> Bool) -> Bool {
+private func compareOptionals<T>(lhs: T?, rhs: T?, compare: (_ lhs: T, _ rhs: T) -> Bool) -> Bool {
     switch (lhs, rhs) {
     case let (lValue?, rValue?):
         return compare(lValue, rValue)
@@ -13,7 +13,7 @@ fileprivate func compareOptionals<T>(lhs: T?, rhs: T?, compare: (_ lhs: T, _ rhs
     }
 }
 
-fileprivate func compareArrays<T>(lhs: [T], rhs: [T], compare: (_ lhs: T, _ rhs: T) -> Bool) -> Bool {
+private func compareArrays<T>(lhs: [T], rhs: [T], compare: (_ lhs: T, _ rhs: T) -> Bool) -> Bool {
     guard lhs.count == rhs.count else { return false }
     for (idx, lhsItem) in lhs.enumerated() {
         guard compare(lhsItem, rhs[idx]) else { return false }
@@ -22,11 +22,10 @@ fileprivate func compareArrays<T>(lhs: [T], rhs: [T], compare: (_ lhs: T, _ rhs:
     return true
 }
 
-
 // MARK: - AutoEquatable for classes, protocols, structs
 // MARK: - ParsedInAppPurchaseReceipt AutoEquatable
-extension ParsedInAppPurchaseReceipt: Equatable {}
-public func == (lhs: ParsedInAppPurchaseReceipt, rhs: ParsedInAppPurchaseReceipt) -> Bool {
+extension InAppPurchaseReceipt: Equatable {}
+public func == (lhs: InAppPurchaseReceipt, rhs: InAppPurchaseReceipt) -> Bool {
     guard compareOptionals(lhs: lhs.quantity, rhs: rhs.quantity, compare: ==) else { return false }
     guard compareOptionals(lhs: lhs.productIdentifier, rhs: rhs.productIdentifier, compare: ==) else { return false }
     guard compareOptionals(lhs: lhs.transactionIdentifier, rhs: rhs.transactionIdentifier, compare: ==) else { return false }
@@ -39,8 +38,8 @@ public func == (lhs: ParsedInAppPurchaseReceipt, rhs: ParsedInAppPurchaseReceipt
     return true
 }
 // MARK: - ParsedReceipt AutoEquatable
-extension ParsedReceipt: Equatable {}
-public func == (lhs: ParsedReceipt, rhs: ParsedReceipt) -> Bool {
+extension Receipt: Equatable {}
+public func == (lhs: Receipt, rhs: Receipt) -> Bool {
     guard compareOptionals(lhs: lhs.bundleIdentifier, rhs: rhs.bundleIdentifier, compare: ==) else { return false }
     guard compareOptionals(lhs: lhs.bundleIdData, rhs: rhs.bundleIdData, compare: ==) else { return false }
     guard compareOptionals(lhs: lhs.appVersion, rhs: rhs.appVersion, compare: ==) else { return false }
