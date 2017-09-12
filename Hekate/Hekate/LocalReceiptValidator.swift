@@ -202,7 +202,7 @@ private extension LocalReceiptValidator {
                 // Unofficial list found (not necessarily complete):
                 // - 18: some date in the past
                 // - 8: some date in the past, same as receiptCreationDate possibly
-                // - 0: String, probably Provisioning-Type, example Value "Production"
+                // - 0: String, probably Provisioning-Type, Encountered Values: "Production", "ProductionSandbox"
                 // - 10: String, probably Age Description, example Value "4+"
                 // - and of unknown type 14(L=3), 25(L=3), 11(L=4), 13(L=4), 1(L=6), 9(L=6), 16(L=6), 15(L=8), 7(L=66), 6(L=69 variable)
                 break
