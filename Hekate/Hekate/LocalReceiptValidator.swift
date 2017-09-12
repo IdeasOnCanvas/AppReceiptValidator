@@ -19,7 +19,7 @@ public struct LocalReceiptValidator {
 
     public init() {}
 
-    /// Validates a local receipt and returns the result using the parameters `ReceiptValidationParameters.allSteps`, which can be furhter configured in the passed block.
+    /// Validates a local receipt and returns the result using the parameters `ReceiptValidationParameters.allSteps`, which can be further configured in the passed block.
     public func validateReceipt(configuration: (inout ReceiptValidationParameters) -> Void = { params in }) -> ReceiptValidationResult {
         return validateReceipt(parameters: ReceiptValidationParameters.allSteps.with(block: configuration))
     }
