@@ -15,6 +15,7 @@ import Hekate_macOS
 import XCTest
 
 class LocalReceiptValidationTests: XCTestCase {
+
     private let receiptValidator = LocalReceiptValidator()
 
     private let exampleDeviceIdentifier = ReceiptDeviceIdentifier(base64Encoded: "bEAItZRe")!

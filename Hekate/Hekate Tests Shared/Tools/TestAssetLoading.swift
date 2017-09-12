@@ -10,6 +10,7 @@ import Foundation
 import XCTest
 
 extension XCTestCase {
+
     func assertB64TestAsset(filename: String, file: StaticString = #file, line: UInt = #line) -> Data? {
 
         guard let data = assertTestAsset(filename: filename, file: file, line: line) else {
@@ -42,5 +43,6 @@ private func loadTestAsset(filename: String, requester: AnyObject) throws -> Dat
 }
 
 enum TestAssetLoadingError: Error {
+
     case fileNotReadable(filename: String)
 }

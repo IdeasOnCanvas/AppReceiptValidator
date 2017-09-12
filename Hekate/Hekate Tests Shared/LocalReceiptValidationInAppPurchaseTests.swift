@@ -15,6 +15,7 @@
 import XCTest
 
 class LocalReceiptValidationInAppPurchaseTests: XCTestCase {
+
     var receiptValidator = LocalReceiptValidator()
 
     func testNonMindNodeReceiptParsingWithoutValidation() {
