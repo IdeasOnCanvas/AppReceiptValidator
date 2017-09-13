@@ -12,7 +12,8 @@ An iOS and macOS project intended for dealing with App Store receipts.
 - WWDC 2013 - 308 Using Receipts to Protect Your Digital Sales
 - WWDC 2014 - 305 Preventing Unauthorized Purchases with Receipts
 - WWDC 2016 - 702 Using Store Kit for In-App Purchases with Swift 3
-- WWDC 2017 - 305 Advanced StoreKit
+- WWDC 2017 - 304 What's New in Storekit
+- **WWDC 2017 - 305 Advanced StoreKit**: Receipt checking and it's internals
 
 ## Other Options
 
