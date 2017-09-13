@@ -135,83 +135,82 @@
 		D19095CD1F601E960095729B /* LocalReceiptValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F5411F5D8A3800E86FE1 /* LocalReceiptValidationTests.swift */; };
 		D19095CE1F601E980095729B /* LocalReceiptValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F5411F5D8A3800E86FE1 /* LocalReceiptValidationTests.swift */; };
 		D1A46B821F62E26900A390EC /* StoreKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A46B811F62E26900A390EC /* StoreKitHelper.swift */; };
-		D1AB81A91F696F0200B57E29 /* Hekate-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = D14FA7361F614C4E00545540 /* Hekate-Bridging-Header.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81AA1F696F0200B57E29 /* aes.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430B61F69627600F7F39D /* aes.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81AB1F696F0200B57E29 /* asn1.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430B71F69627600F7F39D /* asn1.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81AC1F696F0200B57E29 /* asn1_mac.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430B81F69627600F7F39D /* asn1_mac.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81AD1F696F0200B57E29 /* asn1t.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430B91F69627600F7F39D /* asn1t.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81AE1F696F0200B57E29 /* bio.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430BA1F69627600F7F39D /* bio.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81AF1F696F0200B57E29 /* blowfish.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430BB1F69627600F7F39D /* blowfish.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81B01F696F0200B57E29 /* bn.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430BC1F69627600F7F39D /* bn.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81B11F696F0200B57E29 /* buffer.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430BD1F69627600F7F39D /* buffer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81B21F696F0200B57E29 /* camellia.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430BE1F69627600F7F39D /* camellia.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81B31F696F0200B57E29 /* cast.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430BF1F69627600F7F39D /* cast.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81B41F696F0200B57E29 /* cmac.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430C01F69627600F7F39D /* cmac.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81B51F696F0200B57E29 /* cms.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430C11F69627600F7F39D /* cms.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81B61F696F0200B57E29 /* comp.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430C21F69627600F7F39D /* comp.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81B71F696F0200B57E29 /* conf.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430C31F69627600F7F39D /* conf.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81B81F696F0200B57E29 /* conf_api.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430C41F69627600F7F39D /* conf_api.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81B91F696F0200B57E29 /* crypto.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430C51F69627600F7F39D /* crypto.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81BA1F696F0200B57E29 /* des.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430C61F69627600F7F39D /* des.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81BB1F696F0200B57E29 /* des_old.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430C71F69627600F7F39D /* des_old.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81BC1F696F0200B57E29 /* dh.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430C81F69627600F7F39D /* dh.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81BD1F696F0200B57E29 /* dsa.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430C91F69627600F7F39D /* dsa.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81BE1F696F0200B57E29 /* dso.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430CA1F69627600F7F39D /* dso.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81BF1F696F0200B57E29 /* dtls1.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430CB1F69627600F7F39D /* dtls1.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81C01F696F0200B57E29 /* e_os2.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430CC1F69627600F7F39D /* e_os2.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81C11F696F0200B57E29 /* ebcdic.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430CD1F69627600F7F39D /* ebcdic.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81C21F696F0200B57E29 /* ec.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430CE1F69627600F7F39D /* ec.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81C31F696F0200B57E29 /* ecdh.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430CF1F69627600F7F39D /* ecdh.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81C41F696F0200B57E29 /* ecdsa.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430D01F69627600F7F39D /* ecdsa.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81C51F696F0200B57E29 /* engine.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430D11F69627600F7F39D /* engine.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81C61F696F0200B57E29 /* err.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430D21F69627600F7F39D /* err.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81C71F696F0200B57E29 /* evp.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430D31F69627600F7F39D /* evp.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81C81F696F0200B57E29 /* hmac.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430D41F69627600F7F39D /* hmac.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81C91F696F0200B57E29 /* idea.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430D51F69627600F7F39D /* idea.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81CA1F696F0200B57E29 /* krb5_asn.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430D61F69627600F7F39D /* krb5_asn.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81CB1F696F0200B57E29 /* kssl.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430D71F69627600F7F39D /* kssl.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81CC1F696F0200B57E29 /* lhash.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430D81F69627600F7F39D /* lhash.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81CD1F696F0200B57E29 /* md4.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430D91F69627600F7F39D /* md4.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81CE1F696F0200B57E29 /* md5.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430DA1F69627600F7F39D /* md5.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81CF1F696F0200B57E29 /* mdc2.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430DB1F69627600F7F39D /* mdc2.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81D01F696F0200B57E29 /* modes.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430DC1F69627600F7F39D /* modes.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81D11F696F0200B57E29 /* obj_mac.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430DD1F69627600F7F39D /* obj_mac.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81D21F696F0200B57E29 /* objects.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430DE1F69627600F7F39D /* objects.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81D31F696F0200B57E29 /* ocsp.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430DF1F69627600F7F39D /* ocsp.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81D41F696F0200B57E29 /* opensslconf.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430E01F69627600F7F39D /* opensslconf.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81D51F696F0200B57E29 /* opensslv.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430E11F69627600F7F39D /* opensslv.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81D61F696F0200B57E29 /* ossl_typ.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430E21F69627600F7F39D /* ossl_typ.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81D71F696F0200B57E29 /* pem.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430E31F69627600F7F39D /* pem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81D81F696F0200B57E29 /* pem2.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430E41F69627600F7F39D /* pem2.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81D91F696F0200B57E29 /* pkcs12.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430E51F69627600F7F39D /* pkcs12.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81DA1F696F0200B57E29 /* pkcs7.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430E61F69627600F7F39D /* pkcs7.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81DB1F696F0200B57E29 /* pqueue.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430E71F69627600F7F39D /* pqueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81DC1F696F0200B57E29 /* rand.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430E81F69627600F7F39D /* rand.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81DD1F696F0200B57E29 /* rc2.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430E91F69627600F7F39D /* rc2.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81DE1F696F0200B57E29 /* rc4.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430EA1F69627600F7F39D /* rc4.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81DF1F696F0200B57E29 /* ripemd.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430EB1F69627600F7F39D /* ripemd.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81E01F696F0200B57E29 /* rsa.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430EC1F69627600F7F39D /* rsa.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81E11F696F0200B57E29 /* safestack.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430ED1F69627600F7F39D /* safestack.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81E21F696F0200B57E29 /* seed.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430EE1F69627600F7F39D /* seed.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81E31F696F0200B57E29 /* sha.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430EF1F69627600F7F39D /* sha.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81E41F696F0200B57E29 /* srp.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430F01F69627600F7F39D /* srp.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81E51F696F0200B57E29 /* srtp.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430F11F69627600F7F39D /* srtp.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81E61F696F0200B57E29 /* ssl.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430F21F69627600F7F39D /* ssl.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81E71F696F0200B57E29 /* ssl2.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430F31F69627600F7F39D /* ssl2.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81E81F696F0200B57E29 /* ssl23.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430F41F69627600F7F39D /* ssl23.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81E91F696F0200B57E29 /* ssl3.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430F51F69627600F7F39D /* ssl3.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81EA1F696F0200B57E29 /* stack.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430F61F69627600F7F39D /* stack.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81EB1F696F0200B57E29 /* symhacks.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430F71F69627600F7F39D /* symhacks.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81EC1F696F0200B57E29 /* tls1.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430F81F69627600F7F39D /* tls1.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81ED1F696F0200B57E29 /* ts.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430F91F69627600F7F39D /* ts.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81EE1F696F0200B57E29 /* txt_db.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430FA1F69627600F7F39D /* txt_db.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81EF1F696F0200B57E29 /* ui.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430FB1F69627600F7F39D /* ui.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81F01F696F0200B57E29 /* ui_compat.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430FC1F69627600F7F39D /* ui_compat.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81F11F696F0200B57E29 /* whrlpool.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430FD1F69627600F7F39D /* whrlpool.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81F21F696F0200B57E29 /* x509.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430FE1F69627600F7F39D /* x509.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81F31F696F0200B57E29 /* x509_vfy.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430FF1F69627600F7F39D /* x509_vfy.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81F41F696F0200B57E29 /* x509v3.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D431001F69627600F7F39D /* x509v3.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1AB81F51F696F0200B57E29 /* pkcs7_union_accessors.h in Headers */ = {isa = PBXBuildFile; fileRef = D19095BA1F6004D10095729B /* pkcs7_union_accessors.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D1AB81AA1F696F0200B57E29 /* aes.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430B61F69627600F7F39D /* aes.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81AB1F696F0200B57E29 /* asn1.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430B71F69627600F7F39D /* asn1.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81AC1F696F0200B57E29 /* asn1_mac.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430B81F69627600F7F39D /* asn1_mac.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81AD1F696F0200B57E29 /* asn1t.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430B91F69627600F7F39D /* asn1t.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81AE1F696F0200B57E29 /* bio.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430BA1F69627600F7F39D /* bio.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81AF1F696F0200B57E29 /* blowfish.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430BB1F69627600F7F39D /* blowfish.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81B01F696F0200B57E29 /* bn.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430BC1F69627600F7F39D /* bn.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81B11F696F0200B57E29 /* buffer.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430BD1F69627600F7F39D /* buffer.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81B21F696F0200B57E29 /* camellia.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430BE1F69627600F7F39D /* camellia.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81B31F696F0200B57E29 /* cast.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430BF1F69627600F7F39D /* cast.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81B41F696F0200B57E29 /* cmac.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430C01F69627600F7F39D /* cmac.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81B51F696F0200B57E29 /* cms.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430C11F69627600F7F39D /* cms.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81B61F696F0200B57E29 /* comp.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430C21F69627600F7F39D /* comp.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81B71F696F0200B57E29 /* conf.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430C31F69627600F7F39D /* conf.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81B81F696F0200B57E29 /* conf_api.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430C41F69627600F7F39D /* conf_api.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81B91F696F0200B57E29 /* crypto.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430C51F69627600F7F39D /* crypto.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81BA1F696F0200B57E29 /* des.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430C61F69627600F7F39D /* des.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81BB1F696F0200B57E29 /* des_old.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430C71F69627600F7F39D /* des_old.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81BC1F696F0200B57E29 /* dh.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430C81F69627600F7F39D /* dh.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81BD1F696F0200B57E29 /* dsa.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430C91F69627600F7F39D /* dsa.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81BE1F696F0200B57E29 /* dso.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430CA1F69627600F7F39D /* dso.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81BF1F696F0200B57E29 /* dtls1.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430CB1F69627600F7F39D /* dtls1.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81C01F696F0200B57E29 /* e_os2.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430CC1F69627600F7F39D /* e_os2.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81C11F696F0200B57E29 /* ebcdic.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430CD1F69627600F7F39D /* ebcdic.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81C21F696F0200B57E29 /* ec.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430CE1F69627600F7F39D /* ec.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81C31F696F0200B57E29 /* ecdh.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430CF1F69627600F7F39D /* ecdh.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81C41F696F0200B57E29 /* ecdsa.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430D01F69627600F7F39D /* ecdsa.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81C51F696F0200B57E29 /* engine.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430D11F69627600F7F39D /* engine.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81C61F696F0200B57E29 /* err.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430D21F69627600F7F39D /* err.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81C71F696F0200B57E29 /* evp.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430D31F69627600F7F39D /* evp.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81C81F696F0200B57E29 /* hmac.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430D41F69627600F7F39D /* hmac.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81C91F696F0200B57E29 /* idea.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430D51F69627600F7F39D /* idea.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81CA1F696F0200B57E29 /* krb5_asn.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430D61F69627600F7F39D /* krb5_asn.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81CB1F696F0200B57E29 /* kssl.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430D71F69627600F7F39D /* kssl.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81CC1F696F0200B57E29 /* lhash.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430D81F69627600F7F39D /* lhash.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81CD1F696F0200B57E29 /* md4.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430D91F69627600F7F39D /* md4.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81CE1F696F0200B57E29 /* md5.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430DA1F69627600F7F39D /* md5.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81CF1F696F0200B57E29 /* mdc2.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430DB1F69627600F7F39D /* mdc2.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81D01F696F0200B57E29 /* modes.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430DC1F69627600F7F39D /* modes.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81D11F696F0200B57E29 /* obj_mac.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430DD1F69627600F7F39D /* obj_mac.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81D21F696F0200B57E29 /* objects.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430DE1F69627600F7F39D /* objects.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81D31F696F0200B57E29 /* ocsp.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430DF1F69627600F7F39D /* ocsp.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81D41F696F0200B57E29 /* opensslconf.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430E01F69627600F7F39D /* opensslconf.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81D51F696F0200B57E29 /* opensslv.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430E11F69627600F7F39D /* opensslv.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81D61F696F0200B57E29 /* ossl_typ.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430E21F69627600F7F39D /* ossl_typ.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81D71F696F0200B57E29 /* pem.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430E31F69627600F7F39D /* pem.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81D81F696F0200B57E29 /* pem2.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430E41F69627600F7F39D /* pem2.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81D91F696F0200B57E29 /* pkcs12.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430E51F69627600F7F39D /* pkcs12.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81DA1F696F0200B57E29 /* pkcs7.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430E61F69627600F7F39D /* pkcs7.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81DB1F696F0200B57E29 /* pqueue.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430E71F69627600F7F39D /* pqueue.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81DC1F696F0200B57E29 /* rand.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430E81F69627600F7F39D /* rand.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81DD1F696F0200B57E29 /* rc2.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430E91F69627600F7F39D /* rc2.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81DE1F696F0200B57E29 /* rc4.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430EA1F69627600F7F39D /* rc4.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81DF1F696F0200B57E29 /* ripemd.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430EB1F69627600F7F39D /* ripemd.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81E01F696F0200B57E29 /* rsa.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430EC1F69627600F7F39D /* rsa.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81E11F696F0200B57E29 /* safestack.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430ED1F69627600F7F39D /* safestack.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81E21F696F0200B57E29 /* seed.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430EE1F69627600F7F39D /* seed.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81E31F696F0200B57E29 /* sha.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430EF1F69627600F7F39D /* sha.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81E41F696F0200B57E29 /* srp.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430F01F69627600F7F39D /* srp.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81E51F696F0200B57E29 /* srtp.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430F11F69627600F7F39D /* srtp.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81E61F696F0200B57E29 /* ssl.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430F21F69627600F7F39D /* ssl.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81E71F696F0200B57E29 /* ssl2.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430F31F69627600F7F39D /* ssl2.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81E81F696F0200B57E29 /* ssl23.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430F41F69627600F7F39D /* ssl23.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81E91F696F0200B57E29 /* ssl3.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430F51F69627600F7F39D /* ssl3.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81EA1F696F0200B57E29 /* stack.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430F61F69627600F7F39D /* stack.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81EB1F696F0200B57E29 /* symhacks.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430F71F69627600F7F39D /* symhacks.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81EC1F696F0200B57E29 /* tls1.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430F81F69627600F7F39D /* tls1.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81ED1F696F0200B57E29 /* ts.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430F91F69627600F7F39D /* ts.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81EE1F696F0200B57E29 /* txt_db.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430FA1F69627600F7F39D /* txt_db.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81EF1F696F0200B57E29 /* ui.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430FB1F69627600F7F39D /* ui.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81F01F696F0200B57E29 /* ui_compat.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430FC1F69627600F7F39D /* ui_compat.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81F11F696F0200B57E29 /* whrlpool.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430FD1F69627600F7F39D /* whrlpool.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81F21F696F0200B57E29 /* x509.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430FE1F69627600F7F39D /* x509.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81F31F696F0200B57E29 /* x509_vfy.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D430FF1F69627600F7F39D /* x509_vfy.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81F41F696F0200B57E29 /* x509v3.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D431001F69627600F7F39D /* x509v3.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D1AB81F51F696F0200B57E29 /* pkcs7_union_accessors.h in Headers */ = {isa = PBXBuildFile; fileRef = D19095BA1F6004D10095729B /* pkcs7_union_accessors.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D1D431511F69627C00F7F39D /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D430B21F69627600F7F39D /* libcrypto.a */; };
 		D1D431521F69627C00F7F39D /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D430B31F69627600F7F39D /* libssl.a */; };
 		D1D431531F69627F00F7F39D /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D431021F69627600F7F39D /* libcrypto.a */; };
@@ -280,7 +279,6 @@
 		D14FA7221F6134CF00545540 /* AutoEquatable.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = AutoEquatable.stencil; sourceTree = "<group>"; };
 		D14FA72E1F6143C400545540 /* Date+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Convenience.swift"; sourceTree = "<group>"; };
 		D14FA7311F61472400545540 /* mac_mindnode_rebought_receipt */ = {isa = PBXFileReference; lastKnownFileType = file; path = mac_mindnode_rebought_receipt; sourceTree = "<group>"; };
-		D14FA7361F614C4E00545540 /* Hekate-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hekate-Bridging-Header.h"; sourceTree = "<group>"; };
 		D14FA7371F6181C700545540 /* OpenSSLWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSSLWrappers.swift; sourceTree = "<group>"; };
 		D14FA73A1F618B0100545540 /* ASN1Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASN1Helpers.swift; sourceTree = "<group>"; };
 		D150A0E21F66936B0026ED04 /* mindnode_ios_michaelsandbox_receipt1.b64 */ = {isa = PBXFileReference; lastKnownFileType = text; path = mindnode_ios_michaelsandbox_receipt1.b64; sourceTree = "<group>"; };
@@ -886,7 +884,6 @@
 		D1D6F4FC1F5D696800E86FE1 /* Hekate */ = {
 			isa = PBXGroup;
 			children = (
-				D14FA7361F614C4E00545540 /* Hekate-Bridging-Header.h */,
 				D19095C41F601DEA0095729B /* AppleIncRootCertificate.cer */,
 				D14FA7341F614A9C00545540 /* OpenSSL */,
 				D1D6F5271F5D863900E86FE1 /* Supporting Files */,
@@ -1096,7 +1093,6 @@
 				D1AB81AE1F696F0200B57E29 /* bio.h in Headers */,
 				D1AB81C11F696F0200B57E29 /* ebcdic.h in Headers */,
 				D1AB81BC1F696F0200B57E29 /* dh.h in Headers */,
-				D1AB81A91F696F0200B57E29 /* Hekate-Bridging-Header.h in Headers */,
 				D1AB81AC1F696F0200B57E29 /* asn1_mac.h in Headers */,
 				D1AB81BA1F696F0200B57E29 /* des.h in Headers */,
 				D1AB81CA1F696F0200B57E29 /* krb5_asn.h in Headers */,
@@ -1827,11 +1823,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Hekate/OpenSSL/lib-macos",
 				);
+				MODULEMAP_FILE = "Hekate/Supporting Files/Hekate.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ideasoncanvas.Hekate;
 				PRODUCT_NAME = Hekate;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Hekate/Hekate-Bridging-Header.h";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1857,11 +1853,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Hekate/OpenSSL/lib-macos",
 				);
+				MODULEMAP_FILE = "Hekate/Supporting Files/Hekate.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ideasoncanvas.Hekate;
 				PRODUCT_NAME = Hekate;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Hekate/Hekate-Bridging-Header.h";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
