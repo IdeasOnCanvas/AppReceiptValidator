@@ -11,15 +11,11 @@ import Hekate_iOS
 
 struct HekateDemoViewModel {
 
-    var hasReceipt: Bool {
-        return lastReceiptData != nil
-    }
-
+    var hasReceipt: Bool { return self.lastReceiptData != nil }
     var lastReceiptData: Data?
     var lastValidationResult: LocalReceiptValidator.Result?
-
     var receiptIsValid: Bool {
-        guard let result = lastValidationResult else { return false }
+        guard let result = self.lastValidationResult else { return false }
 
         switch result {
         case .success:
@@ -28,9 +24,8 @@ struct HekateDemoViewModel {
             return false
         }
     }
-
     var descriptionText: String {
-        guard let result = lastValidationResult else { return "(No result)" }
+        guard let result = self.lastValidationResult else { return "(No result)" }
 
         switch result {
         case .success(let receipt):
@@ -39,16 +34,15 @@ struct HekateDemoViewModel {
             return "Invalid: \(error)"
         }
     }
-
     var receiptDataBase64Text: String {
-        guard let data = lastReceiptData else { return "(no data)" }
+        guard let data = self.lastReceiptData else { return "(no data)" }
 
         return data.base64EncodedString(options: [.lineLength64Characters])
     }
 
     mutating func update() {
-        lastReceiptData = LocalReceiptValidator.Parameters.ReceiptOrigin.installedInMainBundle.loadData()
-        lastValidationResult = LocalReceiptValidator().validateReceipt()
+        self.lastReceiptData = LocalReceiptValidator.Parameters.ReceiptOrigin.installedInMainBundle.loadData()
+        self.lastValidationResult = LocalReceiptValidator().validateReceipt()
     }
 
 }

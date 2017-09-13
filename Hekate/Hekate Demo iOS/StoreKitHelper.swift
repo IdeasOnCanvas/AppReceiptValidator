@@ -13,7 +13,6 @@ import StoreKit
 final class StoreKitHelper: NSObject {
 
     @objc static let shared = StoreKitHelper()
-
     @objc var refreshCompletedAction: ((NSError?) -> Void)?
 
     private lazy var delegateHolder: DelegateHolder = {
@@ -26,13 +25,13 @@ final class StoreKitHelper: NSObject {
 
     public func refresh() {
         let request = SKReceiptRefreshRequest(receiptProperties: nil)
-        request.delegate = delegateHolder
+        request.delegate = self.delegateHolder
         request.start()
     }
 
     public func logReceipt() {
         print("Local Device ID (GUID):\n" + (UIDevice.current.identifierForVendor?.uuidString ?? "nil"))
-        guard let data = receiptData else {
+        guard let data = self.receiptData else {
             print("No receipt")
             return
         }
@@ -42,9 +41,8 @@ final class StoreKitHelper: NSObject {
 
     public var receiptData: Data? {
         guard let url = Bundle.main.appStoreReceiptURL else { return nil }
-        guard let data = try? Data(contentsOf: url) else { return nil }
 
-        return data
+        return try? Data(contentsOf: url)
     }
 }
 
