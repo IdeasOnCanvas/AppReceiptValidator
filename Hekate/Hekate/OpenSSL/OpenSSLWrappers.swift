@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Hekate.OpenSSL
 
 final class BIOWrapper {
 

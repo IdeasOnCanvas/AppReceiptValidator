@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Hekate.OpenSSL
 
 /// An ASN1 Sequence Object. Of interest are the attributeType and the valueObject.
 /// The attributeType determines how to interpret the valueObject.
