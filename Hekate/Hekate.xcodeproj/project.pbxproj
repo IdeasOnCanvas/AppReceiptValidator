@@ -289,7 +289,7 @@
 		D15358A51F62BEC100F297D0 /* grandUnifiedExpiredAppleCert_receipt.b64 */ = {isa = PBXFileReference; lastKnownFileType = text; path = grandUnifiedExpiredAppleCert_receipt.b64; sourceTree = "<group>"; };
 		D15358B11F62C3C400F297D0 /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 */ = {isa = PBXFileReference; lastKnownFileType = text; path = deprecatedSinglesTypeExpiredAppleCert_receipt.b64; sourceTree = "<group>"; };
 		D15358F01F62D43400F297D0 /* HekateDemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HekateDemoViewModel.swift; sourceTree = "<group>"; };
-		D15C59141F698005006F66FE /* Hekate-iOS.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = "Hekate-iOS.modulemap"; sourceTree = "<group>"; };
+		D15C59141F698005006F66FE /* Hekate.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = Hekate.modulemap; sourceTree = "<group>"; };
 		D19095811F6000A40095729B /* Hekate Demo macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hekate Demo macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D19095831F6000A40095729B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D19095851F6000A40095729B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -886,7 +886,6 @@
 		D1D6F4FC1F5D696800E86FE1 /* Hekate */ = {
 			isa = PBXGroup;
 			children = (
-				D15C59141F698005006F66FE /* Hekate-iOS.modulemap */,
 				D14FA7361F614C4E00545540 /* Hekate-Bridging-Header.h */,
 				D19095C41F601DEA0095729B /* AppleIncRootCertificate.cer */,
 				D14FA7341F614A9C00545540 /* OpenSSL */,
@@ -903,6 +902,7 @@
 		D1D6F5271F5D863900E86FE1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D15C59141F698005006F66FE /* Hekate.modulemap */,
 				D1D6F5281F5D864500E86FE1 /* iOS */,
 				D1D6F5291F5D864A00E86FE1 /* macOS */,
 			);
@@ -1765,7 +1765,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Hekate/OpenSSL/lib-ios",
 				);
-				MODULEMAP_FILE = "Hekate/Hekate-iOS.modulemap";
+				MODULEMAP_FILE = "Hekate/Supporting Files/Hekate.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ideasoncanvas.Hekate;
 				PRODUCT_NAME = Hekate;
 				SKIP_INSTALL = YES;
@@ -1796,7 +1796,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Hekate/OpenSSL/lib-ios",
 				);
-				MODULEMAP_FILE = "Hekate/Hekate-iOS.modulemap";
+				MODULEMAP_FILE = "Hekate/Supporting Files/Hekate.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ideasoncanvas.Hekate;
 				PRODUCT_NAME = Hekate;
 				SKIP_INSTALL = YES;
