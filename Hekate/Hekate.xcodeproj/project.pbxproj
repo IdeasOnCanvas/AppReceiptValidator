@@ -31,7 +31,7 @@
 		D15358B51F62C47500F297D0 /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 in Resources */ = {isa = PBXBuildFile; fileRef = D15358B11F62C3C400F297D0 /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 */; };
 		D15358EF1F62D2C100F297D0 /* Hekate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D1D6F4B51F5D684C00E86FE1 /* Hekate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D15358F11F62D43400F297D0 /* HekateDemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15358F01F62D43400F297D0 /* HekateDemoViewModel.swift */; };
-		D15C59111F697D4D006F66FE /* pkcs7_union_accessors.h in Headers */ = {isa = PBXBuildFile; fileRef = D19095BA1F6004D10095729B /* pkcs7_union_accessors.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D15C59111F697D4D006F66FE /* pkcs7_union_accessors.h in Headers */ = {isa = PBXBuildFile; fileRef = D19095BA1F6004D10095729B /* pkcs7_union_accessors.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D15C59151F698061006F66FE /* aes.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D431061F69627600F7F39D /* aes.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D15C59181F6981C4006F66FE /* asn1.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D431071F69627600F7F39D /* asn1.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D15C59191F6981C4006F66FE /* asn1_mac.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D431081F69627600F7F39D /* asn1_mac.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -958,6 +958,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D15C594B1F6981C4006F66FE /* rc4.h in Headers */,
+				D15C59111F697D4D006F66FE /* pkcs7_union_accessors.h in Headers */,
 				D15C59221F6981C4006F66FE /* cms.h in Headers */,
 				D15C59291F6981C4006F66FE /* dh.h in Headers */,
 				D15C59501F6981C4006F66FE /* sha.h in Headers */,
@@ -1003,7 +1004,6 @@
 				D15C59561F6981C4006F66FE /* ssl3.h in Headers */,
 				D15C59151F698061006F66FE /* aes.h in Headers */,
 				D15C592A1F6981C4006F66FE /* dsa.h in Headers */,
-				D15C59111F697D4D006F66FE /* pkcs7_union_accessors.h in Headers */,
 				D15C59321F6981C4006F66FE /* engine.h in Headers */,
 				D15C593A1F6981C4006F66FE /* md4.h in Headers */,
 				D15C595A1F6981C4006F66FE /* ts.h in Headers */,
