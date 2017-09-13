@@ -6,7 +6,7 @@
 //  Copyright © 2017 IdeasOnCanvas GmbH. All rights reserved.
 //
 
-import Hekate_iOS
+import Hekate
 import StoreKit
 import UIKit
 

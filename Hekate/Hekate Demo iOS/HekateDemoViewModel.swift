@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Hekate_iOS
+import Hekate
 
 struct HekateDemoViewModel {
 

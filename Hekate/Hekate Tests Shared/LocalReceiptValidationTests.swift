@@ -6,12 +6,7 @@
 //  Copyright © 2017 IdeasOnCanvas GmbH. All rights reserved.
 //
 
-#if os(iOS)
-import Hekate_iOS
-#elseif os(OSX)
-import Hekate_macOS
-#endif
-
+import Hekate
 import XCTest
 
 class LocalReceiptValidationTests: XCTestCase {
