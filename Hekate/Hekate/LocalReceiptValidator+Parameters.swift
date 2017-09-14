@@ -19,7 +19,8 @@ public extension LocalReceiptValidator {
         public var shouldValidateSignatureAuthenticity: Bool = true
         public var shouldValidateHash: Bool = true
         public var deviceIdentifier: DeviceIdentifier = .currentDevice
-        public let rootCertificateOrigin: RootCertificateOrigin = .cerFileBundledWithHekate
+        public var rootCertificateOrigin: RootCertificateOrigin = .cerFileBundledWithHekate
+
 
         /// Configure an instance with a block
         public func with(block: (inout Parameters) -> Void) -> Parameters {
