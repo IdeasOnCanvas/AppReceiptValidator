@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D1239FFF1F6A7B5000D0421E /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = D19095C41F601DEA0095729B /* AppleIncRootCertificate.cer */; };
+		D123A0001F6A7CCF00D0421E /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = D19095C41F601DEA0095729B /* AppleIncRootCertificate.cer */; };
 		D14FA7261F61350F00545540 /* AutoEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA71F1F6134CF00545540 /* AutoEquatable.swift */; };
 		D14FA7271F61351000545540 /* AutoEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA71F1F6134CF00545540 /* AutoEquatable.swift */; };
 		D14FA7291F61351400545540 /* AutoEquatable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA71E1F6134CF00545540 /* AutoEquatable.generated.swift */; };
@@ -124,8 +126,6 @@
 		D19095BD1F6004D10095729B /* pkcs7_union_accessors.c in Sources */ = {isa = PBXBuildFile; fileRef = D19095BB1F6004D10095729B /* pkcs7_union_accessors.c */; };
 		D19095C01F60158B0095729B /* DeviceIdentifier+installedDeviceIdentifier_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19095BF1F60158B0095729B /* DeviceIdentifier+installedDeviceIdentifier_macOS.swift */; };
 		D19095C31F6019FC0095729B /* DeviceIdentifier+installedDeviceIdentifier_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19095C11F6019E70095729B /* DeviceIdentifier+installedDeviceIdentifier_iOS.swift */; };
-		D19095C51F601DF10095729B /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = D19095C41F601DEA0095729B /* AppleIncRootCertificate.cer */; };
-		D19095C61F601DF20095729B /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = D19095C41F601DEA0095729B /* AppleIncRootCertificate.cer */; };
 		D19095C71F601E580095729B /* TestAssetLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F5491F5D9B1F00E86FE1 /* TestAssetLoading.swift */; };
 		D19095C81F601E5D0095729B /* hannes_mac_mindnode_Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1D6F5441F5D8DF700E86FE1 /* hannes_mac_mindnode_Info.plist */; };
 		D19095C91F601E5D0095729B /* hannes_mac_mindnode_receipt in Resources */ = {isa = PBXBuildFile; fileRef = D1D6F5461F5D8DF700E86FE1 /* hannes_mac_mindnode_receipt */; };
@@ -1300,7 +1300,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D19095881F6000A40095729B /* Assets.xcassets in Resources */,
-				D19095C61F601DF20095729B /* AppleIncRootCertificate.cer in Resources */,
 				D190958B1F6000A40095729B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1343,6 +1342,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1239FFF1F6A7B5000D0421E /* AppleIncRootCertificate.cer in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1350,6 +1350,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D123A0001F6A7CCF00D0421E /* AppleIncRootCertificate.cer in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1359,7 +1360,6 @@
 			files = (
 				D1D6F4F11F5D691400E86FE1 /* LaunchScreen.storyboard in Resources */,
 				D1D6F4EE1F5D691400E86FE1 /* Assets.xcassets in Resources */,
-				D19095C51F601DF10095729B /* AppleIncRootCertificate.cer in Resources */,
 				D1D6F4EC1F5D691400E86FE1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
