@@ -25,7 +25,6 @@ final class BIOWrapper {
     }
 }
 
-
 final class PKCS7Wrapper {
 
     var pkcs7: UnsafeMutablePointer<PKCS7>

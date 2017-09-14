@@ -10,6 +10,17 @@ import Foundation
 import XCTest
 
 extension XCTestCase {
+
+    func assertB64TestAsset(filename: String, file: StaticString = #file, line: UInt = #line) -> Data? {
+        guard let data = assertTestAsset(filename: filename, file: file, line: line) else { return nil }
+        guard let decoded = Data(base64Encoded: data, options: Data.Base64DecodingOptions.ignoreUnknownCharacters)  else {
+            XCTFail("Failed to decode base64 of test asset file \(filename)", file: file, line: line)
+            return nil
+        }
+
+        return decoded
+    }
+
     func assertTestAsset(filename: String, file: StaticString = #file, line: UInt = #line) -> Data? {
         do {
             return try loadTestAsset(filename: filename, requester: self)
@@ -30,5 +41,6 @@ private func loadTestAsset(filename: String, requester: AnyObject) throws -> Dat
 }
 
 enum TestAssetLoadingError: Error {
+
     case fileNotReadable(filename: String)
 }
