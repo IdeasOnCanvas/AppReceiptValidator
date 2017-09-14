@@ -4,13 +4,14 @@ An iOS and macOS project intended for dealing with App Store receipts, offering 
 
 [Hekate](https://en.wikipedia.org/wiki/Hecate) is the goddess of magic, crossroads, ghosts, and necromancy.
 
-## Integrating
+## Integration
 
 Use carthage `github "IdeasOnCanvas/Hekate"`.
 
 ## Usage
 
 ### Just parsing a receipt
+
 ```swift
 let receiptValidator = LocalReceiptValidator()
 
@@ -34,6 +35,7 @@ switch result {
 ```
 
 ### Customize validation dependencies or steps
+
 Take `LocalReceiptValidator.Parameters.allSteps` and customize it, then pass it to `validateReceipt(parameters:)`, or use the shortcut which takes a configuration block, like so:
 
 ```swift
@@ -67,15 +69,18 @@ The receipt file might not exist or be invalid. See resources.
 ## How it Works
 
 ### Hekate Uses OpenSSL
+
 OpenSSL is used for pkcs7 container parsing and signature validation, and then for parsing the ASN1 payload of the pkcs7, which contains the receipts attributes.
 
 ## Other Options
 
 #### Alternatives to PKCS7 of OpenSSL
+
 - `Security.framework` - `CMSDecoder` for PKCS7 interaction only available on macOS
 - `BoringSSL` instead of OpenSSL, Pod, only available on iOS (?)
 
 #### Alternatives to ASN1 of OpenSSL
+
 - [decoding-asn1-der-sequences-in-swift](http://nspasteboard.com/2016/10/23/decoding-asn1-der-sequences-in-swift/) implemented [here](https://gist.github.com/Jugale/2daaec0715d4f6d7347534d42bfa7110)
 - [Asn1Parser.swift](https://github.com/TakeScoop/SwiftyRSA/blob/03250be7319d8c54159234e5258ead395ea4de4c/SwiftyRSA/Asn1Parser.swift)
 
@@ -106,6 +111,6 @@ Advantages doing it locally:
 
 1. build or find prebuilt static libraries for iOS and macOS. They can for example be obtained from the [OpenSSL-Universal Pod](https://github.com/krzyzanowskim/OpenSSL).
 2. Replace the openssl related `.a` and `.h` files in the project
-3. When copying from the pod, make sure the .h files use direct imports like `#import "asn1.h"` instead of `#import "<OpenSSL/ans1.h>"` (use regex batch replace)
+3. When copying from the pod, make sure the .h files use direct includes like `#include "asn1.h"` instead of `#include "<OpenSSL/ans1.h>"` (use regex batch replace)
 4. Make sure the openssl related headers are in the *private* headers of the framework Hekate iOS and Hekate macOS targets respectively
 5. Make sure the openssl related headers are listed in the [Hekate.modulemap](Hekate/Hekate/Supporting%20Files/Hekate.modulemap) file
