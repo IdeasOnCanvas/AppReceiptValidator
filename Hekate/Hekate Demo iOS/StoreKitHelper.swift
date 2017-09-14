@@ -52,14 +52,12 @@ private final class DelegateHolder: NSObject, SKRequestDelegate {
     var refreshCompletedAction: ((NSError?) -> Void)?
 
     func requestDidFinish(_ request: SKRequest) {
-        print("Fetched receipt.")
         DispatchQueue.main.async {
             self.refreshCompletedAction?(nil)
         }
     }
 
     func request(_ request: SKRequest, didFailWithError error: Error) {
-        print("SKReceipt fetching failed: \(error.localizedDescription)")
         DispatchQueue.main.async {
             self.refreshCompletedAction?(error as NSError)
         }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Hekate.OpenSSL
 import StoreKit
 
 /// Apple guide: https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Introduction.html
@@ -47,8 +48,6 @@ public struct LocalReceiptValidator {
 
             if parameters.shouldValidateHash {
                 guard let deviceIdentifierData = parameters.deviceIdentifier.getData() else { throw Error.deviceIdentifierNotDeterminable }
-
-                print("Device identifier used (BASE64): \(deviceIdentifierData.base64EncodedString())")
 
                 try self.validateHash(receipt: parsedReceipt, deviceIdentifierData: deviceIdentifierData)
             }

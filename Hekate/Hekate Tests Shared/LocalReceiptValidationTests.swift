@@ -6,12 +6,7 @@
 //  Copyright © 2017 IdeasOnCanvas GmbH. All rights reserved.
 //
 
-#if os(iOS)
-import Hekate_iOS
-#elseif os(OSX)
-import Hekate_macOS
-#endif
-
+import Hekate
 import XCTest
 
 class LocalReceiptValidationTests: XCTestCase {
@@ -74,7 +69,6 @@ class LocalReceiptValidationTests: XCTestCase {
             return
         }
 
-        print(receipt)
         XCTAssertEqual(receipt, expected)
     }
 
@@ -128,7 +122,6 @@ class LocalReceiptValidationTests: XCTestCase {
             return
         }
 
-        print(receipt)
         XCTAssertEqual(receipt, expected)
     }
 
@@ -157,7 +150,6 @@ class LocalReceiptValidationTests: XCTestCase {
             return
         }
 
-        print(receipt)
         XCTAssertEqual(receipt, expected)
     }
 
@@ -180,7 +172,6 @@ class LocalReceiptValidationTests: XCTestCase {
             return
         }
 
-        print(receipt)
         XCTAssertEqual(receipt, expected)
     }
 
@@ -223,7 +214,6 @@ class LocalReceiptValidationTests: XCTestCase {
             return
         }
 
-        print(receipt)
         XCTAssertEqual(receipt, expected)
     }
 
@@ -249,7 +239,7 @@ class LocalReceiptValidationTests: XCTestCase {
             XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")
             return
         }
-        print(receipt)
+
         XCTAssertEqual(receipt, expected)
     }
 

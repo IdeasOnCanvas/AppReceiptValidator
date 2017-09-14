@@ -11,7 +11,7 @@
 #ifndef pkcs7_union_accessors_h
 #define pkcs7_union_accessors_h
 
-#include <openssl/pkcs7.h>
+#include "pkcs7.h"
 
 char *pkcs7_d_char(PKCS7 *ptr);
 ASN1_OCTET_STRING *pkcs7_d_data(PKCS7 *ptr);

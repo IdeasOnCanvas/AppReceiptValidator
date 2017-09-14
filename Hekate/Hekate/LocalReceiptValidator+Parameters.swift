@@ -19,7 +19,7 @@ public extension LocalReceiptValidator {
         public var shouldValidateSignatureAuthenticity: Bool = true
         public var shouldValidateHash: Bool = true
         public var deviceIdentifier: DeviceIdentifier = .currentDevice
-        public let rootCertificateOrigin: RootCertificateOrigin = .cerFileInMainBundle
+        public let rootCertificateOrigin: RootCertificateOrigin = .cerFileBundledWithHekate
 
         /// Configure an instance with a block
         public func with(block: (inout Parameters) -> Void) -> Parameters {
@@ -105,26 +105,26 @@ public extension LocalReceiptValidator.Parameters {
 
 /// Instructs how to find the Apple root certificate for receipt validation.
 ///
-/// - cerFileInMainBundle: Expects a AppleIncRootCertificate.cer in main bundle with the name "AppleIncRootCertificate.cer"
+/// - cerFileBundledWithHekate: Uses the "AppleIncRootCertificate.cer" bundled with Hekate
 /// - data: Specific Data to use
 extension LocalReceiptValidator.Parameters {
 
     public enum RootCertificateOrigin {
-        case cerFileInMainBundle
+        case cerFileBundledWithHekate
         case data(Data)
 
         public func loadData() -> Data? {
             switch self {
             case .data(let data):
                 return data
-            case .cerFileInMainBundle:
-                guard let appleRootCertificateURL = Bundle.main.url(forResource: "AppleIncRootCertificate", withExtension: "cer") else { return nil }
-                guard let appleRootCertificateData = try? Data(contentsOf: appleRootCertificateURL) else { return nil }
+            case .cerFileBundledWithHekate:
+                guard let appleRootCertificateURL = Bundle(for: BundleToken.self).url(forResource: "AppleIncRootCertificate", withExtension: "cer") else { return nil }
 
-                return appleRootCertificateData
+                return try? Data(contentsOf: appleRootCertificateURL)
             }
         }
     }
+    private class BundleToken {}
 }
 
 // MARK: - UUID + data

@@ -7,11 +7,7 @@
 //
 
 import Foundation
-#if os(iOS)
-    import Hekate_iOS
-#elseif os(OSX)
-    import Hekate_macOS
-#endif
+import Hekate
 
 extension Date {
 
