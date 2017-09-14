@@ -25,8 +25,8 @@ class LocalReceiptPropertyValidationTests: XCTestCase {
                               inAppPurchaseReceipts: [])
         do {
             try receiptValidator.validateProperties(receipt: receipt, validations: [
-                .compareMainBundleIdentifier,
-                .compareMainBundleIOSAppVersion
+                .bundleIdMatchingMainBundle,
+                .appVersionMatchingMainBundleIOS
             ])
         } catch {
             XCTFail("validation failed unexpectedly")
@@ -46,8 +46,8 @@ class LocalReceiptPropertyValidationTests: XCTestCase {
                               inAppPurchaseReceipts: [])
         do {
             try receiptValidator.validateProperties(receipt: receipt, validations: [
-                .compareMainBundleIdentifier,
-                .compareMainBundleMacOSAppVersion
+                .bundleIdMatchingMainBundle,
+                .appVersionMatchingMainBundleMacOS
                 ])
         } catch {
             XCTFail("validation failed unexpectedly")
@@ -67,9 +67,9 @@ class LocalReceiptPropertyValidationTests: XCTestCase {
                               inAppPurchaseReceipts: [])
         do {
             try receiptValidator.validateProperties(receipt: receipt, validations: [
-                .string(\Receipt.bundleIdentifier, expectedValue: "bundleIdentifier"),
-                .string(\Receipt.appVersion, expectedValue: "appVersion"),
-                .string(\Receipt.originalAppVersion, expectedValue: "originalAppVersion")
+                .string(\Receipt.bundleIdentifier, expected: "bundleIdentifier"),
+                .string(\Receipt.appVersion, expected: "appVersion"),
+                .string(\Receipt.originalAppVersion, expected: "originalAppVersion")
                 ])
         } catch {
             XCTFail("validation failed unexpectedly")
@@ -84,8 +84,8 @@ class LocalReceiptPropertyValidationTests: XCTestCase {
             let result = receiptValidator.validateReceipt {
                 $0.receiptOrigin = .data(data)
                 $0.shouldValidateHash = false // the original device identifier is unknown
-                $0.propertyValidations = [ .string(\.appVersion, expectedValue: "mismatching property"),
-                                           .string(\.originalAppVersion, expectedValue: "1.10.6")]
+                $0.propertyValidations = [ .string(\.appVersion, expected: "mismatching property"),
+                                           .string(\.originalAppVersion, expected: "1.10.6")]
             }
             guard let error = result.error else {
                 XCTFail("Unexpectedly succeeded validating, but expected a property mismatch)", file: #file, line: line)
@@ -100,32 +100,32 @@ class LocalReceiptPropertyValidationTests: XCTestCase {
         }
 
         assertPropertyMismatch {
-            $0.propertyValidations = [ .string(\.appVersion, expectedValue: "mismatching property"),
-                                       .string(\.originalAppVersion, expectedValue: "1.10.6")]
+            $0.propertyValidations = [ .string(\.appVersion, expected: "mismatching property"),
+                                       .string(\.originalAppVersion, expected: "1.10.6")]
         }
         assertPropertyMismatch {
-            $0.propertyValidations = [ .string(\.appVersion, expectedValue: "1.11.5"),
-                                       .string(\.originalAppVersion, expectedValue: "mismatching property")]
+            $0.propertyValidations = [ .string(\.appVersion, expected: "1.11.5"),
+                                       .string(\.originalAppVersion, expected: "mismatching property")]
         }
         assertPropertyMismatch {
-            $0.propertyValidations = [ .string(\.bundleIdentifier, expectedValue: "mismatching property") ]
+            $0.propertyValidations = [ .string(\.bundleIdentifier, expected: "mismatching property") ]
         }
         assertPropertyMismatch {
-            $0.propertyValidations = [ .string(\.bundleIdentifier, expectedValue: "mismatching property"),
-                                       .string(\.appVersion, expectedValue: "mismatching property") ]
+            $0.propertyValidations = [ .string(\.bundleIdentifier, expected: "mismatching property"),
+                                       .string(\.appVersion, expected: "mismatching property") ]
         }
         assertPropertyMismatch {
-            $0.propertyValidations = [ .string(\.bundleIdentifier, expectedValue: "mismatching property"),
-                                       .string(\.appVersion, expectedValue: "mismatching property") ]
+            $0.propertyValidations = [ .string(\.bundleIdentifier, expected: "mismatching property"),
+                                       .string(\.appVersion, expected: "mismatching property") ]
         }
         assertPropertyMismatch {
-            $0.propertyValidations = [ .compareMainBundleIdentifier ]
+            $0.propertyValidations = [ .bundleIdMatchingMainBundle ]
         }
         assertPropertyMismatch {
-            $0.propertyValidations = [ .compareMainBundleIOSAppVersion ]
+            $0.propertyValidations = [ .appVersionMatchingMainBundleIOS ]
         }
         assertPropertyMismatch {
-            $0.propertyValidations = [ .compareMainBundleMacOSAppVersion ]
+            $0.propertyValidations = [ .appVersionMatchingMainBundleMacOS ]
         }
     }
 }

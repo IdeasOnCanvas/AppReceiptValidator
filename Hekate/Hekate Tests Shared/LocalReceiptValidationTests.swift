@@ -63,8 +63,8 @@ class LocalReceiptValidationTests: XCTestCase {
         let result = receiptValidator.validateReceipt {
             $0.receiptOrigin = .data(data)
             $0.shouldValidateHash = false // the original device identifier is unknown
-            $0.propertyValidations = [ .string(\.appVersion, expectedValue: "1.11.5"),
-                                       .string(\.originalAppVersion, expectedValue: "1.10.6")]
+            $0.propertyValidations = [ .string(\.appVersion, expected: "1.11.5"),
+                                       .string(\.originalAppVersion, expected: "1.10.6")]
         }
         guard let receipt = result.receipt else {
             XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")
@@ -92,8 +92,8 @@ class LocalReceiptValidationTests: XCTestCase {
         let result = receiptValidator.validateReceipt {
             $0.receiptOrigin = .data(data)
             $0.shouldValidateHash = false // the original device identifier is unknown
-            $0.propertyValidations = [ .string(\.appVersion, expectedValue: "1.11.5"),
-                                       .string(\.originalAppVersion, expectedValue: "1.10.6")]
+            $0.propertyValidations = [ .string(\.appVersion, expected: "1.11.5"),
+                                       .string(\.originalAppVersion, expected: "1.10.6")]
         }
         guard let receipt = result.receipt else {
             XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")

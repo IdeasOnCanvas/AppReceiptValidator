@@ -137,40 +137,40 @@ extension LocalReceiptValidator.Parameters {
     ///
     /// Apple recommends comparing against hard coded values. Note the platform dependence of `Receipt.appVersion`.
     ///
-    /// See convieniences `compareMainBundleIdentifier`, `compareMainBundleIOSAppVersion`, and `compareMainBundleMacOSAppVersion`.
+    /// See convieniences `bundleIdMatchingMainBundle`, `appVersionMatchingMainBundleIOS`, and `appVersionMatchingMainBundleMacOS`.
     ///
-    /// - compareWithValue: Compare with a hardcoded string as recommended by apple
+    /// - string: Compare a property with a hardcoded string (as recommended by apple)
     public enum PropertyValidation {
 
-        case string(KeyPath<Receipt, String?>, expectedValue: String?)
+        case string(KeyPath<Receipt, String?>, expected: String?)
 
         /// Compares the receipts bundle id with the main bundle's info plist CFBundleIdentifier.
-        public static var compareMainBundleIdentifier: PropertyValidation {
+        public static var bundleIdMatchingMainBundle: PropertyValidation {
             return compareWithMainBundle(receiptProperty: \Receipt.bundleIdentifier, infoDictionaryKey: String(kCFBundleIdentifierKey))
         }
 
         /// Compares the receipts appVersion with the main bundle's info plist CFBundleVersionString, as adequate for iOS
-        public static var compareMainBundleIOSAppVersion: PropertyValidation {
+        public static var appVersionMatchingMainBundleIOS: PropertyValidation {
             return compareWithMainBundle(receiptProperty: \Receipt.appVersion, infoDictionaryKey: String(kCFBundleVersionKey))
         }
 
         /// Compares the receipts appVersion with the main bundle's info plist CFBundleShortVersionString, as adequate for macOS
-        public static var compareMainBundleMacOSAppVersion: PropertyValidation {
+        public static var appVersionMatchingMainBundleMacOS: PropertyValidation {
             return compareWithMainBundle(receiptProperty: \Receipt.appVersion, infoDictionaryKey: "CFBundleShortVersionString")
         }
 
         private static func compareWithMainBundle(receiptProperty: KeyPath<Receipt, String?>, infoDictionaryKey: String) -> PropertyValidation {
             let expected = Bundle.main.infoDictionary?[infoDictionaryKey] as? String
-            return .string(receiptProperty, expectedValue: expected)
+            return .string(receiptProperty, expected: expected)
         }
 
         // MARK: Validation Execution
 
         /// Validates a receipts property. May throw Error.couldNotGetExpectedPropertyValue or Error.propertyValueMismatch.
         public func validateProperty(of receipt: Receipt) throws {
-            let expectedValue = self.getExpectedValue()
+            let expected = self.getExpectedValue()
 
-            if self.propertyValue(of: receipt) != expectedValue {
+            if self.propertyValue(of: receipt) != expected {
                 throw LocalReceiptValidator.Error.propertyValueMismatch
             }
         }
@@ -186,8 +186,8 @@ extension LocalReceiptValidator.Parameters {
 
         private func getExpectedValue() -> String? {
             switch self {
-            case .string(_, let expectedValue):
-                return expectedValue
+            case .string(_, let expected):
+                return expected
             }
         }
     }
