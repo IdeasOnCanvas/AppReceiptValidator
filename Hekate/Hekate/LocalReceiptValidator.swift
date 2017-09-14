@@ -49,8 +49,6 @@ public struct LocalReceiptValidator {
             if parameters.shouldValidateHash {
                 guard let deviceIdentifierData = parameters.deviceIdentifier.getData() else { throw Error.deviceIdentifierNotDeterminable }
 
-                print("Device identifier used (BASE64): \(deviceIdentifierData.base64EncodedString())")
-
                 try self.validateHash(receipt: parsedReceipt, deviceIdentifierData: deviceIdentifierData)
             }
             return .success(parsedReceipt)

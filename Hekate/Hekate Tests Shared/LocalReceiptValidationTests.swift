@@ -69,7 +69,6 @@ class LocalReceiptValidationTests: XCTestCase {
             return
         }
 
-        print(receipt)
         XCTAssertEqual(receipt, expected)
     }
 
@@ -123,7 +122,6 @@ class LocalReceiptValidationTests: XCTestCase {
             return
         }
 
-        print(receipt)
         XCTAssertEqual(receipt, expected)
     }
 
@@ -152,7 +150,6 @@ class LocalReceiptValidationTests: XCTestCase {
             return
         }
 
-        print(receipt)
         XCTAssertEqual(receipt, expected)
     }
 
@@ -175,7 +172,6 @@ class LocalReceiptValidationTests: XCTestCase {
             return
         }
 
-        print(receipt)
         XCTAssertEqual(receipt, expected)
     }
 
@@ -218,7 +214,6 @@ class LocalReceiptValidationTests: XCTestCase {
             return
         }
 
-        print(receipt)
         XCTAssertEqual(receipt, expected)
     }
 
@@ -244,7 +239,7 @@ class LocalReceiptValidationTests: XCTestCase {
             XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")
             return
         }
-        print(receipt)
+
         XCTAssertEqual(receipt, expected)
     }
 

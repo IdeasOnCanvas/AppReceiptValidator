@@ -19,7 +19,6 @@ class LocalReceiptValidationInAppPurchaseTests: XCTestCase {
         do {
             let receipt = try receiptValidator.parseReceipt(origin: .data(data))
             XCTAssertEqual(receipt, nonMindNodeReceipt)
-            print(receipt)
         } catch {
             XCTFail("Unexpectedly failed parsing a receipt \(error)")
         }
@@ -41,7 +40,6 @@ class LocalReceiptValidationInAppPurchaseTests: XCTestCase {
             return
         }
         XCTAssertEqual(receipt, nonMindNodeReceipt)
-        print(receipt)
     }
 
     private var nonMindNodeReceipt: Receipt {
