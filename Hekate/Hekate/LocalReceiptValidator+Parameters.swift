@@ -39,12 +39,12 @@ public extension LocalReceiptValidator {
 
 // MARK: - ReceiptOrigin
 
-/// Used for obtaining the receipt data to parse or validate.
-///
-/// - installedInMainBundle: Loads it from Bundle.main.appStoreReceiptURL.
-/// - data: Loads specific data.
 extension LocalReceiptValidator.Parameters {
 
+    /// Used for obtaining the receipt data to parse or validate.
+    ///
+    /// - installedInMainBundle: Loads it from Bundle.main.appStoreReceiptURL.
+    /// - data: Loads specific data.
     public enum ReceiptOrigin {
 
         case installedInMainBundle
@@ -66,12 +66,12 @@ extension LocalReceiptValidator.Parameters {
 
 // MARK: - DeviceIdentifier
 
-/// Used for calculating/validating the SHA1-Hash part of a receipt.
-///
-/// - currentDevice: Obtains it from the system location: MAC Adress on macOS, deviceIdentifierForVendor on iOS
-/// - data: Specific Data to use
 public extension LocalReceiptValidator.Parameters {
 
+    /// Used for calculating/validating the SHA1-Hash part of a receipt.
+    ///
+    /// - currentDevice: Obtains it from the system location: MAC Adress on macOS, deviceIdentifierForVendor on iOS
+    /// - data: Specific Data to use
     public enum DeviceIdentifier {
 
         case currentDevice
@@ -103,12 +103,12 @@ public extension LocalReceiptValidator.Parameters {
 
 // MARK: - RootCertificateOrigin
 
-/// Instructs how to find the Apple root certificate for receipt validation.
-///
-/// - cerFileBundledWithHekate: Uses the "AppleIncRootCertificate.cer" bundled with Hekate
-/// - data: Specific Data to use
 extension LocalReceiptValidator.Parameters {
 
+    /// Instructs how to find the Apple root certificate for receipt validation.
+    ///
+    /// - cerFileBundledWithHekate: Uses the "AppleIncRootCertificate.cer" bundled with Hekate
+    /// - data: Specific Data to use
     public enum RootCertificateOrigin {
         case cerFileBundledWithHekate
         case data(Data)
