@@ -20,7 +20,7 @@ public struct Receipt {
     /// The app’s bundle identifier as bytes, used, with other data, to compute the SHA-1 hash during validation.
     public internal(set) var bundleIdData: Data?
 
-    /// The app’s version number.
+    /// The app’s version number. **This is platform dependent!**
     /// This corresponds to the value of `CFBundleVersion` (in iOS) or `CFBundleShortVersionString` (in macOS) in the Info.plist.
     /// ASN.1 Field Type 3.
     public internal(set) var appVersion: String?

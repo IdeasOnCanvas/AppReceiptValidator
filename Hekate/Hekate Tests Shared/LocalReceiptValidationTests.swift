@@ -46,6 +46,35 @@ class LocalReceiptValidationTests: XCTestCase {
         }
     }
 
+    func testMindNodeProMacReceiptPropertyValidation() {
+        guard let data = assertTestAsset(filename: "hannes_mac_mindnode_pro_receipt") else { return }
+
+        let expected = Receipt(
+            bundleIdentifier: "com.mindnode.MindNodePro",
+            bundleIdData: Data(base64Encoded: "DBhjb20ubWluZG5vZGUuTWluZE5vZGVQcm8=")!,
+            appVersion: "1.11.5",
+            opaqueValue: Data(base64Encoded: "/cPmDfuyFyluvodJXQRvig=="),
+            sha1Hash: Data(base64Encoded: "MDBF4hAt6Y+7IlAydxroa/SQeY4="),
+            originalAppVersion: "1.10.6",
+            receiptCreationDate: Date.demoDate(string: "2016-02-12T10:57:42Z"),
+            expirationDate: nil,
+            inAppPurchaseReceipts: []
+        )
+        let result = receiptValidator.validateReceipt {
+            $0.receiptOrigin = .data(data)
+            $0.shouldValidateHash = false // the original device identifier is unknown
+            $0.propertyValidations = [ .compareWithValue(receiptProperty: \.appVersion, value: "1.11.5"),
+                                       .compareWithValue(receiptProperty: \.originalAppVersion, value: "1.10.6")]
+        }
+        guard let receipt = result.receipt else {
+            XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")
+            return
+        }
+
+        XCTAssertEqual(receipt, expected)
+    }
+
+
     func testMindNodeProMacReceiptParsing() {
         guard let data = assertTestAsset(filename: "hannes_mac_mindnode_pro_receipt") else { return }
 
@@ -63,6 +92,8 @@ class LocalReceiptValidationTests: XCTestCase {
         let result = receiptValidator.validateReceipt {
             $0.receiptOrigin = .data(data)
             $0.shouldValidateHash = false // the original device identifier is unknown
+            $0.propertyValidations = [ .compareWithValue(receiptProperty: \.appVersion, value: "1.11.5"),
+                                       .compareWithValue(receiptProperty: \.originalAppVersion, value: "1.10.6")]
         }
         guard let receipt = result.receipt else {
             XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")

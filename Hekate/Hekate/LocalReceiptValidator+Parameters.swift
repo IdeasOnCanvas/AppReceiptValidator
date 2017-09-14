@@ -11,7 +11,7 @@ import Foundation
 public extension LocalReceiptValidator {
 
     /// Describes how to validate a receipt, and how/where to obtain the dependencies (receipt, deviceIdentifier, apple root certificate)
-    /// Use .allSteps to initialize the standard parameters.
+    /// Use .allSteps to initialize the standard parameters. By default, no `propertyValidations` are active.
     public struct Parameters {
 
         public var receiptOrigin: ReceiptOrigin = .installedInMainBundle
@@ -20,7 +20,7 @@ public extension LocalReceiptValidator {
         public var shouldValidateHash: Bool = true
         public var deviceIdentifier: DeviceIdentifier = .currentDevice
         public var rootCertificateOrigin: RootCertificateOrigin = .cerFileBundledWithHekate
-
+        public var propertyValidations: [PropertyValidation] = []
 
         /// Configure an instance with a block
         public func with(block: (inout Parameters) -> Void) -> Parameters {
@@ -126,6 +126,71 @@ extension LocalReceiptValidator.Parameters {
         }
     }
     private class BundleToken {}
+}
+
+
+// MARK: - PropertyValidation
+
+extension LocalReceiptValidator.Parameters {
+
+    /// Compares a String property of a receipt with an info dictionary entry or a provided value.
+    ///
+    /// Apple recommends comparing against hard coded values. Note the platform dependence of `Receipt.appVersion`.
+    ///
+    /// See convieniences `compareMainBundleIdentifier`, `compareMainBundleIOSAppVersion`, and `compareMainBundleMacOSAppVersion`.
+    ///
+    /// - compareWithValue: Compare with a hardcoded string as recommended by apple
+    /// - compareWithMainBundle: Compare with an entry of the main bundles Info Dictionary
+    public enum PropertyValidation {
+
+        case compareWithValue(receiptProperty: KeyPath<Receipt, String?>, value: String)
+        case compareWithMainBundle(receiptProperty: KeyPath<Receipt, String?>, infoDictionaryKey: String)
+
+        /// Compares the receipts bundle id with the main bundle's info plist CFBundleIdentifier.
+        public static var compareMainBundleIdentifier: PropertyValidation {
+            return .compareWithMainBundle(receiptProperty: \Receipt.bundleIdentifier, infoDictionaryKey: String(kCFBundleIdentifierKey))
+        }
+
+        /// Compares the receipts appVersion with the main bundle's info plist CFBundleVersionString, as adequate for iOS
+        public static var compareMainBundleIOSAppVersion: PropertyValidation {
+            return .compareWithMainBundle(receiptProperty: \Receipt.appVersion, infoDictionaryKey: String(kCFBundleVersionKey))
+        }
+
+        /// Compares the receipts appVersion with the main bundle's info plist CFBundleShortVersionString, as adequate for macOS
+        public static var compareMainBundleMacOSAppVersion: PropertyValidation {
+            return .compareWithMainBundle(receiptProperty: \Receipt.appVersion, infoDictionaryKey: "CFBundleShortVersionString")
+        }
+
+        // MARK: Validation Execution
+
+        /// Validates a receipts property. May throw Error.couldNotGetExpectedPropertyValue or Error.propertyValueMismatch.
+        public func validateProperty(of receipt: Receipt) throws {
+            guard let expectedValue = self.getExpectedValue() else { throw LocalReceiptValidator.Error.couldNotGetExpectedPropertyValue }
+
+            if self.propertyValue(of: receipt) != expectedValue {
+                throw LocalReceiptValidator.Error.propertyValueMismatch
+            }
+        }
+
+        // MARK: Value and Expected Value
+
+        private func propertyValue(of receipt: Receipt) -> String? {
+            switch self {
+            case .compareWithValue(let keyPath, _),
+                 .compareWithMainBundle(let keyPath, _):
+                return receipt[keyPath: keyPath]
+            }
+        }
+
+        private func getExpectedValue() -> String? {
+            switch self {
+            case .compareWithValue(_, let string):
+                return string
+            case .compareWithMainBundle(_, let infoDictionaryKey):
+                return Bundle.main.infoDictionary?[infoDictionaryKey] as? String
+            }
+        }
+    }
 }
 
 // MARK: - UUID + data
