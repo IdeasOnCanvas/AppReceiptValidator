@@ -47,6 +47,17 @@ let result = receiptValidator.validateReceipt {
     $0.shouldValidateHash = false // skip hash validation
     $0.deviceIdentifier = .data(myCustomDeviceIdentifierData)
     $0.rootCertificateOrigin = .data(myAppleRootCertData)
+
+    // validate some string properties, this can also be done 
+    // independently with validateProperties(receipt:, validations:)
+    // There are also shorthands for comparing with main bundle's 
+    // info.plist, e.g. bundleIdMatchingMainBundle and friends.
+    // Note that appVersion meaning is platform specific.
+    $0.propertyValidations = [
+        .string(\.bundleIdentifier, expected: "my.bundle.identifier"),
+        .string(\.appVersion, expected: "123"),
+        .string(\.originalAppVersion, expected: "1")
+    ]
 }
 
 switch result {
@@ -62,9 +73,9 @@ switch result {
 This framework currently doesn't 
 
 - deal with StoreKit at all.
-- validate the bundle ID or compare the version of the App with the bundle version. Do this yourself with the parsed Receipt.
+- the demo targets are pretty useless
 
-The receipt file might not exist or be invalid. See resources.
+The receipt file might not exist at all. See resources.
 
 ## How it Works
 

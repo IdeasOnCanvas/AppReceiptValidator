@@ -44,17 +44,26 @@ public struct LocalReceiptValidator {
 
                 try self.checkSignatureAuthenticity(pkcs7: receiptContainer, appleRootCertificateData: appleRootCertificateData)
             }
-            let parsedReceipt = try parseReceipt(pkcs7: receiptContainer)
+
+            let receipt = try self.parseReceipt(pkcs7: receiptContainer)
+
+            try self.validateProperties(receipt: receipt, validations: parameters.propertyValidations)
 
             if parameters.shouldValidateHash {
                 guard let deviceIdentifierData = parameters.deviceIdentifier.getData() else { throw Error.deviceIdentifierNotDeterminable }
 
-                try self.validateHash(receipt: parsedReceipt, deviceIdentifierData: deviceIdentifierData)
+                try self.validateHash(receipt: receipt, deviceIdentifierData: deviceIdentifierData)
             }
-            return .success(parsedReceipt)
+            return .success(receipt)
         } catch {
             assert(error is LocalReceiptValidator.Error)
             return .error(error as? LocalReceiptValidator.Error ?? .unknown)
+        }
+    }
+
+    public func validateProperties(receipt: Receipt, validations: [Parameters.PropertyValidation]) throws {
+        for validation in validations {
+            try validation.validateProperty(of: receipt)
         }
     }
 
@@ -353,6 +362,8 @@ extension LocalReceiptValidator {
         case incorrectHash
         case deviceIdentifierNotDeterminable
         case malformedAppleRootCertificate
+        case couldNotGetExpectedPropertyValue
+        case propertyValueMismatch
         case unknown
     }
 }
