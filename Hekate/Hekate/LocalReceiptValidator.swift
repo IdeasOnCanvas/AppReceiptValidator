@@ -8,7 +8,6 @@
 
 import Foundation
 import Hekate.OpenSSL
-import StoreKit
 
 /// Apple guide: https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Introduction.html
 ///
