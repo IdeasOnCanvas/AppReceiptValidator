@@ -14,6 +14,7 @@ struct HekateDemoViewModel {
     var hasReceipt: Bool { return self.lastReceiptData != nil }
     var lastReceiptData: Data?
     var lastValidationResult: LocalReceiptValidator.Result?
+    var refreshError: NSError?
     var receiptIsValid: Bool {
         guard let result = self.lastValidationResult else { return false }
 
@@ -25,6 +26,10 @@ struct HekateDemoViewModel {
         }
     }
     var descriptionText: String {
+        if let refreshError = refreshError {
+            return "Refresh Issue: " + refreshError.localizedDescription
+        }
+
         guard let result = self.lastValidationResult else { return "(No result)" }
 
         switch result {
