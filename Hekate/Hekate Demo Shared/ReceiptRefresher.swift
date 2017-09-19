@@ -9,7 +9,7 @@
 import StoreKit
 
 @objc
-class ReceiptRefresher: NSObject {
+public final class ReceiptRefresher: NSObject {
 
     /// Refreshes the app store receipt using `SKReceiptRefreshRequest(receiptProperties: nil)`.
     /// The instance of `ReceiptRefresher` on which this is called does not need to be kept around for this to complete.
