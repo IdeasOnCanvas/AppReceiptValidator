@@ -11,7 +11,8 @@ import StoreKit
 @objc
 class ReceiptRefresher: NSObject {
 
-    /// Refreshes the app store receipt using `SKReceiptRefreshRequest(receiptProperties: nil)`
+    /// Refreshes the app store receipt using `SKReceiptRefreshRequest(receiptProperties: nil)`.
+    /// The instance of `ReceiptRefresher` on which this is called does not need to be kept around for this to complete.
     /// - Parameters:
     ///   - queue: Queue on which the completion is called, defaults to main queue.
     ///   - completion: Called after the refresh has completed, gets passed the error on failure.
