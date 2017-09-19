@@ -12,7 +12,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    private var storeKitHelper = StoreKitHelper()
+    private var receiptRefresher = ReceiptRefresher()
     private var viewModel = HekateDemoViewModel() {
         didSet {
             self.updateViewFromViewModel()
@@ -23,9 +23,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.storeKitHelper.refreshCompletedAction = { [weak self] _ in
-            self?.updateViewModel()
-        }
         updateViewModel()
     }
 
@@ -39,6 +36,9 @@ class ViewController: UIViewController {
     }
 
     @IBAction func refreshReceiptFromStoreTapped() {
-        storeKitHelper.refresh()
+        receiptRefresher.refreshReceipt { error in
+            self.viewModel.refreshError = error
+            self.updateViewFromViewModel()
+        }
     }
 }
