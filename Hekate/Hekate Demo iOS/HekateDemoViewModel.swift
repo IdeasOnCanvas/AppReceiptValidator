@@ -33,9 +33,9 @@ struct HekateDemoViewModel {
         guard let result = self.lastValidationResult else { return "(No result)" }
 
         switch result {
-        case .success(let receipt):
+        case .success(let receipt, _, _):
             return "Valid\n" + receipt.description
-        case .error(let error):
+        case .error(let error, _, _):
             return "Invalid: \(error)"
         }
     }

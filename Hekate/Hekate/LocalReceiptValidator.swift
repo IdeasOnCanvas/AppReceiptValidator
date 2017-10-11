@@ -30,9 +30,13 @@ public struct LocalReceiptValidator {
 
     /// Validates a local receipt and returns the result using the passed parameters.
     public func validateReceipt(parameters: Parameters = Parameters.allSteps) -> Result {
+        var data: Data?
+        var deviceIdData: Data?
         do {
+            deviceIdData = parameters.deviceIdentifier.getData()
             guard let receiptData = parameters.receiptOrigin.loadData() else { throw Error.couldNotFindReceipt }
 
+            data = receiptData
             let receiptContainer = try self.extractPKCS7Container(data: receiptData)
 
             if parameters.shouldValidateSignaturePresence {
@@ -49,14 +53,14 @@ public struct LocalReceiptValidator {
             try self.validateProperties(receipt: receipt, validations: parameters.propertyValidations)
 
             if parameters.shouldValidateHash {
-                guard let deviceIdentifierData = parameters.deviceIdentifier.getData() else { throw Error.deviceIdentifierNotDeterminable }
+                guard let deviceIdentifierData = deviceIdData else { throw Error.deviceIdentifierNotDeterminable }
 
                 try self.validateHash(receipt: receipt, deviceIdentifierData: deviceIdentifierData)
             }
-            return .success(receipt)
+            return .success(receipt, receiptData: receiptData, deviceIdentifier: deviceIdData)
         } catch {
             assert(error is LocalReceiptValidator.Error)
-            return .error(error as? LocalReceiptValidator.Error ?? .unknown)
+            return .error(error as? LocalReceiptValidator.Error ?? .unknown, receiptData: data, deviceIdentifier: deviceIdData)
         }
     }
 
@@ -323,12 +327,12 @@ extension LocalReceiptValidator {
 
     public enum Result {
 
-        case success(Receipt)
-        case error(LocalReceiptValidator.Error)
+        case success(Receipt, receiptData: Data, deviceIdentifier: Data?)
+        case error(LocalReceiptValidator.Error, receiptData: Data?, deviceIdentifier: Data?)
 
         public var receipt: Receipt? {
             switch self {
-            case .success(let receipt):
+            case .success(let receipt, _, _):
                 return receipt
             case .error:
                 return nil
@@ -339,8 +343,28 @@ extension LocalReceiptValidator {
             switch self {
             case .success:
                 return nil
-            case .error(let error):
+            case .error(let error, _, _):
                 return error
+            }
+        }
+
+        /// The receipt data if it could be loaded
+        public var receiptData: Data? {
+            switch self {
+            case .success(_, let data, _):
+                return data
+            case .error(_, let data, _):
+                return data
+            }
+        }
+
+        /// The device identifier if it could be determined
+        public var deviceIdentifier: Data? {
+            switch self {
+            case .success(_, _, let data):
+                return data
+            case .error(_, _, let data):
+                return data
             }
         }
     }
