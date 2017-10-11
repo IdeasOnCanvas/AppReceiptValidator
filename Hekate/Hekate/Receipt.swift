@@ -91,11 +91,11 @@ extension Receipt: CustomStringConvertible {
             ("expirationDate", formatter.format(self.expirationDate)),
             ("inAppPurchaseReceipts", formatter.format(self.inAppPurchaseReceipts))
         ]
-        return "ParsedReceipt(\n" + formatter.format(props) + "\n)"
+        return "Receipt(\n" + formatter.format(props) + "\n)"
     }
 }
 
-// MARK: - ParsedInAppPurchaseReceipt
+// MARK: - InAppPurchaseReceipt
 
 /// An In-App-Purchase Receipt as Parsed from a receipt file.
 ///
@@ -169,7 +169,7 @@ public struct InAppPurchaseReceipt {
     /// This value is a unique ID that identifies purchase events across devices, including subscription renewal purchase events.
     public internal(set) var webOrderLineItemId: Int?
 
-    /// For documentation see ParsedInAppPurchaseReceipt itself.
+    /// For documentation see InAppPurchaseReceipt itself.
     public init(quantity: Int?, productIdentifier: String?, transactionIdentifier: String?, originalTransactionIdentifier: String?, purchaseDate: Date?, originalPurchaseDate: Date?, subscriptionExpirationDate: Date?, cancellationDate: Date?, webOrderLineItemId: Int?) {
         self.quantity = quantity
         self.productIdentifier = productIdentifier
@@ -206,7 +206,7 @@ extension InAppPurchaseReceipt: CustomStringConvertible {
             ("cancellationDate", formatter.format(self.cancellationDate)),
             ("webOrderLineItemId", formatter.format(self.webOrderLineItemId))
         ]
-        return "ParsedInAppPurchaseReceipt(\n" + formatter.format(props) + "\n)"
+        return "InAppPurchaseReceipt(\n" + formatter.format(props) + "\n)"
     }
 }
 

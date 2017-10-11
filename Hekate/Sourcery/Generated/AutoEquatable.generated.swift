@@ -23,7 +23,7 @@ private func compareArrays<T>(lhs: [T], rhs: [T], compare: (_ lhs: T, _ rhs: T) 
 }
 
 // MARK: - AutoEquatable for classes, protocols, structs
-// MARK: - ParsedInAppPurchaseReceipt AutoEquatable
+// MARK: - InAppPurchaseReceipt AutoEquatable
 extension InAppPurchaseReceipt: Equatable {}
 public func == (lhs: InAppPurchaseReceipt, rhs: InAppPurchaseReceipt) -> Bool {
     guard compareOptionals(lhs: lhs.quantity, rhs: rhs.quantity, compare: ==) else { return false }
@@ -37,7 +37,7 @@ public func == (lhs: InAppPurchaseReceipt, rhs: InAppPurchaseReceipt) -> Bool {
     guard compareOptionals(lhs: lhs.webOrderLineItemId, rhs: rhs.webOrderLineItemId, compare: ==) else { return false }
     return true
 }
-// MARK: - ParsedReceipt AutoEquatable
+// MARK: - Receipt AutoEquatable
 extension Receipt: Equatable {}
 public func == (lhs: Receipt, rhs: Receipt) -> Bool {
     guard compareOptionals(lhs: lhs.bundleIdentifier, rhs: rhs.bundleIdentifier, compare: ==) else { return false }
