@@ -76,7 +76,7 @@ extension Receipt: AutoEquatable {}
 
 // MARK: - CustomStringConvertible
 
-extension Receipt: CustomStringConvertible {
+extension Receipt: CustomStringConvertible, CustomDebugStringConvertible {
 
     public var description: String {
         let formatter = StringFormatter()
@@ -92,6 +92,10 @@ extension Receipt: CustomStringConvertible {
             ("inAppPurchaseReceipts", formatter.format(self.inAppPurchaseReceipts))
         ]
         return "Receipt(\n" + formatter.format(props) + "\n)"
+    }
+
+    public var debugDescription: String {
+        return description
     }
 }
 
@@ -191,7 +195,7 @@ extension InAppPurchaseReceipt: AutoEquatable {}
 
 // MARK: - CustomStringConvertible
 
-extension InAppPurchaseReceipt: CustomStringConvertible {
+extension InAppPurchaseReceipt: CustomStringConvertible, CustomDebugStringConvertible {
 
     public var description: String {
         let formatter = StringFormatter()
@@ -207,6 +211,10 @@ extension InAppPurchaseReceipt: CustomStringConvertible {
             ("webOrderLineItemId", formatter.format(self.webOrderLineItemId))
         ]
         return "InAppPurchaseReceipt(\n" + formatter.format(props) + "\n)"
+    }
+
+    public var debugDescription: String {
+        return description
     }
 }
 
