@@ -98,7 +98,7 @@ public struct LocalReceiptValidator {
 private extension LocalReceiptValidator {
 
     func validateHash(receipt: Receipt, deviceIdentifierData: Data) throws {
-        // Make sure that the ParsedReceipt instances has non-nil values needed for hash comparison
+        // Make sure that the Receipt instances has non-nil values needed for hash comparison
         guard let receiptOpaqueValueData = receipt.opaqueValue else { throw Error.incorrectHash }
         guard let receiptBundleIdData = receipt.bundleIdData else { throw Error.incorrectHash }
         guard let receiptHashData = receipt.sha1Hash else { throw Error.incorrectHash }
@@ -197,65 +197,65 @@ private extension LocalReceiptValidator {
         guard let contents = pkcs7.pkcs7.pointee.d.sign.pointee.contents, let octets = contents.pointee.d.data else { throw Error.malformedReceipt }
         guard let initialPointer = UnsafePointer(octets.pointee.data) else { throw Error.malformedReceipt }
         let length = Int(octets.pointee.length)
-        var parsedReceipt = Receipt()
+        var receipt = Receipt()
 
         try self.parseASN1Set(pointer: initialPointer, length: length) { attributeType, value in
             guard let attribute = KnownReceiptAttribute(rawValue: attributeType) else { return }
 
             switch attribute {
             case .bundleIdentifier:
-                parsedReceipt.bundleIdData = value.dataValue
-                parsedReceipt.bundleIdentifier = value.unwrappedStringValue
+                receipt.bundleIdData = value.dataValue
+                receipt.bundleIdentifier = value.unwrappedStringValue
             case .appVersion:
-                parsedReceipt.appVersion = value.unwrappedStringValue
+                receipt.appVersion = value.unwrappedStringValue
             case .opaqueValue:
-                parsedReceipt.opaqueValue = value.dataValue
+                receipt.opaqueValue = value.dataValue
             case .sha1Hash:
-                parsedReceipt.sha1Hash = value.dataValue
+                receipt.sha1Hash = value.dataValue
             case .inAppPurchaseReceipts:
                 guard let pointer = value.valuePointer else { break }
 
                 let iapReceipt = try parseInAppPurchaseReceipt(pointer: pointer, length: value.length)
-                parsedReceipt.inAppPurchaseReceipts.append(iapReceipt)
+                receipt.inAppPurchaseReceipts.append(iapReceipt)
             case .receiptCreationDate:
-                parsedReceipt.receiptCreationDate = value.unwrappedDateValue
+                receipt.receiptCreationDate = value.unwrappedDateValue
             case .originalAppVersion:
-                parsedReceipt.originalAppVersion = value.unwrappedStringValue
+                receipt.originalAppVersion = value.unwrappedStringValue
             case .expirationDate:
-                parsedReceipt.expirationDate = value.unwrappedDateValue
+                receipt.expirationDate = value.unwrappedDateValue
                 break
             }
         }
-        return parsedReceipt
+        return receipt
     }
 
     private func parseInAppPurchaseReceipt(pointer: UnsafePointer<UInt8>, length: Int) throws -> InAppPurchaseReceipt {
-        var parsedInAppPurchaseReceipt = InAppPurchaseReceipt()
+        var inAppPurchaseReceipt = InAppPurchaseReceipt()
         try self.parseASN1Set(pointer: pointer, length: length) { attributeType, value in
             guard let attribute = KnownInAppPurchaseAttribute(rawValue: attributeType) else { return }
 
             switch attribute {
             case .quantity:
-                parsedInAppPurchaseReceipt.quantity = value.intValue
+                inAppPurchaseReceipt.quantity = value.intValue
             case .productIdentifier:
-                parsedInAppPurchaseReceipt.productIdentifier = value.unwrappedStringValue
+                inAppPurchaseReceipt.productIdentifier = value.unwrappedStringValue
             case .transactionIdentifier:
-                parsedInAppPurchaseReceipt.transactionIdentifier = value.unwrappedStringValue
+                inAppPurchaseReceipt.transactionIdentifier = value.unwrappedStringValue
             case .originalTransactionIdentifier:
-                parsedInAppPurchaseReceipt.originalTransactionIdentifier = value.unwrappedStringValue
+                inAppPurchaseReceipt.originalTransactionIdentifier = value.unwrappedStringValue
             case .purchaseDate:
-                parsedInAppPurchaseReceipt.purchaseDate = value.unwrappedDateValue
+                inAppPurchaseReceipt.purchaseDate = value.unwrappedDateValue
             case .originalPurchaseDate:
-                parsedInAppPurchaseReceipt.originalPurchaseDate = value.unwrappedDateValue
+                inAppPurchaseReceipt.originalPurchaseDate = value.unwrappedDateValue
             case .subscriptionExpirationDate:
-                parsedInAppPurchaseReceipt.subscriptionExpirationDate = value.unwrappedDateValue
+                inAppPurchaseReceipt.subscriptionExpirationDate = value.unwrappedDateValue
             case .cancellationDate:
-                parsedInAppPurchaseReceipt.cancellationDate = value.unwrappedDateValue
+                inAppPurchaseReceipt.cancellationDate = value.unwrappedDateValue
             case .webOrderLineItemId:
-                parsedInAppPurchaseReceipt.webOrderLineItemId = value.intValue
+                inAppPurchaseReceipt.webOrderLineItemId = value.intValue
             }
         }
-        return parsedInAppPurchaseReceipt
+        return inAppPurchaseReceipt
     }
 
     private func parseASN1Set(pointer initialPointer: UnsafePointer<UInt8>, length: Int, valueAttributeAction: (_ attributeType: Int32, _ value: ASN1Object) throws -> Void) throws {
@@ -288,7 +288,7 @@ private extension LocalReceiptValidator {
 
 private extension LocalReceiptValidator {
 
-    /// See ParsedReceipt.swift for details and a link to Apple reference
+    /// See Receipt.swift for details and a link to Apple reference
     enum KnownReceiptAttribute: Int32 {
         case bundleIdentifier = 2
         case appVersion = 3
@@ -307,7 +307,7 @@ private extension LocalReceiptValidator {
         // - and of unknown type 14(L=3), 25(L=3), 11(L=4), 13(L=4), 1(L=6), 9(L=6), 16(L=6), 15(L=8), 7(L=66), 6(L=69 variable)
     }
 
-    /// See ParsedReceipt.swift for details and a link to Apple reference
+    /// See Receipt.swift for details and a link to Apple reference
     enum KnownInAppPurchaseAttribute: Int32 {
         case quantity = 1701
         case productIdentifier = 1702
