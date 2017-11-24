@@ -223,7 +223,6 @@ private extension LocalReceiptValidator {
                 receipt.originalAppVersion = value.unwrappedStringValue
             case .expirationDate:
                 receipt.expirationDate = value.unwrappedDateValue
-                break
             }
         }
         return receipt
