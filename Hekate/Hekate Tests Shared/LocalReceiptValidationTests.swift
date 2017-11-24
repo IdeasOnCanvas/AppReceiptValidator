@@ -277,7 +277,7 @@ class LocalReceiptValidationTests: XCTestCase {
     func testiOSParsingPerformance() {
         guard let data = assertB64TestAsset(filename: "mindnode_ios_michaelsandbox_receipt1.b64") else { return }
 
-        let parameters = LocalReceiptValidator.Parameters.allSteps.with {
+        let parameters = LocalReceiptValidator.Parameters.default.with {
             $0.receiptOrigin = .data(data)
             $0.deviceIdentifier = LocalReceiptValidator.Parameters.DeviceIdentifier(uuid: UUID(uuidString: "3B76A7BD-8F5B-46A4-BCB1-CCE8DBD1B3CD")!)
         }

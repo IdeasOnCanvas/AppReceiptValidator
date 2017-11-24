@@ -23,13 +23,13 @@ public struct LocalReceiptValidator {
 
     // MARK: - Local Receipt Validation
 
-    /// Validates a local receipt and returns the result using the parameters `LocalReceiptValidator.Parameters.allSteps`, which can be further configured in the passed block.
+    /// Validates a local receipt and returns the result using the parameters `LocalReceiptValidator.Parameters.default`, which can be further configured in the passed block.
     public func validateReceipt(configuration: (inout Parameters) -> Void) -> Result {
-        return validateReceipt(parameters: Parameters.allSteps.with(block: configuration))
+        return validateReceipt(parameters: Parameters.default.with(block: configuration))
     }
 
     /// Validates a local receipt and returns the result using the passed parameters.
-    public func validateReceipt(parameters: Parameters = Parameters.allSteps) -> Result {
+    public func validateReceipt(parameters: Parameters = Parameters.default) -> Result {
         var data: Data?
         var deviceIdData: Data?
         do {
