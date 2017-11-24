@@ -286,3 +286,13 @@ class LocalReceiptValidationTests: XCTestCase {
         }
     }
 }
+
+// MARK: - LocalReceiptValidator + Convenience
+
+extension LocalReceiptValidator {
+
+    /// Validates a local receipt and returns the result using the parameters `LocalReceiptValidator.Parameters.default`, which can be further configured in the passed block.
+    func validateReceipt(configuration: (inout Parameters) -> Void) -> Result {
+        return validateReceipt(parameters: Parameters.default.with(block: configuration))
+    }
+}
