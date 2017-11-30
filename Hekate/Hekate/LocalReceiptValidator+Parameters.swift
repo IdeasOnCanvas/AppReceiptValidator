@@ -11,8 +11,10 @@ import Foundation
 public extension LocalReceiptValidator {
 
     /// Describes how to validate a receipt, and how/where to obtain the dependencies (receipt, deviceIdentifier, apple root certificate)
-    /// Use .allSteps to initialize the standard parameters. By default, no `propertyValidations` are active.
+    /// Use .default to initialize the standard parameters. By default, no `propertyValidations` are active.
     public struct Parameters {
+
+        // MARK: - Properties
 
         public var receiptOrigin: ReceiptOrigin = .installedInMainBundle
         public var shouldValidateSignaturePresence: Bool = true
@@ -22,18 +24,30 @@ public extension LocalReceiptValidator {
         public var rootCertificateOrigin: RootCertificateOrigin = .cerFileBundledWithHekate
         public var propertyValidations: [PropertyValidation] = []
 
+        // MARK: - Lifecycle
+
+        /// Or use .default to initialize a sensible defaults
+        public init(receiptOrigin: ReceiptOrigin, shouldValidateSignaturePresence: Bool, shouldValidateSignatureAuthenticity: Bool, shouldValidateHash: Bool, deviceIdentifier: DeviceIdentifier, rootCertificateOrigin: RootCertificateOrigin, propertyValidations: [PropertyValidation]) {
+            self.receiptOrigin = receiptOrigin
+            self.shouldValidateSignaturePresence = shouldValidateSignaturePresence
+            self.shouldValidateSignatureAuthenticity = shouldValidateSignatureAuthenticity
+            self.shouldValidateHash = shouldValidateHash
+            self.deviceIdentifier = deviceIdentifier
+            self.rootCertificateOrigin = rootCertificateOrigin
+        }
+
+        /// Either use `.default` to get a default preset, or specify everything via the complete init(…) with all parameters.
+        private init() {}
+
+        public static var `default`: Parameters {
+            return Parameters()
+        }
+
         /// Configure an instance with a block
         public func with(block: (inout Parameters) -> Void) -> Parameters {
             var copy = self
             block(&copy)
             return copy
-        }
-
-        /// Use .allSteps to initialize
-        private init() {}
-
-        public static var allSteps: Parameters {
-            return Parameters()
         }
     }
 }

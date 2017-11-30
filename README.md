@@ -36,11 +36,11 @@ switch result {
 
 ### Customize validation dependencies or steps
 
-Take `LocalReceiptValidator.Parameters.allSteps` and customize it, then pass it to `validateReceipt(parameters:)`, or use the shortcut which takes a configuration block, like so:
+Take `LocalReceiptValidator.Parameters.default` and customize it, then pass it to `validateReceipt(parameters:)`, like so:
 
 ```swift
-// Customizing validation parameters with configuration block, base on .allSteps
-let result = receiptValidator.validateReceipt {
+// Customizing validation parameters with configuration block, base on .default
+let parameters = LocalReceiptValidator.Parameters.default.with {
     $0.receiptOrigin = .data(myData)
     $0.shouldValidateSignaturePresence = false // skip signature presence validation
     $0.shouldValidateSignatureAuthenticity = false // skip signature authenticity validation
@@ -59,6 +59,8 @@ let result = receiptValidator.validateReceipt {
         .string(\.originalAppVersion, expected: "1")
     ]
 }
+
+let result = LocalReceiptValidator().validate(parameters: parameters)
 
 switch result {
     case .success(let receipt):
