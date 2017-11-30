@@ -142,7 +142,6 @@ extension LocalReceiptValidator.Parameters {
     private class BundleToken {}
 }
 
-
 // MARK: - PropertyValidation
 
 extension LocalReceiptValidator.Parameters {

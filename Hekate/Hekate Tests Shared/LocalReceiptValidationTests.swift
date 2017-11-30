@@ -74,7 +74,6 @@ class LocalReceiptValidationTests: XCTestCase {
         XCTAssertEqual(receipt, expected)
     }
 
-
     func testMindNodeProMacReceiptParsing() {
         guard let data = assertTestAsset(filename: "hannes_mac_mindnode_pro_receipt") else { return }
 
