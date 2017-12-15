@@ -274,18 +274,19 @@ private extension LocalReceiptValidator {
 
     private func parseUnofficialReceiptEntry(attributeType: Int32, value: ASN1Object) -> UnofficialReceipt.Entry {
         switch KnownUnofficialReceiptAttribute(rawValue: attributeType) {
-        case .some(.date1):
-            return UnofficialReceipt.Entry(attributeNumber: attributeType, meaning: .date1, value: value.unwrappedStringValue.map { UnofficialReceipt.Entry.Value.string($0) })
-        case .some(.date2):
-            return UnofficialReceipt.Entry(attributeNumber: attributeType, meaning: .date2, value: value.unwrappedStringValue.map { UnofficialReceipt.Entry.Value.string($0) })
-        case .some(.provisioningType):
-            return UnofficialReceipt.Entry(attributeNumber: attributeType, meaning: .provisioningType, value: value.unwrappedStringValue.map { UnofficialReceipt.Entry.Value.string($0) })
-        case .some(.ageRating):
-            return UnofficialReceipt.Entry(attributeNumber: attributeType, meaning: .ageRating, value: value.unwrappedStringValue.map { UnofficialReceipt.Entry.Value.string($0) })
+        case .some(let meaning):
+            switch meaning.parsingType {
+            case .string:
+                return UnofficialReceipt.Entry(attributeNumber: attributeType, meaning: meaning, value: value.unwrappedStringValue.map { UnofficialReceipt.Entry.Value.string($0) })
+            case .date:
+                return UnofficialReceipt.Entry(attributeNumber: attributeType, meaning: meaning, value: value.unwrappedDateValue.map { UnofficialReceipt.Entry.Value.date($0) })
+            case .data:
+                return UnofficialReceipt.Entry(attributeNumber: attributeType, meaning: meaning, value: value.dataValue.map { UnofficialReceipt.Entry.Value.bytes($0) })
+            }
         case .none:
-//            if let dateValue = value.dateValue {
-//                return UnofficialReceipt.Entry(attributeNumber: attributeType, meaning: nil, value: .date(dateValue))
-//            }
+            if let string = value.unwrappedStringValue {
+                return UnofficialReceipt.Entry(attributeNumber: attributeType, meaning: nil, value: .string(string))
+            }
             if let string = value.stringValue {
                 return UnofficialReceipt.Entry(attributeNumber: attributeType, meaning: nil, value: .string(string))
             }

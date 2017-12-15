@@ -48,7 +48,6 @@ private extension ViewController {
             return
         }
         do {
-//            let receipt = try LocalReceiptValidator().parseReceipt(origin: .data(data))
             let result = try LocalReceiptValidator().parseUnofficialReceipt(origin: .data(data))
             render(string: "\(result.receipt)\n\(result.unofficialReceipt)")
         } catch {
