@@ -221,7 +221,7 @@ extension InAppPurchaseReceipt: CustomStringConvertible, CustomDebugStringConver
 // MARK: - Custom String Conversion
 
 /// Private Helper for formatting the Receipts descriptions
-private struct StringFormatter {
+struct StringFormatter {
 
     let fallback = "nil"
 
