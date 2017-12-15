@@ -7,6 +7,55 @@
 //
 
 import Cocoa
+import Hekate
 
-class ViewController: NSViewController {
+
+class ViewController: NSViewController, NSTextViewDelegate {
+
+    @IBOutlet private var inputTextView: NSTextView!
+    @IBOutlet private var outputTextView: NSTextView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        inputTextView.delegate = self
+        inputTextView.string = "Paste Base64 here"
+        outputTextView.string = "Parsed Receipt will be shown here"
+    }
+
+    func textDidChange(_ notification: Notification) {
+        let string = inputTextView.string
+        update(base64String: string)
+    }
+
+    func paste(_ sender: Any) {
+        inputTextView.paste(sender)
+    }
+}
+
+class TextView: NSTextView {
+
+    override func paste(_ sender: Any?) {
+        self.string = ""
+        super.paste(sender)
+    }
+}
+
+private extension ViewController {
+
+    func update(base64String: String) {
+        guard let data = Data(base64Encoded: base64String, options: .ignoreUnknownCharacters) else {
+            render(string: "Base64 decoding failed.")
+            return
+        }
+        do {
+            let receipt = try LocalReceiptValidator().parseReceipt(origin: .data(data))
+            render(string: "\(receipt)")
+        } catch {
+            render(string: "\(error)")
+        }
+    }
+
+    func render(string: String) {
+        outputTextView.string = string
+    }
 }
