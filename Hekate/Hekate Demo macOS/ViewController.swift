@@ -10,52 +10,66 @@ import Cocoa
 import Hekate
 
 
+// MARK: - ViewController
+
 class ViewController: NSViewController, NSTextViewDelegate {
 
     @IBOutlet private var inputTextView: NSTextView!
     @IBOutlet private var outputTextView: NSTextView!
 
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        inputTextView.delegate = self
-        inputTextView.string = "Paste Base64 here"
-        outputTextView.string = "Parsed Receipt will be shown here"
+        self.inputTextView.delegate = self
+        self.inputTextView.string = "Paste Base64 here"
+        self.outputTextView.string = "Parsed Receipt will be shown here"
     }
+
+    // MARK: - NSTextViewDelegate
 
     func textDidChange(_ notification: Notification) {
         let string = inputTextView.string
-        update(base64String: string)
+        self.update(base64String: string)
     }
+
+    // MARK: - Actions
 
     func paste(_ sender: Any) {
-        inputTextView.paste(sender)
+        self.inputTextView.paste(sender)
     }
 }
 
-class TextView: NSTextView {
-
-    override func paste(_ sender: Any?) {
-        self.string = ""
-        super.paste(sender)
-    }
-}
+// MARK: - Private
 
 private extension ViewController {
 
+    // MARK: Updating
     func update(base64String: String) {
         guard let data = Data(base64Encoded: base64String, options: .ignoreUnknownCharacters) else {
-            render(string: "Base64 decoding failed.")
+            self.render(string: "Base64 decoding failed.")
             return
         }
         do {
             let result = try LocalReceiptValidator().parseUnofficialReceipt(origin: .data(data))
-            render(string: "\(result.receipt)\n\(result.unofficialReceipt)")
+            self.render(string: "\(result.receipt)\n\(result.unofficialReceipt)")
         } catch {
-            render(string: "\(error)")
+            self.render(string: "\(error)")
         }
     }
 
     func render(string: String) {
-        outputTextView.string = string
+        self.outputTextView.string = string
+    }
+}
+
+// MARK: - TextView
+
+/// TextView that clears contents before pasting
+private class TextView: NSTextView {
+
+    override func paste(_ sender: Any?) {
+        self.string = ""
+        super.paste(sender)
     }
 }

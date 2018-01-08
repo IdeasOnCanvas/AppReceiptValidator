@@ -68,24 +68,24 @@ public struct LocalReceiptValidator {
     /// Parse a local receipt without any validation.
     ///
     /// - Parameter origin: How to load the receipt.
-    /// - Returns: The Parsed receipt.
-    /// - Throws: A Error. Especially Error.couldNotFindReceipt if the receipt cannot be loaded/found.
+    /// - Returns: The parsed receipt.
+    /// - Throws: Especially Error.couldNotFindReceipt if the receipt cannot be loaded/found.
     public func parseReceipt(origin: Parameters.ReceiptOrigin) throws -> Receipt {
         guard let receiptData = origin.loadData() else { throw Error.couldNotFindReceipt }
 
-        let receiptContainer = try extractPKCS7Container(data: receiptData)
+        let receiptContainer = try self.extractPKCS7Container(data: receiptData)
         return try parseReceipt(pkcs7: receiptContainer).receipt
     }
 
     /// Parse the local receipt and it's unofficial attributes without any validation.
     ///
     /// - Parameter origin: How to load the receipt.
-    /// - Returns: The Parsed receipt.
-    /// - Throws: A Error. Especially Error.couldNotFindReceipt if the receipt cannot be loaded/found.
+    /// - Returns: The parsed receipt.
+    /// - Throws: Especially Error.couldNotFindReceipt if the receipt cannot be loaded/found.
     public func parseUnofficialReceipt(origin: Parameters.ReceiptOrigin) throws -> (receipt: Receipt, unofficialReceipt: UnofficialReceipt) {
         guard let receiptData = origin.loadData() else { throw Error.couldNotFindReceipt }
 
-        let receiptContainer = try extractPKCS7Container(data: receiptData)
+        let receiptContainer = try self.extractPKCS7Container(data: receiptData)
         return try parseReceipt(pkcs7: receiptContainer, parseUnofficialParts: true)
     }
 
