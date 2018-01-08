@@ -224,6 +224,8 @@
 		D1D6F4F11F5D691400E86FE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1D6F4EF1F5D691400E86FE1 /* LaunchScreen.storyboard */; };
 		D1D6F53F1F5D89D000E86FE1 /* LocalReceiptValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F53E1F5D89D000E86FE1 /* LocalReceiptValidator.swift */; };
 		D1D6F5401F5D89D800E86FE1 /* LocalReceiptValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F53E1F5D89D000E86FE1 /* LocalReceiptValidator.swift */; };
+		D1DFC5DA20037B8400C7B99B /* KnownOrUnknown.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DFC5D920037B8400C7B99B /* KnownOrUnknown.swift */; };
+		D1DFC5DB20037B8400C7B99B /* KnownOrUnknown.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DFC5D920037B8400C7B99B /* KnownOrUnknown.swift */; };
 		D1FE343D1F604F020029576B /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FE343C1F604F020029576B /* Receipt.swift */; };
 		D1FE343E1F604F020029576B /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FE343C1F604F020029576B /* Receipt.swift */; };
 		D1FE34401F604F540029576B /* LocalReceiptValidator+Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FE343F1F604F540029576B /* LocalReceiptValidator+Parameters.swift */; };
@@ -480,6 +482,7 @@
 		D1D6F5471F5D8DF700E86FE1 /* hannes_mac_mindnode_pro_Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = hannes_mac_mindnode_pro_Info.plist; sourceTree = "<group>"; };
 		D1D6F5491F5D9B1F00E86FE1 /* TestAssetLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAssetLoading.swift; sourceTree = "<group>"; };
 		D1D6F54F1F5D9E8D00E86FE1 /* not_a_receipt */ = {isa = PBXFileReference; lastKnownFileType = text; path = not_a_receipt; sourceTree = "<group>"; };
+		D1DFC5D920037B8400C7B99B /* KnownOrUnknown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnownOrUnknown.swift; sourceTree = "<group>"; };
 		D1FE343C1F604F020029576B /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
 		D1FE343F1F604F540029576B /* LocalReceiptValidator+Parameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalReceiptValidator+Parameters.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -945,6 +948,7 @@
 			children = (
 				D14FA72E1F6143C400545540 /* Date+Convenience.swift */,
 				D1D6F5491F5D9B1F00E86FE1 /* TestAssetLoading.swift */,
+				D1DFC5D920037B8400C7B99B /* KnownOrUnknown.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -1443,6 +1447,7 @@
 				D19095C31F6019FC0095729B /* DeviceIdentifier+installedDeviceIdentifier_iOS.swift in Sources */,
 				D14FA7271F61351000545540 /* AutoEquatable.swift in Sources */,
 				D14FA7291F61351400545540 /* AutoEquatable.generated.swift in Sources */,
+				D1DFC5DA20037B8400C7B99B /* KnownOrUnknown.swift in Sources */,
 				D1FE343D1F604F020029576B /* Receipt.swift in Sources */,
 				D14FA73B1F618B0100545540 /* ASN1Helpers.swift in Sources */,
 				D14FA7381F6181C700545540 /* OpenSSLWrappers.swift in Sources */,
@@ -1460,6 +1465,7 @@
 				D19095C01F60158B0095729B /* DeviceIdentifier+installedDeviceIdentifier_macOS.swift in Sources */,
 				D1FE343E1F604F020029576B /* Receipt.swift in Sources */,
 				D14FA72A1F61351500545540 /* AutoEquatable.generated.swift in Sources */,
+				D1DFC5DB20037B8400C7B99B /* KnownOrUnknown.swift in Sources */,
 				D14FA73C1F618B0100545540 /* ASN1Helpers.swift in Sources */,
 				D14FA7391F6181D000545540 /* OpenSSLWrappers.swift in Sources */,
 				D14FA7261F61350F00545540 /* AutoEquatable.swift in Sources */,

@@ -26,11 +26,25 @@ public struct UnofficialReceipt {
         public internal(set) var meaning: KnownUnofficialReceiptAttribute?
         public internal(set) var value: Value?
     }
+
+    public enum ProvisioningType: String {
+        case production = "Production"
+        case productionSandbox = "ProductionSandbox"
+        case productionVPP = "ProductionVPP"
+    }
+
+    /// Returns the provisioning type attribute's value, or nil if no entry was found at all.
+    public var provisioningType: KnownOrUnknown<ProvisioningType>? {
+        if let entry = entries.first(where: { $0.meaning == .provisioningType }), let value = entry.value, case .string(let stringValue) = value {
+            return KnownOrUnknown(rawValue: stringValue)
+        }
+        return nil
+    }
 }
 
 public enum KnownUnofficialReceiptAttribute: Int32 {
 
-    case provisioningType = 0 // String, probably Provisioning-Type, Encountered Values: "Production", "ProductionSandbox"
+    case provisioningType = 0 // String, probably Provisioning-Type, Encountered Values: "Production", "ProductionSandbox", "ProductionVPP"
     case date1 = 8 // some date, same as receiptCreationDate possibly
     case ageRating = 10 // String, probably Age Description, example Value "4+"
     case date2 = 18 // some date, same as receiptCreationDate possibly
