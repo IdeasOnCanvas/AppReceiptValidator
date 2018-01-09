@@ -43,7 +43,7 @@ public struct LocalReceiptValidator {
                 try self.checkSignatureAuthenticity(pkcs7: receiptContainer, appleRootCertificateData: appleRootCertificateData)
             }
 
-            let receipt = try self.parseReceipt(pkcs7: receiptContainer)
+            let receipt = try self.parseReceipt(pkcs7: receiptContainer).receipt
 
             try self.validateProperties(receipt: receipt, validations: parameters.propertyValidations)
 
@@ -68,13 +68,25 @@ public struct LocalReceiptValidator {
     /// Parse a local receipt without any validation.
     ///
     /// - Parameter origin: How to load the receipt.
-    /// - Returns: The Parsed receipt.
-    /// - Throws: A Error. Especially Error.couldNotFindReceipt if the receipt cannot be loaded/found.
+    /// - Returns: The parsed receipt.
+    /// - Throws: Especially Error.couldNotFindReceipt if the receipt cannot be loaded/found.
     public func parseReceipt(origin: Parameters.ReceiptOrigin) throws -> Receipt {
         guard let receiptData = origin.loadData() else { throw Error.couldNotFindReceipt }
 
-        let receiptContainer = try extractPKCS7Container(data: receiptData)
-        return try parseReceipt(pkcs7: receiptContainer)
+        let receiptContainer = try self.extractPKCS7Container(data: receiptData)
+        return try parseReceipt(pkcs7: receiptContainer).receipt
+    }
+
+    /// Parse the local receipt and it's unofficial attributes without any validation.
+    ///
+    /// - Parameter origin: How to load the receipt.
+    /// - Returns: The parsed receipt.
+    /// - Throws: Especially Error.couldNotFindReceipt if the receipt cannot be loaded/found.
+    public func parseUnofficialReceipt(origin: Parameters.ReceiptOrigin) throws -> (receipt: Receipt, unofficialReceipt: UnofficialReceipt) {
+        guard let receiptData = origin.loadData() else { throw Error.couldNotFindReceipt }
+
+        let receiptContainer = try self.extractPKCS7Container(data: receiptData)
+        return try parseReceipt(pkcs7: receiptContainer, parseUnofficialParts: true)
     }
 
     /// Uses receipt-conform representation of dates like "2017-01-01T12:00:00Z"
@@ -188,14 +200,21 @@ private extension LocalReceiptValidator {
 private extension LocalReceiptValidator {
 
     // swiftlint:disable:next cyclomatic_complexity
-    func parseReceipt(pkcs7: PKCS7Wrapper) throws -> Receipt {
+    func parseReceipt(pkcs7: PKCS7Wrapper, parseUnofficialParts: Bool = false) throws -> (receipt: Receipt, unofficialReceipt: UnofficialReceipt) {
         guard let contents = pkcs7.pkcs7.pointee.d.sign.pointee.contents, let octets = contents.pointee.d.data else { throw Error.malformedReceipt }
         guard let initialPointer = UnsafePointer(octets.pointee.data) else { throw Error.malformedReceipt }
         let length = Int(octets.pointee.length)
         var receipt = Receipt()
+        var unofficialReceipt = UnofficialReceipt(entries: [])
 
         try self.parseASN1Set(pointer: initialPointer, length: length) { attributeType, value in
-            guard let attribute = KnownReceiptAttribute(rawValue: attributeType) else { return }
+            guard let attribute = KnownReceiptAttribute(rawValue: attributeType) else {
+                if parseUnofficialParts {
+                    let entry = parseUnofficialReceiptEntry(attributeType: attributeType, value: value)
+                    unofficialReceipt.entries.append(entry)
+                }
+                return
+            }
 
             switch attribute {
             case .bundleIdentifier:
@@ -220,7 +239,8 @@ private extension LocalReceiptValidator {
                 receipt.expirationDate = value.unwrappedDateValue
             }
         }
-        return receipt
+
+        return (receipt: receipt, unofficialReceipt: unofficialReceipt)
     }
 
     private func parseInAppPurchaseReceipt(pointer: UnsafePointer<UInt8>, length: Int) throws -> InAppPurchaseReceipt {
@@ -250,6 +270,28 @@ private extension LocalReceiptValidator {
             }
         }
         return inAppPurchaseReceipt
+    }
+
+    private func parseUnofficialReceiptEntry(attributeType: Int32, value: ASN1Object) -> UnofficialReceipt.Entry {
+        switch KnownUnofficialReceiptAttribute(rawValue: attributeType) {
+        case .some(let meaning):
+            switch meaning.parsingType {
+            case .string:
+                return UnofficialReceipt.Entry(attributeNumber: attributeType, meaning: meaning, value: value.unwrappedStringValue.map { UnofficialReceipt.Entry.Value.string($0) })
+            case .date:
+                return UnofficialReceipt.Entry(attributeNumber: attributeType, meaning: meaning, value: value.unwrappedDateValue.map { UnofficialReceipt.Entry.Value.date($0) })
+            case .data:
+                return UnofficialReceipt.Entry(attributeNumber: attributeType, meaning: meaning, value: value.dataValue.map { UnofficialReceipt.Entry.Value.bytes($0) })
+            }
+        case .none:
+            if let string = value.unwrappedStringValue {
+                return UnofficialReceipt.Entry(attributeNumber: attributeType, meaning: nil, value: .string(string))
+            }
+            if let string = value.stringValue {
+                return UnofficialReceipt.Entry(attributeNumber: attributeType, meaning: nil, value: .string(string))
+            }
+            return UnofficialReceipt.Entry(attributeNumber: attributeType, meaning: nil, value: value.dataValue.map { UnofficialReceipt.Entry.Value.bytes($0) })
+        }
     }
 
     private func parseASN1Set(pointer initialPointer: UnsafePointer<UInt8>, length: Int, valueAttributeAction: (_ attributeType: Int32, _ value: ASN1Object) throws -> Void) throws {
@@ -292,14 +334,8 @@ private extension LocalReceiptValidator {
         case receiptCreationDate = 12
         case originalAppVersion = 19
         case expirationDate = 21
-
-        // Unofficial list found (not necessarily complete):
-        // - 18: some date in the past
-        // - 8: some date in the past, same as receiptCreationDate possibly
-        // - 0: String, probably Provisioning-Type, Encountered Values: "Production", "ProductionSandbox"
-        // - 10: String, probably Age Description, example Value "4+"
-        // - and of unknown type 14(L=3), 25(L=3), 11(L=4), 13(L=4), 1(L=6), 9(L=6), 16(L=6), 15(L=8), 7(L=66), 6(L=69 variable)
     }
+
 
     /// See Receipt.swift for details and a link to Apple reference
     enum KnownInAppPurchaseAttribute: Int32 {
