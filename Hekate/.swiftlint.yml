@@ -12,10 +12,10 @@ large_tuple:
   warning: 3
 opt_in_rules: 
   - empty_count
-  - overridden_super_call
   - explicit_init
   - closure_spacing
   - operator_usage_whitespace
+  - overridden_super_call
   - prohibited_super_call
   - nimble_operator
   - redundant_nil_coalescing
