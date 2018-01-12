@@ -12,7 +12,7 @@
 ///
 /// - known: the raw value is known and could be assigned to a known strong value type
 /// - unknown: the raw value is unknown and is stored as is
-public enum KnownOrUnknown<Known: RawRepresentable> where Known.RawValue: Hashable  {
+public enum KnownOrUnknown<Known: RawRepresentable> where Known.RawValue: Hashable {
     public typealias Unknown = Known.RawValue
 
     case known(value: Known)
@@ -51,7 +51,7 @@ extension KnownOrUnknown: Hashable {
         return self.rawValue.hashValue
     }
 
-    public static func ==(lhs: KnownOrUnknown<Known>, rhs: KnownOrUnknown<Known>) -> Bool {
+    public static func == (lhs: KnownOrUnknown<Known>, rhs: KnownOrUnknown<Known>) -> Bool {
         return lhs.rawValue == rhs.rawValue
     }
 }
