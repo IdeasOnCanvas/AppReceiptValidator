@@ -7,7 +7,7 @@
 [![Twitter: @hannesoid](https://img.shields.io/badge/Twitter-@hannesoid-red.svg?style=flat)](https://twitter.com/hannesoid)
 
 
-An iOS and macOS project intended for dealing with App Store receipts, offering basic local retrieval, validation and parsing of receipt files.
+An iOS and macOS library intended for dealing with App Store receipts, offering basic local retrieval, validation and parsing of receipt files.
 
 [Hekate](https://en.wikipedia.org/wiki/Hecate) is the goddess of magic, crossroads, ghosts, and necromancy.
 
@@ -19,6 +19,8 @@ github "IdeasOnCanvas/Hekate"
 ```
 
 ## Usage
+
+Apple advises to write your own code for receipt validation, and build and link OpenSSL statically to your app target. Anyways this repo might be a starting point for you, or be used as a dependency at your own risk, or might just be helpful for you to inspect receipts.
 
 ### Just parsing a receipt
 
@@ -121,10 +123,23 @@ let result = LocalReceiptValidator().validate(parameters: parameters)
 // switch on result
 ```
 
-## Note
+## StoreKit Hints
 
-This framework currently doesn't deal with StoreKit at all.
-The receipt file might not exist at all. See resources.
+This framework currently doesn't deal with StoreKit. But the receipt file might not exist at all. What now?
+
+If you have no receipt (happens in development builds) or your receipt is invalid, see resources on how to update it using StoreKit functionality. Known caveats:
+
+- `SKReceiptRefreshRequest` might not complete on certain macOS Versions, but reliable on iOS - [openradar](https://openradar.appspot.com/radar?id=4998688879411200)
+- `SKPaymentQueue.restoreCompletedTransactions()` might not update the the receipt, especially if no IAPs were made or the receipt is valid - [openradar](https://openradar.appspot.com/radar?id=6080726030090240)
+- `exit(173)` only works on macOS
+- Make some kind of purchase, i.e. App Store transaction, to update it
+- Each mechanism of receipt refresh will be intrusive to the user, mostly asking for AppleID password.
+- Apple advises to write your own code for receipt validation, and build and link OpenSSL statically to your app target. Anyways this repo might be a starting point for you.
+- Also have a look at [SwiftyStoreKit](https://github.com/bizz84/SwiftyStoreKit) for dealing with StoreKit, interpretation of receipts, server-verification, and more
+
+## Demo Apps
+
+Paste base64-encoded receipt data into the macOS or iOS demo app to see what Hekate parses from it.
 
 ## How it Works
 
@@ -166,6 +181,7 @@ Advantages doing it locally:
 - **WWDC 2017 - 305 Advanced StoreKit**: Receipt checking and it's internals
 - [nsomar about Module Maps 1](http://nsomar.com/project-and-private-headers-in-a-swift-and-objective-c-framework/)
 - [nsomar about Module Maps 2](http://nsomar.com/modular-framework-creating-and-using-them/)
+- [SwiftyStoreKit](https://github.com/bizz84/SwiftyStoreKit)
 
 ## Updating OpenSSL
 For convenience, Hekate contains a pre-built binaries of OpenSSL. The [Hekate.modulemap](Hekate/Hekate/Supporting%20Files/Hekate.modulemap) exposes these *only on demand* via `import Hekate.OpenSSL`.
@@ -176,3 +192,6 @@ If you are not comfortable using pre-built binary or want to update OpenSSL:
 3. When copying from the pod, make sure the .h files use direct includes like `#include "asn1.h"` instead of `#include "<OpenSSL/ans1.h>"` (use regex batch replace)
 4. Make sure the OpenSSL related headers are in the *private* headers of the framework Hekate iOS and Hekate macOS targets respectively
 5. Make sure the OpenSSL related headers are listed in the [Hekate.modulemap](Hekate/Hekate/Supporting%20Files/Hekate.modulemap) file
+
+Anybody want to automate this?
+

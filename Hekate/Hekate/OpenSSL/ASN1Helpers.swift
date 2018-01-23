@@ -29,7 +29,7 @@ struct ASN1Sequence {
 ///     |type            | length  |   value          |  …
 ///     +----------------+---------+------------------+---------------
 ///
-/// - Note: This object cannot ensure that it's pointers are safe, guarantee this from the outside.
+/// - Note: This object cannot ensure that its pointers are safe, guarantee this from the outside.
 struct ASN1Object {
 
     fileprivate(set) var type = Int32(0)
