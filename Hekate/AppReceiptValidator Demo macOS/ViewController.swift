@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-import Hekate
+import AppReceiptValidator
 
 
 // MARK: - ViewController

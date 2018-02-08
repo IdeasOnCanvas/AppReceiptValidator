@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Hekate.OpenSSL
+import AppReceiptValidator.OpenSSL
 
 final class BIOWrapper {
 

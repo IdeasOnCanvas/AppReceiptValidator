@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Hekate
+import AppReceiptValidator
 
 extension Date {
 

@@ -290,7 +290,7 @@
 		D150A0ED1F669A880026ED04 /* LocalReceiptValidationInAppPurchaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalReceiptValidationInAppPurchaseTests.swift; sourceTree = "<group>"; };
 		D15358A51F62BEC100F297D0 /* grandUnifiedExpiredAppleCert_receipt.b64 */ = {isa = PBXFileReference; lastKnownFileType = text; path = grandUnifiedExpiredAppleCert_receipt.b64; sourceTree = "<group>"; };
 		D15358B11F62C3C400F297D0 /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 */ = {isa = PBXFileReference; lastKnownFileType = text; path = deprecatedSinglesTypeExpiredAppleCert_receipt.b64; sourceTree = "<group>"; };
-		D15C59141F698005006F66FE /* Hekate.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = Hekate.modulemap; sourceTree = "<group>"; };
+		D15C59141F698005006F66FE /* AppReceiptValidator.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = AppReceiptValidator.modulemap; sourceTree = "<group>"; };
 		D19095811F6000A40095729B /* AppReceiptValidator Demo macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AppReceiptValidator Demo macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D19095831F6000A40095729B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D19095851F6000A40095729B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -606,7 +606,7 @@
 			path = unparseable;
 			sourceTree = "<group>";
 		};
-		D19095821F6000A40095729B /* Hekate Demo macOS */ = {
+		D19095821F6000A40095729B /* AppReceiptValidator Demo macOS */ = {
 			isa = PBXGroup;
 			children = (
 				D19095831F6000A40095729B /* AppDelegate.swift */,
@@ -616,26 +616,26 @@
 				D190958C1F6000A40095729B /* Info.plist */,
 				D190958D1F6000A40095729B /* Hekate_Demo_macOS.entitlements */,
 			);
-			path = "Hekate Demo macOS";
+			path = "AppReceiptValidator Demo macOS";
 			sourceTree = "<group>";
 		};
-		D19095951F6000A40095729B /* Hekate Tests macOS */ = {
+		D19095951F6000A40095729B /* AppReceiptValidator Tests macOS */ = {
 			isa = PBXGroup;
 			children = (
 				D19095981F6000A40095729B /* Info.plist */,
 			);
-			path = "Hekate Tests macOS";
+			path = "AppReceiptValidator Tests macOS";
 			sourceTree = "<group>";
 		};
-		D19095AA1F6001800095729B /* Hekate Tests iOS */ = {
+		D19095AA1F6001800095729B /* AppReceiptValidator Tests iOS */ = {
 			isa = PBXGroup;
 			children = (
 				D19095AD1F6001800095729B /* Info.plist */,
 			);
-			path = "Hekate Tests iOS";
+			path = "AppReceiptValidator Tests iOS";
 			sourceTree = "<group>";
 		};
-		D19095B61F6001C20095729B /* Hekate Tests Shared */ = {
+		D19095B61F6001C20095729B /* AppReceiptValidator Tests Shared */ = {
 			isa = PBXGroup;
 			children = (
 				D1D6F5411F5D8A3800E86FE1 /* LocalReceiptValidationTests.swift */,
@@ -644,7 +644,7 @@
 				D1D6F5481F5D9B1100E86FE1 /* Tools */,
 				D1D6F5431F5D8DBC00E86FE1 /* Test Assets */,
 			);
-			path = "Hekate Tests Shared";
+			path = "AppReceiptValidator Tests Shared";
 			sourceTree = "<group>";
 		};
 		D1D430B11F69627600F7F39D /* lib-ios */ = {
@@ -849,12 +849,12 @@
 			isa = PBXGroup;
 			children = (
 				D14FA71B1F6134CF00545540 /* Sourcery */,
-				D1D6F4FC1F5D696800E86FE1 /* Hekate */,
-				D1D6F4E51F5D691400E86FE1 /* Hekate Demo iOS */,
-				D19095821F6000A40095729B /* Hekate Demo macOS */,
-				D19095951F6000A40095729B /* Hekate Tests macOS */,
-				D19095AA1F6001800095729B /* Hekate Tests iOS */,
-				D19095B61F6001C20095729B /* Hekate Tests Shared */,
+				D1D6F4FC1F5D696800E86FE1 /* AppReceiptValidator */,
+				D1D6F4E51F5D691400E86FE1 /* AppReceiptValidator Demo iOS */,
+				D19095821F6000A40095729B /* AppReceiptValidator Demo macOS */,
+				D19095951F6000A40095729B /* AppReceiptValidator Tests macOS */,
+				D19095AA1F6001800095729B /* AppReceiptValidator Tests iOS */,
+				D19095B61F6001C20095729B /* AppReceiptValidator Tests Shared */,
 				D1D6F49C1F5D67E600E86FE1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -872,7 +872,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D1D6F4E51F5D691400E86FE1 /* Hekate Demo iOS */ = {
+		D1D6F4E51F5D691400E86FE1 /* AppReceiptValidator Demo iOS */ = {
 			isa = PBXGroup;
 			children = (
 				D1D6F4E61F5D691400E86FE1 /* AppDelegate.swift */,
@@ -882,10 +882,10 @@
 				D1D6F4EF1F5D691400E86FE1 /* LaunchScreen.storyboard */,
 				D1D6F4F21F5D691400E86FE1 /* Info.plist */,
 			);
-			path = "Hekate Demo iOS";
+			path = "AppReceiptValidator Demo iOS";
 			sourceTree = "<group>";
 		};
-		D1D6F4FC1F5D696800E86FE1 /* Hekate */ = {
+		D1D6F4FC1F5D696800E86FE1 /* AppReceiptValidator */ = {
 			isa = PBXGroup;
 			children = (
 				D19095C41F601DEA0095729B /* AppleIncRootCertificate.cer */,
@@ -898,13 +898,13 @@
 				D19095BF1F60158B0095729B /* DeviceIdentifier+installedDeviceIdentifier_macOS.swift */,
 				D19095C11F6019E70095729B /* DeviceIdentifier+installedDeviceIdentifier_iOS.swift */,
 			);
-			path = Hekate;
+			path = AppReceiptValidator;
 			sourceTree = "<group>";
 		};
 		D1D6F5271F5D863900E86FE1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D15C59141F698005006F66FE /* Hekate.modulemap */,
+				D15C59141F698005006F66FE /* AppReceiptValidator.modulemap */,
 				D1D6F5281F5D864500E86FE1 /* iOS */,
 				D1D6F5291F5D864A00E86FE1 /* macOS */,
 			);

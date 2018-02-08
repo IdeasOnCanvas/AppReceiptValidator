@@ -6,7 +6,7 @@
 //  Copyright © 2017 IdeasOnCanvas GmbH. All rights reserved.
 //
 
-import Hekate
+import AppReceiptValidator
 import XCTest
 
 class LocalReceiptValidationInAppPurchaseTests: XCTestCase {

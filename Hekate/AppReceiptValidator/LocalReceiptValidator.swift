@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Hekate.OpenSSL
+import AppReceiptValidator.OpenSSL
 
 /// Apple guide: https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Introduction.html
 ///
