@@ -238,28 +238,28 @@
 			containerPortal = D1D6F4931F5D67E600E86FE1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D1D6F4B41F5D684C00E86FE1;
-			remoteInfo = "Hekate iOS";
+			remoteInfo = "AppReceiptValidator iOS";
 		};
 		D19095931F6000A40095729B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D1D6F4931F5D67E600E86FE1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D19095801F6000A40095729B;
-			remoteInfo = "Hekate Demo macOS";
+			remoteInfo = "AppReceiptValidator Demo macOS";
 		};
 		D19095AF1F6001800095729B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D1D6F4931F5D67E600E86FE1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D1D6F4B41F5D684C00E86FE1;
-			remoteInfo = "Hekate iOS";
+			remoteInfo = "AppReceiptValidator iOS";
 		};
 		D19095B41F6001900095729B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D1D6F4931F5D67E600E86FE1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D1D6F4E31F5D691400E86FE1;
-			remoteInfo = "Hekate Demo iOS";
+			remoteInfo = "AppReceiptValidator Demo iOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -1138,7 +1138,7 @@
 			dependencies = (
 			);
 			name = "AppReceiptValidator Demo macOS";
-			productName = "Hekate Demo macOS";
+			productName = "AppReceiptValidator Demo macOS";
 			productReference = D19095811F6000A40095729B /* AppReceiptValidator Demo macOS.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -1156,7 +1156,7 @@
 				D19095941F6000A40095729B /* PBXTargetDependency */,
 			);
 			name = "AppReceiptValidator Tests macOS";
-			productName = "Hekate Demo macOSTests";
+			productName = "AppReceiptValidator Demo macOSTests";
 			productReference = D19095921F6000A40095729B /* AppReceiptValidator Tests macOS.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -1175,7 +1175,7 @@
 				D19095B51F6001900095729B /* PBXTargetDependency */,
 			);
 			name = "AppReceiptValidator Tests iOS";
-			productName = Hekate_iOSTests;
+			productName = AppReceiptValidator_iOSTests;
 			productReference = D19095A91F6001800095729B /* AppReceiptValidator Tests iOS.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -1194,7 +1194,7 @@
 			dependencies = (
 			);
 			name = "AppReceiptValidator iOS";
-			productName = Hekate_iOS;
+			productName = AppReceiptValidator_iOS;
 			productReference = D1D6F4B51F5D684C00E86FE1 /* AppReceiptValidator.framework */;
 			productType = "com.apple.product-type.framework";
 		};
@@ -1213,7 +1213,7 @@
 			dependencies = (
 			);
 			name = "AppReceiptValidator macOS";
-			productName = Hekate_macOS;
+			productName = AppReceiptValidator_macOS;
 			productReference = D1D6F4C21F5D687400E86FE1 /* AppReceiptValidator.framework */;
 			productType = "com.apple.product-type.framework";
 		};

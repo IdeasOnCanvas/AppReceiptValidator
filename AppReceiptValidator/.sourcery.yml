@@ -1,5 +1,5 @@
 sources:
-  - Hekate
+  - AppReceiptValidator
   - Sourcery/Protocols
 templates:
   - Sourcery/Templates  

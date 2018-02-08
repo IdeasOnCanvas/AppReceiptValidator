@@ -675,7 +675,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Hekate_Demo_macOS" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="AppReceiptValidator_Demo_macOS" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -705,7 +705,7 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Hekate_Demo_macOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="AppReceiptValidator_Demo_macOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="631" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -716,7 +716,7 @@
                                     <rect key="frame" x="1" y="1" width="314" height="268"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textView toolTip="Paste Base64 here" importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" allowsCharacterPickerTouchBarItem="NO" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" textCompletion="NO" id="0xW-mT-lME" customClass="TextView" customModule="Hekate_Demo_macOS" customModuleProvider="target">
+                                        <textView toolTip="Paste Base64 here" importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" allowsCharacterPickerTouchBarItem="NO" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" textCompletion="NO" id="0xW-mT-lME" customClass="TextView" customModule="AppReceiptValidator_Demo_macOS" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="314" height="268"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -742,7 +742,7 @@
                                     <rect key="frame" x="1" y="1" width="313" height="268"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" allowsCharacterPickerTouchBarItem="NO" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" textCompletion="NO" id="GHT-gS-G1g" customClass="TextView" customModule="Hekate_Demo_macOS" customModuleProvider="target">
+                                        <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" allowsCharacterPickerTouchBarItem="NO" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" textCompletion="NO" id="GHT-gS-G1g" customClass="TextView" customModule="AppReceiptValidator_Demo_macOS" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="313" height="268"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

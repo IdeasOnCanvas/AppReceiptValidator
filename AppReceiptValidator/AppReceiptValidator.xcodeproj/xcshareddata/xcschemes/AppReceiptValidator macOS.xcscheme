@@ -29,8 +29,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D1D6F5321F5D894900E86FE1"
-               BuildableName = "Hekate_macOSTests.xctest"
-               BlueprintName = "Hekate_macOSTests"
+               BuildableName = "AppReceiptValidator_macOSTests.xctest"
+               BlueprintName = "AppReceiptValidator_macOSTests"
                ReferencedContainer = "container:AppReceiptValidator.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -48,8 +48,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D1D6F5321F5D894900E86FE1"
-               BuildableName = "Hekate_macOSTests.xctest"
-               BlueprintName = "Hekate_macOSTests"
+               BuildableName = "AppReceiptValidator_macOSTests.xctest"
+               BlueprintName = "AppReceiptValidator_macOSTests"
                ReferencedContainer = "container:AppReceiptValidator.xcodeproj">
             </BuildableReference>
          </TestableReference>
