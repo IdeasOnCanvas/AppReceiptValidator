@@ -1,5 +1,5 @@
 //
-//  LocalReceiptValidationTests.swift
+//  AppReceiptValidationTests.swift
 //  AppReceiptValidator_macOSTests
 //
 //  Created by Hannes Oud on 04.09.17.
@@ -9,11 +9,11 @@
 import AppReceiptValidator
 import XCTest
 
-class LocalReceiptValidationTests: XCTestCase {
+class AppReceiptValidationTests: XCTestCase {
 
-    private let receiptValidator = LocalReceiptValidator()
+    private let receiptValidator = AppReceiptValidator()
 
-    private let exampleDeviceIdentifier = LocalReceiptValidator.Parameters.DeviceIdentifier(base64Encoded: "bEAItZRe")!
+    private let exampleDeviceIdentifier = AppReceiptValidator.Parameters.DeviceIdentifier(base64Encoded: "bEAItZRe")!
 
     func testFailedReceiptValidating() {
         guard let data = assertTestAsset(filename: "not_a_receipt") else { return }
@@ -27,7 +27,7 @@ class LocalReceiptValidationTests: XCTestCase {
             return
         }
 
-        if error != LocalReceiptValidator.Error.emptyReceiptContents {
+        if error != AppReceiptValidator.Error.emptyReceiptContents {
             XCTFail("Unexpected error, expected .emptyReceiptContents, got \(error)")
         }
     }
@@ -39,7 +39,7 @@ class LocalReceiptValidationTests: XCTestCase {
             _ = try receiptValidator.parseReceipt(origin: .data(data))
             XCTFail("Unexpectedly succeeded in parsing a non-receipt")
         } catch {
-            guard let e = error as? LocalReceiptValidator.Error, e == LocalReceiptValidator.Error.emptyReceiptContents else {
+            guard let e = error as? AppReceiptValidator.Error, e == AppReceiptValidator.Error.emptyReceiptContents else {
                 XCTFail("Unexpected error, expeced .emptyReceiptContents, got \(error)")
                 return
             }
@@ -145,7 +145,7 @@ class LocalReceiptValidationTests: XCTestCase {
         )
         let result = receiptValidator.validateReceipt {
             $0.receiptOrigin = .data(data)
-            $0.deviceIdentifier = LocalReceiptValidator.Parameters.DeviceIdentifier(base64Encoded: "bEAItZRe")!
+            $0.deviceIdentifier = AppReceiptValidator.Parameters.DeviceIdentifier(base64Encoded: "bEAItZRe")!
         }
         guard let receipt = result.receipt else {
             XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")
@@ -208,7 +208,7 @@ class LocalReceiptValidationTests: XCTestCase {
     func testNonMindNodeFailingDeprecatedSinglesTypeExpiredAppleCertParsing() {
         guard let data = assertB64TestAsset(filename: "deprecatedSinglesTypeExpiredAppleCert_receipt.b64") else { return }
 
-        let result = receiptValidator.validateReceipt { (parameters: inout LocalReceiptValidator.Parameters) -> Void in
+        let result = receiptValidator.validateReceipt { (parameters: inout AppReceiptValidator.Parameters) -> Void in
             parameters.receiptOrigin = .data(data)
         }
         guard let error = result.error else {
@@ -216,7 +216,7 @@ class LocalReceiptValidationTests: XCTestCase {
             return
         }
 
-        if error != LocalReceiptValidator.Error.emptyReceiptContents {
+        if error != AppReceiptValidator.Error.emptyReceiptContents {
             XCTFail("Unexpected error, expeced .emptyReceiptContents, got \(error)")
         }
     }
@@ -226,7 +226,7 @@ class LocalReceiptValidationTests: XCTestCase {
 
         let result = receiptValidator.validateReceipt {
             $0.receiptOrigin = .data(data)
-            $0.deviceIdentifier = LocalReceiptValidator.Parameters.DeviceIdentifier(uuid: UUID(uuidString: "3B76A7BD-8F5B-46A4-BCB1-CCE8DBD1B3CD")!)
+            $0.deviceIdentifier = AppReceiptValidator.Parameters.DeviceIdentifier(uuid: UUID(uuidString: "3B76A7BD-8F5B-46A4-BCB1-CCE8DBD1B3CD")!)
         }
         let expected = Receipt(
             bundleIdentifier: "com.mindnode.mindnodetouch",
@@ -276,9 +276,9 @@ class LocalReceiptValidationTests: XCTestCase {
     func testiOSParsingPerformance() {
         guard let data = assertB64TestAsset(filename: "mindnode_ios_michaelsandbox_receipt1.b64") else { return }
 
-        let parameters = LocalReceiptValidator.Parameters.default.with {
+        let parameters = AppReceiptValidator.Parameters.default.with {
             $0.receiptOrigin = .data(data)
-            $0.deviceIdentifier = LocalReceiptValidator.Parameters.DeviceIdentifier(uuid: UUID(uuidString: "3B76A7BD-8F5B-46A4-BCB1-CCE8DBD1B3CD")!)
+            $0.deviceIdentifier = AppReceiptValidator.Parameters.DeviceIdentifier(uuid: UUID(uuidString: "3B76A7BD-8F5B-46A4-BCB1-CCE8DBD1B3CD")!)
         }
         measure {
             _ = receiptValidator.validateReceipt(parameters: parameters)
@@ -286,11 +286,11 @@ class LocalReceiptValidationTests: XCTestCase {
     }
 }
 
-// MARK: - LocalReceiptValidator + Convenience
+// MARK: - AppReceiptValidator + Convenience
 
-extension LocalReceiptValidator {
+extension AppReceiptValidator {
 
-    /// Validates a local receipt and returns the result using the parameters `LocalReceiptValidator.Parameters.default`, which can be further configured in the passed block.
+    /// Validates a receipt and returns the result using the parameters `AppReceiptValidator.Parameters.default`, which can be further configured in the passed block.
     func validateReceipt(configuration: (inout Parameters) -> Void) -> Result {
         return validateReceipt(parameters: Parameters.default.with(block: configuration))
     }

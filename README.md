@@ -24,7 +24,7 @@ Apple advises to write your own code for receipt validation, and build and link 
 ### Just parsing a receipt
 
 ```swift
-let receiptValidator = LocalReceiptValidator()
+let receiptValidator = AppReceiptValidator()
 
 let installedReceipt = receiptValidator.parseReceipt(origin: .installedInMainBundle)
 
@@ -93,11 +93,11 @@ switch result {
 
 ### Customize validation dependencies or steps
 
-Take `LocalReceiptValidator.Parameters.default` and customize it, then pass it to `validateReceipt(parameters:)`, like so:
+Take `AppReceiptValidator.Parameters.default` and customize it, then pass it to `validateReceipt(parameters:)`, like so:
 
 ```swift
 // Customizing validation parameters with configuration block, base on .default
-let parameters = LocalReceiptValidator.Parameters.default.with {
+let parameters = AppReceiptValidator.Parameters.default.with {
     $0.receiptOrigin = .data(myData)
     $0.shouldValidateSignaturePresence = false // skip signature presence validation
     $0.shouldValidateSignatureAuthenticity = false // skip signature authenticity validation
@@ -117,7 +117,7 @@ let parameters = LocalReceiptValidator.Parameters.default.with {
     ]
 }
 
-let result = LocalReceiptValidator().validate(parameters: parameters)
+let result = AppReceiptValidator().validate(parameters: parameters)
 
 // switch on result
 ```
@@ -171,7 +171,7 @@ Advantages doing it locally:
 
 - [Apple guide](https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Introduction.html)
 - [objc.io guide](https://www.objc.io/issues/17-security/receipt-validation/)
-- [Andrew Bancroft complete guide](https://www.andrewcbancroft.com/2017/08/01/local-receipt-validation-swift-start-finish/), or directly [ReceiptValidator.swift](https://github.com/andrewcbancroft/SwiftyLocalReceiptValidator/blob/master/ReceiptValidator.swift). This is what the AppReceiptValidator implementation is loosely based on.
+- [Andrew Bancroft complete guide](https://www.andrewcbancroft.com/2017/08/01/local-receipt-validation-swift-start-finish/), or directly [ReceiptValidator.swift](https://github.com/andrewcbancroft/SwiftyAppReceiptValidator/blob/master/ReceiptValidator.swift). This is what the AppReceiptValidator implementation is loosely based on.
 - [OpenSSL-Universal Pod](https://github.com/krzyzanowskim/OpenSSL)
 - WWDC 2013 - 308 Using Receipts to Protect Your Digital Sales
 - WWDC 2014 - 305 Preventing Unauthorized Purchases with Receipts

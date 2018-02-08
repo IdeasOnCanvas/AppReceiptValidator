@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension LocalReceiptValidator.Parameters.DeviceIdentifier {
+extension AppReceiptValidator.Parameters.DeviceIdentifier {
 
     /// On iOS this is the UIDevice's identifierForVendor UUID data
     static var installedDeviceIdentifierData: Data? {

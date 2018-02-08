@@ -1,5 +1,5 @@
 //
-//  LocalReceiptValidationInAppPurchaseTests.swift
+//  AppReceiptValidationInAppPurchaseTests.swift
 //  AppReceiptValidator
 //
 //  Created by Hannes Oud on 11.09.17.
@@ -9,9 +9,9 @@
 import AppReceiptValidator
 import XCTest
 
-class LocalReceiptValidationInAppPurchaseTests: XCTestCase {
+class AppReceiptValidationInAppPurchaseTests: XCTestCase {
 
-    var receiptValidator = LocalReceiptValidator()
+    var receiptValidator = AppReceiptValidator()
 
     func testNonMindNodeReceiptParsingWithoutValidation() {
         guard let data = assertB64TestAsset(filename: "grandUnifiedExpiredAppleCert_receipt.b64") else { return }

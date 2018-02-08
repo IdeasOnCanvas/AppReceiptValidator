@@ -221,7 +221,7 @@ extension InAppPurchaseReceipt: CustomStringConvertible, CustomDebugStringConver
 // MARK: - Custom String Conversion
 
 /// Private Helper for formatting the Receipts descriptions
-struct StringFormatter {
+private struct StringFormatter {
 
     let fallback = "nil"
 
@@ -255,7 +255,7 @@ struct StringFormatter {
     func format(_ date: Date?) -> String {
         guard let date = date else { return fallback }
 
-        return LocalReceiptValidator.asn1DateFormatter.string(from: date)
+        return AppReceiptValidator.asn1DateFormatter.string(from: date)
     }
 
     func format(_ string: String?) -> String {

@@ -1,5 +1,5 @@
 //
-//  LocalReceiptPropertyValidationTests.swift
+//  AppReceiptPropertyValidationTests.swift
 //  AppReceiptValidator iOS
 //
 //  Created by Hannes Oud on 14.09.17.
@@ -9,9 +9,9 @@
 import AppReceiptValidator
 import XCTest
 
-class LocalReceiptPropertyValidationTests: XCTestCase {
+class AppReceiptPropertyValidationTests: XCTestCase {
 
-    private let receiptValidator = LocalReceiptValidator()
+    private let receiptValidator = AppReceiptValidator()
 
     func testCorrectMainBundlePropertiesiOS() {
         let receipt = Receipt(bundleIdentifier: Bundle.main.bundleIdentifier,
@@ -78,7 +78,7 @@ class LocalReceiptPropertyValidationTests: XCTestCase {
         guard let data = assertTestAsset(filename: "hannes_mac_mindnode_pro_receipt") else { return }
 
         @discardableResult
-        func assertPropertyMismatch(line: UInt = #line, configuration: (inout LocalReceiptValidator.Parameters) -> Void) -> Bool {
+        func assertPropertyMismatch(line: UInt = #line, configuration: (inout AppReceiptValidator.Parameters) -> Void) -> Bool {
             let result = receiptValidator.validateReceipt {
                 $0.receiptOrigin = .data(data)
                 $0.shouldValidateHash = false // the original device identifier is unknown
@@ -89,7 +89,7 @@ class LocalReceiptPropertyValidationTests: XCTestCase {
                 XCTFail("Unexpectedly succeeded validating, but expected a property mismatch)", file: #file, line: line)
                 return false
             }
-            guard error == LocalReceiptValidator.Error.propertyValueMismatch else {
+            guard error == AppReceiptValidator.Error.propertyValueMismatch else {
                 XCTFail("Expected a property mismatch, but found an \(error)", file: #file, line: line)
                 return false
             }

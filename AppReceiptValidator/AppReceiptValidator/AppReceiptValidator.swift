@@ -1,5 +1,5 @@
 //
-//  LocalReceiptValidator.swift
+//  AppReceiptValidator.swift
 //  AppReceiptValidator iOS
 //
 //  Created by Hannes Oud on 04.09.17.
@@ -15,7 +15,7 @@ import Foundation
 ///
 /// More: See README.md
 /// - Note: If on iOS, use this only on Main Queue, because UIDevice is called
-public struct LocalReceiptValidator {
+public struct AppReceiptValidator {
 
     // MARK: - Lifecycle
 
@@ -54,8 +54,8 @@ public struct LocalReceiptValidator {
             }
             return .success(receipt, receiptData: receiptData, deviceIdentifier: deviceIdData)
         } catch {
-            assert(error is LocalReceiptValidator.Error)
-            return .error(error as? LocalReceiptValidator.Error ?? .unknown, receiptData: data, deviceIdentifier: deviceIdData)
+            assert(error is AppReceiptValidator.Error)
+            return .error(error as? AppReceiptValidator.Error ?? .unknown, receiptData: data, deviceIdentifier: deviceIdData)
         }
     }
 
@@ -102,7 +102,7 @@ public struct LocalReceiptValidator {
 
 // MARK: - Full Validation
 
-private extension LocalReceiptValidator {
+private extension AppReceiptValidator {
 
     func validateHash(receipt: Receipt, deviceIdentifierData: Data) throws {
         // Make sure that the Receipt instances has non-nil values needed for hash comparison
@@ -140,7 +140,7 @@ private extension LocalReceiptValidator {
 
 // MARK: - PKCS7 Extraction
 
-private extension LocalReceiptValidator {
+private extension AppReceiptValidator {
 
     func extractPKCS7Container(data: Data) throws -> PKCS7Wrapper {
         let receiptBIO = BIOWrapper(data: data)
@@ -159,7 +159,7 @@ private extension LocalReceiptValidator {
 
 // MARK: - PKCS7 Signature checking
 
-private extension LocalReceiptValidator {
+private extension AppReceiptValidator {
 
     func checkSignaturePresence(pkcs7: PKCS7Wrapper) throws {
         let pkcs7SignedTypeCode = OBJ_obj2nid(pkcs7.pkcs7.pointee.type)
@@ -197,7 +197,7 @@ private extension LocalReceiptValidator {
 
 // MARK: - Parsing of properties
 
-private extension LocalReceiptValidator {
+private extension AppReceiptValidator {
 
     // swiftlint:disable:next cyclomatic_complexity
     func parseReceipt(pkcs7: PKCS7Wrapper, parseUnofficialParts: Bool = false) throws -> (receipt: Receipt, unofficialReceipt: UnofficialReceipt) {
@@ -322,7 +322,7 @@ private extension LocalReceiptValidator {
 
 // MARK: Receipt ASN1 Sequence Attribute Types
 
-private extension LocalReceiptValidator {
+private extension AppReceiptValidator {
 
     /// See Receipt.swift for details and a link to Apple reference
     enum KnownReceiptAttribute: Int32 {
@@ -353,12 +353,12 @@ private extension LocalReceiptValidator {
 
 // MARK: - Result
 
-extension LocalReceiptValidator {
+extension AppReceiptValidator {
 
     public enum Result {
 
         case success(Receipt, receiptData: Data, deviceIdentifier: Data?)
-        case error(LocalReceiptValidator.Error, receiptData: Data?, deviceIdentifier: Data?)
+        case error(AppReceiptValidator.Error, receiptData: Data?, deviceIdentifier: Data?)
 
         public var receipt: Receipt? {
             switch self {
@@ -369,7 +369,7 @@ extension LocalReceiptValidator {
             }
         }
 
-        public var error: LocalReceiptValidator.Error? {
+        public var error: AppReceiptValidator.Error? {
             switch self {
             case .success:
                 return nil
@@ -402,7 +402,7 @@ extension LocalReceiptValidator {
 
 // MARK: - Error
 
-extension LocalReceiptValidator {
+extension AppReceiptValidator {
 
     public enum Error: Int, Swift.Error {
         case couldNotFindReceipt

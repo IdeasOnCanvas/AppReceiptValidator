@@ -9,7 +9,7 @@
 import Foundation
 import IOKit
 
-extension LocalReceiptValidator.Parameters.DeviceIdentifier {
+extension AppReceiptValidator.Parameters.DeviceIdentifier {
 
     /// On mac this is the primary network interface's MAC Adress as bytes
     static var installedDeviceIdentifierData: Data? {

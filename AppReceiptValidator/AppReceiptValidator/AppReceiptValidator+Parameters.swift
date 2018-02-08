@@ -1,5 +1,5 @@
 //
-//  LocalReceiptValidator+Parameters.swift
+//  AppReceiptValidator+Parameters.swift
 //  AppReceiptValidator
 //
 //  Created by Hannes Oud on 06.09.17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension LocalReceiptValidator {
+public extension AppReceiptValidator {
 
     /// Describes how to validate a receipt, and how/where to obtain the dependencies (receipt, deviceIdentifier, apple root certificate)
     /// Use .default to initialize the standard parameters. By default, no `propertyValidations` are active.
@@ -54,7 +54,7 @@ public extension LocalReceiptValidator {
 
 // MARK: - ReceiptOrigin
 
-extension LocalReceiptValidator.Parameters {
+extension AppReceiptValidator.Parameters {
 
     /// Used for obtaining the receipt data to parse or validate.
     ///
@@ -81,7 +81,7 @@ extension LocalReceiptValidator.Parameters {
 
 // MARK: - DeviceIdentifier
 
-public extension LocalReceiptValidator.Parameters {
+public extension AppReceiptValidator.Parameters {
 
     /// Used for calculating/validating the SHA1-Hash part of a receipt.
     ///
@@ -118,7 +118,7 @@ public extension LocalReceiptValidator.Parameters {
 
 // MARK: - RootCertificateOrigin
 
-extension LocalReceiptValidator.Parameters {
+extension AppReceiptValidator.Parameters {
 
     /// Instructs how to find the Apple root certificate for receipt validation.
     ///
@@ -144,7 +144,7 @@ extension LocalReceiptValidator.Parameters {
 
 // MARK: - PropertyValidation
 
-extension LocalReceiptValidator.Parameters {
+extension AppReceiptValidator.Parameters {
 
     /// Compares a String property of a receipt with an info dictionary entry or a provided value.
     ///
@@ -184,7 +184,7 @@ extension LocalReceiptValidator.Parameters {
             let expected = self.getExpectedValue()
 
             if self.propertyValue(of: receipt) != expected {
-                throw LocalReceiptValidator.Error.propertyValueMismatch
+                throw AppReceiptValidator.Error.propertyValueMismatch
             }
         }
 
