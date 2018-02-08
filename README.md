@@ -9,7 +9,6 @@
 
 An iOS and macOS library intended for dealing with App Store receipts, offering basic local retrieval, validation and parsing of receipt files.
 
-[AppReceiptValidator](https://en.wikipedia.org/wiki/Hecate) is the goddess of magic, crossroads, ghosts, and necromancy.
 
 ## Integration with Carthage
 
@@ -194,4 +193,7 @@ If you are not comfortable using pre-built binary or want to update OpenSSL:
 5. Make sure the OpenSSL related headers are listed in the [AppReceiptValidator.modulemap](AppReceiptValidator/AppReceiptValidator/Supporting%20Files/AppReceiptValidator.modulemap) file
 
 Anybody want to automate this?
+
+## Credits
+AppReceiptValidator is brought to you by [IdeasOnCanvas GmbH](https://ideasoncanvas.com), the creator of [MindNode for iOS, macOS & watchOS](https://mindnode.com).
 
