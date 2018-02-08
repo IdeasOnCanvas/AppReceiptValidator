@@ -1,6 +1,6 @@
 //
 //  UnofficialReceipt.swift
-//  Hekate
+//  AppReceiptValidator
 //
 //  Created by Hannes Oud on 15.12.17.
 //  Copyright © 2017 IdeasOnCanvas GmbH. All rights reserved.

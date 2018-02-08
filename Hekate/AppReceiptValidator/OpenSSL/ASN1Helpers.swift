@@ -1,13 +1,13 @@
 //
 //  ASN1Helpers.swift
-//  Hekate
+//  AppReceiptValidator
 //
 //  Created by Hannes Oud on 07.09.17.
 //  Copyright © 2017 IdeasOnCanvas GmbH. All rights reserved.
 //
 
-import Foundation
 import AppReceiptValidator.OpenSSL
+import Foundation
 
 /// An ASN1 Sequence Object. Of interest are the attributeType and the valueObject.
 /// The attributeType determines how to interpret the valueObject.

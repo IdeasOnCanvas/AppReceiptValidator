@@ -1,6 +1,6 @@
 //
 //  LocalReceiptPropertyValidationTests.swift
-//  Hekate iOS
+//  AppReceiptValidator iOS
 //
 //  Created by Hannes Oud on 14.09.17.
 //  Copyright © 2017 IdeasOnCanvas GmbH. All rights reserved.

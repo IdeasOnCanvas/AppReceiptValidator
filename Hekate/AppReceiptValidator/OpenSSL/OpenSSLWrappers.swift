@@ -1,13 +1,13 @@
 //
 //  OpenSSLWrappers.swift
-//  Hekate iOS
+//  AppReceiptValidator iOS
 //
 //  Created by Hannes Oud on 07.09.17.
 //  Copyright © 2017 IdeasOnCanvas GmbH. All rights reserved.
 //
 
-import Foundation
 import AppReceiptValidator.OpenSSL
+import Foundation
 
 final class BIOWrapper {
 

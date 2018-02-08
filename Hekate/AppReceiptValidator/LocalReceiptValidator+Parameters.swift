@@ -1,6 +1,6 @@
 //
 //  LocalReceiptValidator+Parameters.swift
-//  Hekate
+//  AppReceiptValidator
 //
 //  Created by Hannes Oud on 06.09.17.
 //  Copyright © 2017 IdeasOnCanvas GmbH. All rights reserved.
@@ -21,7 +21,7 @@ public extension LocalReceiptValidator {
         public var shouldValidateSignatureAuthenticity: Bool = true
         public var shouldValidateHash: Bool = true
         public var deviceIdentifier: DeviceIdentifier = .currentDevice
-        public var rootCertificateOrigin: RootCertificateOrigin = .cerFileBundledWithHekate
+        public var rootCertificateOrigin: RootCertificateOrigin = .cerFileBundledWithAppReceiptValidator
         public var propertyValidations: [PropertyValidation] = []
 
         // MARK: - Lifecycle
@@ -122,17 +122,17 @@ extension LocalReceiptValidator.Parameters {
 
     /// Instructs how to find the Apple root certificate for receipt validation.
     ///
-    /// - cerFileBundledWithHekate: Uses the "AppleIncRootCertificate.cer" bundled with Hekate
+    /// - cerFileBundledWithAppReceiptValidator: Uses the "AppleIncRootCertificate.cer" bundled with AppReceiptValidator
     /// - data: Specific Data to use
     public enum RootCertificateOrigin {
-        case cerFileBundledWithHekate
+        case cerFileBundledWithAppReceiptValidator
         case data(Data)
 
         public func loadData() -> Data? {
             switch self {
             case .data(let data):
                 return data
-            case .cerFileBundledWithHekate:
+            case .cerFileBundledWithAppReceiptValidator:
                 guard let appleRootCertificateURL = Bundle(for: BundleToken.self).url(forResource: "AppleIncRootCertificate", withExtension: "cer") else { return nil }
 
                 return try? Data(contentsOf: appleRootCertificateURL)

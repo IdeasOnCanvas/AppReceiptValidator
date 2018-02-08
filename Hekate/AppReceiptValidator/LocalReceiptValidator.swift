@@ -1,13 +1,13 @@
 //
 //  LocalReceiptValidator.swift
-//  Hekate iOS
+//  AppReceiptValidator iOS
 //
 //  Created by Hannes Oud on 04.09.17.
 //  Copyright © 2017 IdeasOnCanvas GmbH. All rights reserved.
 //
 
-import Foundation
 import AppReceiptValidator.OpenSSL
+import Foundation
 
 /// Apple guide: https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Introduction.html
 ///
