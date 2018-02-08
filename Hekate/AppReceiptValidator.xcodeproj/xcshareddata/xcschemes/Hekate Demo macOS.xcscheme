@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D1D6F4E31F5D691400E86FE1"
-               BuildableName = "Hekate Demo iOS.app"
-               BlueprintName = "Hekate Demo iOS"
-               ReferencedContainer = "container:Hekate.xcodeproj">
+               BlueprintIdentifier = "D19095801F6000A40095729B"
+               BuildableName = "AppReceiptValidator Demo macOS.app"
+               BlueprintName = "AppReceiptValidator Demo macOS"
+               ReferencedContainer = "container:AppReceiptValidator.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -28,10 +28,10 @@
             buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D19095A81F6001800095729B"
-               BuildableName = "Hekate Tests iOS.xctest"
-               BlueprintName = "Hekate Tests iOS"
-               ReferencedContainer = "container:Hekate.xcodeproj">
+               BlueprintIdentifier = "D19095911F6000A40095729B"
+               BuildableName = "AppReceiptValidator Tests macOS.xctest"
+               BlueprintName = "AppReceiptValidator Tests macOS"
+               ReferencedContainer = "container:AppReceiptValidator.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,20 +47,20 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D19095A81F6001800095729B"
-               BuildableName = "Hekate Tests iOS.xctest"
-               BlueprintName = "Hekate Tests iOS"
-               ReferencedContainer = "container:Hekate.xcodeproj">
+               BlueprintIdentifier = "D19095911F6000A40095729B"
+               BuildableName = "AppReceiptValidator Tests macOS.xctest"
+               BlueprintName = "AppReceiptValidator Tests macOS"
+               ReferencedContainer = "container:AppReceiptValidator.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D1D6F4E31F5D691400E86FE1"
-            BuildableName = "Hekate Demo iOS.app"
-            BlueprintName = "Hekate Demo iOS"
-            ReferencedContainer = "container:Hekate.xcodeproj">
+            BlueprintIdentifier = "D19095801F6000A40095729B"
+            BuildableName = "AppReceiptValidator Demo macOS.app"
+            BlueprintName = "AppReceiptValidator Demo macOS"
+            ReferencedContainer = "container:AppReceiptValidator.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -81,10 +81,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D1D6F4E31F5D691400E86FE1"
-            BuildableName = "Hekate Demo iOS.app"
-            BlueprintName = "Hekate Demo iOS"
-            ReferencedContainer = "container:Hekate.xcodeproj">
+            BlueprintIdentifier = "D19095801F6000A40095729B"
+            BuildableName = "AppReceiptValidator Demo macOS.app"
+            BlueprintName = "AppReceiptValidator Demo macOS"
+            ReferencedContainer = "container:AppReceiptValidator.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -100,10 +100,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D1D6F4E31F5D691400E86FE1"
-            BuildableName = "Hekate Demo iOS.app"
-            BlueprintName = "Hekate Demo iOS"
-            ReferencedContainer = "container:Hekate.xcodeproj">
+            BlueprintIdentifier = "D19095801F6000A40095729B"
+            BuildableName = "AppReceiptValidator Demo macOS.app"
+            BlueprintName = "AppReceiptValidator Demo macOS"
+            ReferencedContainer = "container:AppReceiptValidator.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

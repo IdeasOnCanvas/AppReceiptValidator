@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D19095801F6000A40095729B"
-               BuildableName = "Hekate Demo macOS.app"
-               BlueprintName = "Hekate Demo macOS"
-               ReferencedContainer = "container:Hekate.xcodeproj">
+               BlueprintIdentifier = "D1D6F4C11F5D687400E86FE1"
+               BuildableName = "Hekate.framework"
+               BlueprintName = "AppReceiptValidator macOS"
+               ReferencedContainer = "container:AppReceiptValidator.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -28,10 +28,10 @@
             buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D19095911F6000A40095729B"
-               BuildableName = "Hekate Tests macOS.xctest"
-               BlueprintName = "Hekate Tests macOS"
-               ReferencedContainer = "container:Hekate.xcodeproj">
+               BlueprintIdentifier = "D1D6F5321F5D894900E86FE1"
+               BuildableName = "Hekate_macOSTests.xctest"
+               BlueprintName = "Hekate_macOSTests"
+               ReferencedContainer = "container:AppReceiptValidator.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,20 +47,20 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D19095911F6000A40095729B"
-               BuildableName = "Hekate Tests macOS.xctest"
-               BlueprintName = "Hekate Tests macOS"
-               ReferencedContainer = "container:Hekate.xcodeproj">
+               BlueprintIdentifier = "D1D6F5321F5D894900E86FE1"
+               BuildableName = "Hekate_macOSTests.xctest"
+               BlueprintName = "Hekate_macOSTests"
+               ReferencedContainer = "container:AppReceiptValidator.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D19095801F6000A40095729B"
-            BuildableName = "Hekate Demo macOS.app"
-            BlueprintName = "Hekate Demo macOS"
-            ReferencedContainer = "container:Hekate.xcodeproj">
+            BlueprintIdentifier = "D1D6F4C11F5D687400E86FE1"
+            BuildableName = "Hekate.framework"
+            BlueprintName = "AppReceiptValidator macOS"
+            ReferencedContainer = "container:AppReceiptValidator.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -77,16 +77,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D19095801F6000A40095729B"
-            BuildableName = "Hekate Demo macOS.app"
-            BlueprintName = "Hekate Demo macOS"
-            ReferencedContainer = "container:Hekate.xcodeproj">
+            BlueprintIdentifier = "D1D6F4C11F5D687400E86FE1"
+            BuildableName = "Hekate.framework"
+            BlueprintName = "AppReceiptValidator macOS"
+            ReferencedContainer = "container:AppReceiptValidator.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -96,16 +95,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D19095801F6000A40095729B"
-            BuildableName = "Hekate Demo macOS.app"
-            BlueprintName = "Hekate Demo macOS"
-            ReferencedContainer = "container:Hekate.xcodeproj">
+            BlueprintIdentifier = "D1D6F4C11F5D687400E86FE1"
+            BuildableName = "Hekate.framework"
+            BlueprintName = "AppReceiptValidator macOS"
+            ReferencedContainer = "container:AppReceiptValidator.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
