@@ -1546,7 +1546,7 @@
 				DEVELOPMENT_TEAM = W6L39UYL6Z;
 				INFOPLIST_FILE = "Hekate Demo macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.Hekate-Demo-macOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.AppReceiptValidator-Demo-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 4.0;
@@ -1564,7 +1564,7 @@
 				DEVELOPMENT_TEAM = W6L39UYL6Z;
 				INFOPLIST_FILE = "Hekate Demo macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.Hekate-Demo-macOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.AppReceiptValidator-Demo-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 4.0;
@@ -1583,7 +1583,7 @@
 				INFOPLIST_FILE = "Hekate Tests macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.Hekate-Demo-macOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.AppReceiptValidator-Demo-macOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 4.0;
@@ -1603,7 +1603,7 @@
 				INFOPLIST_FILE = "Hekate Tests macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.Hekate-Demo-macOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.AppReceiptValidator-Demo-macOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 4.0;
@@ -1618,7 +1618,7 @@
 				DEVELOPMENT_TEAM = W6L39UYL6Z;
 				INFOPLIST_FILE = "Hekate Tests iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.Hekate-iOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.AppReceiptValidator-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1633,7 +1633,7 @@
 				DEVELOPMENT_TEAM = W6L39UYL6Z;
 				INFOPLIST_FILE = "Hekate Tests iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.Hekate-iOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.AppReceiptValidator-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1772,7 +1772,7 @@
 					"$(PROJECT_DIR)/Hekate/OpenSSL/lib-ios",
 				);
 				MODULEMAP_FILE = "Hekate/Supporting Files/Hekate.modulemap";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ideasoncanvas.Hekate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ideasoncanvas.AppReceiptValidator;
 				PRODUCT_NAME = AppReceiptValidator;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1802,7 +1802,7 @@
 					"$(PROJECT_DIR)/Hekate/OpenSSL/lib-ios",
 				);
 				MODULEMAP_FILE = "Hekate/Supporting Files/Hekate.modulemap";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ideasoncanvas.Hekate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ideasoncanvas.AppReceiptValidator;
 				PRODUCT_NAME = AppReceiptValidator;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1832,7 +1832,7 @@
 					"$(PROJECT_DIR)/Hekate/OpenSSL/lib-macos",
 				);
 				MODULEMAP_FILE = "Hekate/Supporting Files/Hekate.modulemap";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ideasoncanvas.Hekate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ideasoncanvas.AppReceiptValidator;
 				PRODUCT_NAME = AppReceiptValidator;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -1862,7 +1862,7 @@
 					"$(PROJECT_DIR)/Hekate/OpenSSL/lib-macos",
 				);
 				MODULEMAP_FILE = "Hekate/Supporting Files/Hekate.modulemap";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ideasoncanvas.Hekate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ideasoncanvas.AppReceiptValidator;
 				PRODUCT_NAME = AppReceiptValidator;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -1880,7 +1880,7 @@
 				DEVELOPMENT_TEAM = W6L39UYL6Z;
 				INFOPLIST_FILE = "Hekate Demo iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.Demo-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.AppReceiptValidator.Demo-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -1897,7 +1897,7 @@
 				DEVELOPMENT_TEAM = W6L39UYL6Z;
 				INFOPLIST_FILE = "Hekate Demo iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.Demo-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.AppReceiptValidator.Demo-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
