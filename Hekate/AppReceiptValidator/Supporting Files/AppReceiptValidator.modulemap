@@ -1,4 +1,4 @@
-framework module Hekate {
+framework module AppReceiptValidator {
     explicit module OpenSSL {
         header "aes.h"
         header "crypto.h"
