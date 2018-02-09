@@ -1,0 +1,7 @@
+sources:
+  - AppReceiptValidator
+  - Sourcery/Protocols
+templates:
+  - Sourcery/Templates  
+output:
+  Sourcery/Generated

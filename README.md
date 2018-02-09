@@ -1,4 +1,4 @@
-# Hekate
+# AppReceiptValidator
 
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ![Platforms iOS, macOS](https://img.shields.io/badge/Platform-iOS%20|%20macOS-blue.svg "Platforms iOS, macOS")
@@ -9,13 +9,12 @@
 
 An iOS and macOS library intended for dealing with App Store receipts, offering basic local retrieval, validation and parsing of receipt files.
 
-[Hekate](https://en.wikipedia.org/wiki/Hecate) is the goddess of magic, crossroads, ghosts, and necromancy.
 
 ## Integration with Carthage
 
 Add this line to your Cartfile.
 ```
-github "IdeasOnCanvas/Hekate"
+github "IdeasOnCanvas/AppReceiptValidator"
 ```
 
 ## Usage
@@ -25,7 +24,7 @@ Apple advises to write your own code for receipt validation, and build and link 
 ### Just parsing a receipt
 
 ```swift
-let receiptValidator = LocalReceiptValidator()
+let receiptValidator = AppReceiptValidator()
 
 let installedReceipt = receiptValidator.parseReceipt(origin: .installedInMainBundle)
 
@@ -94,11 +93,11 @@ switch result {
 
 ### Customize validation dependencies or steps
 
-Take `LocalReceiptValidator.Parameters.default` and customize it, then pass it to `validateReceipt(parameters:)`, like so:
+Take `AppReceiptValidator.Parameters.default` and customize it, then pass it to `validateReceipt(parameters:)`, like so:
 
 ```swift
 // Customizing validation parameters with configuration block, base on .default
-let parameters = LocalReceiptValidator.Parameters.default.with {
+let parameters = AppReceiptValidator.Parameters.default.with {
     $0.receiptOrigin = .data(myData)
     $0.shouldValidateSignaturePresence = false // skip signature presence validation
     $0.shouldValidateSignatureAuthenticity = false // skip signature authenticity validation
@@ -118,7 +117,7 @@ let parameters = LocalReceiptValidator.Parameters.default.with {
     ]
 }
 
-let result = LocalReceiptValidator().validate(parameters: parameters)
+let result = AppReceiptValidator().validate(parameters: parameters)
 
 // switch on result
 ```
@@ -139,11 +138,11 @@ If you have no receipt (happens in development builds) or your receipt is invali
 
 ## Demo Apps
 
-Paste base64-encoded receipt data into the macOS or iOS demo app to see what Hekate parses from it.
+Paste base64-encoded receipt data into the macOS or iOS demo app to see what AppReceiptValidator parses from it.
 
 ## How it Works
 
-### Hekate Uses OpenSSL
+### AppReceiptValidator Uses OpenSSL
 
 OpenSSL is used for pkcs7 container parsing and signature validation, and also for parsing the ASN1 payload of the pkcs7, which contains the receipts attributes.
 
@@ -172,7 +171,7 @@ Advantages doing it locally:
 
 - [Apple guide](https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Introduction.html)
 - [objc.io guide](https://www.objc.io/issues/17-security/receipt-validation/)
-- [Andrew Bancroft complete guide](https://www.andrewcbancroft.com/2017/08/01/local-receipt-validation-swift-start-finish/), or directly [ReceiptValidator.swift](https://github.com/andrewcbancroft/SwiftyLocalReceiptValidator/blob/master/ReceiptValidator.swift). This is what the Hekate implementation is loosely based on.
+- [Andrew Bancroft complete guide](https://www.andrewcbancroft.com/2017/08/01/local-receipt-validation-swift-start-finish/), or directly [ReceiptValidator.swift](https://github.com/andrewcbancroft/SwiftyAppReceiptValidator/blob/master/ReceiptValidator.swift). This is what the AppReceiptValidator implementation is loosely based on.
 - [OpenSSL-Universal Pod](https://github.com/krzyzanowskim/OpenSSL)
 - WWDC 2013 - 308 Using Receipts to Protect Your Digital Sales
 - WWDC 2014 - 305 Preventing Unauthorized Purchases with Receipts
@@ -184,14 +183,17 @@ Advantages doing it locally:
 - [SwiftyStoreKit](https://github.com/bizz84/SwiftyStoreKit)
 
 ## Updating OpenSSL
-For convenience, Hekate contains a pre-built binaries of OpenSSL. The [Hekate.modulemap](Hekate/Hekate/Supporting%20Files/Hekate.modulemap) exposes these *only on demand* via `import Hekate.OpenSSL`.
+For convenience, AppReceiptValidator contains a pre-built binaries of OpenSSL. The [AppReceiptValidator.modulemap](AppReceiptValidator/AppReceiptValidator/Supporting%20Files/AppReceiptValidator.modulemap) exposes these *only on demand* via `import AppReceiptValidator.OpenSSL`.
 If you are not comfortable using pre-built binary or want to update OpenSSL: 
 
 1. build or find prebuilt static libraries for iOS and macOS. They can for example be obtained from the [OpenSSL-Universal Pod](https://github.com/krzyzanowskim/OpenSSL).
 2. Replace the OpenSSL related `.a` and `.h` files in the project
 3. When copying from the pod, make sure the .h files use direct includes like `#include "asn1.h"` instead of `#include "<OpenSSL/ans1.h>"` (use regex batch replace)
-4. Make sure the OpenSSL related headers are in the *private* headers of the framework Hekate iOS and Hekate macOS targets respectively
-5. Make sure the OpenSSL related headers are listed in the [Hekate.modulemap](Hekate/Hekate/Supporting%20Files/Hekate.modulemap) file
+4. Make sure the OpenSSL related headers are in the *private* headers of the framework AppReceiptValidator iOS and AppReceiptValidator macOS targets respectively
+5. Make sure the OpenSSL related headers are listed in the [AppReceiptValidator.modulemap](AppReceiptValidator/AppReceiptValidator/Supporting%20Files/AppReceiptValidator.modulemap) file
 
 Anybody want to automate this?
+
+## Credits
+AppReceiptValidator is brought to you by [IdeasOnCanvas GmbH](https://ideasoncanvas.com), the creator of [MindNode for iOS, macOS & watchOS](https://mindnode.com).
 
