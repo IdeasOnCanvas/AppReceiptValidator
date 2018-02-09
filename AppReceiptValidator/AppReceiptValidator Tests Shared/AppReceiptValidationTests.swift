@@ -173,7 +173,7 @@ class AppReceiptValidationTests: XCTestCase {
             $0.receiptOrigin = .data(data)
             $0.shouldValidateHash = false
             $0.shouldValidateSignaturePresence = false
-            $0.shouldValidateSignatureAuthenticity = false
+            $0.signatureValidation = .skip
         }
         guard let receipt = result.receipt else {
             XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")

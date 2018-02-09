@@ -18,22 +18,20 @@ public extension AppReceiptValidator {
 
         public var receiptOrigin: ReceiptOrigin = .installedInMainBundle
         public var shouldValidateSignaturePresence: Bool = true
-        public var shouldValidateSignatureAuthenticity: Bool = true
+        public var signatureValidation: SignatureValidation = .shouldValidate(rootCertificateOrigin: .cerFileBundledWithAppReceiptValidator)
         public var shouldValidateHash: Bool = true
         public var deviceIdentifier: DeviceIdentifier = .currentDevice
-        public var rootCertificateOrigin: RootCertificateOrigin = .cerFileBundledWithAppReceiptValidator
         public var propertyValidations: [PropertyValidation] = []
 
         // MARK: - Lifecycle
 
         /// Or use .default to initialize a sensible defaults
-        public init(receiptOrigin: ReceiptOrigin, shouldValidateSignaturePresence: Bool, shouldValidateSignatureAuthenticity: Bool, shouldValidateHash: Bool, deviceIdentifier: DeviceIdentifier, rootCertificateOrigin: RootCertificateOrigin, propertyValidations: [PropertyValidation]) {
+        public init(receiptOrigin: ReceiptOrigin, shouldValidateSignaturePresence: Bool, signatureValidation: SignatureValidation, shouldValidateHash: Bool, deviceIdentifier: DeviceIdentifier, propertyValidations: [PropertyValidation]) {
             self.receiptOrigin = receiptOrigin
             self.shouldValidateSignaturePresence = shouldValidateSignaturePresence
-            self.shouldValidateSignatureAuthenticity = shouldValidateSignatureAuthenticity
+            self.signatureValidation = signatureValidation
             self.shouldValidateHash = shouldValidateHash
             self.deviceIdentifier = deviceIdentifier
-            self.rootCertificateOrigin = rootCertificateOrigin
         }
 
         /// Either use `.default` to get a default preset, or specify everything via the complete init(…) with all parameters.
@@ -113,6 +111,20 @@ public extension AppReceiptValidator.Parameters {
                 }
             }
         }
+    }
+}
+
+// MARK: - SignatureValidation
+
+extension AppReceiptValidator.Parameters {
+
+    /// Used for verifying the signature
+    ///
+    /// - skip: The signature authenticity is not validated
+    /// - shouldValidate: The signature is verified against the provided root certificate
+    public enum SignatureValidation {
+        case skip
+        case shouldValidate(rootCertificateOrigin: RootCertificateOrigin)
     }
 }
 

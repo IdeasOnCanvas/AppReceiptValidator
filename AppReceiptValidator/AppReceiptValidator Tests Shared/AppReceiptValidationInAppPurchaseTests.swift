@@ -33,7 +33,7 @@ class AppReceiptValidationInAppPurchaseTests: XCTestCase {
         let result = receiptValidator.validateReceipt {
             $0.receiptOrigin = .data(data)
             $0.shouldValidateHash = false
-            $0.shouldValidateSignatureAuthenticity = false
+            $0.signatureValidation = .skip
             $0.propertyValidations = []
         }
         guard let receipt = result.receipt else {
