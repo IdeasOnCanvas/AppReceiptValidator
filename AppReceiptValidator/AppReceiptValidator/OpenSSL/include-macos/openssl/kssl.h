@@ -64,7 +64,7 @@
 #ifndef KSSL_H
 # define KSSL_H
 
-# include "opensslconf.h"
+# include <openssl/opensslconf.h>
 
 # ifndef OPENSSL_NO_KRB5
 

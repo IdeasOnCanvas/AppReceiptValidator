@@ -59,7 +59,7 @@
 #ifndef HEADER_BUFFER_H
 # define HEADER_BUFFER_H
 
-# include "ossl_typ.h"
+# include <openssl/ossl_typ.h>
 
 #ifdef  __cplusplus
 extern "C" {
@@ -84,6 +84,7 @@ BUF_MEM *BUF_MEM_new(void);
 void BUF_MEM_free(BUF_MEM *a);
 int BUF_MEM_grow(BUF_MEM *str, size_t len);
 int BUF_MEM_grow_clean(BUF_MEM *str, size_t len);
+size_t BUF_strnlen(const char *str, size_t maxlen);
 char *BUF_strdup(const char *str);
 
 /*

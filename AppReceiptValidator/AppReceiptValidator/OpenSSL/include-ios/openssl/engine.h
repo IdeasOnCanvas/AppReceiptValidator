@@ -65,38 +65,38 @@
 #ifndef HEADER_ENGINE_H
 # define HEADER_ENGINE_H
 
-# include "opensslconf.h"
+# include <openssl/opensslconf.h>
 
 # ifdef OPENSSL_NO_ENGINE
 #  error ENGINE is disabled.
 # endif
 
 # ifndef OPENSSL_NO_DEPRECATED
-#  include "bn.h"
+#  include <openssl/bn.h>
 #  ifndef OPENSSL_NO_RSA
-#   include "rsa.h"
+#   include <openssl/rsa.h>
 #  endif
 #  ifndef OPENSSL_NO_DSA
-#   include "dsa.h"
+#   include <openssl/dsa.h>
 #  endif
 #  ifndef OPENSSL_NO_DH
-#   include "dh.h"
+#   include <openssl/dh.h>
 #  endif
 #  ifndef OPENSSL_NO_ECDH
-#   include "ecdh.h"
+#   include <openssl/ecdh.h>
 #  endif
 #  ifndef OPENSSL_NO_ECDSA
-#   include "ecdsa.h"
+#   include <openssl/ecdsa.h>
 #  endif
-#  include "rand.h"
-#  include "ui.h"
-#  include "err.h"
+#  include <openssl/rand.h>
+#  include <openssl/ui.h>
+#  include <openssl/err.h>
 # endif
 
-# include "ossl_typ.h"
-# include "symhacks.h"
+# include <openssl/ossl_typ.h>
+# include <openssl/symhacks.h>
 
-# include "x509.h"
+# include <openssl/x509.h>
 
 #ifdef  __cplusplus
 extern "C" {
@@ -413,7 +413,6 @@ void ENGINE_load_gost(void);
 #  endif
 # endif
 void ENGINE_load_cryptodev(void);
-void ENGINE_load_rsax(void);
 void ENGINE_load_rdrand(void);
 void ENGINE_load_builtin_engines(void);
 

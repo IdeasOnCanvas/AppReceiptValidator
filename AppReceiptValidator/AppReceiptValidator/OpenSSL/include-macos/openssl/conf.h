@@ -59,13 +59,13 @@
 #ifndef  HEADER_CONF_H
 # define HEADER_CONF_H
 
-# include "bio.h"
-# include "lhash.h"
-# include "stack.h"
-# include "safestack.h"
-# include "e_os2.h"
+# include <openssl/bio.h>
+# include <openssl/lhash.h>
+# include <openssl/stack.h>
+# include <openssl/safestack.h>
+# include <openssl/e_os2.h>
 
-# include "ossl_typ.h"
+# include <openssl/ossl_typ.h>
 
 #ifdef  __cplusplus
 extern "C" {
@@ -259,6 +259,7 @@ void ERR_load_CONF_strings(void);
 # define CONF_R_NO_VALUE                                  108
 # define CONF_R_UNABLE_TO_CREATE_NEW_SECTION              103
 # define CONF_R_UNKNOWN_MODULE_NAME                       113
+# define CONF_R_VARIABLE_EXPANSION_TOO_LONG               116
 # define CONF_R_VARIABLE_HAS_NO_VALUE                     104
 
 #ifdef  __cplusplus

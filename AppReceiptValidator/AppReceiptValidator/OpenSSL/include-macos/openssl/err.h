@@ -112,19 +112,19 @@
 #ifndef HEADER_ERR_H
 # define HEADER_ERR_H
 
-# include "e_os2.h"
+# include <openssl/e_os2.h>
 
 # ifndef OPENSSL_NO_FP_API
 #  include <stdio.h>
 #  include <stdlib.h>
 # endif
 
-# include "ossl_typ.h"
+# include <openssl/ossl_typ.h>
 # ifndef OPENSSL_NO_BIO
-#  include "bio.h"
+#  include <openssl/bio.h>
 # endif
 # ifndef OPENSSL_NO_LHASH
-#  include "lhash.h"
+#  include <openssl/lhash.h>
 # endif
 
 #ifdef  __cplusplus
@@ -258,6 +258,7 @@ typedef struct err_state_st {
 # define SYS_F_WSASTARTUP        9/* Winsock stuff */
 # define SYS_F_OPENDIR           10
 # define SYS_F_FREAD             11
+# define SYS_F_FFLUSH            18
 
 /* reasons */
 # define ERR_R_SYS_LIB   ERR_LIB_SYS/* 2 */

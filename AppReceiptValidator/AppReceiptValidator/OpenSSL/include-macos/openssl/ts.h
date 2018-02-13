@@ -60,31 +60,31 @@
 #ifndef HEADER_TS_H
 # define HEADER_TS_H
 
-# include "opensslconf.h"
-# include "symhacks.h"
+# include <openssl/opensslconf.h>
+# include <openssl/symhacks.h>
 # ifndef OPENSSL_NO_BUFFER
-#  include "buffer.h"
+#  include <openssl/buffer.h>
 # endif
 # ifndef OPENSSL_NO_EVP
-#  include "evp.h"
+#  include <openssl/evp.h>
 # endif
 # ifndef OPENSSL_NO_BIO
-#  include "bio.h"
+#  include <openssl/bio.h>
 # endif
-# include "stack.h"
-# include "asn1.h"
-# include "safestack.h"
+# include <openssl/stack.h>
+# include <openssl/asn1.h>
+# include <openssl/safestack.h>
 
 # ifndef OPENSSL_NO_RSA
-#  include "rsa.h"
+#  include <openssl/rsa.h>
 # endif
 
 # ifndef OPENSSL_NO_DSA
-#  include "dsa.h"
+#  include <openssl/dsa.h>
 # endif
 
 # ifndef OPENSSL_NO_DH
-#  include "dh.h"
+#  include <openssl/dh.h>
 # endif
 
 #ifdef  __cplusplus
@@ -96,8 +96,8 @@ extern "C" {
 #  undef X509_NAME
 # endif
 
-# include "x509.h"
-# include "x509v3.h"
+# include <openssl/x509.h>
+# include <openssl/x509v3.h>
 
 /*-
 MessageImprint ::= SEQUENCE  {
@@ -564,6 +564,9 @@ int TS_RESP_CTX_set_clock_precision_digits(TS_RESP_CTX *ctx,
                                            unsigned clock_precision_digits);
 /* At most we accept usec precision. */
 # define TS_MAX_CLOCK_PRECISION_DIGITS   6
+
+/* Maximum status message length */
+# define TS_MAX_STATUS_LENGTH   (1024 * 1024)
 
 /* No flags are set by default. */
 void TS_RESP_CTX_add_flags(TS_RESP_CTX *ctx, int flags);

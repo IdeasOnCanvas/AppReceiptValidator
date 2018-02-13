@@ -60,8 +60,8 @@
 #ifndef HEADER_DTLS1_H
 # define HEADER_DTLS1_H
 
-# include "buffer.h"
-# include "pqueue.h"
+# include <openssl/buffer.h>
+# include <openssl/pqueue.h>
 # ifdef OPENSSL_SYS_VMS
 #  include <resource.h>
 #  include <sys/timeb.h>
@@ -84,10 +84,14 @@ extern "C" {
 #endif
 
 # define DTLS1_VERSION                   0xFEFF
-# define DTLS_MAX_VERSION                DTLS1_VERSION
+# define DTLS1_2_VERSION                 0xFEFD
+# define DTLS_MAX_VERSION                DTLS1_2_VERSION
 # define DTLS1_VERSION_MAJOR             0xFE
 
 # define DTLS1_BAD_VER                   0x0100
+
+/* Special value for method supporting multiple versions */
+# define DTLS_ANY_VERSION                0x1FFFF
 
 # if 0
 /* this alert description is not specified anywhere... */

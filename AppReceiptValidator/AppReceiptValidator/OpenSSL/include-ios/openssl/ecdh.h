@@ -69,21 +69,23 @@
 #ifndef HEADER_ECDH_H
 # define HEADER_ECDH_H
 
-# include "opensslconf.h"
+# include <openssl/opensslconf.h>
 
 # ifdef OPENSSL_NO_ECDH
 #  error ECDH is disabled.
 # endif
 
-# include "ec.h"
-# include "ossl_typ.h"
+# include <openssl/ec.h>
+# include <openssl/ossl_typ.h>
 # ifndef OPENSSL_NO_DEPRECATED
-#  include "bn.h"
+#  include <openssl/bn.h>
 # endif
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+# define EC_FLAG_COFACTOR_ECDH   0x1000
 
 const ECDH_METHOD *ECDH_OpenSSL(void);
 
@@ -100,6 +102,11 @@ int ECDH_get_ex_new_index(long argl, void *argp, CRYPTO_EX_new
                           CRYPTO_EX_free *free_func);
 int ECDH_set_ex_data(EC_KEY *d, int idx, void *arg);
 void *ECDH_get_ex_data(EC_KEY *d, int idx);
+
+int ECDH_KDF_X9_62(unsigned char *out, size_t outlen,
+                   const unsigned char *Z, size_t Zlen,
+                   const unsigned char *sinfo, size_t sinfolen,
+                   const EVP_MD *md);
 
 /* BEGIN ERROR CODES */
 /*

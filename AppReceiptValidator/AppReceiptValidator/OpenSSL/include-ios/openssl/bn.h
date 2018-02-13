@@ -126,12 +126,12 @@
 # define HEADER_BN_H
 
 # include <limits.h>
-# include "e_os2.h"
+# include <openssl/e_os2.h>
 # ifndef OPENSSL_NO_FP_API
 #  include <stdio.h>            /* FILE */
 # endif
-# include "ossl_typ.h"
-# include "crypto.h"
+# include <openssl/ossl_typ.h>
+# include <openssl/crypto.h>
 
 #ifdef  __cplusplus
 extern "C" {
@@ -256,24 +256,6 @@ extern "C" {
 #  define BN_HEX_FMT1     "%X"
 #  define BN_HEX_FMT2     "%08X"
 # endif
-
-/*
- * 2011-02-22 SMS. In various places, a size_t variable or a type cast to
- * size_t was used to perform integer-only operations on pointers.  This
- * failed on VMS with 64-bit pointers (CC /POINTER_SIZE = 64) because size_t
- * is still only 32 bits.  What's needed in these cases is an integer type
- * with the same size as a pointer, which size_t is not certain to be. The
- * only fix here is VMS-specific.
- */
-# if defined(OPENSSL_SYS_VMS)
-#  if __INITIAL_POINTER_SIZE == 64
-#   define PTR_SIZE_INT long long
-#  else                         /* __INITIAL_POINTER_SIZE == 64 */
-#   define PTR_SIZE_INT int
-#  endif                        /* __INITIAL_POINTER_SIZE == 64 [else] */
-# else                          /* defined(OPENSSL_SYS_VMS) */
-#  define PTR_SIZE_INT size_t
-# endif                         /* defined(OPENSSL_SYS_VMS) [else] */
 
 # define BN_DEFAULT_BITS 1280
 
@@ -860,6 +842,8 @@ int RAND_pseudo_bytes(unsigned char *buf, int num);
                         if (*(ftl--)) break; \
                 (a)->top = tmp_top; \
                 } \
+        if ((a)->top == 0) \
+            (a)->neg = 0; \
         bn_pollute(a); \
         }
 
