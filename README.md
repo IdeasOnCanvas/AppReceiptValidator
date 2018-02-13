@@ -100,7 +100,7 @@ Take `AppReceiptValidator.Parameters.default` and customize it, then pass it to 
 let parameters = AppReceiptValidator.Parameters.default.with {
     $0.receiptOrigin = .data(myData)
     $0.shouldValidateSignaturePresence = false // skip signature presence validation
-    $0.shouldValidateSignatureAuthenticity = false // skip signature authenticity validation
+    $0.signatureValidation = .skip // skip signature authenticity validation
     $0.shouldValidateHash = false // skip hash validation
     $0.deviceIdentifier = .data(myCustomDeviceIdentifierData)
     $0.rootCertificateOrigin = .data(myAppleRootCertData)
