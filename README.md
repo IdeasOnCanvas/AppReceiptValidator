@@ -103,7 +103,6 @@ let parameters = AppReceiptValidator.Parameters.default.with {
     $0.signatureValidation = .skip // skip signature authenticity validation
     $0.shouldValidateHash = false // skip hash validation
     $0.deviceIdentifier = .data(myCustomDeviceIdentifierData)
-    $0.rootCertificateOrigin = .data(myAppleRootCertData)
 
     // validate some string properties, this can also be done 
     // independently with validateProperties(receipt:, validations:)
@@ -181,6 +180,15 @@ Advantages doing it locally:
 - [nsomar about Module Maps 1](http://nsomar.com/project-and-private-headers-in-a-swift-and-objective-c-framework/)
 - [nsomar about Module Maps 2](http://nsomar.com/modular-framework-creating-and-using-them/)
 - [SwiftyStoreKit](https://github.com/bizz84/SwiftyStoreKit)
+
+## Updating Apple Root Certificate
+For convenience, AppReceiptValidator contains a copy of apples root certificate to validate the signature against. If uncomfortable with this, you can specify your own by changing the parameters like this:
+```swift
+let myParameters = AppReceiptValidator.Parameters.default.with {
+    $0.signatureValidation = .shouldValidate(.data(myAppleRootCertData))
+}
+```
+
 
 ## Updating OpenSSL
 For convenience, AppReceiptValidator contains a pre-built binaries of OpenSSL. The [AppReceiptValidator.modulemap](AppReceiptValidator/AppReceiptValidator/Supporting%20Files/AppReceiptValidator.modulemap) exposes these *only on demand* via `import AppReceiptValidator.OpenSSL`.
