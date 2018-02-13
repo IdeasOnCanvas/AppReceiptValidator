@@ -9,6 +9,8 @@
 
 An iOS and macOS library intended for dealing with App Store receipts, offering basic local retrieval, validation and parsing of receipt files.
 
+Provides Demo Apps on iOS and macOS to inspect receipt files.
+
 
 ## Integration with Carthage
 
@@ -17,7 +19,7 @@ Add this line to your Cartfile.
 github "IdeasOnCanvas/AppReceiptValidator"
 ```
 
-## Usage
+## Usage in Code
 
 Apple advises to write your own code for receipt validation, and build and link OpenSSL statically to your app target. Anyways this repo might be a starting point for you, or be used as a dependency at your own risk, or might just be helpful for you to inspect receipts.
 
@@ -122,6 +124,14 @@ let result = AppReceiptValidator().validate(parameters: parameters)
 // switch on result
 ```
 
+## Demo Apps
+
+Paste base64-encoded receipt data into the macOS or iOS demo app to see what AppReceiptValidator parses from it. The macOS App supports:
+
+- Drag n Drop an application or its receipt file onto it to inspect
+
+![Drag n Drop Applications on macOS](./demo-app.gif)
+
 ## StoreKit Hints
 
 This framework currently doesn't deal with StoreKit. But the receipt file might not exist at all. What now?
@@ -135,10 +145,6 @@ If you have no receipt (happens in development builds) or your receipt is invali
 - Each mechanism of receipt refresh will be intrusive to the user, mostly asking for AppleID password.
 - Apple advises to write your own code for receipt validation, and build and link OpenSSL statically to your app target. Anyways this repo might be a starting point for you.
 - Also have a look at [SwiftyStoreKit](https://github.com/bizz84/SwiftyStoreKit) for dealing with StoreKit, interpretation of receipts, server-verification, and more
-
-## Demo Apps
-
-Paste base64-encoded receipt data into the macOS or iOS demo app to see what AppReceiptValidator parses from it.
 
 ## How it Works
 
