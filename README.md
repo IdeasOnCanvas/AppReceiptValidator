@@ -197,4 +197,3 @@ Anybody want to automate this?
 
 ## Credits
 AppReceiptValidator is brought to you by [IdeasOnCanvas GmbH](https://ideasoncanvas.com), the creator of [MindNode for iOS, macOS & watchOS](https://mindnode.com).
-
