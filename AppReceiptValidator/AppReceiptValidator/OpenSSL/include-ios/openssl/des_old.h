@@ -104,7 +104,7 @@
 # endif
 
 # ifdef _KERBEROS_DES_H
-#  error "des_old.h" replaces <kerberos/des.h>.
+#  error <openssl/des_old.h> replaces <kerberos/des.h>.
 # endif
 
 # include "symhacks.h"

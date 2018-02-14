@@ -171,7 +171,7 @@ Advantages doing it locally:
 
 - [Apple guide](https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Introduction.html)
 - [objc.io guide](https://www.objc.io/issues/17-security/receipt-validation/)
-- [Andrew Bancroft complete guide](https://www.andrewcbancroft.com/2017/08/01/local-receipt-validation-swift-start-finish/), or directly [ReceiptValidator.swift](https://github.com/andrewcbancroft/SwiftyAppReceiptValidator/blob/master/ReceiptValidator.swift). This is what the AppReceiptValidator implementation is loosely based on.
+- [Andrew Bancroft complete guide](https://www.andrewcbancroft.com/2017/08/01/local-receipt-validation-swift-start-finish/), or directly [ReceiptValidator.swift](https://github.com/andrewcbancroft/SwiftyAppReceiptValidator/blob/master/ReceiptValidator.swift). This is what the AppReceiptValidator implementation is originally based on, thanks Andrew!!
 - [OpenSSL-Universal Pod](https://github.com/krzyzanowskim/OpenSSL)
 - WWDC 2013 - 308 Using Receipts to Protect Your Digital Sales
 - WWDC 2014 - 305 Preventing Unauthorized Purchases with Receipts
@@ -195,13 +195,13 @@ let myParameters = AppReceiptValidator.Parameters.default.with {
 For convenience, AppReceiptValidator contains a pre-built binaries of OpenSSL. The [AppReceiptValidator.modulemap](AppReceiptValidator/AppReceiptValidator/Supporting%20Files/AppReceiptValidator.modulemap) exposes these *only on demand* via `import AppReceiptValidator.OpenSSL`.
 If you are not comfortable using pre-built binary or want to update OpenSSL: 
 
-1. build or find prebuilt static libraries for iOS and macOS. They can for example be obtained from the [OpenSSL-Universal Pod](https://github.com/krzyzanowskim/OpenSSL).
+1. build or find prebuilt static libraries for iOS and macOS. They can for example be obtained from the [OpenSSL-Universal Pod](https://github.com/krzyzanowskim/OpenSSL). To build, you might download the openssl sources and use [his gist](https://gist.githubusercontent.com/krzyzanowskim/7fd1c081929fbe32a5cfee4692f87873/raw/c184828589160c6e9b145f267309597c23e31c17/build.sh).
 2. Replace the OpenSSL related `.a` and `.h` files in the project
-3. When copying from the pod, make sure the .h files use direct includes like `#include "asn1.h"` instead of `#include "<OpenSSL/ans1.h>"` (use regex batch replace)
+3. After replacing the files, make sure the .h files use direct includes like `#include "asn1.h"` instead of `#include "<OpenSSL/ans1.h>"`. In Xcode regex-batch-replace `#(\s*)include <openssl\/([^>]+)>` with `#$1include "$2"`
 4. Make sure the OpenSSL related headers are in the *private* headers of the framework AppReceiptValidator iOS and AppReceiptValidator macOS targets respectively
 5. Make sure the OpenSSL related headers are listed in the [AppReceiptValidator.modulemap](AppReceiptValidator/AppReceiptValidator/Supporting%20Files/AppReceiptValidator.modulemap) file
 
-Anybody want to automate this?
+Anybody want to automate this, or find a more elegant way?
 
 ## Credits
 AppReceiptValidator is brought to you by [IdeasOnCanvas GmbH](https://ideasoncanvas.com), the creator of [MindNode for iOS, macOS & watchOS](https://mindnode.com).
