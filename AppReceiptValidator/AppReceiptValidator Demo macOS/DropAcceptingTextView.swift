@@ -18,6 +18,7 @@ final class DropAcceptingTextView: NSTextView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+
         var draggedTypes = self.registeredDraggedTypes
         draggedTypes.insert(makeFileNameType(), at: 0)
         self.registerForDraggedTypes(draggedTypes)
