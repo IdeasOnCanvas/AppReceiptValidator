@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -714,9 +715,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="316" height="270"/>
                                 <clipView key="contentView" id="yEL-yO-YvB">
                                     <rect key="frame" x="1" y="1" width="314" height="268"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView toolTip="Paste Base64 here" importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" allowsCharacterPickerTouchBarItem="NO" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" textCompletion="NO" id="0xW-mT-lME" customClass="TextView" customModule="AppReceiptValidator_Demo_macOS" customModuleProvider="target">
+                                        <textView toolTip="Paste Base64 here" importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" allowsCharacterPickerTouchBarItem="NO" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" textCompletion="NO" id="0xW-mT-lME" customClass="DropAcceptingTextView" customModule="AppReceiptValidator_Demo_macOS" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="314" height="268"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -740,7 +741,7 @@
                                 <rect key="frame" x="316" y="0.0" width="315" height="270"/>
                                 <clipView key="contentView" id="YwZ-F9-Cvh">
                                     <rect key="frame" x="1" y="1" width="313" height="268"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" allowsCharacterPickerTouchBarItem="NO" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" textCompletion="NO" id="GHT-gS-G1g" customClass="TextView" customModule="AppReceiptValidator_Demo_macOS" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="313" height="268"/>
@@ -775,6 +776,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="dropReceivingView" destination="0xW-mT-lME" id="cuR-H1-BKN"/>
                         <outlet property="inputTextView" destination="0xW-mT-lME" id="8Y7-yb-63r"/>
                         <outlet property="outputTextView" destination="GHT-gS-G1g" id="cVN-4m-knJ"/>
                     </connections>

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D1239FFF1F6A7B5000D0421E /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = D19095C41F601DEA0095729B /* AppleIncRootCertificate.cer */; };
 		D123A0001F6A7CCF00D0421E /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = D19095C41F601DEA0095729B /* AppleIncRootCertificate.cer */; };
+		D13E5B7D20331B9B001880F0 /* DropAcceptingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E5B7C20331B9B001880F0 /* DropAcceptingTextView.swift */; };
 		D14FA7261F61350F00545540 /* AutoEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA71F1F6134CF00545540 /* AutoEquatable.swift */; };
 		D14FA7271F61351000545540 /* AutoEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA71F1F6134CF00545540 /* AutoEquatable.swift */; };
 		D14FA7291F61351400545540 /* AutoEquatable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA71E1F6134CF00545540 /* AutoEquatable.generated.swift */; };
@@ -278,6 +279,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D13E5B7C20331B9B001880F0 /* DropAcceptingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropAcceptingTextView.swift; sourceTree = "<group>"; };
 		D14FA71E1F6134CF00545540 /* AutoEquatable.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoEquatable.generated.swift; sourceTree = "<group>"; };
 		D14FA71F1F6134CF00545540 /* AutoEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoEquatable.swift; sourceTree = "<group>"; };
 		D14FA7221F6134CF00545540 /* AutoEquatable.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = AutoEquatable.stencil; sourceTree = "<group>"; };
@@ -610,6 +612,7 @@
 			isa = PBXGroup;
 			children = (
 				D19095831F6000A40095729B /* AppDelegate.swift */,
+				D13E5B7C20331B9B001880F0 /* DropAcceptingTextView.swift */,
 				D19095851F6000A40095729B /* ViewController.swift */,
 				D19095871F6000A40095729B /* Assets.xcassets */,
 				D19095891F6000A40095729B /* Main.storyboard */,
@@ -1409,6 +1412,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D19095861F6000A40095729B /* ViewController.swift in Sources */,
+				D13E5B7D20331B9B001880F0 /* DropAcceptingTextView.swift in Sources */,
 				D19095841F6000A40095729B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
