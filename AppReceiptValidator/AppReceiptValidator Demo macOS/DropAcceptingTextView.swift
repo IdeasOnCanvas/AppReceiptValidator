@@ -32,7 +32,7 @@ final class DropAcceptingTextView: NSTextView {
     }
 
     override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
-        if let fileURL = sender.fileURLs.first  {
+        if let fileURL = sender.fileURLs.first {
             self.handleDroppedFile?(fileURL)
             return true
         }
