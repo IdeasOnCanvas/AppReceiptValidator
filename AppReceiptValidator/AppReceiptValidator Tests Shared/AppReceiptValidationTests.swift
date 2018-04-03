@@ -39,7 +39,7 @@ class AppReceiptValidationTests: XCTestCase {
             _ = try receiptValidator.parseReceipt(origin: .data(data))
             XCTFail("Unexpectedly succeeded in parsing a non-receipt")
         } catch {
-            guard let e = error as? AppReceiptValidator.Error, e == AppReceiptValidator.Error.emptyReceiptContents else {
+            guard error as? AppReceiptValidator.Error == AppReceiptValidator.Error.emptyReceiptContents else {
                 XCTFail("Unexpected error, expeced .emptyReceiptContents, got \(error)")
                 return
             }
