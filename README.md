@@ -150,19 +150,20 @@ If you have no receipt (happens in development builds) or your receipt is invali
 
 ### AppReceiptValidator Uses OpenSSL
 
-OpenSSL is used for pkcs7 container parsing and signature validation, and also for parsing the ASN1 payload of the pkcs7, which contains the receipts attributes.
+OpenSSL is used for PKCS#7 container parsing and signature validation, and also for parsing the ASN1 payload of the PKCS#7, which contains the receipts attributes.
 
 ### Other Options
 
-##### Alternatives to PKCS7 of OpenSSL
+##### Alternatives to PKCS#7 of OpenSSL
 
-- `Security.framework` - `CMSDecoder` for PKCS7 interaction *only available on macOS*
-- `BoringSSL` instead of OpenSSL, Pod, *only available on iOS (?)*
+- `Security.framework` - `CMSDecoder` for PKCS#7 interaction *only available on macOS*, [AppStoreReceiptChecker](https://github.com/delicious-monster/AppStoreReceiptChecker) uses this.
+- `BoringSSL` instead of OpenSSL, seems included as frameworks in modern iOS and macOS, but not officially supported?
 
 ##### Alternatives to ASN1 of OpenSSL
 
 - [decoding-asn1-der-sequences-in-swift](http://nspasteboard.com/2016/10/23/decoding-asn1-der-sequences-in-swift/) implemented [here](https://gist.github.com/Jugale/2daaec0715d4f6d7347534d42bfa7110)
 - [Asn1Parser.swift](https://github.com/TakeScoop/SwiftyRSA/blob/03250be7319d8c54159234e5258ead395ea4de4c/SwiftyRSA/Asn1Parser.swift)
+- [AppStoreReceiptChecker](https://github.com/delicious-monster/AppStoreReceiptChecker)
 
 ##### Validation Server to Server
 An app can send its receipt file to a backend from where Apples receipt API can be called. See Resources.
@@ -187,6 +188,7 @@ Advantages doing it locally:
 - [nsomar about Module Maps 1](http://nsomar.com/project-and-private-headers-in-a-swift-and-objective-c-framework/)
 - [nsomar about Module Maps 2](http://nsomar.com/modular-framework-creating-and-using-them/)
 - [SwiftyStoreKit](https://github.com/bizz84/SwiftyStoreKit)
+- [AppStoreReceiptChecker](https://github.com/delicious-monster/AppStoreReceiptChecker) - macOS, uses CMSDecoder and a Swift ASN1 Implementation
 
 ## Updating Apple Root Certificate
 For convenience, AppReceiptValidator contains a copy of apples root certificate to validate the signature against. If uncomfortable with this, you can specify your own by changing the parameters like this:
