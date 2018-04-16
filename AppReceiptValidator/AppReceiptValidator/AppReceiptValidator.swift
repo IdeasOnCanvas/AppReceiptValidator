@@ -336,7 +336,6 @@ private extension AppReceiptValidator {
         case expirationDate = 21
     }
 
-
     /// See Receipt.swift for details and a link to Apple reference
     enum KnownInAppPurchaseAttribute: Int32 {
         case quantity = 1701
