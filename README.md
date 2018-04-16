@@ -73,7 +73,7 @@ Receipt(
 )
 ```
 
-**Receipt** is *Equatable*, thanks [Sourcery](https://github.com/krzysztofzablocki/Sourcery), so you can do comparisons in Unit Tests.
+**Receipt** is *Equatable*, so you can do comparisons in Unit Tests.
 There are also some opt-in unofficial attributes, but this is experimental and should not be used in production.
 
 ### Validating a receipt's signature and hash
