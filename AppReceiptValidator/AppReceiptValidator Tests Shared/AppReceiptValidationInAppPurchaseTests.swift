@@ -22,7 +22,6 @@ class AppReceiptValidationInAppPurchaseTests: XCTestCase {
         } catch {
             XCTFail("Unexpectedly failed parsing a receipt \(error)")
         }
-
     }
 
     func testNonMindNodeReceiptParsingWithMultipleInAppPurchases() {

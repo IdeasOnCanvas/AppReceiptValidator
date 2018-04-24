@@ -11,7 +11,7 @@ import Foundation
 /// Receipts are made up of a number of fields. This represents all fields that are available locally when parsing a receipt file in ASN.1 form.
 ///
 /// See [Apple Reference](https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Chapters/ReceiptFields.html)
-public struct Receipt {
+public struct Receipt: Equatable {
 
     /// The app’s bundle identifier. This corresponds to the value of `CFBundleIdentifier` in the Info.plist file.
     /// Use this value to validate if the receipt was indeed generated for your app. ASN.1 Field Type 2.
@@ -70,10 +70,6 @@ public struct Receipt {
     public init() {}
 }
 
-// MARK: - Equatable
-
-extension Receipt: AutoEquatable {}
-
 // MARK: - CustomStringConvertible
 
 extension Receipt: CustomStringConvertible, CustomDebugStringConvertible {
@@ -115,7 +111,7 @@ extension Receipt: CustomStringConvertible, CustomDebugStringConvertible {
 /// - Subscription Auto Renew Status
 /// - Subscription Auto Renew Preference
 /// - Subscription Price Consent Status
-public struct InAppPurchaseReceipt {
+public struct InAppPurchaseReceipt: Equatable {
 
     /// The number of items purchased. ASN.1 Field Type 1701.
     /// This value corresponds to the quantity property of the `SKPayment` object stored in the transaction’s payment property.
@@ -188,10 +184,6 @@ public struct InAppPurchaseReceipt {
 
     public init() {}
 }
-
-// MARK: - Equatable
-
-extension InAppPurchaseReceipt: AutoEquatable {}
 
 // MARK: - CustomStringConvertible
 
