@@ -1221,13 +1221,11 @@
 						CreatedOnToolsVersion = 9.0;
 						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
-						TestTargetID = D19095801F6000A40095729B;
 					};
 					D19095A81F6001800095729B = {
 						CreatedOnToolsVersion = 9.0;
 						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
-						TestTargetID = D1D6F4E31F5D691400E86FE1;
 					};
 					D1D6F4B41F5D684C00E86FE1 = {
 						CreatedOnToolsVersion = 9.0;
@@ -1551,7 +1549,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1563,7 +1560,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 4.2;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppReceiptValidator Demo macOS.app/Contents/MacOS/AppReceiptValidator Demo macOS";
 			};
 			name = Debug;
 		};
@@ -1571,7 +1567,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1583,7 +1578,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 4.2;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppReceiptValidator Demo macOS.app/Contents/MacOS/AppReceiptValidator Demo macOS";
 			};
 			name = Release;
 		};
@@ -1598,7 +1592,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppReceiptValidator Demo iOS.app/AppReceiptValidator Demo iOS";
 			};
 			name = Debug;
 		};
@@ -1613,7 +1606,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppReceiptValidator Demo iOS.app/AppReceiptValidator Demo iOS";
 			};
 			name = Release;
 		};
