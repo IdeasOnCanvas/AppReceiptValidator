@@ -24,8 +24,8 @@ class ViewController: UIViewController, UITextViewDelegate {
         self.inputTextView.delegate = self
         self.inputTextView.text = ""
         self.outputTextView.text = "Parsed Receipt will be shown here"
-        NotificationCenter.default.addObserver(self, selector: #selector(triggerAutoPaste), name: .UIApplicationWillEnterForeground, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(triggerAutoPaste), name: .UIPasteboardChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(triggerAutoPaste), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(triggerAutoPaste), name: UIPasteboard.changedNotification, object: nil)
     }
 
     override func viewDidAppear(_ animated: Bool) {

@@ -43,7 +43,7 @@ final class DropAcceptingTextView: NSTextView {
 fileprivate extension NSDraggingInfo {
 
     var fileURLs: [URL] {
-        let asStrings = self.draggingPasteboard().propertyList(forType: makeFileNameType()) as? [String] ?? []
+        let asStrings = self.draggingPasteboard.propertyList(forType: makeFileNameType()) as? [String] ?? []
         return asStrings.map { URL(fileURLWithPath: $0) }
     }
 }
