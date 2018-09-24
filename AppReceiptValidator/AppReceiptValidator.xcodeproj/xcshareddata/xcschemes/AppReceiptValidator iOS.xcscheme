@@ -28,7 +28,28 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES"
+            testExecutionOrdering = "random">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D19095A81F6001800095729B"
+               BuildableName = "AppReceiptValidator Tests iOS.xctest"
+               BlueprintName = "AppReceiptValidator Tests iOS"
+               ReferencedContainer = "container:AppReceiptValidator.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "D1D6F4B41F5D684C00E86FE1"
+            BuildableName = "AppReceiptValidator.framework"
+            BlueprintName = "AppReceiptValidator iOS"
+            ReferencedContainer = "container:AppReceiptValidator.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
