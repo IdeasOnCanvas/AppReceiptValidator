@@ -20,20 +20,6 @@
                ReferencedContainer = "container:AppReceiptValidator.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D1D6F5321F5D894900E86FE1"
-               BuildableName = "AppReceiptValidator_macOSTests.xctest"
-               BlueprintName = "AppReceiptValidator_macOSTests"
-               ReferencedContainer = "container:AppReceiptValidator.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -43,12 +29,14 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
-            skipped = "NO">
+            skipped = "NO"
+            parallelizable = "YES"
+            testExecutionOrdering = "random">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D1D6F5321F5D894900E86FE1"
-               BuildableName = "AppReceiptValidator_macOSTests.xctest"
-               BlueprintName = "AppReceiptValidator_macOSTests"
+               BlueprintIdentifier = "D19095911F6000A40095729B"
+               BuildableName = "AppReceiptValidator Tests macOS.xctest"
+               BlueprintName = "AppReceiptValidator Tests macOS"
                ReferencedContainer = "container:AppReceiptValidator.xcodeproj">
             </BuildableReference>
          </TestableReference>
