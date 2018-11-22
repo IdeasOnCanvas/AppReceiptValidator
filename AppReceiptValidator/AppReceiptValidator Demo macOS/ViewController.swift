@@ -12,9 +12,11 @@ import Cocoa
 
 // MARK: - ViewController
 
-class ViewController: NSViewController, NSTextViewDelegate {
+class ViewController: NSViewController, NSTextViewDelegate, NSTextFieldDelegate {
 
+    private var textFieldObserver: Any?
     @IBOutlet private var inputTextView: NSTextView!
+    @IBOutlet private var identifierTextField: NSTextField!
     @IBOutlet private var outputTextView: NSTextView!
     @IBOutlet private var dropReceivingView: DropAcceptingTextView!
 
@@ -28,12 +30,24 @@ class ViewController: NSViewController, NSTextViewDelegate {
         self.dropReceivingView.handleDroppedFile = { [unowned self] url in
             self.update(url: url)
         }
+        self.textFieldObserver = NotificationCenter.default.addObserver(forName: NSTextField.textDidChangeNotification, object: self.identifierTextField, queue: .main) { [weak self] notification in
+            guard let self = self else { return }
+
+            self.identifierDidChange(self.identifierTextField)
+        }
     }
 
     // MARK: - NSTextViewDelegate
 
     func textDidChange(_ notification: Notification) {
-        let string = inputTextView.string
+        let string = self.inputTextView.string
+        self.update(base64String: string)
+    }
+
+    // MARK: - Identifier Textfield
+
+    @IBAction func identifierDidChange(_ sender: NSTextField) {
+        let string = self.inputTextView.string
         self.update(base64String: string)
     }
 
@@ -57,7 +71,8 @@ private extension ViewController {
         }
         do {
             let result = try AppReceiptValidator().parseUnofficialReceipt(origin: .data(data))
-            self.render(string: "\(result.receipt)\n\(result.unofficialReceipt)")
+            let validationResult = self.validateReceiptIfNecessary(data: data, macAddress: self.identifierTextField.stringValue) ?? "<Receipt not Validated, No Identifier provided, Supported: UUID, base64, MAC-Address>"
+            self.render(string: "\(validationResult)\n\n✅ Receipt Parsed\n\(result.receipt)\n\(result.unofficialReceipt)")
         } catch {
             self.render(string: "\(error)")
         }
@@ -76,6 +91,26 @@ private extension ViewController {
         } else {
             self.inputTextView.string = "<No Receipt found>"
             self.update(base64String: "")
+        }
+    }
+
+    func validateReceiptIfNecessary(data: Data, macAddress: String?) -> String? {
+        guard let macAddress = macAddress, macAddress.isEmpty == false else { return nil }
+
+        let sanitized = macAddress.trimmingCharacters(in: .whitespacesAndNewlines)
+        let deviceIdentifier = AppReceiptValidator.Parameters.DeviceIdentifier(macAddress: sanitized) ??
+            (UUID(uuidString: sanitized).flatMap { AppReceiptValidator.Parameters.DeviceIdentifier(uuid: $0) }) ??
+            AppReceiptValidator.Parameters.DeviceIdentifier(base64Encoded: sanitized)
+        guard let identifier = deviceIdentifier else { return "<Receipt not Validated\nIdentifier not parseable>" }
+
+        let parameters = AppReceiptValidator.Parameters(receiptOrigin: .data(data), shouldValidateSignaturePresence: true, signatureValidation: .shouldValidate(rootCertificateOrigin: .cerFileBundledWithAppReceiptValidator), shouldValidateHash: true, deviceIdentifier: identifier, propertyValidations: [])
+        let result = AppReceiptValidator().validateReceipt(parameters: parameters)
+
+        switch result {
+        case .success:
+            return "✅ Receipt Validated\nSignature and Hash Check successful"
+        case .error(let error, _, _):
+            return "❌ Receipt Invalid\n\(error)"
         }
     }
 

@@ -83,7 +83,7 @@ public extension AppReceiptValidator.Parameters {
 
     /// Used for calculating/validating the SHA1-Hash part of a receipt.
     ///
-    /// - currentDevice: Obtains it from the system location: MAC Adress on macOS, deviceIdentifierForVendor on iOS
+    /// - currentDevice: Obtains it from the system location: MAC Address on macOS, deviceIdentifierForVendor on iOS
     /// - data: Specific Data to use
     public enum DeviceIdentifier {
 
@@ -97,6 +97,20 @@ public extension AppReceiptValidator.Parameters {
 
         public init(uuid: UUID) {
             self = .data(uuid.data)
+        }
+
+        /// Returns .data by parsing a MAC Address String
+        ///
+        /// - Parameters:
+        ///   - macAddress: A MAC Address of the form "00:0d:3f:cd:02:5f"
+        ///   - separator: Defaults to `":"`
+        ///
+        /// - Note: on macOS the MAC Addresses can be read from terminal command `ifconfig` looking for ther `ether` entry of `5e`.
+        public init?(macAddress: String, separator: String = ":") {
+            let bytes = macAddress.components(separatedBy: separator).compactMap { UInt8($0, radix: 16) }
+            guard bytes.count == 6 else { return nil }
+
+            self = .data(Data(bytes))
         }
 
         public func getData() -> Data? {
