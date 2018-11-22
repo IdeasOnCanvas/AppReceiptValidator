@@ -83,7 +83,7 @@ public extension AppReceiptValidator.Parameters {
 
     /// Used for calculating/validating the SHA1-Hash part of a receipt.
     ///
-    /// - currentDevice: Obtains it from the system location: MAC Adress on macOS, deviceIdentifierForVendor on iOS
+    /// - currentDevice: Obtains it from the system location: MAC Address on macOS, deviceIdentifierForVendor on iOS
     /// - data: Specific Data to use
     public enum DeviceIdentifier {
 
