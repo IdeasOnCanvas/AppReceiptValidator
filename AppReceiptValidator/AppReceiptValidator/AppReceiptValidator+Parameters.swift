@@ -99,6 +99,20 @@ public extension AppReceiptValidator.Parameters {
             self = .data(uuid.data)
         }
 
+        /// Returns .data by parsing a MAC Address String
+        ///
+        /// - Parameters:
+        ///   - macAddress: A MAC Address of the form "00:0d:3f:cd:02:5f"
+        ///   - separator: Defaults to `":"`
+        ///
+        /// - Note: on macOS the MAC Addresses can be read from terminal command `ifconfig` looking for ther `ether` entry of `5e`.
+        public init?(macAddress: String, separator: String = ":") {
+            let bytes = macAddress.components(separatedBy: separator).compactMap { UInt8($0, radix: 16) }
+            guard bytes.count == 6 else { return nil }
+
+            self = .data(Data(bytes))
+        }
+
         public func getData() -> Data? {
             switch self {
             case .data(let data):
