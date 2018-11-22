@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D114544621A6BDE6001BEC61 /* DeviceIdentifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114544521A6BDE6001BEC61 /* DeviceIdentifierTests.swift */; };
+		D114544721A6BDE6001BEC61 /* DeviceIdentifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114544521A6BDE6001BEC61 /* DeviceIdentifierTests.swift */; };
 		D1239FFF1F6A7B5000D0421E /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = D19095C41F601DEA0095729B /* AppleIncRootCertificate.cer */; };
 		D123A0001F6A7CCF00D0421E /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = D19095C41F601DEA0095729B /* AppleIncRootCertificate.cer */; };
 		D13E5B7D20331B9B001880F0 /* DropAcceptingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E5B7C20331B9B001880F0 /* DropAcceptingTextView.swift */; };
@@ -275,6 +277,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D114544521A6BDE6001BEC61 /* DeviceIdentifierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceIdentifierTests.swift; sourceTree = "<group>"; };
 		D13E5B7C20331B9B001880F0 /* DropAcceptingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropAcceptingTextView.swift; sourceTree = "<group>"; };
 		D14FA72E1F6143C400545540 /* Date+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Convenience.swift"; sourceTree = "<group>"; };
 		D14FA7311F61472400545540 /* mac_mindnode_rebought_receipt */ = {isa = PBXFileReference; lastKnownFileType = file; path = mac_mindnode_rebought_receipt; sourceTree = "<group>"; };
@@ -603,6 +606,7 @@
 				D1D6F5411F5D8A3800E86FE1 /* AppReceiptValidationTests.swift */,
 				D1AA845A1F6ABB31007F2558 /* AppReceiptPropertyValidationTests.swift */,
 				D150A0ED1F669A880026ED04 /* AppReceiptValidationInAppPurchaseTests.swift */,
+				D114544521A6BDE6001BEC61 /* DeviceIdentifierTests.swift */,
 				D1D6F5481F5D9B1100E86FE1 /* Tools */,
 				D1D6F5431F5D8DBC00E86FE1 /* Test Assets */,
 			);
@@ -1399,6 +1403,7 @@
 				D19095CD1F601E960095729B /* AppReceiptValidationTests.swift in Sources */,
 				D1AA845D1F6ABB59007F2558 /* AppReceiptPropertyValidationTests.swift in Sources */,
 				D150A0EF1F669A880026ED04 /* AppReceiptValidationInAppPurchaseTests.swift in Sources */,
+				D114544721A6BDE6001BEC61 /* DeviceIdentifierTests.swift in Sources */,
 				D150A0F01F67E0990026ED04 /* Date+Convenience.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1411,6 +1416,7 @@
 				D19095CE1F601E980095729B /* AppReceiptValidationTests.swift in Sources */,
 				D1AA845C1F6ABB59007F2558 /* AppReceiptPropertyValidationTests.swift in Sources */,
 				D150A0EE1F669A880026ED04 /* AppReceiptValidationInAppPurchaseTests.swift in Sources */,
+				D114544621A6BDE6001BEC61 /* DeviceIdentifierTests.swift in Sources */,
 				D150A0F11F67E0990026ED04 /* Date+Convenience.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
