@@ -97,7 +97,7 @@ private extension ViewController {
     func validateReceiptIfNecessary(data: Data, macAddress: String?) -> String? {
         guard let macAddress = macAddress, macAddress.isEmpty == false else { return nil }
 
-        let sanitized = macAddress.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        let sanitized = macAddress.trimmingCharacters(in: .whitespacesAndNewlines)
         let deviceIdentifier = AppReceiptValidator.Parameters.DeviceIdentifier(macAddress: sanitized) ??
             (UUID(uuidString: sanitized).flatMap { AppReceiptValidator.Parameters.DeviceIdentifier(uuid: $0) }) ??
             AppReceiptValidator.Parameters.DeviceIdentifier(base64Encoded: sanitized)
