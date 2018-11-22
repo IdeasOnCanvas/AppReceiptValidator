@@ -20,7 +20,7 @@ extension AppReceiptValidator.Parameters.DeviceIdentifier {
     /// Original implementation https://gist.github.com/mminer/82975d3781e2f42fc644d7fbfbf4f905
     ///
     /// - Returns: The MAC Address as Data and String representation
-    private static func getPrimaryNetworkMACAddress() -> (data: Data, addressString: String)? {
+    static func getPrimaryNetworkMACAddress() -> (data: Data, addressString: String)? {
         let matching = IOServiceMatching("IOEthernetInterface") as NSMutableDictionary
         matching[kIOPropertyMatchKey] = ["IOPrimaryInterface": true]
         var servicesIterator: io_iterator_t = 0
