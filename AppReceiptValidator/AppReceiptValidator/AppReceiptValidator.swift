@@ -245,6 +245,7 @@ private extension AppReceiptValidator {
         return (receipt: receipt, unofficialReceipt: unofficialReceipt)
     }
 
+    // swiftlint:disable:next cyclomatic_complexity
     private func parseInAppPurchaseReceipt(pointer: UnsafePointer<UInt8>, length: Int) throws -> InAppPurchaseReceipt {
         var inAppPurchaseReceipt = InAppPurchaseReceipt()
         try self.parseASN1Set(pointer: pointer, length: length) { attributeType, value in
