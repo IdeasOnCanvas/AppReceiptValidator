@@ -30,7 +30,7 @@ class ViewController: NSViewController, NSTextViewDelegate, NSTextFieldDelegate 
         self.dropReceivingView.handleDroppedFile = { [unowned self] url in
             self.update(url: url)
         }
-        self.textFieldObserver = NotificationCenter.default.addObserver(forName: NSTextField.textDidChangeNotification, object: self.identifierTextField, queue: .main) { [weak self] notification in
+        self.textFieldObserver = NotificationCenter.default.addObserver(forName: NSTextField.textDidChangeNotification, object: self.identifierTextField, queue: .main) { [weak self] _ in
             guard let self = self else { return }
 
             self.identifierDidChange(self.identifierTextField)

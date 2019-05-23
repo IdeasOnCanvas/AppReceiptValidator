@@ -47,8 +47,8 @@ extension KnownOrUnknown: RawRepresentable {
 
 extension KnownOrUnknown: Hashable {
 
-    public var hashValue: Int {
-        return self.rawValue.hashValue
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.rawValue.hashValue)
     }
 
     public static func == (lhs: KnownOrUnknown<Known>, rhs: KnownOrUnknown<Known>) -> Bool {
