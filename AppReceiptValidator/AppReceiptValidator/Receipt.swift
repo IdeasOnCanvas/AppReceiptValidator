@@ -241,16 +241,21 @@ private struct StringFormatter {
     func format(_ data: Data?) -> String {
         guard let data = data else { return fallback }
 
-        return data.base64EncodedString()
+        return quoted(data.base64EncodedString())
     }
 
     func format(_ date: Date?) -> String {
         guard let date = date else { return fallback }
 
-        return AppReceiptValidator.asn1DateFormatter.string(from: date)
+        return quoted(AppReceiptValidator.asn1DateFormatter.string(from: date))
     }
 
     func format(_ string: String?) -> String {
-        return string ?? fallback
+        return string.map(quoted) ?? fallback
+    }
+
+    /// Surrounds a string with quotes "…"
+    func quoted(_ string: String) -> String {
+        return "\"" + string + "\""
     }
 }
