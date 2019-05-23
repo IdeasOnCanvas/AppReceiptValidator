@@ -247,24 +247,25 @@ private extension AppReceiptValidator {
         var inAppPurchaseReceipt = InAppPurchaseReceipt()
         try self.parseASN1Set(pointer: pointer, length: length) { attributeType, value in
             guard let attribute = KnownInAppPurchaseAttribute(rawValue: attributeType) else { return }
+            guard let value = value.unwrapped else { return } // always unwrap set members
 
             switch attribute {
             case .quantity:
                 inAppPurchaseReceipt.quantity = value.intValue
             case .productIdentifier:
-                inAppPurchaseReceipt.productIdentifier = value.unwrappedStringValue
+                inAppPurchaseReceipt.productIdentifier = value.stringValue
             case .transactionIdentifier:
-                inAppPurchaseReceipt.transactionIdentifier = value.unwrappedStringValue
+                inAppPurchaseReceipt.transactionIdentifier = value.stringValue
             case .originalTransactionIdentifier:
-                inAppPurchaseReceipt.originalTransactionIdentifier = value.unwrappedStringValue
+                inAppPurchaseReceipt.originalTransactionIdentifier = value.stringValue
             case .purchaseDate:
-                inAppPurchaseReceipt.purchaseDate = value.unwrappedDateValue
+                inAppPurchaseReceipt.purchaseDate = value.dateValue
             case .originalPurchaseDate:
-                inAppPurchaseReceipt.originalPurchaseDate = value.unwrappedDateValue
+                inAppPurchaseReceipt.originalPurchaseDate = value.dateValue
             case .subscriptionExpirationDate:
-                inAppPurchaseReceipt.subscriptionExpirationDate = value.unwrappedDateValue
+                inAppPurchaseReceipt.subscriptionExpirationDate = value.dateValue
             case .cancellationDate:
-                inAppPurchaseReceipt.cancellationDate = value.unwrappedDateValue
+                inAppPurchaseReceipt.cancellationDate = value.dateValue
             case .webOrderLineItemId:
                 inAppPurchaseReceipt.webOrderLineItemId = value.intValue
             }
