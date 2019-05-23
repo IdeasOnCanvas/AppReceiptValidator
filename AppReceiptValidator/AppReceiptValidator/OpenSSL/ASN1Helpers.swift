@@ -9,6 +9,8 @@
 import AppReceiptValidator.OpenSSL
 import Foundation
 
+// A resource for ASN1 can be https://www.oss.com/asn1/resources/reference/asn1-reference-card.html
+
 /// An ASN1 Sequence Object. Of interest are the attributeType and the valueObject.
 /// The attributeType determines how to interpret the valueObject.
 ///
@@ -116,7 +118,11 @@ extension ASN1Object {
 
 extension ASN1Object {
 
+    /// Unwraps an OCTET_STRING, which is a binary container, that can contain another ASN1Object.
+    /// This is the case when we are looking at an entry in an ASN1Set
     var unwrapped: ASN1Object? {
+        guard self.type == V_ASN1_OCTET_STRING else { return nil }
+
         guard let endPointer = valuePointer?.advanced(by: length) else { return nil }
 
         var innerPointer = valuePointer
@@ -154,6 +160,10 @@ extension ASN1Object {
 // MARK: - IntValue
 
 extension ASN1Object {
+
+    var unwrappedIntValue: Int? {
+        return self.unwrapped?.intValue
+    }
 
     var intValue: Int? {
         guard self.type == V_ASN1_INTEGER else { return nil }
