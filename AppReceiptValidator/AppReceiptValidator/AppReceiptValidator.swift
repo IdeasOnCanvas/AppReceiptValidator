@@ -117,15 +117,17 @@ private extension AppReceiptValidator {
         var sha1Context = SHA_CTX()
 
         SHA1_Init(&sha1Context)
-
-        deviceIdentifierData.withUnsafeBytes { pointer -> Void in
-            SHA1_Update(&sha1Context, pointer, deviceIdentifierData.count)
+        deviceIdentifierData.withUnsafeBytes { poi -> Void in
+            print(poi)
         }
-        receiptOpaqueValueData.withUnsafeBytes { pointer -> Void in
-            SHA1_Update(&sha1Context, pointer, receiptOpaqueValueData.count)
+        _ = deviceIdentifierData.withUnsafeBytes { pointer -> Void in
+            SHA1_Update(&sha1Context, pointer.baseAddress, deviceIdentifierData.count)
         }
-        receiptBundleIdData.withUnsafeBytes { pointer -> Void in
-            SHA1_Update(&sha1Context, pointer, receiptBundleIdData.count)
+        _ = receiptOpaqueValueData.withUnsafeBytes { pointer -> Void in
+            SHA1_Update(&sha1Context, pointer.baseAddress, receiptOpaqueValueData.count)
+        }
+        _ = receiptBundleIdData.withUnsafeBytes { pointer -> Void in
+            SHA1_Update(&sha1Context, pointer.baseAddress, receiptBundleIdData.count)
         }
         SHA1_Final(&computedHash, &sha1Context)
 
