@@ -80,5 +80,6 @@ framework module AppReceiptValidator {
         header "opensslconf-armv7s.h"
         header "opensslconf-x86_64.h"
         header "shim.h"
+        header "pkcs7_union_accessors.h"
     }
 }
