@@ -1,12 +1,12 @@
 #ifndef OpenSSLShim_h
 #define OpenSSLShim_h
 
-#include <openssl/conf.h>
-#include <openssl/evp.h>
-#include <openssl/err.h>
-#include <openssl/bio.h>
-#include <openssl/x509.h>
-#include <openssl/cms.h>
+#include "conf.h"
+#include "evp.h"
+#include "err.h"
+#include "bio.h"
+#include "x509.h"
+#include "cms.h"
 
 // Initialize OpenSSL
 static inline void OpenSSL_SSL_init(void) {
