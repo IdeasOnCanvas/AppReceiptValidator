@@ -55,6 +55,7 @@ public struct Receipt: Equatable {
     ///         The in-app purchase receipt for a non-consumable product, auto-renewable subscription, non-renewing subscription, or free subscription remains in the receipt indefinitely.
     public internal(set) var inAppPurchaseReceipts: [InAppPurchaseReceipt] = []
 
+    /// For documentation of parameters, have a look at the documented properties of `Receipt`
     public init(bundleIdentifier: String?, bundleIdData: Data?, appVersion: String?, opaqueValue: Data?, sha1Hash: Data?, originalAppVersion: String?, receiptCreationDate: Date?, expirationDate: Date?, inAppPurchaseReceipts: [InAppPurchaseReceipt]) {
         self.bundleIdentifier = bundleIdentifier
         self.bundleIdData = bundleIdData
@@ -67,12 +68,35 @@ public struct Receipt: Equatable {
         self.inAppPurchaseReceipts = inAppPurchaseReceipts
     }
 
+    /// Convenience initializer with stringified parameters for `Date` and `Data` type parameters.
+    /// When logging a `Receipt`'s (`CustomStringConvertible`) description, you can use that as swift source code calling this initializer,
+    /// which can simplify creating tests.
+    ///
+    /// For documentation of parameters, have a look at the documented properties of `Receipt`.
+    ///
+    /// - Note: Dates must be formatted as "2017-01-01T12:00:00Z", otherwise will be assigned `nil`.
+    /// Data must be formatted as Base64, otherwise will be assigned `nil`.
+    /// Correct formatting will be asserted in DEBUG builds.
+    public init(bundleIdentifier: String, bundleIdData: String, appVersion: String, opaqueValue: String, sha1Hash: String, originalAppVersion: String, receiptCreationDate: String, expirationDate: String?, inAppPurchaseReceipts: [InAppPurchaseReceipt]) {
+        self.init(bundleIdentifier: bundleIdentifier,
+                  bundleIdData: parseBase64(string: bundleIdData),
+                  appVersion: appVersion,
+                  opaqueValue: parseBase64(string: opaqueValue),
+                  sha1Hash: parseBase64(string: sha1Hash),
+                  originalAppVersion: originalAppVersion,
+                  receiptCreationDate: parseDate(string: receiptCreationDate),
+                  expirationDate: expirationDate.flatMap { parseDate(string: $0) },
+                  inAppPurchaseReceipts: inAppPurchaseReceipts)
+    }
+
     public init() {}
 }
 
 // MARK: - CustomStringConvertible
 
 extension Receipt: CustomStringConvertible, CustomDebugStringConvertible {
+
+    // This description is carefully matched to match the stringy convenience initializer of `Receipt`
 
     public var description: String {
         let formatter = StringFormatter()
@@ -101,7 +125,7 @@ extension Receipt: CustomStringConvertible, CustomDebugStringConvertible {
 ///
 /// Documentation was obtained from: https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Chapters/ReceiptFields.html
 ///
-/// The following fields are part of JSON communication but not part of the parsed version (matched Sept 2017):
+/// The following fields are part of JSON communication but not part of the parsed version (matched May 2019):
 /// - Subscription Expiration Intent
 /// - Subscription Retry Flag
 /// - Subscription Trial Period
@@ -169,7 +193,7 @@ public struct InAppPurchaseReceipt: Equatable {
     /// This value is a unique ID that identifies purchase events across devices, including subscription renewal purchase events.
     public internal(set) var webOrderLineItemId: Int64?
 
-    /// For documentation see InAppPurchaseReceipt itself.
+    /// For documentation of parameters, have a look at the documented properties of `InAppPurchaseReceipt`.
     public init(quantity: Int64?, productIdentifier: String?, transactionIdentifier: String?, originalTransactionIdentifier: String?, purchaseDate: Date?, originalPurchaseDate: Date?, subscriptionExpirationDate: Date?, cancellationDate: Date?, webOrderLineItemId: Int64?) {
         self.quantity = quantity
         self.productIdentifier = productIdentifier
@@ -182,12 +206,35 @@ public struct InAppPurchaseReceipt: Equatable {
         self.webOrderLineItemId = webOrderLineItemId
     }
 
+    /// Convenience initializer with stringified parameters for `Date` and `Data` type parameters.
+    /// When logging a `Receipt`'s (`CustomStringConvertible`) description, you can use that as swift source code calling this initializer,
+    /// which can simplify creating tests.
+    ///
+    /// For documentation of parameters, have a look at the documented properties of `InAppPurchaseReceipt`.
+    ///
+    /// - Note: Dates must be formatted as "2017-01-01T12:00:00Z", otherwise will be assigned `nil`.
+    /// Data must be formatted as Base64, otherwise will be assigned `nil`.
+    /// Correct formatting will be asserted in DEBUG builds.
+    public init(quantity: Int64?, productIdentifier: String, transactionIdentifier: String, originalTransactionIdentifier: String, purchaseDate: String, originalPurchaseDate: String, subscriptionExpirationDate: String?, cancellationDate: String?, webOrderLineItemId: Int64?) {
+        self.init(quantity: quantity,
+                  productIdentifier: productIdentifier,
+                  transactionIdentifier: transactionIdentifier,
+                  originalTransactionIdentifier: originalTransactionIdentifier,
+                  purchaseDate: parseDate(string: purchaseDate),
+                  originalPurchaseDate: parseDate(string: originalPurchaseDate),
+                  subscriptionExpirationDate: subscriptionExpirationDate.flatMap { parseDate(string: $0) },
+                  cancellationDate: cancellationDate.flatMap { parseDate(string: $0) },
+                  webOrderLineItemId: webOrderLineItemId)
+    }
+
     public init() {}
 }
 
 // MARK: - CustomStringConvertible
 
 extension InAppPurchaseReceipt: CustomStringConvertible, CustomDebugStringConvertible {
+
+    // This description is carefully matched to match the stringy convenience initializer of `InAppPurchaseReceipt`
 
     public var description: String {
         let formatter = StringFormatter()
@@ -241,16 +288,40 @@ private struct StringFormatter {
     func format(_ data: Data?) -> String {
         guard let data = data else { return fallback }
 
-        return data.base64EncodedString()
+        return quoted(data.base64EncodedString())
     }
 
     func format(_ date: Date?) -> String {
         guard let date = date else { return fallback }
 
-        return AppReceiptValidator.asn1DateFormatter.string(from: date)
+        return quoted(AppReceiptValidator.asn1DateFormatter.string(from: date))
     }
 
     func format(_ string: String?) -> String {
-        return string ?? fallback
+        return string.map(quoted) ?? fallback
     }
+
+    /// Surrounds a string with quotes "…"
+    func quoted(_ string: String) -> String {
+        return "\"" + string + "\""
+    }
+}
+
+private func parseBase64(string: String) -> Data? {
+    guard let data = Data(base64Encoded: string) else {
+        assertionFailure("Data could not be parsed from string '\(string)', make sure it is non-empty nad base64 encoded.")
+        return nil
+    }
+
+    return data
+}
+
+// Parses a string of type "2017-01-01T12:00:00Z"
+private func parseDate(string: String) -> Date? {
+    guard let date = AppReceiptValidator.asn1DateFormatter.date(from: string) else {
+        assertionFailure("Date could not be parsed from string '\(string)', make sure it has a correct format, example  `2017-01-01T12:00:00Z`")
+        return nil
+    }
+
+    return date
 }

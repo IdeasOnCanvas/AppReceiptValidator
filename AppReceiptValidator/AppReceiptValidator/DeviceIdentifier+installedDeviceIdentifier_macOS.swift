@@ -53,6 +53,6 @@ extension AppReceiptValidator.Parameters.DeviceIdentifier {
             .map { String(format: "%02x", $0) }
             .joined(separator: ":")
 
-        return (data: Data(bytes: address), addressString: addressString)
+        return (data: Data(address), addressString: addressString)
     }
 }
