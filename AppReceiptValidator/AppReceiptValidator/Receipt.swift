@@ -115,7 +115,7 @@ public struct InAppPurchaseReceipt: Equatable {
 
     /// The number of items purchased. ASN.1 Field Type 1701.
     /// This value corresponds to the quantity property of the `SKPayment` object stored in the transaction’s payment property.
-    public internal(set) var quantity: Int?
+    public internal(set) var quantity: Int64?
 
     /// The product identifier of the item that was purchased. ASN.1 Field Type 1702.
     /// This value corresponds to the `productIdentifier` property of the `SKPayment` object stored in the transaction’s `payment` property.
@@ -167,10 +167,10 @@ public struct InAppPurchaseReceipt: Equatable {
 
     /// The primary key for identifying subscription purchases. ASN.1 Field Type 1711.
     /// This value is a unique ID that identifies purchase events across devices, including subscription renewal purchase events.
-    public internal(set) var webOrderLineItemId: Int?
+    public internal(set) var webOrderLineItemId: Int64?
 
     /// For documentation see InAppPurchaseReceipt itself.
-    public init(quantity: Int?, productIdentifier: String?, transactionIdentifier: String?, originalTransactionIdentifier: String?, purchaseDate: Date?, originalPurchaseDate: Date?, subscriptionExpirationDate: Date?, cancellationDate: Date?, webOrderLineItemId: Int?) {
+    public init(quantity: Int64?, productIdentifier: String?, transactionIdentifier: String?, originalTransactionIdentifier: String?, purchaseDate: Date?, originalPurchaseDate: Date?, subscriptionExpirationDate: Date?, cancellationDate: Date?, webOrderLineItemId: Int64?) {
         self.quantity = quantity
         self.productIdentifier = productIdentifier
         self.transactionIdentifier = transactionIdentifier
@@ -228,7 +228,7 @@ private struct StringFormatter {
         return pairs.map { self.format(key: $0, value: $1) }.joined(separator: ",\n")
     }
 
-    func format(_ int: Int?) -> String {
+    func format(_ int: Int64?) -> String {
         guard let int = int else { return fallback }
 
         return "\(int)"
