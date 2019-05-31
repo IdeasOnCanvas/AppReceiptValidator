@@ -12,6 +12,13 @@
 		D1239FFF1F6A7B5000D0421E /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = D19095C41F601DEA0095729B /* AppleIncRootCertificate.cer */; };
 		D123A0001F6A7CCF00D0421E /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = D19095C41F601DEA0095729B /* AppleIncRootCertificate.cer */; };
 		D13E5B7D20331B9B001880F0 /* DropAcceptingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E5B7C20331B9B001880F0 /* DropAcceptingTextView.swift */; };
+		D146A57522A1201300AE2DF6 /* opensslconf-arm64.h in Headers */ = {isa = PBXBuildFile; fileRef = D146A57022A1201200AE2DF6 /* opensslconf-arm64.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D146A57622A1201300AE2DF6 /* opensslconf-armv7.h in Headers */ = {isa = PBXBuildFile; fileRef = D146A57122A1201300AE2DF6 /* opensslconf-armv7.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D146A57722A1201300AE2DF6 /* opensslconf-armv7s.h in Headers */ = {isa = PBXBuildFile; fileRef = D146A57222A1201300AE2DF6 /* opensslconf-armv7s.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D146A57822A1201300AE2DF6 /* opensslconf-x86_64.h in Headers */ = {isa = PBXBuildFile; fileRef = D146A57322A1201300AE2DF6 /* opensslconf-x86_64.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D146A57922A1201300AE2DF6 /* shim.h in Headers */ = {isa = PBXBuildFile; fileRef = D146A57422A1201300AE2DF6 /* shim.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D146A57C22A1204100AE2DF6 /* opensslconf-x86_64.h in Headers */ = {isa = PBXBuildFile; fileRef = D146A57A22A1203E00AE2DF6 /* opensslconf-x86_64.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D146A57D22A1204100AE2DF6 /* shim.h in Headers */ = {isa = PBXBuildFile; fileRef = D146A57B22A1203F00AE2DF6 /* shim.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D14FA7321F61476700545540 /* mac_mindnode_rebought_receipt in Resources */ = {isa = PBXBuildFile; fileRef = D14FA7311F61472400545540 /* mac_mindnode_rebought_receipt */; };
 		D14FA7331F61476800545540 /* mac_mindnode_rebought_receipt in Resources */ = {isa = PBXBuildFile; fileRef = D14FA7311F61472400545540 /* mac_mindnode_rebought_receipt */; };
 		D14FA7381F6181C700545540 /* OpenSSLWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA7371F6181C700545540 /* OpenSSLWrappers.swift */; };
@@ -279,6 +286,13 @@
 /* Begin PBXFileReference section */
 		D114544521A6BDE6001BEC61 /* DeviceIdentifierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceIdentifierTests.swift; sourceTree = "<group>"; };
 		D13E5B7C20331B9B001880F0 /* DropAcceptingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropAcceptingTextView.swift; sourceTree = "<group>"; };
+		D146A57022A1201200AE2DF6 /* opensslconf-arm64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "opensslconf-arm64.h"; sourceTree = "<group>"; };
+		D146A57122A1201300AE2DF6 /* opensslconf-armv7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "opensslconf-armv7.h"; sourceTree = "<group>"; };
+		D146A57222A1201300AE2DF6 /* opensslconf-armv7s.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "opensslconf-armv7s.h"; sourceTree = "<group>"; };
+		D146A57322A1201300AE2DF6 /* opensslconf-x86_64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "opensslconf-x86_64.h"; sourceTree = "<group>"; };
+		D146A57422A1201300AE2DF6 /* shim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shim.h; sourceTree = "<group>"; };
+		D146A57A22A1203E00AE2DF6 /* opensslconf-x86_64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "opensslconf-x86_64.h"; sourceTree = "<group>"; };
+		D146A57B22A1203F00AE2DF6 /* shim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shim.h; sourceTree = "<group>"; };
 		D14FA72E1F6143C400545540 /* Date+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Convenience.swift"; sourceTree = "<group>"; };
 		D14FA7311F61472400545540 /* mac_mindnode_rebought_receipt */ = {isa = PBXFileReference; lastKnownFileType = file; path = mac_mindnode_rebought_receipt; sourceTree = "<group>"; };
 		D14FA7371F6181C700545540 /* OpenSSLWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSSLWrappers.swift; sourceTree = "<group>"; };
@@ -708,6 +722,8 @@
 				D1D430FE1F69627600F7F39D /* x509.h */,
 				D1D430FF1F69627600F7F39D /* x509_vfy.h */,
 				D1D431001F69627600F7F39D /* x509v3.h */,
+				D146A57A22A1203E00AE2DF6 /* opensslconf-x86_64.h */,
+				D146A57B22A1203F00AE2DF6 /* shim.h */,
 			);
 			path = openssl;
 			sourceTree = "<group>";
@@ -807,6 +823,11 @@
 				D1D4314E1F69627600F7F39D /* x509.h */,
 				D1D4314F1F69627600F7F39D /* x509_vfy.h */,
 				D1D431501F69627600F7F39D /* x509v3.h */,
+				D146A57022A1201200AE2DF6 /* opensslconf-arm64.h */,
+				D146A57122A1201300AE2DF6 /* opensslconf-armv7.h */,
+				D146A57222A1201300AE2DF6 /* opensslconf-armv7s.h */,
+				D146A57322A1201300AE2DF6 /* opensslconf-x86_64.h */,
+				D146A57422A1201300AE2DF6 /* shim.h */,
 			);
 			path = openssl;
 			sourceTree = "<group>";
@@ -934,6 +955,7 @@
 				D15C593B1F6981C4006F66FE /* md5.h in Headers */,
 				D15C592E1F6981C4006F66FE /* ebcdic.h in Headers */,
 				D15C59401F6981C4006F66FE /* ocsp.h in Headers */,
+				D146A57922A1201300AE2DF6 /* shim.h in Headers */,
 				D15C59471F6981C4006F66FE /* pkcs7.h in Headers */,
 				D15C595E1F6981C4006F66FE /* whrlpool.h in Headers */,
 				D15C59211F6981C4006F66FE /* cmac.h in Headers */,
@@ -941,6 +963,7 @@
 				D15C59241F6981C4006F66FE /* conf.h in Headers */,
 				D15C592D1F6981C4006F66FE /* e_os2.h in Headers */,
 				D15C59491F6981C4006F66FE /* rand.h in Headers */,
+				D146A57822A1201300AE2DF6 /* opensslconf-x86_64.h in Headers */,
 				D15C59341F6981C4006F66FE /* evp.h in Headers */,
 				D15C595F1F6981C4006F66FE /* x509.h in Headers */,
 				D15C591B1F6981C4006F66FE /* bio.h in Headers */,
@@ -952,6 +975,7 @@
 				D15C593F1F6981C4006F66FE /* objects.h in Headers */,
 				D15C59361F6981C4006F66FE /* idea.h in Headers */,
 				D15C59301F6981C4006F66FE /* ecdh.h in Headers */,
+				D146A57722A1201300AE2DF6 /* opensslconf-armv7s.h in Headers */,
 				D15C59311F6981C4006F66FE /* ecdsa.h in Headers */,
 				D15C59411F6981C4006F66FE /* opensslconf.h in Headers */,
 				D15C591D1F6981C4006F66FE /* bn.h in Headers */,
@@ -960,6 +984,7 @@
 				D15C595D1F6981C4006F66FE /* ui_compat.h in Headers */,
 				D15C59231F6981C4006F66FE /* comp.h in Headers */,
 				D15C59371F6981C4006F66FE /* krb5_asn.h in Headers */,
+				D146A57622A1201300AE2DF6 /* opensslconf-armv7.h in Headers */,
 				D15C592F1F6981C4006F66FE /* ec.h in Headers */,
 				D15C59601F6981C4006F66FE /* x509_vfy.h in Headers */,
 				D15C595B1F6981C4006F66FE /* txt_db.h in Headers */,
@@ -971,6 +996,7 @@
 				D15C59521F6981C4006F66FE /* srtp.h in Headers */,
 				D15C59561F6981C4006F66FE /* ssl3.h in Headers */,
 				D15C59151F698061006F66FE /* aes.h in Headers */,
+				D146A57522A1201300AE2DF6 /* opensslconf-arm64.h in Headers */,
 				D15C592A1F6981C4006F66FE /* dsa.h in Headers */,
 				D15C59321F6981C4006F66FE /* engine.h in Headers */,
 				D15C593A1F6981C4006F66FE /* md4.h in Headers */,
@@ -1047,12 +1073,14 @@
 				D1AB81D21F696F0200B57E29 /* objects.h in Headers */,
 				D1AB81BF1F696F0200B57E29 /* dtls1.h in Headers */,
 				D1AB81B51F696F0200B57E29 /* cms.h in Headers */,
+				D146A57D22A1204100AE2DF6 /* shim.h in Headers */,
 				D1AB81BD1F696F0200B57E29 /* dsa.h in Headers */,
 				D1AB81E71F696F0200B57E29 /* ssl2.h in Headers */,
 				D1AB81DF1F696F0200B57E29 /* ripemd.h in Headers */,
 				D1AB81ED1F696F0200B57E29 /* ts.h in Headers */,
 				D1AB81B71F696F0200B57E29 /* conf.h in Headers */,
 				D1AB81CC1F696F0200B57E29 /* lhash.h in Headers */,
+				D146A57C22A1204100AE2DF6 /* opensslconf-x86_64.h in Headers */,
 				D1AB81D11F696F0200B57E29 /* obj_mac.h in Headers */,
 				D1AB81F01F696F0200B57E29 /* ui_compat.h in Headers */,
 				D1AB81E01F696F0200B57E29 /* rsa.h in Headers */,

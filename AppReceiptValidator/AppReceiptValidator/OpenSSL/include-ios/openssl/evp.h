@@ -60,19 +60,19 @@
 # define HEADER_ENVELOPE_H
 
 # ifdef OPENSSL_ALGORITHM_DEFINES
-#  include "opensslconf.h"
+#  include <openssl/opensslconf.h>
 # else
 #  define OPENSSL_ALGORITHM_DEFINES
-#  include "opensslconf.h"
+#  include <openssl/opensslconf.h>
 #  undef OPENSSL_ALGORITHM_DEFINES
 # endif
 
-# include "ossl_typ.h"
+# include <openssl/ossl_typ.h>
 
-# include "symhacks.h"
+# include <openssl/symhacks.h>
 
 # ifndef OPENSSL_NO_BIO
-#  include "bio.h"
+#  include <openssl/bio.h>
 # endif
 
 /*-
@@ -91,7 +91,7 @@
 /* Default PKCS#5 iteration count */
 # define PKCS5_DEFAULT_ITER              2048
 
-# include "objects.h"
+# include <openssl/objects.h>
 
 # define EVP_PK_RSA      0x0001
 # define EVP_PK_DSA      0x0002
@@ -1489,8 +1489,10 @@ void ERR_load_EVP_strings(void);
 # define EVP_F_EVP_CIPHER_CTX_CTRL                        124
 # define EVP_F_EVP_CIPHER_CTX_SET_KEY_LENGTH              122
 # define EVP_F_EVP_DECRYPTFINAL_EX                        101
+# define EVP_F_EVP_DECRYPTUPDATE                          181
 # define EVP_F_EVP_DIGESTINIT_EX                          128
 # define EVP_F_EVP_ENCRYPTFINAL_EX                        127
+# define EVP_F_EVP_ENCRYPTUPDATE                          180
 # define EVP_F_EVP_MD_CTX_COPY_EX                         110
 # define EVP_F_EVP_MD_SIZE                                162
 # define EVP_F_EVP_OPENINIT                               102

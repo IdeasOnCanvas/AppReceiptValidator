@@ -2,7 +2,7 @@
 #ifndef HEADER_COMP_H
 # define HEADER_COMP_H
 
-# include "crypto.h"
+# include <openssl/crypto.h>
 
 # ifdef OPENSSL_NO_COMP
 #  error COMP is disabled.

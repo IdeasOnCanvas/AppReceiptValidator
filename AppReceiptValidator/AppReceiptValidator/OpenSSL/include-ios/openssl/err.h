@@ -112,19 +112,19 @@
 #ifndef HEADER_ERR_H
 # define HEADER_ERR_H
 
-# include "e_os2.h"
+# include <openssl/e_os2.h>
 
 # ifndef OPENSSL_NO_FP_API
 #  include <stdio.h>
 #  include <stdlib.h>
 # endif
 
-# include "ossl_typ.h"
+# include <openssl/ossl_typ.h>
 # ifndef OPENSSL_NO_BIO
-#  include "bio.h"
+#  include <openssl/bio.h>
 # endif
 # ifndef OPENSSL_NO_LHASH
-#  include "lhash.h"
+#  include <openssl/lhash.h>
 # endif
 
 #ifdef  __cplusplus

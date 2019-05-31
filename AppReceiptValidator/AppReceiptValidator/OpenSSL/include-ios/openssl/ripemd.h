@@ -59,7 +59,7 @@
 #ifndef HEADER_RIPEMD_H
 # define HEADER_RIPEMD_H
 
-# include "e_os2.h"
+# include <openssl/e_os2.h>
 # include <stddef.h>
 
 #ifdef  __cplusplus

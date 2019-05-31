@@ -117,7 +117,7 @@
 #ifndef HEADER_D1_SRTP_H
 # define HEADER_D1_SRTP_H
 
-# include "ssl.h"
+# include <openssl/ssl.h>
 
 #ifdef  __cplusplus
 extern "C" {

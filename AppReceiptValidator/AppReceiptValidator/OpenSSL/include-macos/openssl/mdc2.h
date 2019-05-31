@@ -59,7 +59,7 @@
 #ifndef HEADER_MDC2_H
 # define HEADER_MDC2_H
 
-# include "des.h"
+# include <openssl/des.h>
 
 #ifdef  __cplusplus
 extern "C" {
