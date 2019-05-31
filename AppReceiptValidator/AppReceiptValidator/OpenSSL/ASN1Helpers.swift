@@ -161,11 +161,11 @@ extension ASN1Object {
 
 extension ASN1Object {
 
-    var unwrappedIntValue: Int? {
+    var unwrappedIntValue: Int64? {
         return self.unwrapped?.intValue
     }
 
-    var intValue: Int? {
+    var intValue: Int64? {
         guard self.type == V_ASN1_INTEGER else { return nil }
 
         var pointer = self.valuePointer
@@ -173,11 +173,11 @@ extension ASN1Object {
         defer {
             ASN1_INTEGER_free(integer)
         }
-        let result = ASN1_INTEGER_get(integer)
+        let result = Int64(ASN1_INTEGER_get(integer))
         return result
     }
 
-    func intValue(byAdvancingPointer pointer: inout UnsafePointer<UInt8>?, length: Int? = nil) -> Int? {
+    func intValue(byAdvancingPointer pointer: inout UnsafePointer<UInt8>?, length: Int? = nil) -> Int64? {
         let length = length ?? self.length
         pointer = pointer?.advanced(by: length)
         guard let intValue = self.intValue else { return nil }
