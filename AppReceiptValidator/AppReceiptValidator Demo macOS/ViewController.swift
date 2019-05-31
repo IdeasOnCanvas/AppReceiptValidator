@@ -9,9 +9,8 @@
 import AppReceiptValidator
 import Cocoa
 
-
-// MARK: - ViewController
-
+/// Displays two textfields. One to paste a receipt into as base64 string, the other displaying the parsed receipt.
+/// A device identifier can be added in a third field, which is then used to validate the receipt.
 class ViewController: NSViewController, NSTextViewDelegate, NSTextFieldDelegate {
 
     private var textFieldObserver: Any?
