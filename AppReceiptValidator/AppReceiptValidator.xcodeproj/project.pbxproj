@@ -11,6 +11,8 @@
 		D114544721A6BDE6001BEC61 /* DeviceIdentifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114544521A6BDE6001BEC61 /* DeviceIdentifierTests.swift */; };
 		D1239FFF1F6A7B5000D0421E /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = D19095C41F601DEA0095729B /* AppleIncRootCertificate.cer */; };
 		D123A0001F6A7CCF00D0421E /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = D19095C41F601DEA0095729B /* AppleIncRootCertificate.cer */; };
+		D125996422A151AF005D1A6A /* openssl.h in Headers */ = {isa = PBXBuildFile; fileRef = D125996322A1513B005D1A6A /* openssl.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D125996622A15944005D1A6A /* openssl.h in Headers */ = {isa = PBXBuildFile; fileRef = D125996522A15905005D1A6A /* openssl.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D13E5B7D20331B9B001880F0 /* DropAcceptingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E5B7C20331B9B001880F0 /* DropAcceptingTextView.swift */; };
 		D146A57522A1201300AE2DF6 /* opensslconf-arm64.h in Headers */ = {isa = PBXBuildFile; fileRef = D146A57022A1201200AE2DF6 /* opensslconf-arm64.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D146A57622A1201300AE2DF6 /* opensslconf-armv7.h in Headers */ = {isa = PBXBuildFile; fileRef = D146A57122A1201300AE2DF6 /* opensslconf-armv7.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -285,6 +287,8 @@
 
 /* Begin PBXFileReference section */
 		D114544521A6BDE6001BEC61 /* DeviceIdentifierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceIdentifierTests.swift; sourceTree = "<group>"; };
+		D125996322A1513B005D1A6A /* openssl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = openssl.h; sourceTree = "<group>"; };
+		D125996522A15905005D1A6A /* openssl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = openssl.h; sourceTree = "<group>"; };
 		D13E5B7C20331B9B001880F0 /* DropAcceptingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropAcceptingTextView.swift; sourceTree = "<group>"; };
 		D146A57022A1201200AE2DF6 /* opensslconf-arm64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "opensslconf-arm64.h"; sourceTree = "<group>"; };
 		D146A57122A1201300AE2DF6 /* opensslconf-armv7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "opensslconf-armv7.h"; sourceTree = "<group>"; };
@@ -293,7 +297,6 @@
 		D146A57422A1201300AE2DF6 /* shim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shim.h; sourceTree = "<group>"; };
 		D146A57A22A1203E00AE2DF6 /* opensslconf-x86_64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "opensslconf-x86_64.h"; sourceTree = "<group>"; };
 		D146A57B22A1203F00AE2DF6 /* shim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shim.h; sourceTree = "<group>"; };
-		D146A57E22A126CE00AE2DF6 /* AppReceiptValidator.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = AppReceiptValidator.modulemap; sourceTree = "<group>"; };
 		D14FA72E1F6143C400545540 /* Date+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Convenience.swift"; sourceTree = "<group>"; };
 		D14FA7311F61472400545540 /* mac_mindnode_rebought_receipt */ = {isa = PBXFileReference; lastKnownFileType = file; path = mac_mindnode_rebought_receipt; sourceTree = "<group>"; };
 		D14FA7371F6181C700545540 /* OpenSSLWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSSLWrappers.swift; sourceTree = "<group>"; };
@@ -641,6 +644,7 @@
 			isa = PBXGroup;
 			children = (
 				D1D430B51F69627600F7F39D /* openssl */,
+				D125996522A15905005D1A6A /* openssl.h */,
 			);
 			path = "include-macos";
 			sourceTree = "<group>";
@@ -742,6 +746,7 @@
 			isa = PBXGroup;
 			children = (
 				D1D431051F69627600F7F39D /* openssl */,
+				D125996322A1513B005D1A6A /* openssl.h */,
 			);
 			path = "include-ios";
 			sourceTree = "<group>";
@@ -891,6 +896,7 @@
 		D1D6F5271F5D863900E86FE1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D15C59141F698005006F66FE /* AppReceiptValidator.modulemap */,
 				D1D6F5281F5D864500E86FE1 /* iOS */,
 				D1D6F5291F5D864A00E86FE1 /* macOS */,
 			);
@@ -900,7 +906,6 @@
 		D1D6F5281F5D864500E86FE1 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				D146A57E22A126CE00AE2DF6 /* AppReceiptValidator.modulemap */,
 				D1D6F4FE1F5D696800E86FE1 /* Info-iOS.plist */,
 			);
 			path = iOS;
@@ -909,7 +914,6 @@
 		D1D6F5291F5D864A00E86FE1 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
-				D15C59141F698005006F66FE /* AppReceiptValidator.modulemap */,
 				D1D6F5221F5D859100E86FE1 /* Info-macOS.plist */,
 			);
 			path = macOS;
@@ -983,6 +987,7 @@
 				D15C591D1F6981C4006F66FE /* bn.h in Headers */,
 				D15C594C1F6981C4006F66FE /* ripemd.h in Headers */,
 				D15C59381F6981C4006F66FE /* kssl.h in Headers */,
+				D125996422A151AF005D1A6A /* openssl.h in Headers */,
 				D15C595D1F6981C4006F66FE /* ui_compat.h in Headers */,
 				D15C59231F6981C4006F66FE /* comp.h in Headers */,
 				D15C59371F6981C4006F66FE /* krb5_asn.h in Headers */,
@@ -1109,6 +1114,7 @@
 				D1AB81B61F696F0200B57E29 /* comp.h in Headers */,
 				D1AB81E11F696F0200B57E29 /* safestack.h in Headers */,
 				D1AB81EB1F696F0200B57E29 /* symhacks.h in Headers */,
+				D125996622A15944005D1A6A /* openssl.h in Headers */,
 				D1AB81B81F696F0200B57E29 /* conf_api.h in Headers */,
 				D1AB81D31F696F0200B57E29 /* ocsp.h in Headers */,
 				D1AB81E31F696F0200B57E29 /* sha.h in Headers */,
@@ -1780,7 +1786,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/AppReceiptValidator/OpenSSL/lib-ios",
 				);
-				MODULEMAP_FILE = "AppReceiptValidator/Supporting Files/iOS/AppReceiptValidator.modulemap";
+				MODULEMAP_FILE = "AppReceiptValidator/Supporting Files/AppReceiptValidator.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ideasoncanvas.AppReceiptValidator;
 				PRODUCT_NAME = AppReceiptValidator;
 				SKIP_INSTALL = YES;
@@ -1812,7 +1818,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/AppReceiptValidator/OpenSSL/lib-ios",
 				);
-				MODULEMAP_FILE = "AppReceiptValidator/Supporting Files/iOS/AppReceiptValidator.modulemap";
+				MODULEMAP_FILE = "AppReceiptValidator/Supporting Files/AppReceiptValidator.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ideasoncanvas.AppReceiptValidator;
 				PRODUCT_NAME = AppReceiptValidator;
 				SKIP_INSTALL = YES;
@@ -1844,7 +1850,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/AppReceiptValidator/OpenSSL/lib-macos",
 				);
-				MODULEMAP_FILE = "AppReceiptValidator/Supporting Files/macOS/AppReceiptValidator.modulemap";
+				MODULEMAP_FILE = "AppReceiptValidator/Supporting Files/AppReceiptValidator.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ideasoncanvas.AppReceiptValidator;
 				PRODUCT_NAME = AppReceiptValidator;
 				SDKROOT = macosx;
@@ -1876,7 +1882,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/AppReceiptValidator/OpenSSL/lib-macos",
 				);
-				MODULEMAP_FILE = "AppReceiptValidator/Supporting Files/macOS/AppReceiptValidator.modulemap";
+				MODULEMAP_FILE = "AppReceiptValidator/Supporting Files/AppReceiptValidator.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ideasoncanvas.AppReceiptValidator;
 				PRODUCT_NAME = AppReceiptValidator;
 				SDKROOT = macosx;
