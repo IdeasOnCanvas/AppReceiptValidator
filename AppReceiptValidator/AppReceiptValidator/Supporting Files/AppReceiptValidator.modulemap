@@ -76,5 +76,7 @@ framework module AppReceiptValidator {
         header "srtp.h"
         header "x509v3.h"
         header "pkcs7_union_accessors.h"
+        header "shim.h"
+        header "opensslconf-x86_64.h"
     }
 }
