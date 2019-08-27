@@ -62,11 +62,14 @@ extension AppReceiptValidator.Parameters {
 
         case installedInMainBundle
         case data(Data)
+        case dynamic(() -> Data?)
 
         public func loadData() -> Data? {
             switch self {
             case .data(let data):
                 return data
+            case .dynamic(let maker):
+                return maker()
             case .installedInMainBundle:
                 guard let receiptUrl = Bundle.main.appStoreReceiptURL else { return nil }
                 guard (try? receiptUrl.checkResourceIsReachable()) ?? false else { return nil }
