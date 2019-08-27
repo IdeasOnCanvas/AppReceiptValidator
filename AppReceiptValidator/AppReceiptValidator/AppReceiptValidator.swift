@@ -9,8 +9,6 @@
 import AppReceiptValidator.OpenSSL
 import Foundation
 
-// swiftlint:disable file_length
-
 /// Apple guide: https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Introduction.html
 ///
 /// Original inspiration for the Code: https://github.com/andrewcbancroft/SwiftyLocalReceiptValidator/blob/master/ReceiptValidator.swift
