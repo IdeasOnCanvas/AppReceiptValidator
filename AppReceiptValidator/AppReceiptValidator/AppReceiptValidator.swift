@@ -271,6 +271,8 @@ private extension AppReceiptValidator {
                 inAppPurchaseReceipt.cancellationDate = value.dateValue
             case .webOrderLineItemId:
                 inAppPurchaseReceipt.webOrderLineItemId = value.intValue
+            case .isInIntroductoryOfferPeriod:
+                inAppPurchaseReceipt.isInIntroductoryPricePeriod = value.intValue.flatMap { $0 != 0 }
             }
         }
         return inAppPurchaseReceipt
@@ -351,6 +353,7 @@ private extension AppReceiptValidator {
         case subscriptionExpirationDate = 1708
         case cancellationDate = 1712
         case webOrderLineItemId = 1711
+        case isInIntroductoryOfferPeriod = 1719
     }
 }
 

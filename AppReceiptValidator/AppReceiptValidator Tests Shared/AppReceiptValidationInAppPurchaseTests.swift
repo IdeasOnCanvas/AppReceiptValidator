@@ -62,7 +62,8 @@ class AppReceiptValidationInAppPurchaseTests: XCTestCase {
                     originalPurchaseDate: Date.demoDate(string: "2015-08-07T20:37:55Z"),
                     subscriptionExpirationDate: nil,
                     cancellationDate: nil,
-                    webOrderLineItemId: 0
+                    webOrderLineItemId: 0,
+                    isInIntroductoryPricePeriod: nil
                 ),
                 InAppPurchaseReceipt(
                     quantity: 1,
@@ -73,7 +74,8 @@ class AppReceiptValidationInAppPurchaseTests: XCTestCase {
                     originalPurchaseDate: Date.demoDate(string: "2015-08-10T06:49:33Z"),
                     subscriptionExpirationDate: Date.demoDate(string: "2015-08-10T06:54:32Z"),
                     cancellationDate: nil,
-                    webOrderLineItemId: 1000000030274153
+                    webOrderLineItemId: 1000000030274153,
+                    isInIntroductoryPricePeriod: nil
                 ),
                 InAppPurchaseReceipt(
                     quantity: 1,
@@ -84,7 +86,8 @@ class AppReceiptValidationInAppPurchaseTests: XCTestCase {
                     originalPurchaseDate: Date.demoDate(string: "2015-08-10T06:53:18Z"),
                     subscriptionExpirationDate: Date.demoDate(string: "2015-08-10T06:59:32Z"),
                     cancellationDate: nil,
-                    webOrderLineItemId: 1000000030274154
+                    webOrderLineItemId: 1000000030274154,
+                    isInIntroductoryPricePeriod: nil
                 ),
                 InAppPurchaseReceipt(
                     quantity: 1,
@@ -95,7 +98,8 @@ class AppReceiptValidationInAppPurchaseTests: XCTestCase {
                     originalPurchaseDate: Date.demoDate(string: "2015-08-10T06:57:34Z"),
                     subscriptionExpirationDate: Date.demoDate(string: "2015-08-10T07:04:32Z"),
                     cancellationDate: nil,
-                    webOrderLineItemId: 1000000030274165
+                    webOrderLineItemId: 1000000030274165,
+                    isInIntroductoryPricePeriod: nil
                 ),
                 InAppPurchaseReceipt(
                     quantity: 1,
@@ -106,7 +110,8 @@ class AppReceiptValidationInAppPurchaseTests: XCTestCase {
                     originalPurchaseDate: Date.demoDate(string: "2015-08-10T07:02:33Z"),
                     subscriptionExpirationDate: Date.demoDate(string: "2015-08-10T07:09:32Z"),
                     cancellationDate: nil,
-                    webOrderLineItemId: 1000000030274192
+                    webOrderLineItemId: 1000000030274192,
+                    isInIntroductoryPricePeriod: nil
                 ),
                 InAppPurchaseReceipt(
                     quantity: 1,
@@ -117,7 +122,8 @@ class AppReceiptValidationInAppPurchaseTests: XCTestCase {
                     originalPurchaseDate: Date.demoDate(string: "2015-08-10T07:08:30Z"),
                     subscriptionExpirationDate: Date.demoDate(string: "2015-08-10T07:14:32Z"),
                     cancellationDate: nil,
-                    webOrderLineItemId: 1000000030274219
+                    webOrderLineItemId: 1000000030274219,
+                    isInIntroductoryPricePeriod: nil
                 ),
                 InAppPurchaseReceipt(
                     quantity: 1,
@@ -128,7 +134,8 @@ class AppReceiptValidationInAppPurchaseTests: XCTestCase {
                     originalPurchaseDate: Date.demoDate(string: "2015-08-10T07:12:34Z"),
                     subscriptionExpirationDate: Date.demoDate(string: "2015-08-10T07:19:32Z"),
                     cancellationDate: nil,
-                    webOrderLineItemId: 1000000030274249
+                    webOrderLineItemId: 1000000030274249,
+                    isInIntroductoryPricePeriod: nil
                 )
             ]
         )
