@@ -31,6 +31,8 @@
 		D15358B41F62C47400F297D0 /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 in Resources */ = {isa = PBXBuildFile; fileRef = D15358B11F62C3C400F297D0 /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 */; };
 		D15358B51F62C47500F297D0 /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 in Resources */ = {isa = PBXBuildFile; fileRef = D15358B11F62C3C400F297D0 /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 */; };
 		D15358EF1F62D2C100F297D0 /* AppReceiptValidator.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D1D6F4B51F5D684C00E86FE1 /* AppReceiptValidator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D1545DDD233D062A00BE82F8 /* hannes_bear_introductory_1_week_trial_receipt in Resources */ = {isa = PBXBuildFile; fileRef = D1545DDC233D062A00BE82F8 /* hannes_bear_introductory_1_week_trial_receipt */; };
+		D1545DDE233D062A00BE82F8 /* hannes_bear_introductory_1_week_trial_receipt in Resources */ = {isa = PBXBuildFile; fileRef = D1545DDC233D062A00BE82F8 /* hannes_bear_introductory_1_week_trial_receipt */; };
 		D15C59111F697D4D006F66FE /* pkcs7_union_accessors.h in Headers */ = {isa = PBXBuildFile; fileRef = D19095BA1F6004D10095729B /* pkcs7_union_accessors.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D15C59151F698061006F66FE /* aes.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D431061F69627600F7F39D /* aes.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D15C59181F6981C4006F66FE /* asn1.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D431071F69627600F7F39D /* asn1.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -288,6 +290,7 @@
 		D150A0ED1F669A880026ED04 /* AppReceiptValidationInAppPurchaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReceiptValidationInAppPurchaseTests.swift; sourceTree = "<group>"; };
 		D15358A51F62BEC100F297D0 /* grandUnifiedExpiredAppleCert_receipt.b64 */ = {isa = PBXFileReference; lastKnownFileType = text; path = grandUnifiedExpiredAppleCert_receipt.b64; sourceTree = "<group>"; };
 		D15358B11F62C3C400F297D0 /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 */ = {isa = PBXFileReference; lastKnownFileType = text; path = deprecatedSinglesTypeExpiredAppleCert_receipt.b64; sourceTree = "<group>"; };
+		D1545DDC233D062A00BE82F8 /* hannes_bear_introductory_1_week_trial_receipt */ = {isa = PBXFileReference; lastKnownFileType = file; path = hannes_bear_introductory_1_week_trial_receipt; sourceTree = "<group>"; };
 		D15C59141F698005006F66FE /* AppReceiptValidator.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = AppReceiptValidator.modulemap; sourceTree = "<group>"; };
 		D19095811F6000A40095729B /* AppReceiptValidator Demo macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AppReceiptValidator Demo macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D19095831F6000A40095729B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -903,6 +906,7 @@
 				D1D6F5451F5D8DF700E86FE1 /* hannes_mac_mindnode_pro_receipt */,
 				D150A0E21F66936B0026ED04 /* mindnode_ios_michaelsandbox_receipt1.b64 */,
 				D150A0E81F6698950026ED04 /* mindnode_ios_michaelsandbox_receipt2.b64 */,
+				D1545DDC233D062A00BE82F8 /* hannes_bear_introductory_1_week_trial_receipt */,
 				D1D6F54F1F5D9E8D00E86FE1 /* not_a_receipt */,
 			);
 			path = "Test Assets";
@@ -1289,6 +1293,7 @@
 				D14FA7331F61476800545540 /* mac_mindnode_rebought_receipt in Resources */,
 				D19095A21F6000DE0095729B /* hannes_mac_mindnode_pro_Info.plist in Resources */,
 				D19095A11F6000DE0095729B /* hannes_mac_mindnode_receipt in Resources */,
+				D1545DDE233D062A00BE82F8 /* hannes_bear_introductory_1_week_trial_receipt in Resources */,
 				D15358AA1F62C12400F297D0 /* grandUnifiedExpiredAppleCert_receipt.b64 in Resources */,
 				D19095A41F6000DE0095729B /* not_a_receipt in Resources */,
 				D150A0E91F66989A0026ED04 /* mindnode_ios_michaelsandbox_receipt2.b64 in Resources */,
@@ -1306,6 +1311,7 @@
 				D14FA7321F61476700545540 /* mac_mindnode_rebought_receipt in Resources */,
 				D19095CA1F601E5D0095729B /* hannes_mac_mindnode_pro_Info.plist in Resources */,
 				D19095C91F601E5D0095729B /* hannes_mac_mindnode_receipt in Resources */,
+				D1545DDD233D062A00BE82F8 /* hannes_bear_introductory_1_week_trial_receipt in Resources */,
 				D15358AE1F62C12500F297D0 /* grandUnifiedExpiredAppleCert_receipt.b64 in Resources */,
 				D19095CC1F601E5D0095729B /* not_a_receipt in Resources */,
 				D150A0EA1F66989A0026ED04 /* mindnode_ios_michaelsandbox_receipt2.b64 in Resources */,

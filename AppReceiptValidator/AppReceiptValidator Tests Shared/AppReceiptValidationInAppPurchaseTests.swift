@@ -13,6 +13,46 @@ class AppReceiptValidationInAppPurchaseTests: XCTestCase {
 
     var receiptValidator = AppReceiptValidator()
 
+    func testBearInitialSubscriptionReceiptParsing() {
+        guard let data = assertTestAsset(filename: "hannes_bear_introductory_1_week_trial_receipt") else { return }
+
+        // A monthly subscription to Bear on macOS with 2 week introductory offer (free trial) just started.
+        let expected = Receipt(
+            bundleIdentifier: "net.shinyfrog.bear",
+            bundleIdData: "DBJuZXQuc2hpbnlmcm9nLmJlYXI=",
+            appVersion: "1.7.3",
+            opaqueValue: "9MIfR4OoEFSOXc1fQ1ryDA==",
+            sha1Hash: "fgStBECp2Yi0PONokIjcbBpnhvM=",
+            originalAppVersion: "1.7.3",
+            receiptCreationDate: "2019-09-26T14:08:37Z",
+            expirationDate: nil,
+            inAppPurchaseReceipts: [
+                InAppPurchaseReceipt(
+                    quantity: 1,
+                    productIdentifier: "net.shinyfrog.bear.pro_monthly_subscription",
+                    transactionIdentifier: "240000651265628",
+                    originalTransactionIdentifier: "240000651265628",
+                    purchaseDate: "2019-09-26T14:08:36Z",
+                    originalPurchaseDate: "2019-09-26T14:08:36Z",
+                    subscriptionExpirationDate: "2019-10-03T14:08:36Z",
+                    cancellationDate: nil,
+                    webOrderLineItemId: 240000225193522,
+                    isInIntroductoryPricePeriod: false // should this not be true?
+                )
+            ]
+        )
+        let result = receiptValidator.validateReceipt {
+            $0.receiptOrigin = .data(data)
+            $0.shouldValidateHash = false // the original device identifier is unknown
+        }
+        guard let receipt = result.receipt else {
+            XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")
+            return
+        }
+
+        XCTAssertEqual(receipt, expected)
+    }
+
     func testNonMindNodeReceiptParsingWithoutValidation() {
         guard let data = assertB64TestAsset(filename: "grandUnifiedExpiredAppleCert_receipt.b64") else { return }
 
