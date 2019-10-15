@@ -120,8 +120,9 @@ private extension ViewController {
     }
 
     func localDeviceIdentifierString() -> String {
-        let origin = AppReceiptValidator.Parameters.DeviceIdentifier.currentDevice
-        return origin.getData()?.base64EncodedString() ?? "DeviceIdentifier could not be determined"
+        guard let device = AppReceiptValidator.Parameters.DeviceIdentifier.getPrimaryNetworkMACAddress() else { return "DeviceIdentifier could not be determined" }
+
+        return "\(device.addressString) (MAC), \(device.data.base64EncodedString()) (B64)"
     }
 
     func render(string: String) {
