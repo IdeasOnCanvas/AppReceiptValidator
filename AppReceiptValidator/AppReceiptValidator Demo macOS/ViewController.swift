@@ -18,6 +18,7 @@ class ViewController: NSViewController, NSTextViewDelegate, NSTextFieldDelegate 
     @IBOutlet private var identifierTextField: NSTextField!
     @IBOutlet private var outputTextView: NSTextView!
     @IBOutlet private var dropReceivingView: DropAcceptingTextView!
+    @IBOutlet private var localDeviceIdentifierLabel: NSTextField!
 
     // MARK: - Lifecycle
 
@@ -34,6 +35,7 @@ class ViewController: NSViewController, NSTextViewDelegate, NSTextFieldDelegate 
 
             self.identifierDidChange(self.identifierTextField)
         }
+        self.renderLocalDeviceIdentifierText()
     }
 
     // MARK: - NSTextViewDelegate
@@ -54,6 +56,10 @@ class ViewController: NSViewController, NSTextViewDelegate, NSTextFieldDelegate 
 
     func paste(_ sender: Any) {
         self.inputTextView.paste(sender)
+    }
+
+    @IBAction func determineDeviceIdentifier(_ sender: Any) {
+        self.renderLocalDeviceIdentifierText()
     }
 }
 
@@ -113,8 +119,19 @@ private extension ViewController {
         }
     }
 
+    func localDeviceIdentifierString() -> String {
+        let origin = AppReceiptValidator.Parameters.DeviceIdentifier.currentDevice
+        return origin.getData()?.base64EncodedString() ?? "DeviceIdentifier could not be determined"
+    }
+
     func render(string: String) {
         self.outputTextView.string = string
+    }
+
+    func renderLocalDeviceIdentifierText() {
+        NSLog("Local DeviceIdentifier: " + localDeviceIdentifierString())
+        self.localDeviceIdentifierLabel.attributedStringValue =
+        NSAttributedString(string: localDeviceIdentifierString())
     }
 }
 
