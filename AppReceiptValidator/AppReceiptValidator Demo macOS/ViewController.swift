@@ -122,7 +122,7 @@ private extension ViewController {
     func localDeviceIdentifierString() -> String {
         guard let device = AppReceiptValidator.Parameters.DeviceIdentifier.getPrimaryNetworkMACAddress() else { return "DeviceIdentifier could not be determined" }
 
-        return "\(device.addressString) (MAC), \(device.data.base64EncodedString()) (B64)"
+        return "\(device.addressString) (HEX), \(device.data.base64EncodedString()) (B64)"
     }
 
     func render(string: String) {
@@ -130,7 +130,7 @@ private extension ViewController {
     }
 
     func renderLocalDeviceIdentifierText() {
-        NSLog("Local DeviceIdentifier: " + localDeviceIdentifierString())
+        NSLog("Local MAC Address: " + localDeviceIdentifierString())
         self.localDeviceIdentifierLabel.attributedStringValue =
         NSAttributedString(string: localDeviceIdentifierString())
     }
