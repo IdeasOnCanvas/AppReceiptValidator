@@ -18,6 +18,7 @@ class ViewController: NSViewController, NSTextViewDelegate, NSTextFieldDelegate 
     @IBOutlet private var identifierTextField: NSTextField!
     @IBOutlet private var outputTextView: NSTextView!
     @IBOutlet private var dropReceivingView: DropAcceptingTextView!
+    @IBOutlet private var localDeviceIdentifierLabel: NSTextField!
 
     // MARK: - Lifecycle
 
@@ -34,6 +35,7 @@ class ViewController: NSViewController, NSTextViewDelegate, NSTextFieldDelegate 
 
             self.identifierDidChange(self.identifierTextField)
         }
+        self.renderLocalDeviceIdentifierText()
     }
 
     // MARK: - NSTextViewDelegate
@@ -54,6 +56,10 @@ class ViewController: NSViewController, NSTextViewDelegate, NSTextFieldDelegate 
 
     func paste(_ sender: Any) {
         self.inputTextView.paste(sender)
+    }
+
+    @IBAction func determineDeviceIdentifier(_ sender: Any) {
+        self.renderLocalDeviceIdentifierText()
     }
 }
 
@@ -113,8 +119,20 @@ private extension ViewController {
         }
     }
 
+    func localDeviceIdentifierString() -> String {
+        guard let device = AppReceiptValidator.Parameters.DeviceIdentifier.getPrimaryNetworkMACAddress() else { return "DeviceIdentifier could not be determined" }
+
+        return "\(device.addressString) (HEX), \(device.data.base64EncodedString()) (B64)"
+    }
+
     func render(string: String) {
         self.outputTextView.string = string
+    }
+
+    func renderLocalDeviceIdentifierText() {
+        NSLog("Local MAC Address: " + localDeviceIdentifierString())
+        self.localDeviceIdentifierLabel.attributedStringValue =
+        NSAttributedString(string: localDeviceIdentifierString())
     }
 }
 
