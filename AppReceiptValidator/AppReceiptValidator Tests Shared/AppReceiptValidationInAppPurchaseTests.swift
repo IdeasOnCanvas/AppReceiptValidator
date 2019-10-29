@@ -54,7 +54,7 @@ class AppReceiptValidationInAppPurchaseTests: XCTestCase {
             expirationDate: nil,
             inAppPurchaseReceipts: [
                 InAppPurchaseReceipt(
-                    quantity: nil,
+                    quantity: 1,
                     productIdentifier: "consumable",
                     transactionIdentifier: "1000000166865231",
                     originalTransactionIdentifier: "1000000166865231",
@@ -62,10 +62,10 @@ class AppReceiptValidationInAppPurchaseTests: XCTestCase {
                     originalPurchaseDate: Date.demoDate(string: "2015-08-07T20:37:55Z"),
                     subscriptionExpirationDate: nil,
                     cancellationDate: nil,
-                    webOrderLineItemId: nil
+                    webOrderLineItemId: 0
                 ),
                 InAppPurchaseReceipt(
-                    quantity: nil,
+                    quantity: 1,
                     productIdentifier: "monthly",
                     transactionIdentifier: "1000000166965150",
                     originalTransactionIdentifier: "1000000166965150",
@@ -73,10 +73,10 @@ class AppReceiptValidationInAppPurchaseTests: XCTestCase {
                     originalPurchaseDate: Date.demoDate(string: "2015-08-10T06:49:33Z"),
                     subscriptionExpirationDate: Date.demoDate(string: "2015-08-10T06:54:32Z"),
                     cancellationDate: nil,
-                    webOrderLineItemId: nil
+                    webOrderLineItemId: 1000000030274153
                 ),
-                InAppPurchaseReceipt( // restores
-                    quantity: nil,
+                InAppPurchaseReceipt(
+                    quantity: 1,
                     productIdentifier: "monthly",
                     transactionIdentifier: "1000000166965327",
                     originalTransactionIdentifier: "1000000166965150",
@@ -84,10 +84,10 @@ class AppReceiptValidationInAppPurchaseTests: XCTestCase {
                     originalPurchaseDate: Date.demoDate(string: "2015-08-10T06:53:18Z"),
                     subscriptionExpirationDate: Date.demoDate(string: "2015-08-10T06:59:32Z"),
                     cancellationDate: nil,
-                    webOrderLineItemId: nil
+                    webOrderLineItemId: 1000000030274154
                 ),
                 InAppPurchaseReceipt(
-                    quantity: nil,
+                    quantity: 1,
                     productIdentifier: "monthly",
                     transactionIdentifier: "1000000166965895",
                     originalTransactionIdentifier: "1000000166965150",
@@ -95,10 +95,10 @@ class AppReceiptValidationInAppPurchaseTests: XCTestCase {
                     originalPurchaseDate: Date.demoDate(string: "2015-08-10T06:57:34Z"),
                     subscriptionExpirationDate: Date.demoDate(string: "2015-08-10T07:04:32Z"),
                     cancellationDate: nil,
-                    webOrderLineItemId: nil
+                    webOrderLineItemId: 1000000030274165
                 ),
                 InAppPurchaseReceipt(
-                    quantity: nil,
+                    quantity: 1,
                     productIdentifier: "monthly",
                     transactionIdentifier: "1000000166967152",
                     originalTransactionIdentifier: "1000000166965150",
@@ -106,10 +106,10 @@ class AppReceiptValidationInAppPurchaseTests: XCTestCase {
                     originalPurchaseDate: Date.demoDate(string: "2015-08-10T07:02:33Z"),
                     subscriptionExpirationDate: Date.demoDate(string: "2015-08-10T07:09:32Z"),
                     cancellationDate: nil,
-                    webOrderLineItemId: nil
+                    webOrderLineItemId: 1000000030274192
                 ),
                 InAppPurchaseReceipt(
-                    quantity: nil,
+                    quantity: 1,
                     productIdentifier: "monthly",
                     transactionIdentifier: "1000000166967484",
                     originalTransactionIdentifier: "1000000166965150",
@@ -117,10 +117,10 @@ class AppReceiptValidationInAppPurchaseTests: XCTestCase {
                     originalPurchaseDate: Date.demoDate(string: "2015-08-10T07:08:30Z"),
                     subscriptionExpirationDate: Date.demoDate(string: "2015-08-10T07:14:32Z"),
                     cancellationDate: nil,
-                    webOrderLineItemId: nil
+                    webOrderLineItemId: 1000000030274219
                 ),
                 InAppPurchaseReceipt(
-                    quantity: nil,
+                    quantity: 1,
                     productIdentifier: "monthly",
                     transactionIdentifier: "1000000166967782",
                     originalTransactionIdentifier: "1000000166965150",
@@ -128,8 +128,9 @@ class AppReceiptValidationInAppPurchaseTests: XCTestCase {
                     originalPurchaseDate: Date.demoDate(string: "2015-08-10T07:12:34Z"),
                     subscriptionExpirationDate: Date.demoDate(string: "2015-08-10T07:19:32Z"),
                     cancellationDate: nil,
-                    webOrderLineItemId: nil
+                    webOrderLineItemId: 1000000030274249
                 )
-            ])
+            ]
+        )
     }
 }

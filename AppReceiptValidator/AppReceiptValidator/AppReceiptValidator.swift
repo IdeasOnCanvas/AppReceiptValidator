@@ -117,15 +117,17 @@ private extension AppReceiptValidator {
         var sha1Context = SHA_CTX()
 
         SHA1_Init(&sha1Context)
-
-        deviceIdentifierData.withUnsafeBytes { pointer -> Void in
-            SHA1_Update(&sha1Context, pointer, deviceIdentifierData.count)
+        deviceIdentifierData.withUnsafeBytes { poi -> Void in
+            print(poi)
         }
-        receiptOpaqueValueData.withUnsafeBytes { pointer -> Void in
-            SHA1_Update(&sha1Context, pointer, receiptOpaqueValueData.count)
+        _ = deviceIdentifierData.withUnsafeBytes { pointer -> Void in
+            SHA1_Update(&sha1Context, pointer.baseAddress, deviceIdentifierData.count)
         }
-        receiptBundleIdData.withUnsafeBytes { pointer -> Void in
-            SHA1_Update(&sha1Context, pointer, receiptBundleIdData.count)
+        _ = receiptOpaqueValueData.withUnsafeBytes { pointer -> Void in
+            SHA1_Update(&sha1Context, pointer.baseAddress, receiptOpaqueValueData.count)
+        }
+        _ = receiptBundleIdData.withUnsafeBytes { pointer -> Void in
+            SHA1_Update(&sha1Context, pointer.baseAddress, receiptBundleIdData.count)
         }
         SHA1_Final(&computedHash, &sha1Context)
 
@@ -243,28 +245,30 @@ private extension AppReceiptValidator {
         return (receipt: receipt, unofficialReceipt: unofficialReceipt)
     }
 
+    // swiftlint:disable:next cyclomatic_complexity
     private func parseInAppPurchaseReceipt(pointer: UnsafePointer<UInt8>, length: Int) throws -> InAppPurchaseReceipt {
         var inAppPurchaseReceipt = InAppPurchaseReceipt()
         try self.parseASN1Set(pointer: pointer, length: length) { attributeType, value in
             guard let attribute = KnownInAppPurchaseAttribute(rawValue: attributeType) else { return }
+            guard let value = value.unwrapped else { return } // always unwrap set members
 
             switch attribute {
             case .quantity:
                 inAppPurchaseReceipt.quantity = value.intValue
             case .productIdentifier:
-                inAppPurchaseReceipt.productIdentifier = value.unwrappedStringValue
+                inAppPurchaseReceipt.productIdentifier = value.stringValue
             case .transactionIdentifier:
-                inAppPurchaseReceipt.transactionIdentifier = value.unwrappedStringValue
+                inAppPurchaseReceipt.transactionIdentifier = value.stringValue
             case .originalTransactionIdentifier:
-                inAppPurchaseReceipt.originalTransactionIdentifier = value.unwrappedStringValue
+                inAppPurchaseReceipt.originalTransactionIdentifier = value.stringValue
             case .purchaseDate:
-                inAppPurchaseReceipt.purchaseDate = value.unwrappedDateValue
+                inAppPurchaseReceipt.purchaseDate = value.dateValue
             case .originalPurchaseDate:
-                inAppPurchaseReceipt.originalPurchaseDate = value.unwrappedDateValue
+                inAppPurchaseReceipt.originalPurchaseDate = value.dateValue
             case .subscriptionExpirationDate:
-                inAppPurchaseReceipt.subscriptionExpirationDate = value.unwrappedDateValue
+                inAppPurchaseReceipt.subscriptionExpirationDate = value.dateValue
             case .cancellationDate:
-                inAppPurchaseReceipt.cancellationDate = value.unwrappedDateValue
+                inAppPurchaseReceipt.cancellationDate = value.dateValue
             case .webOrderLineItemId:
                 inAppPurchaseReceipt.webOrderLineItemId = value.intValue
             }

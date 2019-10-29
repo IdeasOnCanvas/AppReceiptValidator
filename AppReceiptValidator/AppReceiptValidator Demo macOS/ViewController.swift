@@ -9,9 +9,8 @@
 import AppReceiptValidator
 import Cocoa
 
-
-// MARK: - ViewController
-
+/// Displays two textfields. One to paste a receipt into as base64 string, the other displaying the parsed receipt.
+/// A device identifier can be added in a third field, which is then used to validate the receipt.
 class ViewController: NSViewController, NSTextViewDelegate, NSTextFieldDelegate {
 
     private var textFieldObserver: Any?
@@ -19,6 +18,7 @@ class ViewController: NSViewController, NSTextViewDelegate, NSTextFieldDelegate 
     @IBOutlet private var identifierTextField: NSTextField!
     @IBOutlet private var outputTextView: NSTextView!
     @IBOutlet private var dropReceivingView: DropAcceptingTextView!
+    @IBOutlet private var localDeviceIdentifierLabel: NSTextField!
 
     // MARK: - Lifecycle
 
@@ -30,11 +30,12 @@ class ViewController: NSViewController, NSTextViewDelegate, NSTextFieldDelegate 
         self.dropReceivingView.handleDroppedFile = { [unowned self] url in
             self.update(url: url)
         }
-        self.textFieldObserver = NotificationCenter.default.addObserver(forName: NSTextField.textDidChangeNotification, object: self.identifierTextField, queue: .main) { [weak self] notification in
+        self.textFieldObserver = NotificationCenter.default.addObserver(forName: NSTextField.textDidChangeNotification, object: self.identifierTextField, queue: .main) { [weak self] _ in
             guard let self = self else { return }
 
             self.identifierDidChange(self.identifierTextField)
         }
+        self.renderLocalDeviceIdentifierText()
     }
 
     // MARK: - NSTextViewDelegate
@@ -55,6 +56,10 @@ class ViewController: NSViewController, NSTextViewDelegate, NSTextFieldDelegate 
 
     func paste(_ sender: Any) {
         self.inputTextView.paste(sender)
+    }
+
+    @IBAction func determineDeviceIdentifier(_ sender: Any) {
+        self.renderLocalDeviceIdentifierText()
     }
 }
 
@@ -114,8 +119,20 @@ private extension ViewController {
         }
     }
 
+    func localDeviceIdentifierString() -> String {
+        guard let device = AppReceiptValidator.Parameters.DeviceIdentifier.getPrimaryNetworkMACAddress() else { return "DeviceIdentifier could not be determined" }
+
+        return "\(device.addressString) (HEX), \(device.data.base64EncodedString()) (B64)"
+    }
+
     func render(string: String) {
         self.outputTextView.string = string
+    }
+
+    func renderLocalDeviceIdentifierText() {
+        NSLog("Local MAC Address: " + localDeviceIdentifierString())
+        self.localDeviceIdentifierLabel.attributedStringValue =
+        NSAttributedString(string: localDeviceIdentifierString())
     }
 }
 

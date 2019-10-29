@@ -12,7 +12,7 @@ public extension AppReceiptValidator {
 
     /// Describes how to validate a receipt, and how/where to obtain the dependencies (receipt, deviceIdentifier, apple root certificate)
     /// Use .default to initialize the standard parameters. By default, no `propertyValidations` are active.
-    public struct Parameters {
+    struct Parameters {
 
         // MARK: - Properties
 
@@ -62,11 +62,14 @@ extension AppReceiptValidator.Parameters {
 
         case installedInMainBundle
         case data(Data)
+        case dynamic(() -> Data?)
 
         public func loadData() -> Data? {
             switch self {
             case .data(let data):
                 return data
+            case .dynamic(let maker):
+                return maker()
             case .installedInMainBundle:
                 guard let receiptUrl = Bundle.main.appStoreReceiptURL else { return nil }
                 guard (try? receiptUrl.checkResourceIsReachable()) ?? false else { return nil }
@@ -85,7 +88,7 @@ public extension AppReceiptValidator.Parameters {
     ///
     /// - currentDevice: Obtains it from the system location: MAC Address on macOS, deviceIdentifierForVendor on iOS
     /// - data: Specific Data to use
-    public enum DeviceIdentifier {
+    enum DeviceIdentifier {
 
         case currentDevice
         case data(Data)

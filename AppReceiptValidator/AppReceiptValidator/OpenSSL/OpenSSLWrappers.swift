@@ -14,8 +14,8 @@ final class BIOWrapper {
     let bio = BIO_new(BIO_s_mem())
 
     init(data: Data) {
-        data.withUnsafeBytes { pointer -> Void in
-            BIO_write(self.bio, pointer, Int32(data.count))
+        _ = data.withUnsafeBytes { pointer in
+            BIO_write(self.bio, pointer.baseAddress, Int32(data.count))
         }
     }
 
