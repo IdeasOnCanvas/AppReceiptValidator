@@ -31,7 +31,7 @@
 		45A4B98123E0CD0E007EDF00 /* hannes_mac_mindnode_pro_receipt in Copy Test assets */ = {isa = PBXBuildFile; fileRef = 45A4B97623E0CCEF007EDF00 /* hannes_mac_mindnode_pro_receipt */; };
 		45A4B98223E0CD0E007EDF00 /* mindnode_ios_michaelsandbox_receipt1.b64 in Copy Test assets */ = {isa = PBXBuildFile; fileRef = 45A4B97723E0CCEF007EDF00 /* mindnode_ios_michaelsandbox_receipt1.b64 */; };
 		45A4B98323E0CD0E007EDF00 /* mindnode_ios_michaelsandbox_receipt2.b64 in Copy Test assets */ = {isa = PBXBuildFile; fileRef = 45A4B97823E0CCEF007EDF00 /* mindnode_ios_michaelsandbox_receipt2.b64 */; };
-		45A4B98523E0CD3D007EDF00 /* AppleIncRootCertificate.cer in CopyFiles */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* AppleIncRootCertificate.cer */; };
+		45A4B98523E0CD3D007EDF00 /* AppleIncRootCertificate.cer in Copy Files (1 item) */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* AppleIncRootCertificate.cer */; };
 		OBJ_272 /* AppReceiptValidator+Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* AppReceiptValidator+Parameters.swift */; };
 		OBJ_273 /* AppReceiptValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* AppReceiptValidator.swift */; };
 		OBJ_274 /* DeviceIdentifier+installedDeviceIdentifier_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* DeviceIdentifier+installedDeviceIdentifier_iOS.swift */; };
@@ -1071,14 +1071,15 @@
 			name = "Copy Test assets";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		45A4B98423E0CD36007EDF00 /* CopyFiles */ = {
+		45A4B98423E0CD36007EDF00 /* Copy Files (1 item) */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				45A4B98523E0CD3D007EDF00 /* AppleIncRootCertificate.cer in CopyFiles */,
+				45A4B98523E0CD3D007EDF00 /* AppleIncRootCertificate.cer in Copy Files (1 item) */,
 			);
+			name = "Copy Files (1 item)";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -2332,7 +2333,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = OBJ_268 /* Build configuration list for PBXNativeTarget "AppReceiptValidator" */;
 			buildPhases = (
-				45A4B98423E0CD36007EDF00 /* CopyFiles */,
+				45A4B98423E0CD36007EDF00 /* Copy Files (1 item) */,
 				OBJ_271 /* Sources */,
 				OBJ_281 /* Frameworks */,
 			);
