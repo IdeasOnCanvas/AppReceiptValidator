@@ -148,6 +148,7 @@ private extension AppReceiptValidator {
         guard let nonNullReceiptPKCS7Container = receiptPKCS7Container else { throw Error.emptyReceiptContents }
 
         let pkcs7Wrapper = PKCS7Wrapper(pkcs7: nonNullReceiptPKCS7Container)
+
         let pkcs7DataTypeCode = OBJ_obj2nid(pkcs7_d_sign(receiptPKCS7Container).pointee.contents.pointee.type)
 
         guard pkcs7DataTypeCode == NID_pkcs7_data else { throw Error.emptyReceiptContents }

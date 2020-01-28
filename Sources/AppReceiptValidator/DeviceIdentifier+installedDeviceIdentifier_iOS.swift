@@ -5,7 +5,7 @@
 //  Created by Hannes Oud on 06.09.17.
 //  Copyright © 2017 IdeasOnCanvas GmbH. All rights reserved.
 //
-
+#if os(iOS)
 import UIKit
 
 extension AppReceiptValidator.Parameters.DeviceIdentifier {
@@ -15,3 +15,4 @@ extension AppReceiptValidator.Parameters.DeviceIdentifier {
         return UIDevice.current.identifierForVendor?.data
     }
 }
+#endif
