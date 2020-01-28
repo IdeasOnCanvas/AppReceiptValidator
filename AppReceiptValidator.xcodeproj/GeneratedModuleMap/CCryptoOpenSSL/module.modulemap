@@ -1,0 +1,4 @@
+module CCryptoOpenSSL {
+    umbrella "/Users/michaelschwarz/Projects/AppReceiptValidator/.build/checkouts/open-crypto/Sources/CCryptoOpenSSL/include"
+    export *
+}
