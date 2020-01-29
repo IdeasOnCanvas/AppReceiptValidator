@@ -11,7 +11,7 @@ import Foundation
 
 final class BIOWrapper {
 
-    let bio = BIO_new(BIO_s_mem())
+    let bio = BIO_new(BIO_s_mem())!
 
     init(data: Data) {
         _ = data.withUnsafeBytes { pointer in

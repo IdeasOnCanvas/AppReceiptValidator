@@ -6,7 +6,7 @@
 //  Copyright © 2017 IdeasOnCanvas GmbH. All rights reserved.
 //
 
-import COpenCryptoOpenSSL
+import COpenCrypto
 import Foundation
 
 // A resource for ASN1 can be https://www.oss.com/asn1/resources/reference/asn1-reference-card.html
@@ -60,7 +60,7 @@ extension ASN1Object {
         var objectInfo = ASN1Object()
         objectInfo.pointerBefore = pointer
 
-    //    ASN1_get_object(&pointer, &objectInfo.length, &objectInfo.type, &objectInfo.xclass, maxLength)
+        ASN1_get_object(&pointer, &objectInfo.length, &objectInfo.type, &objectInfo.xclass, maxLength)
         objectInfo.valuePointer = pointer
         objectInfo.pointerAfter = pointer?.advanced(by: objectInfo.length)
         return objectInfo
@@ -73,8 +73,7 @@ extension ASN1Object {
 
     /// true if it is an ASN1 Set
     var isOfASN1SetType: Bool {
-       // return type == V_ASN1_SET
-        return false
+        return type == V_ASN1_SET
     }
 }
 
@@ -85,7 +84,7 @@ extension ASN1Object {
     /// Parses a sequence and it's value container, moves the pointer to the attribute value's value portion.
     func sequenceValue(byAdvancingPointer pointer: inout UnsafePointer<UInt8>?, notBeyond limit: UnsafePointer<UInt8>) -> ASN1Sequence? {
         // ASN1 Object type must be an ASN1 Sequence
-    //    guard type == V_ASN1_SEQUENCE else { return nil }
+        guard type == V_ASN1_SEQUENCE else { return nil }
 
         // Get Attribute value
         let attributeTypeObject = ASN1Object.next(byAdvancingPointer: &pointer, notBeyond: limit)
@@ -110,7 +109,7 @@ extension ASN1Object {
         let valueObject = ASN1Object.next(byAdvancingPointer: &pointer, notBeyond: limit)
 
         // ASN1 Sequence value must be an ASN1 Octet String
-       // guard valueObject.type == V_ASN1_OCTET_STRING else { return nil }
+        guard valueObject.type == V_ASN1_OCTET_STRING else { return nil }
 
         return ASN1Sequence(attributeType: Int32(attributeType), attributeVersion: Int32(attributeVersion), valueObject: valueObject)
     }
@@ -123,8 +122,7 @@ extension ASN1Object {
     /// Unwraps an OCTET_STRING, which is a binary container, that can contain another ASN1Object.
     /// This is the case when we are looking at an entry in an ASN1Set
     var unwrapped: ASN1Object? {
-     //   guard self.type == V_ASN1_OCTET_STRING else { return nil }
-
+        guard self.type == V_ASN1_OCTET_STRING else { return nil }
         guard let endPointer = valuePointer?.advanced(by: length) else { return nil }
 
         var innerPointer = valuePointer
@@ -168,14 +166,15 @@ extension ASN1Object {
     }
 
     var intValue: Int64? {
-   /*     guard self.type == V_ASN1_INTEGER else { return nil }
+        guard self.type == V_ASN1_INTEGER else { return nil }
 
         var pointer = self.valuePointer
-        let integer = c2i_ASN1_INTEGER(nil, &pointer, self.length)
+
+        let integer = 0 // c2i_ASN1_INTEGER(nil, &pointer, self.length)
         defer {
-            ASN1_INTEGER_free(integer)
+            //ASN1_INTEGER_free(integer)
         }
-        let result = Int64(ASN1_INTEGER_get(integer))*/
+      //  let result = Int64(ASN1_INTEGER_get(integer))
         return 0// result
     }
 
@@ -201,12 +200,12 @@ extension ASN1Object {
         guard let bytes = self.valuePointer else { return nil }
 
         switch self.type {
-//        case V_ASN1_UTF8STRING:
-//            let data = Data(bytes: bytes, count: self.length)
-//            return String(data: data, encoding: .utf8)
-//        case V_ASN1_IA5STRING:
-//            let data = Data(bytes: bytes, count: self.length)
-//            return String(data: data, encoding: .ascii)
+        case V_ASN1_UTF8STRING:
+            let data = Data(bytes: bytes, count: self.length)
+            return String(data: data, encoding: .utf8)
+        case V_ASN1_IA5STRING:
+            let data = Data(bytes: bytes, count: self.length)
+            return String(data: data, encoding: .ascii)
         default:
             return nil
         }
