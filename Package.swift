@@ -11,7 +11,7 @@ let package = Package(
         .library(name: "AppReceiptValidator", targets: ["AppReceiptValidator"])
     ],
     dependencies: [
-        .package(url: "https://github.com/vapor/open-crypto.git", from: "3.3.0")
+        .package(url: "https://github.com/vapor/crypto.git", from: "3.3.0")
     ],
     targets: [
         .target(name: "AppReceiptValidator", dependencies: ["Crypto"]),
