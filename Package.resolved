@@ -12,7 +12,7 @@
       },
       {
         "package": "Crypto",
-        "repositoryURL": "https://github.com/vapor/open-crypto.git",
+        "repositoryURL": "https://github.com/vapor/crypto.git",
         "state": {
           "branch": null,
           "revision": "df8eb7d8ae51787b3a0628aa3975e67666da936c",

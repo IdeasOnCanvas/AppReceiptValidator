@@ -21,17 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		45A4B97A23E0CD0E007EDF00 /* not_a_receipt in Copy Test assets */ = {isa = PBXBuildFile; fileRef = 45A4B96D23E0CCEF007EDF00 /* not_a_receipt */; };
-		45A4B97B23E0CD0E007EDF00 /* hannes_mac_mindnode_pro_Info.plist in Copy Test assets */ = {isa = PBXBuildFile; fileRef = 45A4B96E23E0CCEF007EDF00 /* hannes_mac_mindnode_pro_Info.plist */; };
-		45A4B97C23E0CD0E007EDF00 /* mac_mindnode_rebought_receipt in Copy Test assets */ = {isa = PBXBuildFile; fileRef = 45A4B96F23E0CCEF007EDF00 /* mac_mindnode_rebought_receipt */; };
-		45A4B97D23E0CD0E007EDF00 /* hannes_mac_mindnode_Info.plist in Copy Test assets */ = {isa = PBXBuildFile; fileRef = 45A4B97023E0CCEF007EDF00 /* hannes_mac_mindnode_Info.plist */; };
-		45A4B97E23E0CD0E007EDF00 /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 in Copy Test assets */ = {isa = PBXBuildFile; fileRef = 45A4B97323E0CCEF007EDF00 /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 */; };
-		45A4B97F23E0CD0E007EDF00 /* grandUnifiedExpiredAppleCert_receipt.b64 in Copy Test assets */ = {isa = PBXBuildFile; fileRef = 45A4B97423E0CCEF007EDF00 /* grandUnifiedExpiredAppleCert_receipt.b64 */; };
-		45A4B98023E0CD0E007EDF00 /* hannes_mac_mindnode_receipt in Copy Test assets */ = {isa = PBXBuildFile; fileRef = 45A4B97523E0CCEF007EDF00 /* hannes_mac_mindnode_receipt */; };
-		45A4B98123E0CD0E007EDF00 /* hannes_mac_mindnode_pro_receipt in Copy Test assets */ = {isa = PBXBuildFile; fileRef = 45A4B97623E0CCEF007EDF00 /* hannes_mac_mindnode_pro_receipt */; };
-		45A4B98223E0CD0E007EDF00 /* mindnode_ios_michaelsandbox_receipt1.b64 in Copy Test assets */ = {isa = PBXBuildFile; fileRef = 45A4B97723E0CCEF007EDF00 /* mindnode_ios_michaelsandbox_receipt1.b64 */; };
-		45A4B98323E0CD0E007EDF00 /* mindnode_ios_michaelsandbox_receipt2.b64 in Copy Test assets */ = {isa = PBXBuildFile; fileRef = 45A4B97823E0CCEF007EDF00 /* mindnode_ios_michaelsandbox_receipt2.b64 */; };
-		45A4B98523E0CD3D007EDF00 /* AppleIncRootCertificate.cer in Copy Files (1 item) */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* AppleIncRootCertificate.cer */; };
+		C8B521E523E1A94F0011A2B8 /* DeviceIdentifier+installedDeviceIdentifier_linux.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B521E423E1A94F0011A2B8 /* DeviceIdentifier+installedDeviceIdentifier_linux.swift */; };
 		OBJ_272 /* AppReceiptValidator+Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* AppReceiptValidator+Parameters.swift */; };
 		OBJ_273 /* AppReceiptValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* AppReceiptValidator.swift */; };
 		OBJ_274 /* DeviceIdentifier+installedDeviceIdentifier_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* DeviceIdentifier+installedDeviceIdentifier_iOS.swift */; };
@@ -313,735 +303,735 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		45A4B90323E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5217B23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Crypto::Crypto";
 			remoteInfo = Crypto;
 		};
-		45A4B90423E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5217C23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Core::Core";
 			remoteInfo = Core;
 		};
-		45A4B90523E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5217D23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::NIOFoundationCompat";
 			remoteInfo = NIOFoundationCompat;
 		};
-		45A4B90623E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5217E23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::NIO";
 			remoteInfo = NIO;
 		};
-		45A4B90723E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5217F23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIOSHA1";
 			remoteInfo = CNIOSHA1;
 		};
-		45A4B90823E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5218023E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::NIOPriorityQueue";
 			remoteInfo = NIOPriorityQueue;
 		};
-		45A4B90923E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5218123E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::NIOConcurrencyHelpers";
 			remoteInfo = NIOConcurrencyHelpers;
 		};
-		45A4B90A23E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5218223E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIOAtomics";
 			remoteInfo = CNIOAtomics;
 		};
-		45A4B90B23E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5218323E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIOAtomics";
 			remoteInfo = CNIOAtomics;
 		};
-		45A4B90C23E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5218423E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIODarwin";
 			remoteInfo = CNIODarwin;
 		};
-		45A4B90D23E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5218523E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIOLinux";
 			remoteInfo = CNIOLinux;
 		};
-		45A4B90E23E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5218623E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIOSHA1";
 			remoteInfo = CNIOSHA1;
 		};
-		45A4B90F23E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5218723E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::NIOPriorityQueue";
 			remoteInfo = NIOPriorityQueue;
 		};
-		45A4B91023E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5218823E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::NIOConcurrencyHelpers";
 			remoteInfo = NIOConcurrencyHelpers;
 		};
-		45A4B91123E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5218923E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIOAtomics";
 			remoteInfo = CNIOAtomics;
 		};
-		45A4B91223E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5218A23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIODarwin";
 			remoteInfo = CNIODarwin;
 		};
-		45A4B91323E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5218B23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIOLinux";
 			remoteInfo = CNIOLinux;
 		};
-		45A4B91423E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5218C23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Core::COperatingSystem";
 			remoteInfo = COperatingSystem;
 		};
-		45A4B91523E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5218D23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Core::Bits";
 			remoteInfo = Bits;
 		};
-		45A4B91623E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5218E23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::NIO";
 			remoteInfo = NIO;
 		};
-		45A4B91723E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5218F23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIOSHA1";
 			remoteInfo = CNIOSHA1;
 		};
-		45A4B91823E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5219023E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::NIOPriorityQueue";
 			remoteInfo = NIOPriorityQueue;
 		};
-		45A4B91923E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5219123E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::NIOConcurrencyHelpers";
 			remoteInfo = NIOConcurrencyHelpers;
 		};
-		45A4B91A23E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5219223E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIOAtomics";
 			remoteInfo = CNIOAtomics;
 		};
-		45A4B91B23E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5219323E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIODarwin";
 			remoteInfo = CNIODarwin;
 		};
-		45A4B91C23E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5219423E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIOLinux";
 			remoteInfo = CNIOLinux;
 		};
-		45A4B91D23E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5219523E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Core::Debugging";
 			remoteInfo = Debugging;
 		};
-		45A4B91E23E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5219623E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Core::Debugging";
 			remoteInfo = Debugging;
 		};
-		45A4B91F23E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5219723E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Core::Async";
 			remoteInfo = Async;
 		};
-		45A4B92023E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5219823E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::NIO";
 			remoteInfo = NIO;
 		};
-		45A4B92123E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5219923E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIOSHA1";
 			remoteInfo = CNIOSHA1;
 		};
-		45A4B92223E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5219A23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::NIOPriorityQueue";
 			remoteInfo = NIOPriorityQueue;
 		};
-		45A4B92323E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5219B23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::NIOConcurrencyHelpers";
 			remoteInfo = NIOConcurrencyHelpers;
 		};
-		45A4B92423E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5219C23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIOAtomics";
 			remoteInfo = CNIOAtomics;
 		};
-		45A4B92523E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5219D23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIODarwin";
 			remoteInfo = CNIODarwin;
 		};
-		45A4B92623E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5219E23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIOLinux";
 			remoteInfo = CNIOLinux;
 		};
-		45A4B92723E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B5219F23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::NIO";
 			remoteInfo = NIO;
 		};
-		45A4B92823E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521A023E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIOSHA1";
 			remoteInfo = CNIOSHA1;
 		};
-		45A4B92923E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521A123E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::NIOPriorityQueue";
 			remoteInfo = NIOPriorityQueue;
 		};
-		45A4B92A23E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521A223E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::NIOConcurrencyHelpers";
 			remoteInfo = NIOConcurrencyHelpers;
 		};
-		45A4B92B23E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521A323E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIOAtomics";
 			remoteInfo = CNIOAtomics;
 		};
-		45A4B92C23E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521A423E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIODarwin";
 			remoteInfo = CNIODarwin;
 		};
-		45A4B92D23E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521A523E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIOLinux";
 			remoteInfo = CNIOLinux;
 		};
-		45A4B92E23E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521A623E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::NIOFoundationCompat";
 			remoteInfo = NIOFoundationCompat;
 		};
-		45A4B92F23E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521A723E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Core::COperatingSystem";
 			remoteInfo = COperatingSystem;
 		};
-		45A4B93023E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521A823E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Core::Async";
 			remoteInfo = Async;
 		};
-		45A4B93123E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521A923E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Crypto::Random";
 			remoteInfo = Random;
 		};
-		45A4B93223E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521AA23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Core::Bits";
 			remoteInfo = Bits;
 		};
-		45A4B93323E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521AB23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::NIO";
 			remoteInfo = NIO;
 		};
-		45A4B93423E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521AC23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIOSHA1";
 			remoteInfo = CNIOSHA1;
 		};
-		45A4B93523E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521AD23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::NIOPriorityQueue";
 			remoteInfo = NIOPriorityQueue;
 		};
-		45A4B93623E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521AE23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::NIOConcurrencyHelpers";
 			remoteInfo = NIOConcurrencyHelpers;
 		};
-		45A4B93723E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521AF23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIOAtomics";
 			remoteInfo = CNIOAtomics;
 		};
-		45A4B93823E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521B023E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIODarwin";
 			remoteInfo = CNIODarwin;
 		};
-		45A4B93923E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521B123E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIOLinux";
 			remoteInfo = CNIOLinux;
 		};
-		45A4B93A23E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521B223E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Core::Debugging";
 			remoteInfo = Debugging;
 		};
-		45A4B93B23E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521B323E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Core::Bits";
 			remoteInfo = Bits;
 		};
-		45A4B93C23E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521B423E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::NIO";
 			remoteInfo = NIO;
 		};
-		45A4B93D23E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521B523E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIOSHA1";
 			remoteInfo = CNIOSHA1;
 		};
-		45A4B93E23E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521B623E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::NIOPriorityQueue";
 			remoteInfo = NIOPriorityQueue;
 		};
-		45A4B93F23E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521B723E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::NIOConcurrencyHelpers";
 			remoteInfo = NIOConcurrencyHelpers;
 		};
-		45A4B94023E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521B823E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIOAtomics";
 			remoteInfo = CNIOAtomics;
 		};
-		45A4B94123E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521B923E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIODarwin";
 			remoteInfo = CNIODarwin;
 		};
-		45A4B94223E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521BA23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIOLinux";
 			remoteInfo = CNIOLinux;
 		};
-		45A4B94323E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521BB23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Core::Debugging";
 			remoteInfo = Debugging;
 		};
-		45A4B94423E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521BC23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Crypto::CCryptoOpenSSL";
 			remoteInfo = CCryptoOpenSSL;
 		};
-		45A4B94523E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521BD23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Crypto::CBcrypt";
 			remoteInfo = CBcrypt;
 		};
-		45A4B94623E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521BE23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Crypto::CBase32";
 			remoteInfo = CBase32;
 		};
-		45A4B94723E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521BF23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Core::Core";
 			remoteInfo = Core;
 		};
-		45A4B94823E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521C023E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::NIOFoundationCompat";
 			remoteInfo = NIOFoundationCompat;
 		};
-		45A4B94923E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521C123E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Core::COperatingSystem";
 			remoteInfo = COperatingSystem;
 		};
-		45A4B94A23E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521C223E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Core::Async";
 			remoteInfo = Async;
 		};
-		45A4B94B23E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521C323E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Crypto::Random";
 			remoteInfo = Random;
 		};
-		45A4B94C23E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521C423E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Core::Bits";
 			remoteInfo = Bits;
 		};
-		45A4B94D23E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521C523E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::NIO";
 			remoteInfo = NIO;
 		};
-		45A4B94E23E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521C623E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIOSHA1";
 			remoteInfo = CNIOSHA1;
 		};
-		45A4B94F23E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521C723E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::NIOPriorityQueue";
 			remoteInfo = NIOPriorityQueue;
 		};
-		45A4B95023E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521C823E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::NIOConcurrencyHelpers";
 			remoteInfo = NIOConcurrencyHelpers;
 		};
-		45A4B95123E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521C923E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIOAtomics";
 			remoteInfo = CNIOAtomics;
 		};
-		45A4B95223E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521CA23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIODarwin";
 			remoteInfo = CNIODarwin;
 		};
-		45A4B95323E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521CB23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIOLinux";
 			remoteInfo = CNIOLinux;
 		};
-		45A4B95423E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521CC23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Core::Debugging";
 			remoteInfo = Debugging;
 		};
-		45A4B95523E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521CD23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Crypto::CCryptoOpenSSL";
 			remoteInfo = CCryptoOpenSSL;
 		};
-		45A4B95623E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521CE23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Crypto::CBcrypt";
 			remoteInfo = CBcrypt;
 		};
-		45A4B95723E0CBB9007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521CF23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Crypto::CBase32";
 			remoteInfo = CBase32;
 		};
-		45A4B95823E0CBBA007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521D023E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "AppReceiptValidator::AppReceiptValidator";
 			remoteInfo = AppReceiptValidator;
 		};
-		45A4B95923E0CBBA007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521D123E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Crypto::Crypto";
 			remoteInfo = Crypto;
 		};
-		45A4B95A23E0CBBA007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521D223E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Core::Core";
 			remoteInfo = Core;
 		};
-		45A4B95B23E0CBBA007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521D323E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::NIOFoundationCompat";
 			remoteInfo = NIOFoundationCompat;
 		};
-		45A4B95C23E0CBBA007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521D423E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Core::COperatingSystem";
 			remoteInfo = COperatingSystem;
 		};
-		45A4B95D23E0CBBA007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521D523E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Core::Async";
 			remoteInfo = Async;
 		};
-		45A4B95E23E0CBBA007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521D623E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Crypto::Random";
 			remoteInfo = Random;
 		};
-		45A4B95F23E0CBBA007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521D723E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Core::Bits";
 			remoteInfo = Bits;
 		};
-		45A4B96023E0CBBA007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521D823E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::NIO";
 			remoteInfo = NIO;
 		};
-		45A4B96123E0CBBA007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521D923E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIOSHA1";
 			remoteInfo = CNIOSHA1;
 		};
-		45A4B96223E0CBBA007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521DA23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::NIOPriorityQueue";
 			remoteInfo = NIOPriorityQueue;
 		};
-		45A4B96323E0CBBA007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521DB23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::NIOConcurrencyHelpers";
 			remoteInfo = NIOConcurrencyHelpers;
 		};
-		45A4B96423E0CBBA007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521DC23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIOAtomics";
 			remoteInfo = CNIOAtomics;
 		};
-		45A4B96523E0CBBA007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521DD23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIODarwin";
 			remoteInfo = CNIODarwin;
 		};
-		45A4B96623E0CBBA007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521DE23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-nio::CNIOLinux";
 			remoteInfo = CNIOLinux;
 		};
-		45A4B96723E0CBBA007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521DF23E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Core::Debugging";
 			remoteInfo = Debugging;
 		};
-		45A4B96823E0CBBA007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521E023E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Crypto::CCryptoOpenSSL";
 			remoteInfo = CCryptoOpenSSL;
 		};
-		45A4B96923E0CBBA007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521E123E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Crypto::CBcrypt";
 			remoteInfo = CBcrypt;
 		};
-		45A4B96A23E0CBBA007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521E223E1A8530011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Crypto::CBase32";
 			remoteInfo = CBase32;
 		};
-		45A4B96B23E0CBBA007EDF00 /* PBXContainerItemProxy */ = {
+		C8B521E323E1A8540011A2B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
@@ -1050,53 +1040,10 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		45A4B97923E0CCFB007EDF00 /* Copy Test assets */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 7;
-			files = (
-				45A4B97A23E0CD0E007EDF00 /* not_a_receipt in Copy Test assets */,
-				45A4B97B23E0CD0E007EDF00 /* hannes_mac_mindnode_pro_Info.plist in Copy Test assets */,
-				45A4B97C23E0CD0E007EDF00 /* mac_mindnode_rebought_receipt in Copy Test assets */,
-				45A4B97D23E0CD0E007EDF00 /* hannes_mac_mindnode_Info.plist in Copy Test assets */,
-				45A4B97E23E0CD0E007EDF00 /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 in Copy Test assets */,
-				45A4B97F23E0CD0E007EDF00 /* grandUnifiedExpiredAppleCert_receipt.b64 in Copy Test assets */,
-				45A4B98023E0CD0E007EDF00 /* hannes_mac_mindnode_receipt in Copy Test assets */,
-				45A4B98123E0CD0E007EDF00 /* hannes_mac_mindnode_pro_receipt in Copy Test assets */,
-				45A4B98223E0CD0E007EDF00 /* mindnode_ios_michaelsandbox_receipt1.b64 in Copy Test assets */,
-				45A4B98323E0CD0E007EDF00 /* mindnode_ios_michaelsandbox_receipt2.b64 in Copy Test assets */,
-			);
-			name = "Copy Test assets";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		45A4B98423E0CD36007EDF00 /* Copy Files (1 item) */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 7;
-			files = (
-				45A4B98523E0CD3D007EDF00 /* AppleIncRootCertificate.cer in Copy Files (1 item) */,
-			);
-			name = "Copy Files (1 item)";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		45A4B96D23E0CCEF007EDF00 /* not_a_receipt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = not_a_receipt; sourceTree = "<group>"; };
-		45A4B96E23E0CCEF007EDF00 /* hannes_mac_mindnode_pro_Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hannes_mac_mindnode_pro_Info.plist; sourceTree = "<group>"; };
-		45A4B96F23E0CCEF007EDF00 /* mac_mindnode_rebought_receipt */ = {isa = PBXFileReference; lastKnownFileType = file; path = mac_mindnode_rebought_receipt; sourceTree = "<group>"; };
-		45A4B97023E0CCEF007EDF00 /* hannes_mac_mindnode_Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hannes_mac_mindnode_Info.plist; sourceTree = "<group>"; };
-		45A4B97323E0CCEF007EDF00 /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = deprecatedSinglesTypeExpiredAppleCert_receipt.b64; sourceTree = "<group>"; };
-		45A4B97423E0CCEF007EDF00 /* grandUnifiedExpiredAppleCert_receipt.b64 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = grandUnifiedExpiredAppleCert_receipt.b64; sourceTree = "<group>"; };
-		45A4B97523E0CCEF007EDF00 /* hannes_mac_mindnode_receipt */ = {isa = PBXFileReference; lastKnownFileType = file; path = hannes_mac_mindnode_receipt; sourceTree = "<group>"; };
-		45A4B97623E0CCEF007EDF00 /* hannes_mac_mindnode_pro_receipt */ = {isa = PBXFileReference; lastKnownFileType = file; path = hannes_mac_mindnode_pro_receipt; sourceTree = "<group>"; };
-		45A4B97723E0CCEF007EDF00 /* mindnode_ios_michaelsandbox_receipt1.b64 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mindnode_ios_michaelsandbox_receipt1.b64; sourceTree = "<group>"; };
-		45A4B97823E0CCEF007EDF00 /* mindnode_ios_michaelsandbox_receipt2.b64 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mindnode_ios_michaelsandbox_receipt2.b64; sourceTree = "<group>"; };
 		"AppReceiptValidator::AppReceiptValidator::Product" /* AppReceiptValidator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppReceiptValidator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"AppReceiptValidator::AppReceiptValidatorTests::Product" /* AppReceiptValidatorTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppReceiptValidatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8B521E423E1A94F0011A2B8 /* DeviceIdentifier+installedDeviceIdentifier_linux.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeviceIdentifier+installedDeviceIdentifier_linux.swift"; sourceTree = "<group>"; };
 		"Core::Async::Product" /* Async.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Async.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Core::Bits::Product" /* Bits.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bits.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Core::COperatingSystem::Product" /* COperatingSystem.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = COperatingSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1149,7 +1096,7 @@
 		OBJ_139 /* Debuggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debuggable.swift; sourceTree = "<group>"; };
 		OBJ_140 /* Demangler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demangler.swift; sourceTree = "<group>"; };
 		OBJ_141 /* SourceLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceLocation.swift; sourceTree = "<group>"; };
-		OBJ_142 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = /Users/michaelschwarz/Projects/AppReceiptValidator/.build/checkouts/core/Package.swift; sourceTree = "<group>"; };
+		OBJ_142 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = /Users/schmi/Projects/AppReceiptValidator/.build/checkouts/core/Package.swift; sourceTree = "<group>"; };
 		OBJ_146 /* c-atomics.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "c-atomics.c"; sourceTree = "<group>"; };
 		OBJ_148 /* CNIOAtomics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CNIOAtomics.h; sourceTree = "<group>"; };
 		OBJ_149 /* cpp_magic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cpp_magic.h; sourceTree = "<group>"; };
@@ -1229,7 +1176,7 @@
 		OBJ_236 /* Heap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heap.swift; sourceTree = "<group>"; };
 		OBJ_237 /* PriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityQueue.swift; sourceTree = "<group>"; };
 		OBJ_24 /* AppReceiptValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReceiptValidationTests.swift; sourceTree = "<group>"; };
-		OBJ_241 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/michaelschwarz/Projects/AppReceiptValidator/.build/checkouts/swift-nio/Package.swift"; sourceTree = "<group>"; };
+		OBJ_241 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/schmi/Projects/AppReceiptValidator/.build/checkouts/swift-nio/Package.swift"; sourceTree = "<group>"; };
 		OBJ_25 /* DeviceIdentifierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceIdentifierTests.swift; sourceTree = "<group>"; };
 		OBJ_263 /* AppReceiptValidator */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AppReceiptValidator; sourceTree = SOURCE_ROOT; };
 		OBJ_264 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -1239,13 +1186,13 @@
 		OBJ_28 /* KnownOrUnknown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnownOrUnknown.swift; sourceTree = "<group>"; };
 		OBJ_29 /* TestAssetLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAssetLoading.swift; sourceTree = "<group>"; };
 		OBJ_33 /* base32.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = base32.c; sourceTree = "<group>"; };
-		OBJ_35 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = "/Users/michaelschwarz/Projects/AppReceiptValidator/.build/checkouts/open-crypto/Sources/CBase32/include/module.modulemap"; sourceTree = "<group>"; };
+		OBJ_35 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = /Users/schmi/Projects/AppReceiptValidator/.build/checkouts/crypto/Sources/CBase32/include/module.modulemap; sourceTree = "<group>"; };
 		OBJ_37 /* bcrypt.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = bcrypt.c; sourceTree = "<group>"; };
 		OBJ_38 /* blf.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = blf.c; sourceTree = "<group>"; };
-		OBJ_40 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = "/Users/michaelschwarz/Projects/AppReceiptValidator/.build/checkouts/open-crypto/Sources/CBcrypt/include/module.modulemap"; sourceTree = "<group>"; };
+		OBJ_40 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = /Users/schmi/Projects/AppReceiptValidator/.build/checkouts/crypto/Sources/CBcrypt/include/module.modulemap; sourceTree = "<group>"; };
 		OBJ_42 /* shim.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = shim.c; sourceTree = "<group>"; };
 		OBJ_44 /* c_crypto_openssl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = c_crypto_openssl.h; sourceTree = "<group>"; };
-		OBJ_45 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = /Users/michaelschwarz/Projects/AppReceiptValidator/AppReceiptValidator.xcodeproj/GeneratedModuleMap/CCryptoOpenSSL/module.modulemap; sourceTree = "<group>"; };
+		OBJ_45 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = /Users/schmi/Projects/AppReceiptValidator/AppReceiptValidator.xcodeproj/GeneratedModuleMap/CCryptoOpenSSL/module.modulemap; sourceTree = "<group>"; };
 		OBJ_48 /* BCryptDigest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCryptDigest.swift; sourceTree = "<group>"; };
 		OBJ_50 /* AuthenticatedCipher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedCipher.swift; sourceTree = "<group>"; };
 		OBJ_51 /* AuthenticatedCipherAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedCipherAlgorithm.swift; sourceTree = "<group>"; };
@@ -1270,7 +1217,7 @@
 		OBJ_75 /* OSRandom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSRandom.swift; sourceTree = "<group>"; };
 		OBJ_76 /* RandomProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomProtocol.swift; sourceTree = "<group>"; };
 		OBJ_77 /* URandom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URandom.swift; sourceTree = "<group>"; };
-		OBJ_78 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/michaelschwarz/Projects/AppReceiptValidator/.build/checkouts/open-crypto/Package.swift"; sourceTree = "<group>"; };
+		OBJ_78 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = /Users/schmi/Projects/AppReceiptValidator/.build/checkouts/crypto/Package.swift; sourceTree = "<group>"; };
 		OBJ_81 /* Async+NIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Async+NIO.swift"; sourceTree = "<group>"; };
 		OBJ_82 /* AsyncError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncError.swift; sourceTree = "<group>"; };
 		OBJ_83 /* Collection+Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Future.swift"; sourceTree = "<group>"; };
@@ -1548,39 +1495,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		45A4B96C23E0CCEF007EDF00 /* Test Assets */ = {
-			isa = PBXGroup;
-			children = (
-				45A4B96D23E0CCEF007EDF00 /* not_a_receipt */,
-				45A4B96E23E0CCEF007EDF00 /* hannes_mac_mindnode_pro_Info.plist */,
-				45A4B96F23E0CCEF007EDF00 /* mac_mindnode_rebought_receipt */,
-				45A4B97023E0CCEF007EDF00 /* hannes_mac_mindnode_Info.plist */,
-				45A4B97123E0CCEF007EDF00 /* Other Receipts */,
-				45A4B97523E0CCEF007EDF00 /* hannes_mac_mindnode_receipt */,
-				45A4B97623E0CCEF007EDF00 /* hannes_mac_mindnode_pro_receipt */,
-				45A4B97723E0CCEF007EDF00 /* mindnode_ios_michaelsandbox_receipt1.b64 */,
-				45A4B97823E0CCEF007EDF00 /* mindnode_ios_michaelsandbox_receipt2.b64 */,
-			);
-			path = "Test Assets";
-			sourceTree = "<group>";
-		};
-		45A4B97123E0CCEF007EDF00 /* Other Receipts */ = {
-			isa = PBXGroup;
-			children = (
-				45A4B97223E0CCEF007EDF00 /* unparseable */,
-				45A4B97423E0CCEF007EDF00 /* grandUnifiedExpiredAppleCert_receipt.b64 */,
-			);
-			path = "Other Receipts";
-			sourceTree = "<group>";
-		};
-		45A4B97223E0CCEF007EDF00 /* unparseable */ = {
-			isa = PBXGroup;
-			children = (
-				45A4B97323E0CCEF007EDF00 /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 */,
-			);
-			path = unparseable;
-			sourceTree = "<group>";
-		};
 		OBJ_109 /* COperatingSystem */ = {
 			isa = PBXGroup;
 			children = (
@@ -1854,7 +1768,6 @@
 		OBJ_21 /* AppReceiptValidatorTests */ = {
 			isa = PBXGroup;
 			children = (
-				45A4B96C23E0CCEF007EDF00 /* Test Assets */,
 				OBJ_22 /* AppReceiptPropertyValidationTests.swift */,
 				OBJ_23 /* AppReceiptValidationInAppPurchaseTests.swift */,
 				OBJ_24 /* AppReceiptValidationTests.swift */,
@@ -1985,26 +1898,26 @@
 		OBJ_242 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				"swift-nio::NIOConcurrencyHelpers::Product" /* NIOConcurrencyHelpers.framework */,
-				"Core::Async::Product" /* Async.framework */,
-				"swift-nio::CNIOLinux::Product" /* CNIOLinux.framework */,
-				"Core::Debugging::Product" /* Debugging.framework */,
-				"Core::COperatingSystem::Product" /* COperatingSystem.framework */,
-				"Crypto::CCryptoOpenSSL::Product" /* CCryptoOpenSSL.framework */,
-				"Crypto::Crypto::Product" /* Crypto.framework */,
-				"swift-nio::CNIODarwin::Product" /* CNIODarwin.framework */,
-				"AppReceiptValidator::AppReceiptValidatorTests::Product" /* AppReceiptValidatorTests.xctest */,
-				"swift-nio::CNIOSHA1::Product" /* CNIOSHA1.framework */,
-				"swift-nio::NIOPriorityQueue::Product" /* NIOPriorityQueue.framework */,
-				"swift-nio::NIO::Product" /* NIO.framework */,
-				"AppReceiptValidator::AppReceiptValidator::Product" /* AppReceiptValidator.framework */,
 				"Crypto::CBcrypt::Product" /* CBcrypt.framework */,
-				"Crypto::CBase32::Product" /* CBase32.framework */,
-				"Core::Bits::Product" /* Bits.framework */,
-				"swift-nio::CNIOAtomics::Product" /* CNIOAtomics.framework */,
-				"Core::Core::Product" /* Core.framework */,
+				"Crypto::CCryptoOpenSSL::Product" /* CCryptoOpenSSL.framework */,
 				"Crypto::Random::Product" /* Random.framework */,
 				"swift-nio::NIOFoundationCompat::Product" /* NIOFoundationCompat.framework */,
+				"swift-nio::NIO::Product" /* NIO.framework */,
+				"Crypto::CBase32::Product" /* CBase32.framework */,
+				"Core::COperatingSystem::Product" /* COperatingSystem.framework */,
+				"swift-nio::CNIODarwin::Product" /* CNIODarwin.framework */,
+				"AppReceiptValidator::AppReceiptValidatorTests::Product" /* AppReceiptValidatorTests.xctest */,
+				"Core::Async::Product" /* Async.framework */,
+				"Crypto::Crypto::Product" /* Crypto.framework */,
+				"swift-nio::CNIOSHA1::Product" /* CNIOSHA1.framework */,
+				"swift-nio::CNIOAtomics::Product" /* CNIOAtomics.framework */,
+				"Core::Core::Product" /* Core.framework */,
+				"Core::Debugging::Product" /* Debugging.framework */,
+				"AppReceiptValidator::AppReceiptValidator::Product" /* AppReceiptValidator.framework */,
+				"Core::Bits::Product" /* Bits.framework */,
+				"swift-nio::NIOConcurrencyHelpers::Product" /* NIOConcurrencyHelpers.framework */,
+				"swift-nio::CNIOLinux::Product" /* CNIOLinux.framework */,
+				"swift-nio::NIOPriorityQueue::Product" /* NIOPriorityQueue.framework */,
 			);
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -2049,7 +1962,7 @@
 				OBJ_34 /* include */,
 			);
 			name = CBase32;
-			path = ".build/checkouts/open-crypto/Sources/CBase32";
+			path = .build/checkouts/crypto/Sources/CBase32;
 			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_34 /* include */ = {
@@ -2068,7 +1981,7 @@
 				OBJ_39 /* include */,
 			);
 			name = CBcrypt;
-			path = ".build/checkouts/open-crypto/Sources/CBcrypt";
+			path = .build/checkouts/crypto/Sources/CBcrypt;
 			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_39 /* include */ = {
@@ -2086,7 +1999,7 @@
 				OBJ_43 /* include */,
 			);
 			name = CCryptoOpenSSL;
-			path = ".build/checkouts/open-crypto/Sources/CCryptoOpenSSL";
+			path = .build/checkouts/crypto/Sources/CCryptoOpenSSL;
 			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_43 /* include */ = {
@@ -2110,7 +2023,7 @@
 				OBJ_68 /* Utilities */,
 			);
 			name = Crypto;
-			path = ".build/checkouts/open-crypto/Sources/Crypto";
+			path = .build/checkouts/crypto/Sources/Crypto;
 			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_47 /* BCrypt */ = {
@@ -2214,7 +2127,7 @@
 				OBJ_77 /* URandom.swift */,
 			);
 			name = Random;
-			path = ".build/checkouts/open-crypto/Sources/Random";
+			path = .build/checkouts/crypto/Sources/Random;
 			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_79 /* Core 3.9.3 */ = {
@@ -2238,6 +2151,7 @@
 				OBJ_11 /* AppReceiptValidator.swift */,
 				OBJ_12 /* DeviceIdentifier+installedDeviceIdentifier_iOS.swift */,
 				OBJ_13 /* DeviceIdentifier+installedDeviceIdentifier_macOS.swift */,
+				C8B521E423E1A94F0011A2B8 /* DeviceIdentifier+installedDeviceIdentifier_linux.swift */,
 				OBJ_14 /* Helper */,
 				OBJ_18 /* Receipt.swift */,
 				OBJ_19 /* UnofficialReceipt.swift */,
@@ -2333,7 +2247,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = OBJ_268 /* Build configuration list for PBXNativeTarget "AppReceiptValidator" */;
 			buildPhases = (
-				45A4B98423E0CD36007EDF00 /* Copy Files (1 item) */,
 				OBJ_271 /* Sources */,
 				OBJ_281 /* Frameworks */,
 			);
@@ -2368,7 +2281,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = OBJ_348 /* Build configuration list for PBXNativeTarget "AppReceiptValidatorTests" */;
 			buildPhases = (
-				45A4B97923E0CCFB007EDF00 /* Copy Test assets */,
 				OBJ_351 /* Sources */,
 				OBJ_359 /* Frameworks */,
 			);
@@ -2871,6 +2783,7 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_272 /* AppReceiptValidator+Parameters.swift in Sources */,
+				C8B521E523E1A94F0011A2B8 /* DeviceIdentifier+installedDeviceIdentifier_linux.swift in Sources */,
 				OBJ_273 /* AppReceiptValidator.swift in Sources */,
 				OBJ_274 /* DeviceIdentifier+installedDeviceIdentifier_iOS.swift in Sources */,
 				OBJ_275 /* DeviceIdentifier+installedDeviceIdentifier_macOS.swift in Sources */,
@@ -3208,527 +3121,527 @@
 		OBJ_300 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Crypto::Crypto" /* Crypto */;
-			targetProxy = 45A4B90323E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5217B23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_302 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Core::Core" /* Core */;
-			targetProxy = 45A4B94723E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521BF23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_304 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::NIOFoundationCompat" /* NIOFoundationCompat */;
-			targetProxy = 45A4B94823E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521C023E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_306 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Core::COperatingSystem" /* COperatingSystem */;
-			targetProxy = 45A4B94923E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521C123E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_308 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Core::Async" /* Async */;
-			targetProxy = 45A4B94A23E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521C223E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_310 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Crypto::Random" /* Random */;
-			targetProxy = 45A4B94B23E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521C323E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_312 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Core::Bits" /* Bits */;
-			targetProxy = 45A4B94C23E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521C423E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_314 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::NIO" /* NIO */;
-			targetProxy = 45A4B94D23E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521C523E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_316 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIOSHA1" /* CNIOSHA1 */;
-			targetProxy = 45A4B94E23E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521C623E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_318 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::NIOPriorityQueue" /* NIOPriorityQueue */;
-			targetProxy = 45A4B94F23E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521C723E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_320 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::NIOConcurrencyHelpers" /* NIOConcurrencyHelpers */;
-			targetProxy = 45A4B95023E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521C823E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_322 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIOAtomics" /* CNIOAtomics */;
-			targetProxy = 45A4B95123E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521C923E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_324 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIODarwin" /* CNIODarwin */;
-			targetProxy = 45A4B95223E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521CA23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_326 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIOLinux" /* CNIOLinux */;
-			targetProxy = 45A4B95323E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521CB23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_328 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Core::Debugging" /* Debugging */;
-			targetProxy = 45A4B95423E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521CC23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_330 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Crypto::CCryptoOpenSSL" /* CCryptoOpenSSL */;
-			targetProxy = 45A4B95523E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521CD23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_332 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Crypto::CBcrypt" /* CBcrypt */;
-			targetProxy = 45A4B95623E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521CE23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_334 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Crypto::CBase32" /* CBase32 */;
-			targetProxy = 45A4B95723E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521CF23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_346 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "AppReceiptValidator::AppReceiptValidatorTests" /* AppReceiptValidatorTests */;
-			targetProxy = 45A4B96B23E0CBBA007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521E323E1A8540011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_379 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "AppReceiptValidator::AppReceiptValidator" /* AppReceiptValidator */;
-			targetProxy = 45A4B95823E0CBBA007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521D023E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_380 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Crypto::Crypto" /* Crypto */;
-			targetProxy = 45A4B95923E0CBBA007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521D123E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_381 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Core::Core" /* Core */;
-			targetProxy = 45A4B95A23E0CBBA007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521D223E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_382 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::NIOFoundationCompat" /* NIOFoundationCompat */;
-			targetProxy = 45A4B95B23E0CBBA007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521D323E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_383 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Core::COperatingSystem" /* COperatingSystem */;
-			targetProxy = 45A4B95C23E0CBBA007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521D423E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_384 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Core::Async" /* Async */;
-			targetProxy = 45A4B95D23E0CBBA007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521D523E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_385 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Crypto::Random" /* Random */;
-			targetProxy = 45A4B95E23E0CBBA007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521D623E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_386 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Core::Bits" /* Bits */;
-			targetProxy = 45A4B95F23E0CBBA007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521D723E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_387 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::NIO" /* NIO */;
-			targetProxy = 45A4B96023E0CBBA007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521D823E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_388 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIOSHA1" /* CNIOSHA1 */;
-			targetProxy = 45A4B96123E0CBBA007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521D923E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_389 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::NIOPriorityQueue" /* NIOPriorityQueue */;
-			targetProxy = 45A4B96223E0CBBA007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521DA23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_390 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::NIOConcurrencyHelpers" /* NIOConcurrencyHelpers */;
-			targetProxy = 45A4B96323E0CBBA007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521DB23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_391 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIOAtomics" /* CNIOAtomics */;
-			targetProxy = 45A4B96423E0CBBA007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521DC23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_392 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIODarwin" /* CNIODarwin */;
-			targetProxy = 45A4B96523E0CBBA007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521DD23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_393 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIOLinux" /* CNIOLinux */;
-			targetProxy = 45A4B96623E0CBBA007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521DE23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_394 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Core::Debugging" /* Debugging */;
-			targetProxy = 45A4B96723E0CBBA007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521DF23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_395 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Crypto::CCryptoOpenSSL" /* CCryptoOpenSSL */;
-			targetProxy = 45A4B96823E0CBBA007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521E023E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_396 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Crypto::CBcrypt" /* CBcrypt */;
-			targetProxy = 45A4B96923E0CBBA007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521E123E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_397 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Crypto::CBase32" /* CBase32 */;
-			targetProxy = 45A4B96A23E0CBBA007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521E223E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_425 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::NIO" /* NIO */;
-			targetProxy = 45A4B92023E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5219823E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_426 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIOSHA1" /* CNIOSHA1 */;
-			targetProxy = 45A4B92123E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5219923E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_427 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::NIOPriorityQueue" /* NIOPriorityQueue */;
-			targetProxy = 45A4B92223E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5219A23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_428 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::NIOConcurrencyHelpers" /* NIOConcurrencyHelpers */;
-			targetProxy = 45A4B92323E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5219B23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_429 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIOAtomics" /* CNIOAtomics */;
-			targetProxy = 45A4B92423E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5219C23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_430 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIODarwin" /* CNIODarwin */;
-			targetProxy = 45A4B92523E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5219D23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_431 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIOLinux" /* CNIOLinux */;
-			targetProxy = 45A4B92623E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5219E23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_457 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::NIO" /* NIO */;
-			targetProxy = 45A4B91623E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5218E23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_458 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIOSHA1" /* CNIOSHA1 */;
-			targetProxy = 45A4B91723E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5218F23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_459 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::NIOPriorityQueue" /* NIOPriorityQueue */;
-			targetProxy = 45A4B91823E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5219023E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_460 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::NIOConcurrencyHelpers" /* NIOConcurrencyHelpers */;
-			targetProxy = 45A4B91923E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5219123E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_461 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIOAtomics" /* CNIOAtomics */;
-			targetProxy = 45A4B91A23E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5219223E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_462 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIODarwin" /* CNIODarwin */;
-			targetProxy = 45A4B91B23E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5219323E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_463 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIOLinux" /* CNIOLinux */;
-			targetProxy = 45A4B91C23E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5219423E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_464 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Core::Debugging" /* Debugging */;
-			targetProxy = 45A4B91D23E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5219523E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_567 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::NIOFoundationCompat" /* NIOFoundationCompat */;
-			targetProxy = 45A4B90523E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5217D23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_568 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Core::COperatingSystem" /* COperatingSystem */;
-			targetProxy = 45A4B91423E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5218C23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_569 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Core::Bits" /* Bits */;
-			targetProxy = 45A4B91523E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5218D23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_570 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Core::Debugging" /* Debugging */;
-			targetProxy = 45A4B91E23E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5219623E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_571 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Core::Async" /* Async */;
-			targetProxy = 45A4B91F23E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5219723E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_572 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::NIO" /* NIO */;
-			targetProxy = 45A4B92723E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5219F23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_573 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIOSHA1" /* CNIOSHA1 */;
-			targetProxy = 45A4B92823E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521A023E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_574 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::NIOPriorityQueue" /* NIOPriorityQueue */;
-			targetProxy = 45A4B92923E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521A123E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_575 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::NIOConcurrencyHelpers" /* NIOConcurrencyHelpers */;
-			targetProxy = 45A4B92A23E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521A223E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_576 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIOAtomics" /* CNIOAtomics */;
-			targetProxy = 45A4B92B23E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521A323E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_577 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIODarwin" /* CNIODarwin */;
-			targetProxy = 45A4B92C23E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521A423E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_578 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIOLinux" /* CNIOLinux */;
-			targetProxy = 45A4B92D23E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521A523E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_626 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Core::Core" /* Core */;
-			targetProxy = 45A4B90423E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5217C23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_627 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::NIOFoundationCompat" /* NIOFoundationCompat */;
-			targetProxy = 45A4B92E23E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521A623E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_628 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Core::COperatingSystem" /* COperatingSystem */;
-			targetProxy = 45A4B92F23E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521A723E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_629 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Core::Async" /* Async */;
-			targetProxy = 45A4B93023E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521A823E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_630 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Crypto::Random" /* Random */;
-			targetProxy = 45A4B93123E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521A923E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_631 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Core::Bits" /* Bits */;
-			targetProxy = 45A4B93B23E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521B323E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_632 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::NIO" /* NIO */;
-			targetProxy = 45A4B93C23E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521B423E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_633 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIOSHA1" /* CNIOSHA1 */;
-			targetProxy = 45A4B93D23E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521B523E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_634 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::NIOPriorityQueue" /* NIOPriorityQueue */;
-			targetProxy = 45A4B93E23E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521B623E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_635 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::NIOConcurrencyHelpers" /* NIOConcurrencyHelpers */;
-			targetProxy = 45A4B93F23E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521B723E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_636 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIOAtomics" /* CNIOAtomics */;
-			targetProxy = 45A4B94023E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521B823E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_637 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIODarwin" /* CNIODarwin */;
-			targetProxy = 45A4B94123E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521B923E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_638 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIOLinux" /* CNIOLinux */;
-			targetProxy = 45A4B94223E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521BA23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_639 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Core::Debugging" /* Debugging */;
-			targetProxy = 45A4B94323E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521BB23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_640 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Crypto::CCryptoOpenSSL" /* CCryptoOpenSSL */;
-			targetProxy = 45A4B94423E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521BC23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_641 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Crypto::CBcrypt" /* CBcrypt */;
-			targetProxy = 45A4B94523E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521BD23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_642 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Crypto::CBase32" /* CBase32 */;
-			targetProxy = 45A4B94623E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521BE23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_723 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIOSHA1" /* CNIOSHA1 */;
-			targetProxy = 45A4B90723E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5217F23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_724 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::NIOPriorityQueue" /* NIOPriorityQueue */;
-			targetProxy = 45A4B90823E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5218023E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_725 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::NIOConcurrencyHelpers" /* NIOConcurrencyHelpers */;
-			targetProxy = 45A4B90923E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5218123E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_726 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIOAtomics" /* CNIOAtomics */;
-			targetProxy = 45A4B90B23E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5218323E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_727 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIODarwin" /* CNIODarwin */;
-			targetProxy = 45A4B90C23E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5218423E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_728 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIOLinux" /* CNIOLinux */;
-			targetProxy = 45A4B90D23E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5218523E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_737 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIOAtomics" /* CNIOAtomics */;
-			targetProxy = 45A4B90A23E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5218223E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_751 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::NIO" /* NIO */;
-			targetProxy = 45A4B90623E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5217E23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_752 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIOSHA1" /* CNIOSHA1 */;
-			targetProxy = 45A4B90E23E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5218623E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_753 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::NIOPriorityQueue" /* NIOPriorityQueue */;
-			targetProxy = 45A4B90F23E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5218723E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_754 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::NIOConcurrencyHelpers" /* NIOConcurrencyHelpers */;
-			targetProxy = 45A4B91023E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5218823E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_755 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIOAtomics" /* CNIOAtomics */;
-			targetProxy = 45A4B91123E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5218923E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_756 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIODarwin" /* CNIODarwin */;
-			targetProxy = 45A4B91223E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5218A23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_757 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIOLinux" /* CNIOLinux */;
-			targetProxy = 45A4B91323E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B5218B23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_783 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Core::Bits" /* Bits */;
-			targetProxy = 45A4B93223E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521AA23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_784 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::NIO" /* NIO */;
-			targetProxy = 45A4B93323E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521AB23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_785 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIOSHA1" /* CNIOSHA1 */;
-			targetProxy = 45A4B93423E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521AC23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_786 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::NIOPriorityQueue" /* NIOPriorityQueue */;
-			targetProxy = 45A4B93523E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521AD23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_787 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::NIOConcurrencyHelpers" /* NIOConcurrencyHelpers */;
-			targetProxy = 45A4B93623E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521AE23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_788 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIOAtomics" /* CNIOAtomics */;
-			targetProxy = 45A4B93723E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521AF23E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_789 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIODarwin" /* CNIODarwin */;
-			targetProxy = 45A4B93823E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521B023E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_790 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-nio::CNIOLinux" /* CNIOLinux */;
-			targetProxy = 45A4B93923E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521B123E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 		OBJ_791 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Core::Debugging" /* Debugging */;
-			targetProxy = 45A4B93A23E0CBB9007EDF00 /* PBXContainerItemProxy */;
+			targetProxy = C8B521B223E1A8530011A2B8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -3748,9 +3661,9 @@
 					"$(SRCROOT)/.build/checkouts/swift-nio/Sources/CNIODarwin/include",
 					"$(SRCROOT)/.build/checkouts/swift-nio/Sources/CNIOLinux/include",
 					"$(SRCROOT)/.build/checkouts/swift-nio-zlib-support",
-					"$(SRCROOT)/.build/checkouts/open-crypto/Sources/CCryptoOpenSSL/include",
-					"$(SRCROOT)/.build/checkouts/open-crypto/Sources/CBcrypt/include",
-					"$(SRCROOT)/.build/checkouts/open-crypto/Sources/CBase32/include",
+					"$(SRCROOT)/.build/checkouts/crypto/Sources/CCryptoOpenSSL/include",
+					"$(SRCROOT)/.build/checkouts/crypto/Sources/CBcrypt/include",
+					"$(SRCROOT)/.build/checkouts/crypto/Sources/CBase32/include",
 					"$(SRCROOT)/.build/checkouts/swift-nio-ssl-support",
 					"$(SRCROOT)/AppReceiptValidator.xcodeproj/GeneratedModuleMap/CCryptoOpenSSL",
 				);
@@ -3760,18 +3673,17 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_CFLAGS = (
 					"$(inherited)",
-					"-I/usr/local/Cellar/libressl/2.7.3/include",
-					"-I/usr/local/Cellar/libressl/2.7.3/include",
+					"-I/usr/local/Cellar/libressl/2.9.2/include",
+					"-I/usr/local/Cellar/libressl/2.9.2/include",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-lz",
-					"-L/usr/local/Cellar/libressl/2.7.3/lib",
+					"-L/usr/local/Cellar/libressl/2.9.2/lib",
 					"-lssl",
-					"-L/usr/local/Cellar/libressl/2.7.3/lib",
+					"-L/usr/local/Cellar/libressl/2.9.2/lib",
 					"-lcrypto",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -I/usr/local/Cellar/libressl/2.7.3/include -I/usr/local/Cellar/libressl/2.7.3/include -Xcc -fmodule-map-file=$(SRCROOT)/AppReceiptValidator.xcodeproj/GeneratedModuleMap/CCryptoOpenSSL/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/open-crypto/Sources/CBcrypt/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/open-crypto/Sources/CBase32/include/module.modulemap";
+				OTHER_SWIFT_FLAGS = "$(inherited) -I/usr/local/Cellar/libressl/2.9.2/include -I/usr/local/Cellar/libressl/2.9.2/include -Xcc -fmodule-map-file=$(SRCROOT)/AppReceiptValidator.xcodeproj/GeneratedModuleMap/CCryptoOpenSSL/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/crypto/Sources/CBcrypt/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/crypto/Sources/CBase32/include/module.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = AppReceiptValidator;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -3799,9 +3711,9 @@
 					"$(SRCROOT)/.build/checkouts/swift-nio/Sources/CNIODarwin/include",
 					"$(SRCROOT)/.build/checkouts/swift-nio/Sources/CNIOLinux/include",
 					"$(SRCROOT)/.build/checkouts/swift-nio-zlib-support",
-					"$(SRCROOT)/.build/checkouts/open-crypto/Sources/CCryptoOpenSSL/include",
-					"$(SRCROOT)/.build/checkouts/open-crypto/Sources/CBcrypt/include",
-					"$(SRCROOT)/.build/checkouts/open-crypto/Sources/CBase32/include",
+					"$(SRCROOT)/.build/checkouts/crypto/Sources/CCryptoOpenSSL/include",
+					"$(SRCROOT)/.build/checkouts/crypto/Sources/CBcrypt/include",
+					"$(SRCROOT)/.build/checkouts/crypto/Sources/CBase32/include",
 					"$(SRCROOT)/.build/checkouts/swift-nio-ssl-support",
 					"$(SRCROOT)/AppReceiptValidator.xcodeproj/GeneratedModuleMap/CCryptoOpenSSL",
 				);
@@ -3811,18 +3723,17 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_CFLAGS = (
 					"$(inherited)",
-					"-I/usr/local/Cellar/libressl/2.7.3/include",
-					"-I/usr/local/Cellar/libressl/2.7.3/include",
+					"-I/usr/local/Cellar/libressl/2.9.2/include",
+					"-I/usr/local/Cellar/libressl/2.9.2/include",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-lz",
-					"-L/usr/local/Cellar/libressl/2.7.3/lib",
+					"-L/usr/local/Cellar/libressl/2.9.2/lib",
 					"-lssl",
-					"-L/usr/local/Cellar/libressl/2.7.3/lib",
+					"-L/usr/local/Cellar/libressl/2.9.2/lib",
 					"-lcrypto",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -I/usr/local/Cellar/libressl/2.7.3/include -I/usr/local/Cellar/libressl/2.7.3/include -Xcc -fmodule-map-file=$(SRCROOT)/AppReceiptValidator.xcodeproj/GeneratedModuleMap/CCryptoOpenSSL/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/open-crypto/Sources/CBcrypt/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/open-crypto/Sources/CBase32/include/module.modulemap";
+				OTHER_SWIFT_FLAGS = "$(inherited) -I/usr/local/Cellar/libressl/2.9.2/include -I/usr/local/Cellar/libressl/2.9.2/include -Xcc -fmodule-map-file=$(SRCROOT)/AppReceiptValidator.xcodeproj/GeneratedModuleMap/CCryptoOpenSSL/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/crypto/Sources/CBcrypt/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/crypto/Sources/CBase32/include/module.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = AppReceiptValidator;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -3908,9 +3819,9 @@
 					"$(SRCROOT)/.build/checkouts/swift-nio/Sources/CNIODarwin/include",
 					"$(SRCROOT)/.build/checkouts/swift-nio/Sources/CNIOLinux/include",
 					"$(SRCROOT)/.build/checkouts/swift-nio-zlib-support",
-					"$(SRCROOT)/.build/checkouts/open-crypto/Sources/CCryptoOpenSSL/include",
-					"$(SRCROOT)/.build/checkouts/open-crypto/Sources/CBcrypt/include",
-					"$(SRCROOT)/.build/checkouts/open-crypto/Sources/CBase32/include",
+					"$(SRCROOT)/.build/checkouts/crypto/Sources/CCryptoOpenSSL/include",
+					"$(SRCROOT)/.build/checkouts/crypto/Sources/CBcrypt/include",
+					"$(SRCROOT)/.build/checkouts/crypto/Sources/CBase32/include",
 					"$(SRCROOT)/.build/checkouts/swift-nio-ssl-support",
 					"$(SRCROOT)/AppReceiptValidator.xcodeproj/GeneratedModuleMap/CCryptoOpenSSL",
 				);
@@ -3920,18 +3831,17 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_CFLAGS = (
 					"$(inherited)",
-					"-I/usr/local/Cellar/libressl/2.7.3/include",
-					"-I/usr/local/Cellar/libressl/2.7.3/include",
+					"-I/usr/local/Cellar/libressl/2.9.2/include",
+					"-I/usr/local/Cellar/libressl/2.9.2/include",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-lz",
-					"-L/usr/local/Cellar/libressl/2.7.3/lib",
+					"-L/usr/local/Cellar/libressl/2.9.2/lib",
 					"-lssl",
-					"-L/usr/local/Cellar/libressl/2.7.3/lib",
+					"-L/usr/local/Cellar/libressl/2.9.2/lib",
 					"-lcrypto",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -I/usr/local/Cellar/libressl/2.7.3/include -I/usr/local/Cellar/libressl/2.7.3/include -Xcc -fmodule-map-file=$(SRCROOT)/AppReceiptValidator.xcodeproj/GeneratedModuleMap/CCryptoOpenSSL/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/open-crypto/Sources/CBcrypt/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/open-crypto/Sources/CBase32/include/module.modulemap";
+				OTHER_SWIFT_FLAGS = "$(inherited) -I/usr/local/Cellar/libressl/2.9.2/include -I/usr/local/Cellar/libressl/2.9.2/include -Xcc -fmodule-map-file=$(SRCROOT)/AppReceiptValidator.xcodeproj/GeneratedModuleMap/CCryptoOpenSSL/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/crypto/Sources/CBcrypt/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/crypto/Sources/CBase32/include/module.modulemap";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
 				SWIFT_VERSION = 5.0;
 				TARGET_NAME = AppReceiptValidatorTests;
@@ -3956,9 +3866,9 @@
 					"$(SRCROOT)/.build/checkouts/swift-nio/Sources/CNIODarwin/include",
 					"$(SRCROOT)/.build/checkouts/swift-nio/Sources/CNIOLinux/include",
 					"$(SRCROOT)/.build/checkouts/swift-nio-zlib-support",
-					"$(SRCROOT)/.build/checkouts/open-crypto/Sources/CCryptoOpenSSL/include",
-					"$(SRCROOT)/.build/checkouts/open-crypto/Sources/CBcrypt/include",
-					"$(SRCROOT)/.build/checkouts/open-crypto/Sources/CBase32/include",
+					"$(SRCROOT)/.build/checkouts/crypto/Sources/CCryptoOpenSSL/include",
+					"$(SRCROOT)/.build/checkouts/crypto/Sources/CBcrypt/include",
+					"$(SRCROOT)/.build/checkouts/crypto/Sources/CBase32/include",
 					"$(SRCROOT)/.build/checkouts/swift-nio-ssl-support",
 					"$(SRCROOT)/AppReceiptValidator.xcodeproj/GeneratedModuleMap/CCryptoOpenSSL",
 				);
@@ -3968,18 +3878,17 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_CFLAGS = (
 					"$(inherited)",
-					"-I/usr/local/Cellar/libressl/2.7.3/include",
-					"-I/usr/local/Cellar/libressl/2.7.3/include",
+					"-I/usr/local/Cellar/libressl/2.9.2/include",
+					"-I/usr/local/Cellar/libressl/2.9.2/include",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-lz",
-					"-L/usr/local/Cellar/libressl/2.7.3/lib",
+					"-L/usr/local/Cellar/libressl/2.9.2/lib",
 					"-lssl",
-					"-L/usr/local/Cellar/libressl/2.7.3/lib",
+					"-L/usr/local/Cellar/libressl/2.9.2/lib",
 					"-lcrypto",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -I/usr/local/Cellar/libressl/2.7.3/include -I/usr/local/Cellar/libressl/2.7.3/include -Xcc -fmodule-map-file=$(SRCROOT)/AppReceiptValidator.xcodeproj/GeneratedModuleMap/CCryptoOpenSSL/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/open-crypto/Sources/CBcrypt/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/open-crypto/Sources/CBase32/include/module.modulemap";
+				OTHER_SWIFT_FLAGS = "$(inherited) -I/usr/local/Cellar/libressl/2.9.2/include -I/usr/local/Cellar/libressl/2.9.2/include -Xcc -fmodule-map-file=$(SRCROOT)/AppReceiptValidator.xcodeproj/GeneratedModuleMap/CCryptoOpenSSL/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/crypto/Sources/CBcrypt/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/crypto/Sources/CBase32/include/module.modulemap";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
 				SWIFT_VERSION = 5.0;
 				TARGET_NAME = AppReceiptValidatorTests;
@@ -4007,10 +3916,7 @@
 				INFOPLIST_FILE = AppReceiptValidator.xcodeproj/Async_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-lz",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = Async;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -4065,10 +3971,7 @@
 				INFOPLIST_FILE = AppReceiptValidator.xcodeproj/Async_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-lz",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = Async;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -4099,10 +4002,7 @@
 				INFOPLIST_FILE = AppReceiptValidator.xcodeproj/Bits_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-lz",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = Bits;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -4133,10 +4033,7 @@
 				INFOPLIST_FILE = AppReceiptValidator.xcodeproj/Bits_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-lz",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = Bits;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -4159,24 +4056,24 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/.build/checkouts/open-crypto/Sources/CBase32/include",
+					"$(SRCROOT)/.build/checkouts/crypto/Sources/CBase32/include",
 					"$(SRCROOT)/.build/checkouts/swift-nio-ssl-support",
 				);
 				INFOPLIST_FILE = AppReceiptValidator.xcodeproj/CBase32_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = (
 					"$(inherited)",
-					"-I/usr/local/Cellar/libressl/2.7.3/include",
-					"-I/usr/local/Cellar/libressl/2.7.3/include",
+					"-I/usr/local/Cellar/libressl/2.9.2/include",
+					"-I/usr/local/Cellar/libressl/2.9.2/include",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-L/usr/local/Cellar/libressl/2.7.3/lib",
+					"-L/usr/local/Cellar/libressl/2.9.2/lib",
 					"-lssl",
-					"-L/usr/local/Cellar/libressl/2.7.3/lib",
+					"-L/usr/local/Cellar/libressl/2.9.2/lib",
 					"-lcrypto",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -I/usr/local/Cellar/libressl/2.7.3/include -I/usr/local/Cellar/libressl/2.7.3/include";
+				OTHER_SWIFT_FLAGS = "$(inherited) -I/usr/local/Cellar/libressl/2.9.2/include -I/usr/local/Cellar/libressl/2.9.2/include";
 				PRODUCT_BUNDLE_IDENTIFIER = CBase32;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -4197,24 +4094,24 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/.build/checkouts/open-crypto/Sources/CBase32/include",
+					"$(SRCROOT)/.build/checkouts/crypto/Sources/CBase32/include",
 					"$(SRCROOT)/.build/checkouts/swift-nio-ssl-support",
 				);
 				INFOPLIST_FILE = AppReceiptValidator.xcodeproj/CBase32_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = (
 					"$(inherited)",
-					"-I/usr/local/Cellar/libressl/2.7.3/include",
-					"-I/usr/local/Cellar/libressl/2.7.3/include",
+					"-I/usr/local/Cellar/libressl/2.9.2/include",
+					"-I/usr/local/Cellar/libressl/2.9.2/include",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-L/usr/local/Cellar/libressl/2.7.3/lib",
+					"-L/usr/local/Cellar/libressl/2.9.2/lib",
 					"-lssl",
-					"-L/usr/local/Cellar/libressl/2.7.3/lib",
+					"-L/usr/local/Cellar/libressl/2.9.2/lib",
 					"-lcrypto",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -I/usr/local/Cellar/libressl/2.7.3/include -I/usr/local/Cellar/libressl/2.7.3/include";
+				OTHER_SWIFT_FLAGS = "$(inherited) -I/usr/local/Cellar/libressl/2.9.2/include -I/usr/local/Cellar/libressl/2.9.2/include";
 				PRODUCT_BUNDLE_IDENTIFIER = CBase32;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -4235,24 +4132,24 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/.build/checkouts/open-crypto/Sources/CBcrypt/include",
+					"$(SRCROOT)/.build/checkouts/crypto/Sources/CBcrypt/include",
 					"$(SRCROOT)/.build/checkouts/swift-nio-ssl-support",
 				);
 				INFOPLIST_FILE = AppReceiptValidator.xcodeproj/CBcrypt_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = (
 					"$(inherited)",
-					"-I/usr/local/Cellar/libressl/2.7.3/include",
-					"-I/usr/local/Cellar/libressl/2.7.3/include",
+					"-I/usr/local/Cellar/libressl/2.9.2/include",
+					"-I/usr/local/Cellar/libressl/2.9.2/include",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-L/usr/local/Cellar/libressl/2.7.3/lib",
+					"-L/usr/local/Cellar/libressl/2.9.2/lib",
 					"-lssl",
-					"-L/usr/local/Cellar/libressl/2.7.3/lib",
+					"-L/usr/local/Cellar/libressl/2.9.2/lib",
 					"-lcrypto",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -I/usr/local/Cellar/libressl/2.7.3/include -I/usr/local/Cellar/libressl/2.7.3/include";
+				OTHER_SWIFT_FLAGS = "$(inherited) -I/usr/local/Cellar/libressl/2.9.2/include -I/usr/local/Cellar/libressl/2.9.2/include";
 				PRODUCT_BUNDLE_IDENTIFIER = CBcrypt;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -4273,24 +4170,24 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/.build/checkouts/open-crypto/Sources/CBcrypt/include",
+					"$(SRCROOT)/.build/checkouts/crypto/Sources/CBcrypt/include",
 					"$(SRCROOT)/.build/checkouts/swift-nio-ssl-support",
 				);
 				INFOPLIST_FILE = AppReceiptValidator.xcodeproj/CBcrypt_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = (
 					"$(inherited)",
-					"-I/usr/local/Cellar/libressl/2.7.3/include",
-					"-I/usr/local/Cellar/libressl/2.7.3/include",
+					"-I/usr/local/Cellar/libressl/2.9.2/include",
+					"-I/usr/local/Cellar/libressl/2.9.2/include",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-L/usr/local/Cellar/libressl/2.7.3/lib",
+					"-L/usr/local/Cellar/libressl/2.9.2/lib",
 					"-lssl",
-					"-L/usr/local/Cellar/libressl/2.7.3/lib",
+					"-L/usr/local/Cellar/libressl/2.9.2/lib",
 					"-lcrypto",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -I/usr/local/Cellar/libressl/2.7.3/include -I/usr/local/Cellar/libressl/2.7.3/include";
+				OTHER_SWIFT_FLAGS = "$(inherited) -I/usr/local/Cellar/libressl/2.9.2/include -I/usr/local/Cellar/libressl/2.9.2/include";
 				PRODUCT_BUNDLE_IDENTIFIER = CBcrypt;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -4311,24 +4208,24 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/.build/checkouts/open-crypto/Sources/CCryptoOpenSSL/include",
+					"$(SRCROOT)/.build/checkouts/crypto/Sources/CCryptoOpenSSL/include",
 					"$(SRCROOT)/.build/checkouts/swift-nio-ssl-support",
 				);
 				INFOPLIST_FILE = AppReceiptValidator.xcodeproj/CCryptoOpenSSL_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = (
 					"$(inherited)",
-					"-I/usr/local/Cellar/libressl/2.7.3/include",
-					"-I/usr/local/Cellar/libressl/2.7.3/include",
+					"-I/usr/local/Cellar/libressl/2.9.2/include",
+					"-I/usr/local/Cellar/libressl/2.9.2/include",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-L/usr/local/Cellar/libressl/2.7.3/lib",
+					"-L/usr/local/Cellar/libressl/2.9.2/lib",
 					"-lssl",
-					"-L/usr/local/Cellar/libressl/2.7.3/lib",
+					"-L/usr/local/Cellar/libressl/2.9.2/lib",
 					"-lcrypto",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -I/usr/local/Cellar/libressl/2.7.3/include -I/usr/local/Cellar/libressl/2.7.3/include";
+				OTHER_SWIFT_FLAGS = "$(inherited) -I/usr/local/Cellar/libressl/2.9.2/include -I/usr/local/Cellar/libressl/2.9.2/include";
 				PRODUCT_BUNDLE_IDENTIFIER = CCryptoOpenSSL;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -4349,24 +4246,24 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/.build/checkouts/open-crypto/Sources/CCryptoOpenSSL/include",
+					"$(SRCROOT)/.build/checkouts/crypto/Sources/CCryptoOpenSSL/include",
 					"$(SRCROOT)/.build/checkouts/swift-nio-ssl-support",
 				);
 				INFOPLIST_FILE = AppReceiptValidator.xcodeproj/CCryptoOpenSSL_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = (
 					"$(inherited)",
-					"-I/usr/local/Cellar/libressl/2.7.3/include",
-					"-I/usr/local/Cellar/libressl/2.7.3/include",
+					"-I/usr/local/Cellar/libressl/2.9.2/include",
+					"-I/usr/local/Cellar/libressl/2.9.2/include",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-L/usr/local/Cellar/libressl/2.7.3/lib",
+					"-L/usr/local/Cellar/libressl/2.9.2/lib",
 					"-lssl",
-					"-L/usr/local/Cellar/libressl/2.7.3/lib",
+					"-L/usr/local/Cellar/libressl/2.9.2/lib",
 					"-lcrypto",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -I/usr/local/Cellar/libressl/2.7.3/include -I/usr/local/Cellar/libressl/2.7.3/include";
+				OTHER_SWIFT_FLAGS = "$(inherited) -I/usr/local/Cellar/libressl/2.9.2/include -I/usr/local/Cellar/libressl/2.9.2/include";
 				PRODUCT_BUNDLE_IDENTIFIER = CCryptoOpenSSL;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -4394,10 +4291,7 @@
 				INFOPLIST_FILE = AppReceiptValidator.xcodeproj/CNIOAtomics_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-lz",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = CNIOAtomics;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -4426,10 +4320,7 @@
 				INFOPLIST_FILE = AppReceiptValidator.xcodeproj/CNIOAtomics_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-lz",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = CNIOAtomics;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -4458,10 +4349,7 @@
 				INFOPLIST_FILE = AppReceiptValidator.xcodeproj/CNIODarwin_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-lz",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = CNIODarwin;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -4490,10 +4378,7 @@
 				INFOPLIST_FILE = AppReceiptValidator.xcodeproj/CNIODarwin_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-lz",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = CNIODarwin;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -4522,10 +4407,7 @@
 				INFOPLIST_FILE = AppReceiptValidator.xcodeproj/CNIOLinux_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-lz",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = CNIOLinux;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -4554,10 +4436,7 @@
 				INFOPLIST_FILE = AppReceiptValidator.xcodeproj/CNIOLinux_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-lz",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = CNIOLinux;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -4586,10 +4465,7 @@
 				INFOPLIST_FILE = AppReceiptValidator.xcodeproj/CNIOSHA1_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-lz",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = CNIOSHA1;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -4618,10 +4494,7 @@
 				INFOPLIST_FILE = AppReceiptValidator.xcodeproj/CNIOSHA1_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-lz",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = CNIOSHA1;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -4699,10 +4572,7 @@
 				INFOPLIST_FILE = AppReceiptValidator.xcodeproj/Core_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-lz",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = Core;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -4733,10 +4603,7 @@
 				INFOPLIST_FILE = AppReceiptValidator.xcodeproj/Core_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-lz",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = Core;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -4781,9 +4648,9 @@
 					"$(SRCROOT)/.build/checkouts/swift-nio/Sources/CNIODarwin/include",
 					"$(SRCROOT)/.build/checkouts/swift-nio/Sources/CNIOLinux/include",
 					"$(SRCROOT)/.build/checkouts/swift-nio-zlib-support",
-					"$(SRCROOT)/.build/checkouts/open-crypto/Sources/CCryptoOpenSSL/include",
-					"$(SRCROOT)/.build/checkouts/open-crypto/Sources/CBcrypt/include",
-					"$(SRCROOT)/.build/checkouts/open-crypto/Sources/CBase32/include",
+					"$(SRCROOT)/.build/checkouts/crypto/Sources/CCryptoOpenSSL/include",
+					"$(SRCROOT)/.build/checkouts/crypto/Sources/CBcrypt/include",
+					"$(SRCROOT)/.build/checkouts/crypto/Sources/CBase32/include",
 					"$(SRCROOT)/.build/checkouts/swift-nio-ssl-support",
 					"$(SRCROOT)/AppReceiptValidator.xcodeproj/GeneratedModuleMap/CCryptoOpenSSL",
 				);
@@ -4791,18 +4658,17 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = (
 					"$(inherited)",
-					"-I/usr/local/Cellar/libressl/2.7.3/include",
-					"-I/usr/local/Cellar/libressl/2.7.3/include",
+					"-I/usr/local/Cellar/libressl/2.9.2/include",
+					"-I/usr/local/Cellar/libressl/2.9.2/include",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-lz",
-					"-L/usr/local/Cellar/libressl/2.7.3/lib",
+					"-L/usr/local/Cellar/libressl/2.9.2/lib",
 					"-lssl",
-					"-L/usr/local/Cellar/libressl/2.7.3/lib",
+					"-L/usr/local/Cellar/libressl/2.9.2/lib",
 					"-lcrypto",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -I/usr/local/Cellar/libressl/2.7.3/include -I/usr/local/Cellar/libressl/2.7.3/include -Xcc -fmodule-map-file=$(SRCROOT)/AppReceiptValidator.xcodeproj/GeneratedModuleMap/CCryptoOpenSSL/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/open-crypto/Sources/CBcrypt/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/open-crypto/Sources/CBase32/include/module.modulemap";
+				OTHER_SWIFT_FLAGS = "$(inherited) -I/usr/local/Cellar/libressl/2.9.2/include -I/usr/local/Cellar/libressl/2.9.2/include -Xcc -fmodule-map-file=$(SRCROOT)/AppReceiptValidator.xcodeproj/GeneratedModuleMap/CCryptoOpenSSL/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/crypto/Sources/CBcrypt/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/crypto/Sources/CBase32/include/module.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = Crypto;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -4828,9 +4694,9 @@
 					"$(SRCROOT)/.build/checkouts/swift-nio/Sources/CNIODarwin/include",
 					"$(SRCROOT)/.build/checkouts/swift-nio/Sources/CNIOLinux/include",
 					"$(SRCROOT)/.build/checkouts/swift-nio-zlib-support",
-					"$(SRCROOT)/.build/checkouts/open-crypto/Sources/CCryptoOpenSSL/include",
-					"$(SRCROOT)/.build/checkouts/open-crypto/Sources/CBcrypt/include",
-					"$(SRCROOT)/.build/checkouts/open-crypto/Sources/CBase32/include",
+					"$(SRCROOT)/.build/checkouts/crypto/Sources/CCryptoOpenSSL/include",
+					"$(SRCROOT)/.build/checkouts/crypto/Sources/CBcrypt/include",
+					"$(SRCROOT)/.build/checkouts/crypto/Sources/CBase32/include",
 					"$(SRCROOT)/.build/checkouts/swift-nio-ssl-support",
 					"$(SRCROOT)/AppReceiptValidator.xcodeproj/GeneratedModuleMap/CCryptoOpenSSL",
 				);
@@ -4838,18 +4704,17 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = (
 					"$(inherited)",
-					"-I/usr/local/Cellar/libressl/2.7.3/include",
-					"-I/usr/local/Cellar/libressl/2.7.3/include",
+					"-I/usr/local/Cellar/libressl/2.9.2/include",
+					"-I/usr/local/Cellar/libressl/2.9.2/include",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-lz",
-					"-L/usr/local/Cellar/libressl/2.7.3/lib",
+					"-L/usr/local/Cellar/libressl/2.9.2/lib",
 					"-lssl",
-					"-L/usr/local/Cellar/libressl/2.7.3/lib",
+					"-L/usr/local/Cellar/libressl/2.9.2/lib",
 					"-lcrypto",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -I/usr/local/Cellar/libressl/2.7.3/include -I/usr/local/Cellar/libressl/2.7.3/include -Xcc -fmodule-map-file=$(SRCROOT)/AppReceiptValidator.xcodeproj/GeneratedModuleMap/CCryptoOpenSSL/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/open-crypto/Sources/CBcrypt/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/open-crypto/Sources/CBase32/include/module.modulemap";
+				OTHER_SWIFT_FLAGS = "$(inherited) -I/usr/local/Cellar/libressl/2.9.2/include -I/usr/local/Cellar/libressl/2.9.2/include -Xcc -fmodule-map-file=$(SRCROOT)/AppReceiptValidator.xcodeproj/GeneratedModuleMap/CCryptoOpenSSL/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/crypto/Sources/CBcrypt/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/crypto/Sources/CBase32/include/module.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = Crypto;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -4945,10 +4810,7 @@
 				INFOPLIST_FILE = AppReceiptValidator.xcodeproj/NIO_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-lz",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = NIO;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -4979,10 +4841,7 @@
 				INFOPLIST_FILE = AppReceiptValidator.xcodeproj/NIO_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-lz",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = NIO;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -5010,10 +4869,7 @@
 				INFOPLIST_FILE = AppReceiptValidator.xcodeproj/NIOConcurrencyHelpers_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-lz",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = NIOConcurrencyHelpers;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -5041,10 +4897,7 @@
 				INFOPLIST_FILE = AppReceiptValidator.xcodeproj/NIOConcurrencyHelpers_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-lz",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = NIOConcurrencyHelpers;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -5075,10 +4928,7 @@
 				INFOPLIST_FILE = AppReceiptValidator.xcodeproj/NIOFoundationCompat_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-lz",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = NIOFoundationCompat;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -5109,10 +4959,7 @@
 				INFOPLIST_FILE = AppReceiptValidator.xcodeproj/NIOFoundationCompat_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-lz",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = NIOFoundationCompat;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -5139,10 +4986,7 @@
 				INFOPLIST_FILE = AppReceiptValidator.xcodeproj/NIOPriorityQueue_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-lz",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = NIOPriorityQueue;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -5169,10 +5013,7 @@
 				INFOPLIST_FILE = AppReceiptValidator.xcodeproj/NIOPriorityQueue_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-lz",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = NIOPriorityQueue;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -5205,18 +5046,17 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = (
 					"$(inherited)",
-					"-I/usr/local/Cellar/libressl/2.7.3/include",
-					"-I/usr/local/Cellar/libressl/2.7.3/include",
+					"-I/usr/local/Cellar/libressl/2.9.2/include",
+					"-I/usr/local/Cellar/libressl/2.9.2/include",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-lz",
-					"-L/usr/local/Cellar/libressl/2.7.3/lib",
+					"-L/usr/local/Cellar/libressl/2.9.2/lib",
 					"-lssl",
-					"-L/usr/local/Cellar/libressl/2.7.3/lib",
+					"-L/usr/local/Cellar/libressl/2.9.2/lib",
 					"-lcrypto",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -I/usr/local/Cellar/libressl/2.7.3/include -I/usr/local/Cellar/libressl/2.7.3/include";
+				OTHER_SWIFT_FLAGS = "$(inherited) -I/usr/local/Cellar/libressl/2.9.2/include -I/usr/local/Cellar/libressl/2.9.2/include";
 				PRODUCT_BUNDLE_IDENTIFIER = Random;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -5248,18 +5088,17 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_CFLAGS = (
 					"$(inherited)",
-					"-I/usr/local/Cellar/libressl/2.7.3/include",
-					"-I/usr/local/Cellar/libressl/2.7.3/include",
+					"-I/usr/local/Cellar/libressl/2.9.2/include",
+					"-I/usr/local/Cellar/libressl/2.9.2/include",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-lz",
-					"-L/usr/local/Cellar/libressl/2.7.3/lib",
+					"-L/usr/local/Cellar/libressl/2.9.2/lib",
 					"-lssl",
-					"-L/usr/local/Cellar/libressl/2.7.3/lib",
+					"-L/usr/local/Cellar/libressl/2.9.2/lib",
 					"-lcrypto",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -I/usr/local/Cellar/libressl/2.7.3/include -I/usr/local/Cellar/libressl/2.7.3/include";
+				OTHER_SWIFT_FLAGS = "$(inherited) -I/usr/local/Cellar/libressl/2.9.2/include -I/usr/local/Cellar/libressl/2.9.2/include";
 				PRODUCT_BUNDLE_IDENTIFIER = Random;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
