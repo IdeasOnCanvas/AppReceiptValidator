@@ -6,7 +6,7 @@
 //  Copyright © 2017 IdeasOnCanvas GmbH. All rights reserved.
 //
 
-import COpenCryptoOpenSSL
+import COpenCrypto
 import Foundation
 
 /// Apple guide: https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Introduction.html
@@ -114,19 +114,19 @@ private extension AppReceiptValidator {
 
         // Set up the hashing context
         var computedHash = [UInt8](repeating: 0, count: 20)
-        var sha1Context = SHA_CTX()
-
-        SHA1_Init(&sha1Context)
-        _ = deviceIdentifierData.withUnsafeBytes { pointer -> Void in
-            SHA1_Update(&sha1Context, pointer.baseAddress, deviceIdentifierData.count)
-        }
-        _ = receiptOpaqueValueData.withUnsafeBytes { pointer -> Void in
-            SHA1_Update(&sha1Context, pointer.baseAddress, receiptOpaqueValueData.count)
-        }
-        _ = receiptBundleIdData.withUnsafeBytes { pointer -> Void in
-            SHA1_Update(&sha1Context, pointer.baseAddress, receiptBundleIdData.count)
-        }
-        SHA1_Final(&computedHash, &sha1Context)
+//        var sha1Context = SHA_CTX()
+//
+//        SHA1_Init(&sha1Context)
+//        _ = deviceIdentifierData.withUnsafeBytes { pointer -> Void in
+//            SHA1_Update(&sha1Context, pointer.baseAddress, deviceIdentifierData.count)
+//        }
+//        _ = receiptOpaqueValueData.withUnsafeBytes { pointer -> Void in
+//            SHA1_Update(&sha1Context, pointer.baseAddress, receiptOpaqueValueData.count)
+//        }
+//        _ = receiptBundleIdData.withUnsafeBytes { pointer -> Void in
+//            SHA1_Update(&sha1Context, pointer.baseAddress, receiptBundleIdData.count)
+//        }
+//        SHA1_Final(&computedHash, &sha1Context)
 
         let computedHashData = Data(bytes: &computedHash, count: 20)
 
@@ -148,10 +148,9 @@ private extension AppReceiptValidator {
         guard let nonNullReceiptPKCS7Container = receiptPKCS7Container else { throw Error.emptyReceiptContents }
 
         let pkcs7Wrapper = PKCS7Wrapper(pkcs7: nonNullReceiptPKCS7Container)
-        // TODO:
-       /* let pkcs7DataTypeCode = OBJ_obj2nid(pkcs7_d_sign(receiptPKCS7Container).pointee.contents.pointee.type)
+        let pkcs7DataTypeCode = OBJ_obj2nid(receiptPKCS7Container?.pointee.d.digest.pointee.contents.pointee.type)
 
-        guard pkcs7DataTypeCode == NID_pkcs7_data else { throw Error.emptyReceiptContents }*/
+        guard pkcs7DataTypeCode == NID_pkcs7_data else { throw Error.emptyReceiptContents }
 
         return pkcs7Wrapper
     }
@@ -162,37 +161,37 @@ private extension AppReceiptValidator {
 private extension AppReceiptValidator {
 
     func checkSignaturePresence(pkcs7: PKCS7Wrapper) throws {
-        let pkcs7SignedTypeCode = OBJ_obj2nid(pkcs7.pkcs7.pointee.type)
-
-        guard pkcs7SignedTypeCode == NID_pkcs7_signed else { throw Error.receiptNotSigned }
+//        let pkcs7SignedTypeCode = OBJ_obj2nid(pkcs7.pkcs7.pointee.type)
+//
+//        guard pkcs7SignedTypeCode == NID_pkcs7_signed else { throw Error.receiptNotSigned }
     }
 
     func checkSignatureAuthenticity(pkcs7: PKCS7Wrapper, appleRootCertificateData: Data) throws {
-        let appleRootCertificateBIO = BIOWrapper(data: appleRootCertificateData)
-
-        guard let appleRootCertificateX509 = d2i_X509_bio(appleRootCertificateBIO.bio, nil) else { throw Error.malformedAppleRootCertificate }
-
-        defer {
-            X509_free(appleRootCertificateX509)
-        }
-        try self.verifyAuthenticity(x509Certificate: appleRootCertificateX509, pkcs7: pkcs7)
+//        let appleRootCertificateBIO = BIOWrapper(data: appleRootCertificateData)
+//
+//        guard let appleRootCertificateX509 = d2i_X509_bio(appleRootCertificateBIO.bio, nil) else { throw Error.malformedAppleRootCertificate }
+//
+//        defer {
+//            X509_free(appleRootCertificateX509)
+//        }
+//        try self.verifyAuthenticity(x509Certificate: appleRootCertificateX509, pkcs7: pkcs7)
     }
 
-    private func verifyAuthenticity(x509Certificate: UnsafeMutablePointer<X509>, pkcs7: PKCS7Wrapper) throws {
-        let x509CertificateStore = X509_STORE_new()
-        defer {
-            X509_STORE_free(x509CertificateStore)
-        }
-        X509_STORE_add_cert(x509CertificateStore, x509Certificate)
-
-        OpenSSL_add_all_digests()
-
-        let result = PKCS7_verify(pkcs7.pkcs7, nil, x509CertificateStore, nil, nil, 0)
-
-        if result != 1 {
-            throw Error.receiptSignatureInvalid
-        }
-    }
+ //   private func verifyAuthenticity(x509Certificate: UnsafeMutablePointer<X509>, pkcs7: PKCS7Wrapper) throws {
+//        let x509CertificateStore = X509_STORE_new()
+//        defer {
+//            X509_STORE_free(x509CertificateStore)
+//        }
+//        X509_STORE_add_cert(x509CertificateStore, x509Certificate)
+//
+//        OpenSSL_add_all_digests()
+//
+//        let result = PKCS7_verify(pkcs7.pkcs7, nil, x509CertificateStore, nil, nil, 0)
+//
+//        if result != 1 {
+//            throw Error.receiptSignatureInvalid
+//        }
+ //   }
 }
 
 // MARK: - Parsing of properties
@@ -201,12 +200,12 @@ private extension AppReceiptValidator {
 
     // swiftlint:disable:next cyclomatic_complexity
     func parseReceipt(pkcs7: PKCS7Wrapper, parseUnofficialParts: Bool = false) throws -> (receipt: Receipt, unofficialReceipt: UnofficialReceipt) {
-        guard let contents = pkcs7.pkcs7.pointee.d.sign.pointee.contents, let octets = contents.pointee.d.data else { throw Error.malformedReceipt }
-        guard let initialPointer = UnsafePointer(octets.pointee.data) else { throw Error.malformedReceipt }
-        let length = Int(octets.pointee.length)
+   //     guard let contents = pkcs7.pkcs7.pointee.d.sign.pointee.contents, let octets = contents.pointee.d.data else { throw Error.malformedReceipt }
+       // guard let initialPointer = UnsafePointer(octets.pointee.data) else { throw Error.malformedReceipt }
+        let length = 8// Int(octets.pointee.length)
         var receipt = Receipt()
         var unofficialReceipt = UnofficialReceipt(entries: [])
-
+/*
         try self.parseASN1Set(pointer: initialPointer, length: length) { attributeType, value in
             guard let attribute = KnownReceiptAttribute(rawValue: attributeType) else {
                 if parseUnofficialParts {
@@ -238,7 +237,8 @@ private extension AppReceiptValidator {
             case .expirationDate:
                 receipt.expirationDate = value.unwrappedDateValue
             }
-        }
+        }*/
+        fatalError()
 
         return (receipt: receipt, unofficialReceipt: unofficialReceipt)
     }

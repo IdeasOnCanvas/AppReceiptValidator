@@ -3,7 +3,7 @@
     "pins": [
       {
         "package": "open-crypto",
-        "repositoryURL": "https://github.com/vapor/crypto.git",
+        "repositoryURL": "https://github.com/vapor/open-crypto.git",
         "state": {
           "branch": null,
           "revision": "90c49bc68ee6d992fa13cf84ca8fc54b97eaf4cc",

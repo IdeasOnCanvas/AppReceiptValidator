@@ -6,7 +6,7 @@
 //  Copyright © 2017 IdeasOnCanvas GmbH. All rights reserved.
 //
 
-import COpenCryptoOpenSSL
+import COpenCrypto
 import Foundation
 
 final class BIOWrapper {
@@ -15,6 +15,7 @@ final class BIOWrapper {
 
     init(data: Data) {
         _ = data.withUnsafeBytes { pointer in
+
             BIO_write(self.bio, pointer.baseAddress, Int32(data.count))
         }
     }

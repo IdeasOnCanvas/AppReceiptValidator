@@ -1,4 +1,4 @@
 module COpenCrypto {
-    umbrella "/Users/schmi/Projects/AppReceiptValidator/.build/checkouts/crypto/Sources/COpenCrypto/include"
+    umbrella "/Users/schmi/Projects/AppReceiptValidator/.build/checkouts/open-crypto/Sources/COpenCrypto/include"
     export *
 }
