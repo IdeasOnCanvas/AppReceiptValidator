@@ -143,22 +143,12 @@ private extension AppReceiptValidator {
 
     func extractPKCS7Container(data: Data) throws -> PKCS7Wrapper {
         let receiptBIO = BIOWrapper(data: data)
-        let byts = BIO_ctrl_pending(receiptBIO.bio)
-
-        var pointer: OpaquePointer! = nil
-        data.withUnsafeBytes { bytes in
-            pointer = BIO_new_mem_buf(bytes, Int32(data.count))
-        }
-        BIO_TYPE_MD
-
-        var pkcs7: UnsafeMutablePointer<PKCS7>? = nil
-        let receiptPKCS7Container = d2i_PKCS7_bio(pointer, &pkcs7)
-        let byts2 = BIO_ctrl_pending(pointer)
+        let receiptPKCS7Container = d2i_PKCS7_bio(receiptBIO.bio, nil)
 
         guard let nonNullReceiptPKCS7Container = receiptPKCS7Container else { throw Error.emptyReceiptContents }
 
         let pkcs7Wrapper = PKCS7Wrapper(pkcs7: nonNullReceiptPKCS7Container)
-        let pkcs7DataTypeCode = OBJ_obj2nid(receiptPKCS7Container?.pointee.d.digest.pointee.contents.pointee.type)
+        let pkcs7DataTypeCode = OBJ_obj2nid(receiptPKCS7Container?.pointee.d.sign.pointee.contents.pointee.type)
 
         guard pkcs7DataTypeCode == NID_pkcs7_data else { throw Error.emptyReceiptContents }
 
