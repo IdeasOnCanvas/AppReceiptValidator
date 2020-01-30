@@ -177,6 +177,7 @@ private extension AppReceiptValidator {
         try self.verifyAuthenticity(x509Certificate: appleRootCertificateX509, pkcs7: pkcs7)
     }
 
+    #if os(Linux)
     private func verifyAuthenticity(x509Certificate: OpaquePointer, pkcs7: PKCS7Wrapper) throws {
         let x509CertificateStore = X509_STORE_new()
         defer {
@@ -189,6 +190,21 @@ private extension AppReceiptValidator {
             throw Error.receiptSignatureInvalid
         }
     }
+    #elseif os(macOS) || os(iOS)
+    // Currently the Crypto package is using libressl on macOS which leads to other signature than on linux (openssl@1.1)
+    private func verifyAuthenticity(x509Certificate: UnsafeMutablePointer<X509>, pkcs7: PKCS7Wrapper) throws {
+        let x509CertificateStore = X509_STORE_new()
+        defer {
+            X509_STORE_free(x509CertificateStore)
+        }
+        X509_STORE_add_cert(x509CertificateStore, x509Certificate)
+        let result = PKCS7_verify(pkcs7.pkcs7, nil, x509CertificateStore, nil, nil, 0)
+
+        if result != 1 {
+            throw Error.receiptSignatureInvalid
+        }
+    }
+    #endif
 }
 
 // MARK: - Parsing of properties

@@ -186,6 +186,7 @@ extension AppReceiptValidator.Parameters {
 
         case string(KeyPath<Receipt, String?>, expected: String?)
 
+        #if os(macOS) || os(iOS)
         /// Compares the receipts bundle id with the main bundle's info plist CFBundleIdentifier.
         public static var bundleIdMatchingMainBundle: PropertyValidation {
             return compareWithMainBundle(receiptProperty: \Receipt.bundleIdentifier, infoDictionaryKey: String(kCFBundleIdentifierKey))
@@ -205,6 +206,7 @@ extension AppReceiptValidator.Parameters {
             let expected = Bundle.main.infoDictionary?[infoDictionaryKey] as? String
             return .string(receiptProperty, expected: expected)
         }
+        #endif
 
         // MARK: Validation Execution
 
