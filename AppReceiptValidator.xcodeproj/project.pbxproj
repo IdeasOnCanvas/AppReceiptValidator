@@ -21,6 +21,17 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		C87AB44D23E1DC1A00EB149C /* not_a_receipt in CopyFiles */ = {isa = PBXBuildFile; fileRef = C87AB43523E1DBC100EB149C /* not_a_receipt */; };
+		C87AB44E23E1DC1A00EB149C /* hannes_mac_mindnode_pro_Info.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = C87AB43623E1DBC100EB149C /* hannes_mac_mindnode_pro_Info.plist */; };
+		C87AB44F23E1DC1A00EB149C /* mac_mindnode_rebought_receipt in CopyFiles */ = {isa = PBXBuildFile; fileRef = C87AB43723E1DBC100EB149C /* mac_mindnode_rebought_receipt */; };
+		C87AB45023E1DC1A00EB149C /* hannes_mac_mindnode_Info.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = C87AB43823E1DBC100EB149C /* hannes_mac_mindnode_Info.plist */; };
+		C87AB45123E1DC1A00EB149C /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C87AB43B23E1DBC100EB149C /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 */; };
+		C87AB45223E1DC1A00EB149C /* grandUnifiedExpiredAppleCert_receipt.b64 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C87AB43C23E1DBC100EB149C /* grandUnifiedExpiredAppleCert_receipt.b64 */; };
+		C87AB45323E1DC1A00EB149C /* hannes_mac_mindnode_receipt in CopyFiles */ = {isa = PBXBuildFile; fileRef = C87AB43D23E1DBC100EB149C /* hannes_mac_mindnode_receipt */; };
+		C87AB45423E1DC1A00EB149C /* hannes_mac_mindnode_pro_receipt in CopyFiles */ = {isa = PBXBuildFile; fileRef = C87AB43E23E1DBC100EB149C /* hannes_mac_mindnode_pro_receipt */; };
+		C87AB45523E1DC1A00EB149C /* mindnode_ios_michaelsandbox_receipt1.b64 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C87AB43F23E1DBC100EB149C /* mindnode_ios_michaelsandbox_receipt1.b64 */; };
+		C87AB45623E1DC1A00EB149C /* mindnode_ios_michaelsandbox_receipt2.b64 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C87AB44023E1DBC100EB149C /* mindnode_ios_michaelsandbox_receipt2.b64 */; };
+		C87AB6C423E2DD3A00EB149C /* AppleIncRootCertificate.cer in CopyFiles */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* AppleIncRootCertificate.cer */; };
 		OBJ_106 /* AppReceiptPropertyValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* AppReceiptPropertyValidationTests.swift */; };
 		OBJ_107 /* AppReceiptValidationInAppPurchaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* AppReceiptValidationInAppPurchaseTests.swift */; };
 		OBJ_108 /* AppReceiptValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* AppReceiptValidationTests.swift */; };
@@ -119,9 +130,51 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		C87AB44C23E1DC1100EB149C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				C87AB44D23E1DC1A00EB149C /* not_a_receipt in CopyFiles */,
+				C87AB44E23E1DC1A00EB149C /* hannes_mac_mindnode_pro_Info.plist in CopyFiles */,
+				C87AB44F23E1DC1A00EB149C /* mac_mindnode_rebought_receipt in CopyFiles */,
+				C87AB45023E1DC1A00EB149C /* hannes_mac_mindnode_Info.plist in CopyFiles */,
+				C87AB45123E1DC1A00EB149C /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 in CopyFiles */,
+				C87AB45223E1DC1A00EB149C /* grandUnifiedExpiredAppleCert_receipt.b64 in CopyFiles */,
+				C87AB45323E1DC1A00EB149C /* hannes_mac_mindnode_receipt in CopyFiles */,
+				C87AB45423E1DC1A00EB149C /* hannes_mac_mindnode_pro_receipt in CopyFiles */,
+				C87AB45523E1DC1A00EB149C /* mindnode_ios_michaelsandbox_receipt1.b64 in CopyFiles */,
+				C87AB45623E1DC1A00EB149C /* mindnode_ios_michaelsandbox_receipt2.b64 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C87AB6C323E2DD3400EB149C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				C87AB6C423E2DD3A00EB149C /* AppleIncRootCertificate.cer in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		"AppReceiptValidator::AppReceiptValidator::Product" /* AppReceiptValidator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AppReceiptValidator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		"AppReceiptValidator::AppReceiptValidatorTests::Product" /* AppReceiptValidatorTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppReceiptValidatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"AppReceiptValidator::AppReceiptValidatorTests::Product" /* AppReceiptValidatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = AppReceiptValidatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C87AB43523E1DBC100EB149C /* not_a_receipt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = not_a_receipt; sourceTree = "<group>"; };
+		C87AB43623E1DBC100EB149C /* hannes_mac_mindnode_pro_Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hannes_mac_mindnode_pro_Info.plist; sourceTree = "<group>"; };
+		C87AB43723E1DBC100EB149C /* mac_mindnode_rebought_receipt */ = {isa = PBXFileReference; lastKnownFileType = file; path = mac_mindnode_rebought_receipt; sourceTree = "<group>"; };
+		C87AB43823E1DBC100EB149C /* hannes_mac_mindnode_Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hannes_mac_mindnode_Info.plist; sourceTree = "<group>"; };
+		C87AB43B23E1DBC100EB149C /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = deprecatedSinglesTypeExpiredAppleCert_receipt.b64; sourceTree = "<group>"; };
+		C87AB43C23E1DBC100EB149C /* grandUnifiedExpiredAppleCert_receipt.b64 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = grandUnifiedExpiredAppleCert_receipt.b64; sourceTree = "<group>"; };
+		C87AB43D23E1DBC100EB149C /* hannes_mac_mindnode_receipt */ = {isa = PBXFileReference; lastKnownFileType = file; path = hannes_mac_mindnode_receipt; sourceTree = "<group>"; };
+		C87AB43E23E1DBC100EB149C /* hannes_mac_mindnode_pro_receipt */ = {isa = PBXFileReference; lastKnownFileType = file; path = hannes_mac_mindnode_pro_receipt; sourceTree = "<group>"; };
+		C87AB43F23E1DBC100EB149C /* mindnode_ios_michaelsandbox_receipt1.b64 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mindnode_ios_michaelsandbox_receipt1.b64; sourceTree = "<group>"; };
+		C87AB44023E1DBC100EB149C /* mindnode_ios_michaelsandbox_receipt2.b64 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mindnode_ios_michaelsandbox_receipt2.b64; sourceTree = "<group>"; };
 		OBJ_10 /* AppReceiptValidator+Parameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppReceiptValidator+Parameters.swift"; sourceTree = "<group>"; };
 		OBJ_11 /* AppReceiptValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReceiptValidator.swift; sourceTree = "<group>"; };
 		OBJ_12 /* DeviceIdentifier+installedDeviceIdentifier_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeviceIdentifier+installedDeviceIdentifier_iOS.swift"; sourceTree = "<group>"; };
@@ -209,6 +262,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C87AB43423E1DBC100EB149C /* Test Assets */ = {
+			isa = PBXGroup;
+			children = (
+				C87AB43523E1DBC100EB149C /* not_a_receipt */,
+				C87AB43623E1DBC100EB149C /* hannes_mac_mindnode_pro_Info.plist */,
+				C87AB43723E1DBC100EB149C /* mac_mindnode_rebought_receipt */,
+				C87AB43823E1DBC100EB149C /* hannes_mac_mindnode_Info.plist */,
+				C87AB43923E1DBC100EB149C /* Other Receipts */,
+				C87AB43D23E1DBC100EB149C /* hannes_mac_mindnode_receipt */,
+				C87AB43E23E1DBC100EB149C /* hannes_mac_mindnode_pro_receipt */,
+				C87AB43F23E1DBC100EB149C /* mindnode_ios_michaelsandbox_receipt1.b64 */,
+				C87AB44023E1DBC100EB149C /* mindnode_ios_michaelsandbox_receipt2.b64 */,
+			);
+			path = "Test Assets";
+			sourceTree = "<group>";
+		};
+		C87AB43923E1DBC100EB149C /* Other Receipts */ = {
+			isa = PBXGroup;
+			children = (
+				C87AB43A23E1DBC100EB149C /* unparseable */,
+				C87AB43C23E1DBC100EB149C /* grandUnifiedExpiredAppleCert_receipt.b64 */,
+			);
+			path = "Other Receipts";
+			sourceTree = "<group>";
+		};
+		C87AB43A23E1DBC100EB149C /* unparseable */ = {
+			isa = PBXGroup;
+			children = (
+				C87AB43B23E1DBC100EB149C /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 */,
+			);
+			path = unparseable;
+			sourceTree = "<group>";
+		};
 		OBJ_15 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +316,7 @@
 		OBJ_22 /* AppReceiptValidatorTests */ = {
 			isa = PBXGroup;
 			children = (
+				C87AB43423E1DBC100EB149C /* Test Assets */,
 				OBJ_23 /* AppReceiptPropertyValidationTests.swift */,
 				OBJ_24 /* AppReceiptValidationInAppPurchaseTests.swift */,
 				OBJ_25 /* AppReceiptValidationTests.swift */,
@@ -381,6 +468,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = OBJ_69 /* Build configuration list for PBXNativeTarget "AppReceiptValidator" */;
 			buildPhases = (
+				C87AB6C323E2DD3400EB149C /* CopyFiles */,
 				OBJ_72 /* Sources */,
 				OBJ_83 /* Frameworks */,
 			);
@@ -399,6 +487,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = OBJ_102 /* Build configuration list for PBXNativeTarget "AppReceiptValidatorTests" */;
 			buildPhases = (
+				C87AB44C23E1DC1100EB149C /* CopyFiles */,
 				OBJ_105 /* Sources */,
 				OBJ_113 /* Frameworks */,
 			);
@@ -647,7 +736,7 @@
 				INFOPLIST_FILE = AppReceiptValidator.xcodeproj/AppReceiptValidatorTests_Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-I/usr/local/Cellar/openssl@1.1/1.1.1d/include",
@@ -687,7 +776,7 @@
 				INFOPLIST_FILE = AppReceiptValidator.xcodeproj/AppReceiptValidatorTests_Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-I/usr/local/Cellar/openssl@1.1/1.1.1d/include",
@@ -1038,6 +1127,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				LD = /usr/bin/true;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -package-description-version 5";
 				SWIFT_VERSION = 5.0;
 			};
@@ -1047,6 +1137,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				LD = /usr/bin/true;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -package-description-version 5";
 				SWIFT_VERSION = 5.0;
 			};
