@@ -11,10 +11,10 @@ let package = Package(
         .library(name: "AppReceiptValidator", targets: ["AppReceiptValidator"])
     ],
     dependencies: [
-        .package(url: "https://github.com/vapor/open-crypto.git", from: "4.0.0-beta.2")
+        .package(url: "https://github.com/vapor/crypto.git", from: "3.3.0")
     ],
     targets: [
-        .target(name: "AppReceiptValidator", dependencies: ["OpenCrypto"]),
+        .target(name: "AppReceiptValidator", dependencies: ["Crypto"]),
         .testTarget(name: "AppReceiptValidatorTests", dependencies: ["AppReceiptValidator"])
     ],
     swiftLanguageVersions: [.v5]

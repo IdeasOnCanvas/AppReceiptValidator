@@ -6,7 +6,7 @@
 //  Copyright © 2017 IdeasOnCanvas GmbH. All rights reserved.
 //
 
-import COpenCrypto
+import CCryptoOpenSSL
 import Foundation
 
 final class BIOWrapper {

@@ -6,7 +6,7 @@
 //  Copyright © 2017 IdeasOnCanvas GmbH. All rights reserved.
 //
 
-import COpenCrypto
+import CCryptoOpenSSL
 import Foundation
 
 // A resource for ASN1 can be https://www.oss.com/asn1/resources/reference/asn1-reference-card.html
