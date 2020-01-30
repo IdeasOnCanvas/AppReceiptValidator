@@ -167,15 +167,17 @@ extension ASN1Object {
 
     var intValue: Int64? {
         guard self.type == V_ASN1_INTEGER else { return nil }
+        guard let bytes = self.valuePointer else { return nil }
 
-        var pointer = self.valuePointer
-
-        let integer = 0 // c2i_ASN1_INTEGER(nil, &pointer, self.length)
-        defer {
-            //ASN1_INTEGER_free(integer)
+        // Construct result via Horner-Schema
+        var result: Int64 = 0
+        for i in 0..<self.length {
+            result *= 256
+            let currentByte = bytes.advanced(by: i).pointee
+            result += Int64(currentByte)
         }
-      //  let result = Int64(ASN1_INTEGER_get(integer))
-        return 0// result
+
+        return result
     }
 
     func intValue(byAdvancingPointer pointer: inout UnsafePointer<UInt8>?, length: Int? = nil) -> Int64? {
