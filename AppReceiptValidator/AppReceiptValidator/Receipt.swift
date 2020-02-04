@@ -193,8 +193,12 @@ public struct InAppPurchaseReceipt: Equatable {
     /// This value is a unique ID that identifies purchase events across devices, including subscription renewal purchase events.
     public internal(set) var webOrderLineItemId: Int64?
 
+    /// For an auto-renewable subscription, whether or not it is in the introductory price period. ASN.1 Field Type 1719.
+    /// This key is only present for auto-renewable subscription receipts. The value for this key is "true" if the customer’s subscription is currently in an introductory price period, or "false" if not.
+    public internal(set) var isInIntroOfferPeriod: Bool?
+
     /// For documentation of parameters, have a look at the documented properties of `InAppPurchaseReceipt`.
-    public init(quantity: Int64?, productIdentifier: String?, transactionIdentifier: String?, originalTransactionIdentifier: String?, purchaseDate: Date?, originalPurchaseDate: Date?, subscriptionExpirationDate: Date?, cancellationDate: Date?, webOrderLineItemId: Int64?) {
+    public init(quantity: Int64?, productIdentifier: String?, transactionIdentifier: String?, originalTransactionIdentifier: String?, purchaseDate: Date?, originalPurchaseDate: Date?, subscriptionExpirationDate: Date?, cancellationDate: Date?, webOrderLineItemId: Int64?, isInIntroOfferPeriod: Bool?) {
         self.quantity = quantity
         self.productIdentifier = productIdentifier
         self.transactionIdentifier = transactionIdentifier
@@ -204,6 +208,7 @@ public struct InAppPurchaseReceipt: Equatable {
         self.subscriptionExpirationDate = subscriptionExpirationDate
         self.cancellationDate = cancellationDate
         self.webOrderLineItemId = webOrderLineItemId
+        self.isInIntroOfferPeriod = isInIntroOfferPeriod
     }
 
     /// Convenience initializer with stringified parameters for `Date` and `Data` type parameters.
@@ -215,7 +220,7 @@ public struct InAppPurchaseReceipt: Equatable {
     /// - Note: Dates must be formatted as "2017-01-01T12:00:00Z", otherwise will be assigned `nil`.
     /// Data must be formatted as Base64, otherwise will be assigned `nil`.
     /// Correct formatting will be asserted in DEBUG builds.
-    public init(quantity: Int64?, productIdentifier: String, transactionIdentifier: String, originalTransactionIdentifier: String, purchaseDate: String, originalPurchaseDate: String, subscriptionExpirationDate: String?, cancellationDate: String?, webOrderLineItemId: Int64?) {
+    public init(quantity: Int64?, productIdentifier: String, transactionIdentifier: String, originalTransactionIdentifier: String, purchaseDate: String, originalPurchaseDate: String, subscriptionExpirationDate: String?, cancellationDate: String?, webOrderLineItemId: Int64?, isInIntroOfferPeriod: Bool?) {
         self.init(quantity: quantity,
                   productIdentifier: productIdentifier,
                   transactionIdentifier: transactionIdentifier,
@@ -224,7 +229,8 @@ public struct InAppPurchaseReceipt: Equatable {
                   originalPurchaseDate: parseDate(string: originalPurchaseDate),
                   subscriptionExpirationDate: subscriptionExpirationDate.flatMap { parseDate(string: $0) },
                   cancellationDate: cancellationDate.flatMap { parseDate(string: $0) },
-                  webOrderLineItemId: webOrderLineItemId)
+                  webOrderLineItemId: webOrderLineItemId,
+                  isInIntroOfferPeriod: isInIntroOfferPeriod)
     }
 
     public init() {}
@@ -247,7 +253,8 @@ extension InAppPurchaseReceipt: CustomStringConvertible, CustomDebugStringConver
             ("originalPurchaseDate", formatter.format(self.originalPurchaseDate)),
             ("subscriptionExpirationDate", formatter.format(self.subscriptionExpirationDate)),
             ("cancellationDate", formatter.format(self.cancellationDate)),
-            ("webOrderLineItemId", formatter.format(self.webOrderLineItemId))
+            ("webOrderLineItemId", formatter.format(self.webOrderLineItemId)),
+            ("isInIntroOfferPeriod", formatter.format(self.isInIntroOfferPeriod))
         ]
         return "InAppPurchaseReceipt(\n" + formatter.format(props) + "\n)"
     }
@@ -279,6 +286,12 @@ private struct StringFormatter {
         guard let int = int else { return fallback }
 
         return "\(int)"
+    }
+
+    func format(_ bool: Bool?) -> String {
+        guard let bool = bool else { return fallback }
+
+        return "\(bool)"
     }
 
     func format(key: String, value: String, indentation: String = "    ") -> String {
