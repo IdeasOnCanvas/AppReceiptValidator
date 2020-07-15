@@ -177,14 +177,12 @@ private extension AppReceiptValidator {
         try self.verifyAuthenticity(x509Certificate: appleRootCertificateX509, pkcs7: pkcs7)
     }
 
-    private func verifyAuthenticity(x509Certificate: UnsafeMutablePointer<X509>, pkcs7: PKCS7Wrapper) throws {
+    private func verifyAuthenticity(x509Certificate: OpaquePointer, pkcs7: PKCS7Wrapper) throws {
         let x509CertificateStore = X509_STORE_new()
         defer {
             X509_STORE_free(x509CertificateStore)
         }
         X509_STORE_add_cert(x509CertificateStore, x509Certificate)
-
-        OpenSSL_add_all_digests()
 
         let result = PKCS7_verify(pkcs7.pkcs7, nil, x509CertificateStore, nil, nil, 0)
 
