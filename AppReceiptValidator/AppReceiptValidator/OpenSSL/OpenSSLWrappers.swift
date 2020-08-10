@@ -6,7 +6,7 @@
 //  Copyright © 2017 IdeasOnCanvas GmbH. All rights reserved.
 //
 
-import AppReceiptValidator.OpenSSL
+import OpenSSL
 import Foundation
 
 final class BIOWrapper {

@@ -6,7 +6,7 @@
 //  Copyright © 2017 IdeasOnCanvas GmbH. All rights reserved.
 //
 
-import AppReceiptValidator.OpenSSL
+import OpenSSL
 import Foundation
 
 /// Apple guide: https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Introduction.html
@@ -148,7 +148,7 @@ private extension AppReceiptValidator {
         guard let nonNullReceiptPKCS7Container = receiptPKCS7Container else { throw Error.emptyReceiptContents }
 
         let pkcs7Wrapper = PKCS7Wrapper(pkcs7: nonNullReceiptPKCS7Container)
-        let pkcs7DataTypeCode = OBJ_obj2nid(pkcs7_d_sign(receiptPKCS7Container).pointee.contents.pointee.type)
+        let pkcs7DataTypeCode = OBJ_obj2nid(receiptPKCS7Container?.pointee.d.sign.pointee.contents.pointee.type)
 
         guard pkcs7DataTypeCode == NID_pkcs7_data else { throw Error.emptyReceiptContents }
 
@@ -177,15 +177,12 @@ private extension AppReceiptValidator {
         try self.verifyAuthenticity(x509Certificate: appleRootCertificateX509, pkcs7: pkcs7)
     }
 
-    private func verifyAuthenticity(x509Certificate: UnsafeMutablePointer<X509>, pkcs7: PKCS7Wrapper) throws {
+    private func verifyAuthenticity(x509Certificate: OpaquePointer, pkcs7: PKCS7Wrapper) throws {
         let x509CertificateStore = X509_STORE_new()
         defer {
             X509_STORE_free(x509CertificateStore)
         }
         X509_STORE_add_cert(x509CertificateStore, x509Certificate)
-
-        OpenSSL_add_all_digests()
-
         let result = PKCS7_verify(pkcs7.pkcs7, nil, x509CertificateStore, nil, nil, 0)
 
         if result != 1 {
