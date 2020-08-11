@@ -6,8 +6,8 @@
 //  Copyright © 2017 IdeasOnCanvas GmbH. All rights reserved.
 //
 
-import OpenSSL
 import Foundation
+import OpenSSL
 
 final class BIOWrapper {
 
