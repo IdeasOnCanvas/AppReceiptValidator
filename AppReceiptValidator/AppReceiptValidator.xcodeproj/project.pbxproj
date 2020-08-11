@@ -145,7 +145,6 @@
 		D150A0ED1F669A880026ED04 /* AppReceiptValidationInAppPurchaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReceiptValidationInAppPurchaseTests.swift; sourceTree = "<group>"; };
 		D15358A51F62BEC100F297D0 /* grandUnifiedExpiredAppleCert_receipt.b64 */ = {isa = PBXFileReference; lastKnownFileType = text; path = grandUnifiedExpiredAppleCert_receipt.b64; sourceTree = "<group>"; };
 		D15358B11F62C3C400F297D0 /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 */ = {isa = PBXFileReference; lastKnownFileType = text; path = deprecatedSinglesTypeExpiredAppleCert_receipt.b64; sourceTree = "<group>"; };
-		D16E2AC624E2E993002DD8C5 /* AppReceiptValidator Demo iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "AppReceiptValidator Demo iOS.entitlements"; sourceTree = "<group>"; };
 		D19095811F6000A40095729B /* AppReceiptValidator Demo macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AppReceiptValidator Demo macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D19095831F6000A40095729B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D19095851F6000A40095729B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -336,7 +335,6 @@
 		D1D6F4E51F5D691400E86FE1 /* AppReceiptValidator Demo iOS */ = {
 			isa = PBXGroup;
 			children = (
-				D16E2AC624E2E993002DD8C5 /* AppReceiptValidator Demo iOS.entitlements */,
 				D1D6F4E61F5D691400E86FE1 /* AppDelegate.swift */,
 				D1D6F4E81F5D691400E86FE1 /* ViewController.swift */,
 				D1D6F4EA1F5D691400E86FE1 /* Main.storyboard */,
@@ -1224,7 +1222,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "AppReceiptValidator Demo iOS/AppReceiptValidator Demo iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "AppReceiptValidator Demo iOS/Info.plist";
@@ -1234,7 +1231,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.AppReceiptValidator.Demo-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1246,7 +1242,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "AppReceiptValidator Demo iOS/AppReceiptValidator Demo iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "AppReceiptValidator Demo iOS/Info.plist";
@@ -1256,7 +1251,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.AppReceiptValidator.Demo-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -70,16 +70,12 @@ private extension ViewController {
     /// pastes from clipboard if it is base64 decodable
     @discardableResult
     func autoPaste() -> Bool {
-        #if targetEnvironment(macCatalyst)
-        return false // UIPasteboard.general crashes on catalyst
-        #else
         guard let string = UIPasteboard.general.string,
             Data(base64Encoded: string, options: .ignoreUnknownCharacters) != nil else { return false }
 
         self.inputTextView.text = string
         self.update(base64String: string)
         return true
-        #endif
     }
 
     func update(base64String: String) {
