@@ -1,17 +1,5 @@
 framework module OpenSSL {
   umbrella header "OpenSSL.h"
-  exclude header "asn1_mac.h"
-  exclude header "opensslconf_ios_arm64.h"
-  exclude header "opensslconf_ios_armv7.h"
-  exclude header "opensslconf_ios_x86_64.h"
-  exclude header "opensslconf_catalyst_x86_64.h"
-  exclude header "opensslconf_macos_x86_64.h"
-  exclude header "opensslconf_macos_arm64.h"
-  exclude header "opensslconf_watchos_i386.h"
-  exclude header "opensslconf_watchos_armv7k.h"
-  exclude header "opensslconf_watchos_arm64_32.h"
-  exclude header "opensslconf_tvos_arm64.h"
-  exclude header "opensslconf_tvos_x86_64.h"
   export *
   module * { export * }
 }
