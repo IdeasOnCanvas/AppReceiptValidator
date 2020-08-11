@@ -33,7 +33,6 @@
 		D15358B41F62C47400F297D0 /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 in Resources */ = {isa = PBXBuildFile; fileRef = D15358B11F62C3C400F297D0 /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 */; };
 		D15358B51F62C47500F297D0 /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 in Resources */ = {isa = PBXBuildFile; fileRef = D15358B11F62C3C400F297D0 /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 */; };
 		D15358EF1F62D2C100F297D0 /* AppReceiptValidator.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D1D6F4B51F5D684C00E86FE1 /* AppReceiptValidator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D15C59111F697D4D006F66FE /* pkcs7_union_accessors.h in Headers */ = {isa = PBXBuildFile; fileRef = D19095BA1F6004D10095729B /* pkcs7_union_accessors.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D19095841F6000A40095729B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19095831F6000A40095729B /* AppDelegate.swift */; };
 		D19095861F6000A40095729B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19095851F6000A40095729B /* ViewController.swift */; };
 		D19095881F6000A40095729B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D19095871F6000A40095729B /* Assets.xcassets */; };
@@ -47,8 +46,6 @@
 		D19095AE1F6001800095729B /* AppReceiptValidator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D6F4B51F5D684C00E86FE1 /* AppReceiptValidator.framework */; };
 		D19095B81F6003AB0095729B /* AppReceiptValidator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D6F4B51F5D684C00E86FE1 /* AppReceiptValidator.framework */; };
 		D19095B91F6003AE0095729B /* AppReceiptValidator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D6F4C21F5D687400E86FE1 /* AppReceiptValidator.framework */; };
-		D19095BC1F6004D10095729B /* pkcs7_union_accessors.c in Sources */ = {isa = PBXBuildFile; fileRef = D19095BB1F6004D10095729B /* pkcs7_union_accessors.c */; };
-		D19095BD1F6004D10095729B /* pkcs7_union_accessors.c in Sources */ = {isa = PBXBuildFile; fileRef = D19095BB1F6004D10095729B /* pkcs7_union_accessors.c */; };
 		D19095C01F60158B0095729B /* DeviceIdentifier+installedDeviceIdentifier_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19095BF1F60158B0095729B /* DeviceIdentifier+installedDeviceIdentifier_macOS.swift */; };
 		D19095C31F6019FC0095729B /* DeviceIdentifier+installedDeviceIdentifier_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19095C11F6019E70095729B /* DeviceIdentifier+installedDeviceIdentifier_iOS.swift */; };
 		D19095C71F601E580095729B /* TestAssetLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F5491F5D9B1F00E86FE1 /* TestAssetLoading.swift */; };
@@ -63,7 +60,6 @@
 		D1A428AA1FE4267A00926BA5 /* UnofficialReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A428A81FE4267A00926BA5 /* UnofficialReceipt.swift */; };
 		D1AA845C1F6ABB59007F2558 /* AppReceiptPropertyValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AA845A1F6ABB31007F2558 /* AppReceiptPropertyValidationTests.swift */; };
 		D1AA845D1F6ABB59007F2558 /* AppReceiptPropertyValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AA845A1F6ABB31007F2558 /* AppReceiptPropertyValidationTests.swift */; };
-		D1AB81F51F696F0200B57E29 /* pkcs7_union_accessors.h in Headers */ = {isa = PBXBuildFile; fileRef = D19095BA1F6004D10095729B /* pkcs7_union_accessors.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D1D6F4E71F5D691400E86FE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F4E61F5D691400E86FE1 /* AppDelegate.swift */; };
 		D1D6F4E91F5D691400E86FE1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F4E81F5D691400E86FE1 /* ViewController.swift */; };
 		D1D6F4EC1F5D691400E86FE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1D6F4EA1F5D691400E86FE1 /* Main.storyboard */; };
@@ -137,7 +133,6 @@
 		D150A0ED1F669A880026ED04 /* AppReceiptValidationInAppPurchaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReceiptValidationInAppPurchaseTests.swift; sourceTree = "<group>"; };
 		D15358A51F62BEC100F297D0 /* grandUnifiedExpiredAppleCert_receipt.b64 */ = {isa = PBXFileReference; lastKnownFileType = text; path = grandUnifiedExpiredAppleCert_receipt.b64; sourceTree = "<group>"; };
 		D15358B11F62C3C400F297D0 /* deprecatedSinglesTypeExpiredAppleCert_receipt.b64 */ = {isa = PBXFileReference; lastKnownFileType = text; path = deprecatedSinglesTypeExpiredAppleCert_receipt.b64; sourceTree = "<group>"; };
-		D15C59141F698005006F66FE /* AppReceiptValidator.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = AppReceiptValidator.modulemap; sourceTree = "<group>"; };
 		D19095811F6000A40095729B /* AppReceiptValidator Demo macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AppReceiptValidator Demo macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D19095831F6000A40095729B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D19095851F6000A40095729B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -149,8 +144,6 @@
 		D19095981F6000A40095729B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D19095A91F6001800095729B /* AppReceiptValidator Tests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AppReceiptValidator Tests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D19095AD1F6001800095729B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D19095BA1F6004D10095729B /* pkcs7_union_accessors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pkcs7_union_accessors.h; sourceTree = "<group>"; };
-		D19095BB1F6004D10095729B /* pkcs7_union_accessors.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = pkcs7_union_accessors.c; sourceTree = "<group>"; };
 		D19095BF1F60158B0095729B /* DeviceIdentifier+installedDeviceIdentifier_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeviceIdentifier+installedDeviceIdentifier_macOS.swift"; sourceTree = "<group>"; };
 		D19095C11F6019E70095729B /* DeviceIdentifier+installedDeviceIdentifier_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeviceIdentifier+installedDeviceIdentifier_iOS.swift"; sourceTree = "<group>"; };
 		D19095C41F601DEA0095729B /* AppleIncRootCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleIncRootCertificate.cer; sourceTree = "<group>"; };
@@ -235,8 +228,6 @@
 			isa = PBXGroup;
 			children = (
 				BA09A90124E136CA00798DBC /* openssl.xcframework */,
-				D19095BA1F6004D10095729B /* pkcs7_union_accessors.h */,
-				D19095BB1F6004D10095729B /* pkcs7_union_accessors.c */,
 				D14FA7371F6181C700545540 /* OpenSSLWrappers.swift */,
 				D14FA73A1F618B0100545540 /* ASN1Helpers.swift */,
 			);
@@ -361,7 +352,6 @@
 		D1D6F5271F5D863900E86FE1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D15C59141F698005006F66FE /* AppReceiptValidator.modulemap */,
 				D1D6F5281F5D864500E86FE1 /* iOS */,
 				D1D6F5291F5D864A00E86FE1 /* macOS */,
 			);
@@ -417,7 +407,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D15C59111F697D4D006F66FE /* pkcs7_union_accessors.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,7 +414,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1AB81F51F696F0200B57E29 /* pkcs7_union_accessors.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -775,7 +763,6 @@
 				D1FE343D1F604F020029576B /* Receipt.swift in Sources */,
 				D14FA73B1F618B0100545540 /* ASN1Helpers.swift in Sources */,
 				D14FA7381F6181C700545540 /* OpenSSLWrappers.swift in Sources */,
-				D19095BC1F6004D10095729B /* pkcs7_union_accessors.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -791,7 +778,6 @@
 				D1DFC5DB20037B8400C7B99B /* KnownOrUnknown.swift in Sources */,
 				D14FA73C1F618B0100545540 /* ASN1Helpers.swift in Sources */,
 				D14FA7391F6181D000545540 /* OpenSSLWrappers.swift in Sources */,
-				D19095BD1F6004D10095729B /* pkcs7_union_accessors.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
