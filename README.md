@@ -2,7 +2,7 @@
 
 [![SPM compatible](https://img.shields.io/badge/SPM-compatible-4BC51D.svg?style=flat)](https://swift.org/package-manager/)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-![Platforms iOS, macOS](https://img.shields.io/badge/Platform-iOS%20|%20macOS-blue.svg "Platforms iOS, macOS")
+![Platforms iOS, macOS](https://img.shields.io/badge/Platform-iOS%20|%20macOS%20|%20tvOS-blue.svg "Platforms iOS, macOS, tvOS")
 ![Language Swift](https://img.shields.io/badge/Language-Swift%205.0-orange.svg "Swift 5.0")
 [![License Apache 2.0 + OpenSSL](https://img.shields.io/badge/License-Apache%202.0%20|%20OpenSSL%20-aaaaff.svg "License")](LICENSE)
 [![Build Status](https://travis-ci.org/IdeasOnCanvas/AppReceiptValidator.svg?branch=master)](https://travis-ci.org/IdeasOnCanvas/AppReceiptValidator)
