@@ -16,7 +16,14 @@ let package = Package(
         .target(
             name: "AppReceiptValidator",
             path: "AppReceiptValidator/AppReceiptValidator",
-            exclude: ["AppReceiptValidator/AppReceiptValidator/Supporting Files/Info.plist"]
+            exclude: [
+                "OpenSSL/openssl.xcframework",
+                "Supporting Files/Info.plist",
+                "AppleIncRootCertificate.cer",
+            ],
+            resources: [
+                .process("AppleIncRootCertificate.cer")
+            ]
         ),
         .binaryTarget(
             name: "OpenSSL",
