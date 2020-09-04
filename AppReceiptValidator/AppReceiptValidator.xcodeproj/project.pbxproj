@@ -145,6 +145,7 @@
 		D1DFC5D920037B8400C7B99B /* KnownOrUnknown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnownOrUnknown.swift; sourceTree = "<group>"; };
 		D1FE343C1F604F020029576B /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
 		D1FE343F1F604F540029576B /* AppReceiptValidator+Parameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppReceiptValidator+Parameters.swift"; sourceTree = "<group>"; };
+		FE4C60A925026A4300CED438 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Package.swift; path = ../Package.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +256,7 @@
 		D1D6F4921F5D67E600E86FE1 = {
 			isa = PBXGroup;
 			children = (
+				FE4C60A925026A4300CED438 /* Package.swift */,
 				D1D6F4FC1F5D696800E86FE1 /* AppReceiptValidator */,
 				D1D6F4E51F5D691400E86FE1 /* AppReceiptValidator Demo iOS */,
 				D19095821F6000A40095729B /* AppReceiptValidator Demo macOS */,
