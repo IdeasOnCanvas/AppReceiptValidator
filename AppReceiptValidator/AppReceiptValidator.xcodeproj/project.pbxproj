@@ -303,6 +303,7 @@
 				D1FE343F1F604F540029576B /* AppReceiptValidator+Parameters.swift */,
 				D19095BF1F60158B0095729B /* DeviceIdentifier+installedDeviceIdentifier_macOS.swift */,
 				D19095C11F6019E70095729B /* DeviceIdentifier+installedDeviceIdentifier_iOS.swift */,
+				D1DFC5D920037B8400C7B99B /* KnownOrUnknown.swift */,
 			);
 			path = AppReceiptValidator;
 			sourceTree = "<group>";
@@ -336,7 +337,6 @@
 			children = (
 				D14FA72E1F6143C400545540 /* Date+Convenience.swift */,
 				D1D6F5491F5D9B1F00E86FE1 /* TestAssetLoading.swift */,
-				D1DFC5D920037B8400C7B99B /* KnownOrUnknown.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
