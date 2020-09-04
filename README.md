@@ -1,5 +1,6 @@
 # AppReceiptValidator
 
+[![SPM compatible](https://img.shields.io/badge/SPM-compatible-4BC51D.svg?style=flat)](https://swift.org/package-manager/)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ![Platforms iOS, macOS](https://img.shields.io/badge/Platform-iOS%20|%20macOS-blue.svg "Platforms iOS, macOS")
 ![Language Swift](https://img.shields.io/badge/Language-Swift%205.0-orange.svg "Swift 5.0")
@@ -18,6 +19,13 @@ Provides Demo Apps on iOS and macOS to inspect receipt files.
 Add this line to your Cartfile.
 ```
 github "IdeasOnCanvas/AppReceiptValidator"
+```
+
+## Integration with SPM
+
+To install using Swift Package Manager, add this to the `dependencies:` section in your Package.swift file:
+```swift
+.package(url: "https://github.com/arturgrigor/AppReceiptValidator", .branch("experiment/openSSLXCFramework")),
 ```
 
 ## Usage in Code
