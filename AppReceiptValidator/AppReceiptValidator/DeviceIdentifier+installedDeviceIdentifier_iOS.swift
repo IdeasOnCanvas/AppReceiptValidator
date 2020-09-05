@@ -6,7 +6,7 @@
 //  Copyright © 2017 IdeasOnCanvas GmbH. All rights reserved.
 //
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !targetEnvironment(macCatalyst)
 import UIKit
 
 extension AppReceiptValidator.Parameters.DeviceIdentifier {
