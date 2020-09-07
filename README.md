@@ -25,7 +25,7 @@ github "IdeasOnCanvas/AppReceiptValidator"
 
 To install using Swift Package Manager, add this to the `dependencies:` section in your Package.swift file:
 ```swift
-.package(url: "https://github.com/arturgrigor/AppReceiptValidator", .branch("experiment/openSSLXCFramework")),
+.package(url: "https://github.com/IdeasOnCanvas/AppReceiptValidator.git", .branch("experiment/openSSLXCFramework")),
 ```
 
 ## Usage in Code
