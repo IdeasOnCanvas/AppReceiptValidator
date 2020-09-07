@@ -21,7 +21,7 @@ let package = Package(
                 "Supporting Files/Info.plist",
             ],
             resources: [
-                .process("AppleIncRootCertificate.cer")
+                .copy("AppleIncRootCertificate.cer")
             ]
         ),
         .binaryTarget(
