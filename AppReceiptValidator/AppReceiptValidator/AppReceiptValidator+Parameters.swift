@@ -162,14 +162,24 @@ extension AppReceiptValidator.Parameters {
             case .data(let data):
                 return data
             case .cerFileBundledWithAppReceiptValidator:
-                guard let appleRootCertificateURL = Bundle(for: BundleToken.self).url(forResource: "AppleIncRootCertificate", withExtension: "cer") else { return nil }
+                guard let appleRootCertificateURL = Bundle.module.url(forResource: "AppleIncRootCertificate", withExtension: "cer") else { return nil }
 
                 return try? Data(contentsOf: appleRootCertificateURL)
             }
         }
     }
-    private class BundleToken {}
 }
+
+#if IS_FRAMEWORK_TARGET
+
+private extension Bundle {
+
+    /// In packages a .module static var is automatically available, here we "create" one for the framework build.
+    /// Note, that this one doesn't work within package builds.
+    static var module: Bundle { class BundleToken {}; return Bundle(for: BundleToken.self) }
+}
+
+#endif
 
 // MARK: - PropertyValidation
 
