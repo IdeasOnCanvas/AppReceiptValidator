@@ -19,7 +19,6 @@ let package = Package(
             exclude: [
                 "OpenSSL/openssl.xcframework",
                 "Supporting Files/Info.plist",
-                "AppleIncRootCertificate.cer",
             ],
             resources: [
                 .process("AppleIncRootCertificate.cer")
