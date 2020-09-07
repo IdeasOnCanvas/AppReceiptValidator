@@ -808,7 +808,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = AppReceiptValidator;
 				SUPPORTED_PLATFORMS = "macosx appletvsimulator appletvos iphonesimulator iphoneos";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG IS_FRAMEWORK_TARGET";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3";
@@ -866,6 +866,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = AppReceiptValidator;
 				SUPPORTED_PLATFORMS = "macosx appletvsimulator appletvos iphonesimulator iphoneos";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = IS_FRAMEWORK_TARGET;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
