@@ -37,6 +37,8 @@
 		D19095CE1F601E980095729B /* AppReceiptValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F5411F5D8A3800E86FE1 /* AppReceiptValidationTests.swift */; };
 		D1A428A91FE4267A00926BA5 /* UnofficialReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A428A81FE4267A00926BA5 /* UnofficialReceipt.swift */; };
 		D1AA845C1F6ABB59007F2558 /* AppReceiptPropertyValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AA845A1F6ABB31007F2558 /* AppReceiptPropertyValidationTests.swift */; };
+		D1BC0C6B250628EA0067458F /* AppReceiptValidator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D6F4B51F5D684C00E86FE1 /* AppReceiptValidator.framework */; };
+		D1BC0C6C250628EA0067458F /* AppReceiptValidator.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D1D6F4B51F5D684C00E86FE1 /* AppReceiptValidator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D1D6F4E71F5D691400E86FE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F4E61F5D691400E86FE1 /* AppDelegate.swift */; };
 		D1D6F4E91F5D691400E86FE1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6F4E81F5D691400E86FE1 /* ViewController.swift */; };
 		D1D6F4EC1F5D691400E86FE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1D6F4EA1F5D691400E86FE1 /* Main.storyboard */; };
@@ -71,6 +73,13 @@
 			remoteGlobalIDString = D1D6F4E31F5D691400E86FE1;
 			remoteInfo = "AppReceiptValidator Demo iOS";
 		};
+		D1BC0C6D250628EA0067458F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D1D6F4931F5D67E600E86FE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D1D6F4B41F5D684C00E86FE1;
+			remoteInfo = AppReceiptValidator;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -80,6 +89,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				D1BC0C6C250628EA0067458F /* AppReceiptValidator.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,6 +163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1BC0C6B250628EA0067458F /* AppReceiptValidator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +264,13 @@
 			path = "AppReceiptValidator Tests Shared";
 			sourceTree = "<group>";
 		};
+		D1BC0C6A250628EA0067458F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D1D6F4921F5D67E600E86FE1 = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +282,7 @@
 				D19095AA1F6001800095729B /* AppReceiptValidator Tests iOS */,
 				D19095B61F6001C20095729B /* AppReceiptValidator Tests Shared */,
 				D1D6F49C1F5D67E600E86FE1 /* Products */,
+				D1BC0C6A250628EA0067458F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -367,6 +386,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D1BC0C6E250628EA0067458F /* PBXTargetDependency */,
 			);
 			name = "AppReceiptValidator Demo macOS";
 			productName = "AppReceiptValidator Demo macOS";
@@ -642,6 +662,11 @@
 			isa = PBXTargetDependency;
 			target = D1D6F4E31F5D691400E86FE1 /* AppReceiptValidator Demo iOS */;
 			targetProxy = D19095B41F6001900095729B /* PBXContainerItemProxy */;
+		};
+		D1BC0C6E250628EA0067458F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D1D6F4B41F5D684C00E86FE1 /* AppReceiptValidator */;
+			targetProxy = D1BC0C6D250628EA0067458F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
