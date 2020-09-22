@@ -32,7 +32,8 @@ extension XCTestCase {
 }
 
 private func loadTestAsset(filename: String, requester: AnyObject) throws -> Data {
-    guard let path = Bundle(for: type(of: requester)).path(forResource: filename, ofType: nil),
+    dump(Bundle.module.isLoaded)
+    guard let path = Bundle.module.path(forResource: filename, ofType: nil),
         let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
         throw TestAssetLoadingError.fileNotReadable(filename: filename)
     }

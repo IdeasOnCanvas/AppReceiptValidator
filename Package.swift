@@ -29,7 +29,10 @@ let package = Package(
         ),
         .testTarget(name: "AppReceiptValidatorTests",
                     dependencies: ["AppReceiptValidator"],
-                    path: "AppReceiptValidator/AppReceiptValidator Tests Shared")
+                    path: "AppReceiptValidator/AppReceiptValidator Tests Shared",
+                    resources: [
+                        .process("Test Assets")
+                    ])
     ],
     swiftLanguageVersions: [.v5]
 )

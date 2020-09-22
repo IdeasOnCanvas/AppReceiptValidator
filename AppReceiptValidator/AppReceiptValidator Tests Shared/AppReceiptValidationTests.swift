@@ -129,6 +129,7 @@ class AppReceiptValidationTests: XCTestCase {
 
         XCTAssertEqual(receipt, expected)
     }
+ */
 
     func testMindNodeMacReceiptParsingWithFullValidation() {
         guard let data = assertTestAsset(filename: "hannes_mac_mindnode_receipt") else { return }
@@ -144,10 +145,10 @@ class AppReceiptValidationTests: XCTestCase {
             expirationDate: nil,
             inAppPurchaseReceipts: []
         )
-        let result = receiptValidator.validateReceipt {
+        let result = receiptValidator.validateReceipt(parameters: AppReceiptValidator.Parameters.default.with {
             $0.receiptOrigin = .data(data)
             $0.deviceIdentifier = AppReceiptValidator.Parameters.DeviceIdentifier(base64Encoded: "bEAItZRe")!
-        }
+        })
         guard let receipt = result.receipt else {
             XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")
             return
@@ -155,6 +156,8 @@ class AppReceiptValidationTests: XCTestCase {
 
         XCTAssertEqual(receipt, expected)
     }
+
+     /*
 
     func testMindNodeMacReceiptParsingWithoutValidation() {
         guard let data = assertTestAsset(filename: "hannes_mac_mindnode_receipt") else { return }
