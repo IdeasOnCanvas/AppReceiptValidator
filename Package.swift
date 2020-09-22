@@ -26,7 +26,10 @@ let package = Package(
                 resources: [
                     .copy("AppleIncRootCertificate.cer")
                 ]
-        )
+        ),
+        .testTarget(name: "AppReceiptValidatorTests",
+                    dependencies: ["AppReceiptValidator"],
+                    path: "AppReceiptValidator/AppReceiptValidator Tests Shared")
     ],
     swiftLanguageVersions: [.v5]
 )

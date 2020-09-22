@@ -13,6 +13,7 @@ class AppReceiptValidationInAppPurchaseTests: XCTestCase {
 
     var receiptValidator = AppReceiptValidator()
 
+    /*
     func testNonMindNodeReceiptParsingWithoutValidation() {
         guard let data = assertB64TestAsset(filename: "grandUnifiedExpiredAppleCert_receipt.b64") else { return }
 
@@ -132,5 +133,5 @@ class AppReceiptValidationInAppPurchaseTests: XCTestCase {
                 )
             ]
         )
-    }
+    }*/
 }

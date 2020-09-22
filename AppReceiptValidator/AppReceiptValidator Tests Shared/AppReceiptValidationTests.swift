@@ -13,8 +13,9 @@ class AppReceiptValidationTests: XCTestCase {
 
     private let receiptValidator = AppReceiptValidator()
 
-    private let exampleDeviceIdentifier = AppReceiptValidator.Parameters.DeviceIdentifier(base64Encoded: "bEAItZRe")!
+  //  private let exampleDeviceIdentifier = AppReceiptValidator.Parameters.DeviceIdentifier(base64Encoded: "bEAItZRe")!
 
+    /*
     func testFailedReceiptValidating() {
         guard let data = assertTestAsset(filename: "not_a_receipt") else { return }
 
@@ -283,15 +284,16 @@ class AppReceiptValidationTests: XCTestCase {
         measure {
             _ = receiptValidator.validateReceipt(parameters: parameters)
         }
-    }
+    }*/
 }
 
 // MARK: - AppReceiptValidator + Convenience
 
 extension AppReceiptValidator {
 
+    /*
     /// Validates a receipt and returns the result using the parameters `AppReceiptValidator.Parameters.default`, which can be further configured in the passed block.
     func validateReceipt(configuration: (inout Parameters) -> Void) -> Result {
         return validateReceipt(parameters: Parameters.default.with(block: configuration))
-    }
+    }*/
 }

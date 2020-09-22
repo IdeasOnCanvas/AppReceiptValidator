@@ -12,7 +12,7 @@ import XCTest
 class AppReceiptPropertyValidationTests: XCTestCase {
 
     private let receiptValidator = AppReceiptValidator()
-
+/*
     func testCorrectMainBundlePropertiesiOS() {
         let receipt = Receipt(bundleIdentifier: Bundle.main.bundleIdentifier,
                               bundleIdData: nil,
@@ -125,5 +125,5 @@ class AppReceiptPropertyValidationTests: XCTestCase {
         assertPropertyMismatch {
             $0.propertyValidations = [.appVersionMatchingMainBundleMacOS]
         }
-    }
+    }*/
 }
