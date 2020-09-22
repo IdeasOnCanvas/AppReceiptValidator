@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import OpenSSL
+import ASN1Decoder
 
 /// Apple guide: https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Introduction.html
 ///
@@ -43,7 +43,10 @@ public struct AppReceiptValidator {
                 try self.checkSignatureAuthenticity(pkcs7: receiptContainer, appleRootCertificateData: appleRootCertificateData)
             }
 
-            let receipt = try self.parseReceipt(pkcs7: receiptContainer).receipt
+            let receiptInfo = receiptContainer.receipt()
+            dump(receiptInfo)
+            /*
+            //let receipt = try self.parseReceipt(pkcs7: receiptContainer).receipt
 
             try self.validateProperties(receipt: receipt, validations: parameters.propertyValidations)
 
@@ -51,8 +54,9 @@ public struct AppReceiptValidator {
                 guard let deviceIdentifierData = deviceIdData else { throw Error.deviceIdentifierNotDeterminable }
 
                 try self.validateHash(receipt: receipt, deviceIdentifierData: deviceIdentifierData)
-            }
-            return .success(receipt, receiptData: receiptData, deviceIdentifier: deviceIdData)
+            }*/
+
+            return .error(.couldNotFindReceipt, receiptData: nil, deviceIdentifier: nil) //.success(receipt, receiptData: receiptData, deviceIdentifier: deviceIdData)
         } catch {
             assert(error is AppReceiptValidator.Error)
             return .error(error as? AppReceiptValidator.Error ?? .unknown, receiptData: data, deviceIdentifier: deviceIdData)
@@ -74,7 +78,8 @@ public struct AppReceiptValidator {
         guard let receiptData = origin.loadData() else { throw Error.couldNotFindReceipt }
 
         let receiptContainer = try self.extractPKCS7Container(data: receiptData)
-        return try parseReceipt(pkcs7: receiptContainer).receipt
+        fatalError()
+        //return try parseReceipt(pkcs7: receiptContainer).receipt
     }
 
     /// Parse the local receipt and it's unofficial attributes without any validation.
@@ -86,7 +91,8 @@ public struct AppReceiptValidator {
         guard let receiptData = origin.loadData() else { throw Error.couldNotFindReceipt }
 
         let receiptContainer = try self.extractPKCS7Container(data: receiptData)
-        return try parseReceipt(pkcs7: receiptContainer, parseUnofficialParts: true)
+        fatalError()
+        //return try parseReceipt(pkcs7: receiptContainer, parseUnofficialParts: true)
     }
 
     /// Uses receipt-conform representation of dates like "2017-01-01T12:00:00Z"
@@ -112,6 +118,7 @@ private extension AppReceiptValidator {
 
         // Compute the hash for your app & device
 
+        /*
         // Set up the hashing context
         var computedHash = [UInt8](repeating: 0, count: 20)
         var sha1Context = SHA_CTX()
@@ -133,7 +140,7 @@ private extension AppReceiptValidator {
         // Compare the computed hash with the receipt's hash
         if computedHashData != receiptHashData {
             throw Error.incorrectHash
-        }
+        }*/
     }
 }
 
@@ -141,18 +148,8 @@ private extension AppReceiptValidator {
 
 private extension AppReceiptValidator {
 
-    func extractPKCS7Container(data: Data) throws -> PKCS7Wrapper {
-        let receiptBIO = BIOWrapper(data: data)
-        let receiptPKCS7Container = d2i_PKCS7_bio(receiptBIO.bio, nil)
-
-        guard let nonNullReceiptPKCS7Container = receiptPKCS7Container else { throw Error.emptyReceiptContents }
-
-        let pkcs7Wrapper = PKCS7Wrapper(pkcs7: nonNullReceiptPKCS7Container)
-        let pkcs7DataTypeCode = OBJ_obj2nid(receiptPKCS7Container?.pointee.d.sign.pointee.contents.pointee.type)
-
-        guard pkcs7DataTypeCode == NID_pkcs7_data else { throw Error.emptyReceiptContents }
-
-        return pkcs7Wrapper
+    func extractPKCS7Container(data: Data) throws -> PKCS7 {
+        return try PKCS7(data: data)
     }
 }
 
@@ -160,34 +157,34 @@ private extension AppReceiptValidator {
 
 private extension AppReceiptValidator {
 
-    func checkSignaturePresence(pkcs7: PKCS7Wrapper) throws {
-        let pkcs7SignedTypeCode = OBJ_obj2nid(pkcs7.pkcs7.pointee.type)
-
-        guard pkcs7SignedTypeCode == NID_pkcs7_signed else { throw Error.receiptNotSigned }
+    func checkSignaturePresence(pkcs7: PKCS7) throws {
+//        let pkcs7SignedTypeCode = OBJ_obj2nid(pkcs7.pkcs7.pointee.type)
+//
+//        guard pkcs7SignedTypeCode == NID_pkcs7_signed else { throw Error.receiptNotSigned }
     }
 
-    func checkSignatureAuthenticity(pkcs7: PKCS7Wrapper, appleRootCertificateData: Data) throws {
-        let appleRootCertificateBIO = BIOWrapper(data: appleRootCertificateData)
-
-        guard let appleRootCertificateX509 = d2i_X509_bio(appleRootCertificateBIO.bio, nil) else { throw Error.malformedAppleRootCertificate }
-
-        defer {
-            X509_free(appleRootCertificateX509)
-        }
-        try self.verifyAuthenticity(x509Certificate: appleRootCertificateX509, pkcs7: pkcs7)
+    func checkSignatureAuthenticity(pkcs7: PKCS7, appleRootCertificateData: Data) throws {
+//        let appleRootCertificateBIO = BIOWrapper(data: appleRootCertificateData)
+//
+//        guard let appleRootCertificateX509 = d2i_X509_bio(appleRootCertificateBIO.bio, nil) else { throw Error.malformedAppleRootCertificate }
+//
+//        defer {
+//            X509_free(appleRootCertificateX509)
+//        }
+//        try self.verifyAuthenticity(x509Certificate: appleRootCertificateX509, pkcs7: pkcs7)
     }
 
-    private func verifyAuthenticity(x509Certificate: OpaquePointer, pkcs7: PKCS7Wrapper) throws {
-        let x509CertificateStore = X509_STORE_new()
-        defer {
-            X509_STORE_free(x509CertificateStore)
-        }
-        X509_STORE_add_cert(x509CertificateStore, x509Certificate)
-        let result = PKCS7_verify(pkcs7.pkcs7, nil, x509CertificateStore, nil, nil, 0)
-
-        if result != 1 {
-            throw Error.receiptSignatureInvalid
-        }
+    private func verifyAuthenticity(x509Certificate: OpaquePointer, pkcs7: PKCS7) throws {
+//        let x509CertificateStore = X509_STORE_new()
+//        defer {
+//            X509_STORE_free(x509CertificateStore)
+//        }
+//        X509_STORE_add_cert(x509CertificateStore, x509Certificate)
+//        let result = PKCS7_verify(pkcs7.pkcs7, nil, x509CertificateStore, nil, nil, 0)
+//
+//        if result != 1 {
+//            throw Error.receiptSignatureInvalid
+//        }
     }
 }
 
@@ -196,6 +193,7 @@ private extension AppReceiptValidator {
 private extension AppReceiptValidator {
 
     // swiftlint:disable:next cyclomatic_complexity
+    /*
     func parseReceipt(pkcs7: PKCS7Wrapper, parseUnofficialParts: Bool = false) throws -> (receipt: Receipt, unofficialReceipt: UnofficialReceipt) {
         guard let contents = pkcs7.pkcs7.pointee.d.sign.pointee.contents, let octets = contents.pointee.d.data else { throw Error.malformedReceipt }
         guard let initialPointer = UnsafePointer(octets.pointee.data) else { throw Error.malformedReceipt }
@@ -237,9 +235,10 @@ private extension AppReceiptValidator {
         }
 
         return (receipt: receipt, unofficialReceipt: unofficialReceipt)
-    }
+    }*/
 
     // swiftlint:disable:next cyclomatic_complexity
+    /*
     private func parseInAppPurchaseReceipt(pointer: UnsafePointer<UInt8>, length: Int) throws -> InAppPurchaseReceipt {
         var inAppPurchaseReceipt = InAppPurchaseReceipt()
         try self.parseASN1Set(pointer: pointer, length: length) { attributeType, value in
@@ -268,8 +267,9 @@ private extension AppReceiptValidator {
             }
         }
         return inAppPurchaseReceipt
-    }
+    }*/
 
+    /*
     private func parseUnofficialReceiptEntry(attributeType: Int32, value: ASN1Object) -> UnofficialReceipt.Entry {
         switch KnownUnofficialReceiptAttribute(rawValue: attributeType) {
         case .some(let meaning):
@@ -315,7 +315,7 @@ private extension AppReceiptValidator {
             // move pointer to end of current sequence
             pointer = sequenceObject.pointerAfter
         }
-    }
+    }*/
 }
 
 // MARK: Receipt ASN1 Sequence Attribute Types
