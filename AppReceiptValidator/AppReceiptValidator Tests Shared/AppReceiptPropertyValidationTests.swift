@@ -12,7 +12,7 @@ import XCTest
 class AppReceiptPropertyValidationTests: XCTestCase {
 
     private let receiptValidator = AppReceiptValidator()
-/*
+
     func testCorrectMainBundlePropertiesiOS() {
         let receipt = Receipt(bundleIdentifier: Bundle.main.bundleIdentifier,
                               bundleIdData: nil,
@@ -73,7 +73,7 @@ class AppReceiptPropertyValidationTests: XCTestCase {
             XCTFail("validation failed unexpectedly")
         }
     }
-
+/*
     func testMindNodeProMacReceiptPropertyMismatches() {
         guard let data = assertTestAsset(filename: "hannes_mac_mindnode_pro_receipt") else { return }
 

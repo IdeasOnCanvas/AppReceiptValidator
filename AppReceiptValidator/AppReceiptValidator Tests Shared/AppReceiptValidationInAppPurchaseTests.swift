@@ -13,7 +13,6 @@ class AppReceiptValidationInAppPurchaseTests: XCTestCase {
 
     var receiptValidator = AppReceiptValidator()
 
-    /*
     func testNonMindNodeReceiptParsingWithoutValidation() {
         guard let data = assertB64TestAsset(filename: "grandUnifiedExpiredAppleCert_receipt.b64") else { return }
 
@@ -24,7 +23,7 @@ class AppReceiptValidationInAppPurchaseTests: XCTestCase {
             XCTFail("Unexpectedly failed parsing a receipt \(error)")
         }
     }
-
+/*
     func testNonMindNodeReceiptParsingWithMultipleInAppPurchases() {
         // From https://stackoverflow.com/questions/33843281/apple-receipt-data-sample "Grand Unified Receipt (multiple transactions)"
         // note that the "deprecated transaction (single transaction) style receipt" from the same page doesn't work (base64 problem?)
@@ -42,7 +41,7 @@ class AppReceiptValidationInAppPurchaseTests: XCTestCase {
         }
         XCTAssertEqual(receipt, nonMindNodeReceipt)
     }
-
+*/
     private var nonMindNodeReceipt: Receipt {
         return Receipt(
             bundleIdentifier: "com.mbaasy.ios.demo",
@@ -133,5 +132,5 @@ class AppReceiptValidationInAppPurchaseTests: XCTestCase {
                 )
             ]
         )
-    }*/
+    }
 }
