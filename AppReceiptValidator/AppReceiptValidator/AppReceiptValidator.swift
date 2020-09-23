@@ -155,9 +155,7 @@ private extension AppReceiptValidator {
 private extension AppReceiptValidator {
 
     func checkSignaturePresence(pkcs7: PKCS7) throws {
-//        let pkcs7SignedTypeCode = OBJ_obj2nid(pkcs7.pkcs7.pointee.type)
-//
-//        guard pkcs7SignedTypeCode == NID_pkcs7_signed else { throw Error.receiptNotSigned }
+        guard pkcs7.signatures?.isEmpty == false else { throw Error.receiptNotSigned }
     }
 
     func checkSignatureAuthenticity(pkcs7: PKCS7, appleRootCertificateData: Data) throws {
