@@ -29,12 +29,12 @@ class AppReceiptValidationInAppPurchaseTests: XCTestCase {
         // note that the "deprecated transaction (single transaction) style receipt" from the same page doesn't work (base64 problem?)
         guard let data = assertB64TestAsset(filename: "grandUnifiedExpiredAppleCert_receipt.b64") else { return }
 
-        let result = receiptValidator.validateReceipt(parameters: AppReceiptValidator.Parameters.default.with {
+        let result = receiptValidator.validateReceipt {
             $0.receiptOrigin = .data(data)
             $0.shouldValidateHash = false
             $0.signatureValidation = .skip
             $0.propertyValidations = []
-        })
+        }
         guard let receipt = result.receipt else {
             XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")
             return

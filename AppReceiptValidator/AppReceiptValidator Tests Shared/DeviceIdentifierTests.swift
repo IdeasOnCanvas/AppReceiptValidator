@@ -52,4 +52,5 @@ final class DeviceIdentifierTests: XCTestCase {
         XCTAssertEqual(deviceIdentifierFromString.getData(), deviceIdentifierData)
     }
     #endif
+
 }

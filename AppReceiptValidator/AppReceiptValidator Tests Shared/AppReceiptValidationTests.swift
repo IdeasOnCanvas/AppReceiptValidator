@@ -40,7 +40,7 @@ class AppReceiptValidationTests: XCTestCase {
             XCTFail("Unexpectedly succeeded in parsing a non-receipt")
         } catch {
             guard error as? AppReceiptValidator.Error == AppReceiptValidator.Error.emptyReceiptContents else {
-                XCTFail("Unexpected error, expected .emptyReceiptContents, got \(error)")
+                XCTFail("Unexpected error, expeced .emptyReceiptContents, got \(error)")
                 return
             }
         }
@@ -143,10 +143,10 @@ class AppReceiptValidationTests: XCTestCase {
             expirationDate: nil,
             inAppPurchaseReceipts: []
         )
-        let result = receiptValidator.validateReceipt(parameters: AppReceiptValidator.Parameters.default.with {
+        let result = receiptValidator.validateReceipt {
             $0.receiptOrigin = .data(data)
             $0.deviceIdentifier = AppReceiptValidator.Parameters.DeviceIdentifier(base64Encoded: "bEAItZRe")!
-        })
+        }
         guard let receipt = result.receipt else {
             XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")
             return
