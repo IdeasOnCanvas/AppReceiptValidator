@@ -160,6 +160,18 @@ private extension AppReceiptValidator {
 
     func checkSignatureAuthenticity(pkcs7: PKCS7, appleRootCertificateData: Data) throws {
         guard let certificate = SecCertificateCreateWithData(nil, appleRootCertificateData as NSData) else { throw Error.malformedAppleRootCertificate }
+        guard let key = SecCertificateCopyKey(certificate) else { throw Error.malformedAppleRootCertificate }
+        guard let signature = pkcs7.signatures?.first else { throw Error.receiptNotSigned }
+        guard let signatureData = signature.signatureAlgorithm?.rawValue else { throw Error.receiptNotSigned }
+
+        /*
+        let algorithm = SecKeyAlgorithm(rawValue: signature.disgestAlgorithmName! as NSString)
+        var error: Unmanaged<CFError>? = nil
+        SecKeyVerifySignature(key, .rsaSignatureMessagePKCS1v15SHA1,
+                              pkcs7.data! as NSData,
+                              signatureData as NSData,
+                              &error)
+        dump(error)*/
 
 //        let appleRootCertificateBIO = BIOWrapper(data: appleRootCertificateData)
 //
