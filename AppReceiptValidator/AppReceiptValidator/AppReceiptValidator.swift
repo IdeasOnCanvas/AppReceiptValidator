@@ -159,9 +159,11 @@ private extension AppReceiptValidator {
     }
 
     func checkSignatureAuthenticity(pkcs7: PKCS7, appleRootCertificateData: Data) throws {
+        guard let certificate = SecCertificateCreateWithData(nil, appleRootCertificateData as NSData) else { throw Error.malformedAppleRootCertificate }
+
 //        let appleRootCertificateBIO = BIOWrapper(data: appleRootCertificateData)
 //
-//        guard let appleRootCertificateX509 = d2i_X509_bio(appleRootCertificateBIO.bio, nil) else { throw Error.malformedAppleRootCertificate }
+//        guard let appleRootCertificateX509 = d2i_X509_bio(appleRootCertificateBIO.bio, nil)
 //
 //        defer {
 //            X509_free(appleRootCertificateX509)
