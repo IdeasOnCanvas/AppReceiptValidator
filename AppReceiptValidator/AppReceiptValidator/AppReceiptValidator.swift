@@ -195,6 +195,7 @@ private extension AppReceiptValidator {
 
         var receipt = Receipt()
         receipt.bundleIdentifier = contents.bundleIdentifier
+        receipt.bundleIdData = contents.bundleIdentifierData
         receipt.appVersion = contents.bundleVersion
         receipt.opaqueValue = contents.opaqueValue
         receipt.sha1Hash = contents.sha1

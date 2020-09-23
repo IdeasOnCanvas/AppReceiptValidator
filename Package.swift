@@ -13,7 +13,7 @@ let package = Package(
         .library(name: "AppReceiptValidator", targets: ["AppReceiptValidator"])
     ],
     dependencies: [
-        .package(url: "https://github.com/filom/ASN1Decoder", from: "1.3.0"),
+        .package(url: "https://github.com/IdeasOnCanvas/ASN1Decoder", .branch("enhancement/storeBundleIDDataInReceipt")),
     ],
     targets: [
         .target(name: "AppReceiptValidator",
