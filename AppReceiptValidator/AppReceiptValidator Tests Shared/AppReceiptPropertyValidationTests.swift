@@ -73,7 +73,7 @@ class AppReceiptPropertyValidationTests: XCTestCase {
             XCTFail("validation failed unexpectedly")
         }
     }
-/*
+
     func testMindNodeProMacReceiptPropertyMismatches() {
         guard let data = assertTestAsset(filename: "hannes_mac_mindnode_pro_receipt") else { return }
 
@@ -125,5 +125,5 @@ class AppReceiptPropertyValidationTests: XCTestCase {
         assertPropertyMismatch {
             $0.propertyValidations = [.appVersionMatchingMainBundleMacOS]
         }
-    }*/
+    }
 }

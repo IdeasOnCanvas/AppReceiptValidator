@@ -12,7 +12,6 @@ import XCTest
 
 final class DeviceIdentifierTests: XCTestCase {
 
-    /*
     func testBase64Initializer() {
         let deviceIdentifier = AppReceiptValidator.Parameters.DeviceIdentifier(base64Encoded: "bEAItZRe")
         XCTAssertNotNil(deviceIdentifier)
@@ -53,5 +52,4 @@ final class DeviceIdentifierTests: XCTestCase {
         XCTAssertEqual(deviceIdentifierFromString.getData(), deviceIdentifierData)
     }
     #endif
-*/
 }

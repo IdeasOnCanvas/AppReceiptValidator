@@ -8,6 +8,7 @@
 
 import Foundation
 import ASN1Decoder
+import Security
 
 /// Apple guide: https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Introduction.html
 ///
@@ -47,16 +48,14 @@ public struct AppReceiptValidator {
 
             try self.validateProperties(receipt: receipt, validations: parameters.propertyValidations)
 
-            /*
             if parameters.shouldValidateHash {
                 guard let deviceIdentifierData = deviceIdData else { throw Error.deviceIdentifierNotDeterminable }
 
                 try self.validateHash(receipt: receipt, deviceIdentifierData: deviceIdentifierData)
-            }*/
+            }
 
             return .success(receipt, receiptData: receiptData, deviceIdentifier: deviceIdData)
         } catch {
-            assert(error is AppReceiptValidator.Error)
             return .error(error as? AppReceiptValidator.Error ?? .unknown, receiptData: data, deviceIdentifier: deviceIdData)
         }
     }
@@ -76,6 +75,7 @@ public struct AppReceiptValidator {
         guard let receiptData = origin.loadData() else { throw Error.couldNotFindReceipt }
 
         let receiptContainer = try self.extractPKCS7Container(data: receiptData)
+
         return try parseReceipt(pkcs7: receiptContainer).receipt
     }
 
@@ -88,8 +88,7 @@ public struct AppReceiptValidator {
         guard let receiptData = origin.loadData() else { throw Error.couldNotFindReceipt }
 
         let receiptContainer = try self.extractPKCS7Container(data: receiptData)
-        fatalError()
-        //return try parseReceipt(pkcs7: receiptContainer, parseUnofficialParts: true)
+        return try parseReceipt(pkcs7: receiptContainer, parseUnofficialParts: true)
     }
 
     /// Uses receipt-conform representation of dates like "2017-01-01T12:00:00Z"
@@ -146,7 +145,11 @@ private extension AppReceiptValidator {
 private extension AppReceiptValidator {
 
     func extractPKCS7Container(data: Data) throws -> PKCS7 {
-        return try PKCS7(data: data)
+        do {
+            return try PKCS7(data: data)
+        } catch {
+            throw Error.emptyReceiptContents
+        }
     }
 }
 
@@ -219,55 +222,6 @@ private extension AppReceiptValidator {
 
         return (receipt: receipt, unofficialReceipt: .init(entries: []))
     }
-
-    // swiftlint:disable:next cyclomatic_complexity
-    /*
-    private func parseUnofficialReceiptEntry(attributeType: Int32, value: ASN1Object) -> UnofficialReceipt.Entry {
-        switch KnownUnofficialReceiptAttribute(rawValue: attributeType) {
-        case .some(let meaning):
-            switch meaning.parsingType {
-            case .string:
-                return UnofficialReceipt.Entry(attributeNumber: attributeType, meaning: meaning, value: value.unwrappedStringValue.map { UnofficialReceipt.Entry.Value.string($0) })
-            case .date:
-                return UnofficialReceipt.Entry(attributeNumber: attributeType, meaning: meaning, value: value.unwrappedDateValue.map { UnofficialReceipt.Entry.Value.date($0) })
-            case .data:
-                return UnofficialReceipt.Entry(attributeNumber: attributeType, meaning: meaning, value: value.dataValue.map { UnofficialReceipt.Entry.Value.bytes($0) })
-            }
-        case .none:
-            if let string = value.unwrappedStringValue {
-                return UnofficialReceipt.Entry(attributeNumber: attributeType, meaning: nil, value: .string(string))
-            }
-            if let string = value.stringValue {
-                return UnofficialReceipt.Entry(attributeNumber: attributeType, meaning: nil, value: .string(string))
-            }
-            return UnofficialReceipt.Entry(attributeNumber: attributeType, meaning: nil, value: value.dataValue.map { UnofficialReceipt.Entry.Value.bytes($0) })
-        }
-    }
-
-    private func parseASN1Set(pointer initialPointer: UnsafePointer<UInt8>, length: Int, valueAttributeAction: (_ attributeType: Int32, _ value: ASN1Object) throws -> Void) throws {
-        var pointer: UnsafePointer<UInt8>? = initialPointer
-        let limit = initialPointer.advanced(by: length)
-
-        /// Make sure we're pointing to an ASN1 Set, and move the pointer forward
-        guard ASN1Object.next(byAdvancingPointer: &pointer, notBeyond: limit).isOfASN1SetType else { throw Error.malformedReceipt }
-
-        // Decode Payload
-
-        // Step through payload (ASN1 Set) and parse each ASN1 Sequence within (ASN1 Sets contain one or more ASN1 Sequences)
-        while pointer != nil && pointer! < limit {
-            // Get next ASN1 Object. Parses length and type, and moves the pointer forward
-            let sequenceObject = ASN1Object.next(byAdvancingPointer: &pointer, notBeyond: limit)
-
-            // Attempt to interpret it as a ASN1 Sequence
-            guard let sequence = sequenceObject.sequenceValue(byAdvancingPointer: &pointer, notBeyond: limit) else { throw Error.malformedReceipt }
-
-            // Extract and assign value from the current sequence
-            try valueAttributeAction(sequence.attributeType, sequence.valueObject)
-
-            // move pointer to end of current sequence
-            pointer = sequenceObject.pointerAfter
-        }
-    }*/
 }
 
 // MARK: Receipt ASN1 Sequence Attribute Types
