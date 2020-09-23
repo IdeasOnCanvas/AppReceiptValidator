@@ -43,20 +43,18 @@ public struct AppReceiptValidator {
                 try self.checkSignatureAuthenticity(pkcs7: receiptContainer, appleRootCertificateData: appleRootCertificateData)
             }
 
-            let receiptInfo = receiptContainer.receipt()
-            dump(receiptInfo)
-            /*
-            //let receipt = try self.parseReceipt(pkcs7: receiptContainer).receipt
+            let receipt = try self.parseReceipt(pkcs7: receiptContainer).receipt
 
             try self.validateProperties(receipt: receipt, validations: parameters.propertyValidations)
 
+            /*
             if parameters.shouldValidateHash {
                 guard let deviceIdentifierData = deviceIdData else { throw Error.deviceIdentifierNotDeterminable }
 
                 try self.validateHash(receipt: receipt, deviceIdentifierData: deviceIdentifierData)
             }*/
 
-            return .error(.couldNotFindReceipt, receiptData: nil, deviceIdentifier: nil) //.success(receipt, receiptData: receiptData, deviceIdentifier: deviceIdData)
+            return .success(receipt, receiptData: receiptData, deviceIdentifier: deviceIdData)
         } catch {
             assert(error is AppReceiptValidator.Error)
             return .error(error as? AppReceiptValidator.Error ?? .unknown, receiptData: data, deviceIdentifier: deviceIdData)
@@ -78,8 +76,7 @@ public struct AppReceiptValidator {
         guard let receiptData = origin.loadData() else { throw Error.couldNotFindReceipt }
 
         let receiptContainer = try self.extractPKCS7Container(data: receiptData)
-        fatalError()
-        //return try parseReceipt(pkcs7: receiptContainer).receipt
+        return try parseReceipt(pkcs7: receiptContainer).receipt
     }
 
     /// Parse the local receipt and it's unofficial attributes without any validation.
@@ -193,82 +190,36 @@ private extension AppReceiptValidator {
 private extension AppReceiptValidator {
 
     // swiftlint:disable:next cyclomatic_complexity
-    /*
-    func parseReceipt(pkcs7: PKCS7Wrapper, parseUnofficialParts: Bool = false) throws -> (receipt: Receipt, unofficialReceipt: UnofficialReceipt) {
-        guard let contents = pkcs7.pkcs7.pointee.d.sign.pointee.contents, let octets = contents.pointee.d.data else { throw Error.malformedReceipt }
-        guard let initialPointer = UnsafePointer(octets.pointee.data) else { throw Error.malformedReceipt }
-        let length = Int(octets.pointee.length)
+    func parseReceipt(pkcs7: PKCS7, parseUnofficialParts: Bool = false) throws -> (receipt: Receipt, unofficialReceipt: UnofficialReceipt) {
+        guard let contents = pkcs7.receipt() else { throw Error.malformedReceipt }
+
         var receipt = Receipt()
-        var unofficialReceipt = UnofficialReceipt(entries: [])
-
-        try self.parseASN1Set(pointer: initialPointer, length: length) { attributeType, value in
-            guard let attribute = KnownReceiptAttribute(rawValue: attributeType) else {
-                if parseUnofficialParts {
-                    let entry = parseUnofficialReceiptEntry(attributeType: attributeType, value: value)
-                    unofficialReceipt.entries.append(entry)
-                }
-                return
-            }
-
-            switch attribute {
-            case .bundleIdentifier:
-                receipt.bundleIdData = value.dataValue
-                receipt.bundleIdentifier = value.unwrappedStringValue
-            case .appVersion:
-                receipt.appVersion = value.unwrappedStringValue
-            case .opaqueValue:
-                receipt.opaqueValue = value.dataValue
-            case .sha1Hash:
-                receipt.sha1Hash = value.dataValue
-            case .inAppPurchaseReceipts:
-                guard let pointer = value.valuePointer else { break }
-
-                let iapReceipt = try parseInAppPurchaseReceipt(pointer: pointer, length: value.length)
-                receipt.inAppPurchaseReceipts.append(iapReceipt)
-            case .receiptCreationDate:
-                receipt.receiptCreationDate = value.unwrappedDateValue
-            case .originalAppVersion:
-                receipt.originalAppVersion = value.unwrappedStringValue
-            case .expirationDate:
-                receipt.expirationDate = value.unwrappedDateValue
-            }
+        receipt.bundleIdentifier = contents.bundleIdentifier
+        receipt.appVersion = contents.bundleVersion
+        receipt.opaqueValue = contents.opaqueValue
+        receipt.sha1Hash = contents.sha1
+        let purchases = contents.inAppPurchases ?? []
+        receipt.inAppPurchaseReceipts = purchases.map { iap in
+            var iapReceipt = InAppPurchaseReceipt()
+            iapReceipt.cancellationDate = iap.cancellationDate
+            iapReceipt.quantity = iap.quantity.map(Int64.init)
+            iapReceipt.productIdentifier = iap.productId
+            iapReceipt.transactionIdentifier = iap.transactionId
+            iapReceipt.purchaseDate = iap.purchaseDate
+            iapReceipt.originalPurchaseDate = iap.originalPurchaseDate
+            iapReceipt.subscriptionExpirationDate = iap.expiresDate
+            iapReceipt.originalTransactionIdentifier = iap.originalTransactionId
+            iapReceipt.webOrderLineItemId = iap.webOrderLineItemId.map(Int64.init)
+            return iapReceipt
         }
+        receipt.receiptCreationDate = contents.receiptCreationDate
+        receipt.originalAppVersion = contents.originalApplicationVersion
+        receipt.expirationDate = contents.receiptExpirationDate
 
-        return (receipt: receipt, unofficialReceipt: unofficialReceipt)
-    }*/
+        return (receipt: receipt, unofficialReceipt: .init(entries: []))
+    }
 
     // swiftlint:disable:next cyclomatic_complexity
-    /*
-    private func parseInAppPurchaseReceipt(pointer: UnsafePointer<UInt8>, length: Int) throws -> InAppPurchaseReceipt {
-        var inAppPurchaseReceipt = InAppPurchaseReceipt()
-        try self.parseASN1Set(pointer: pointer, length: length) { attributeType, value in
-            guard let attribute = KnownInAppPurchaseAttribute(rawValue: attributeType) else { return }
-            guard let value = value.unwrapped else { return } // always unwrap set members
-
-            switch attribute {
-            case .quantity:
-                inAppPurchaseReceipt.quantity = value.intValue
-            case .productIdentifier:
-                inAppPurchaseReceipt.productIdentifier = value.stringValue
-            case .transactionIdentifier:
-                inAppPurchaseReceipt.transactionIdentifier = value.stringValue
-            case .originalTransactionIdentifier:
-                inAppPurchaseReceipt.originalTransactionIdentifier = value.stringValue
-            case .purchaseDate:
-                inAppPurchaseReceipt.purchaseDate = value.dateValue
-            case .originalPurchaseDate:
-                inAppPurchaseReceipt.originalPurchaseDate = value.dateValue
-            case .subscriptionExpirationDate:
-                inAppPurchaseReceipt.subscriptionExpirationDate = value.dateValue
-            case .cancellationDate:
-                inAppPurchaseReceipt.cancellationDate = value.dateValue
-            case .webOrderLineItemId:
-                inAppPurchaseReceipt.webOrderLineItemId = value.intValue
-            }
-        }
-        return inAppPurchaseReceipt
-    }*/
-
     /*
     private func parseUnofficialReceiptEntry(attributeType: Int32, value: ASN1Object) -> UnofficialReceipt.Entry {
         switch KnownUnofficialReceiptAttribute(rawValue: attributeType) {
