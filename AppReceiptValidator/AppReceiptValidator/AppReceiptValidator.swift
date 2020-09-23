@@ -8,7 +8,7 @@
 
 import Foundation
 import ASN1Decoder
-import Security
+import CommonCrypto
 
 /// Apple guide: https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Introduction.html
 ///
@@ -112,31 +112,28 @@ private extension AppReceiptValidator {
         guard let receiptBundleIdData = receipt.bundleIdData else { throw Error.incorrectHash }
         guard let receiptHashData = receipt.sha1Hash else { throw Error.incorrectHash }
 
-        // Compute the hash for your app & device
-
-        /*
         // Set up the hashing context
         var computedHash = [UInt8](repeating: 0, count: 20)
-        var sha1Context = SHA_CTX()
+        var sha1Context = CC_SHA1_CTX()
 
-        SHA1_Init(&sha1Context)
+        CC_SHA1_Init(&sha1Context)
         deviceIdentifierData.withUnsafeBytes { pointer -> Void in
-            SHA1_Update(&sha1Context, pointer.baseAddress, deviceIdentifierData.count)
+            CC_SHA1_Update(&sha1Context, pointer.baseAddress, UInt32(deviceIdentifierData.count))
         }
         receiptOpaqueValueData.withUnsafeBytes { pointer -> Void in
-            SHA1_Update(&sha1Context, pointer.baseAddress, receiptOpaqueValueData.count)
+            CC_SHA1_Update(&sha1Context, pointer.baseAddress, UInt32(receiptOpaqueValueData.count))
         }
         receiptBundleIdData.withUnsafeBytes { pointer -> Void in
-            SHA1_Update(&sha1Context, pointer.baseAddress, receiptBundleIdData.count)
+            CC_SHA1_Update(&sha1Context, pointer.baseAddress, UInt32(receiptBundleIdData.count))
         }
-        SHA1_Final(&computedHash, &sha1Context)
+        CC_SHA1_Final(&computedHash, &sha1Context)
 
         let computedHashData = Data(bytes: &computedHash, count: 20)
 
         // Compare the computed hash with the receipt's hash
         if computedHashData != receiptHashData {
             throw Error.incorrectHash
-        }*/
+        }
     }
 }
 
