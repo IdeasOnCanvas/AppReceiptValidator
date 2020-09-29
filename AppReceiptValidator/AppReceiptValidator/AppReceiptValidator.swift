@@ -9,6 +9,7 @@
 import Foundation
 @testable import ASN1Decoder
 import Crypto
+// TODO remove Common Crypto
 import CommonCrypto
 import CCryptoBoringSSL
 
@@ -113,6 +114,7 @@ private extension AppReceiptValidator {
         guard let receiptBundleIdData = receipt.bundleIdData else { throw Error.incorrectHash }
         guard let receiptHashData = receipt.sha1Hash else { throw Error.incorrectHash }
 
+        // TODO: Use Swift crypto instead of CC
         // Set up the hashing context
         var computedHash = [UInt8](repeating: 0, count: 20)
         var sha1Context = CC_SHA1_CTX()
@@ -163,9 +165,11 @@ private extension AppReceiptValidator {
         guard let certificate = SecCertificateCreateWithData(nil, appleRootCertificateData as NSData) else { throw Error.malformedAppleRootCertificate }
         guard let key = SecCertificateCopyKey(certificate) else { throw Error.malformedAppleRootCertificate }
         guard let signature = pkcs7.signatures?.first else { throw Error.receiptNotSigned }
+        // TODO: Signature data seems to be parsed into signatureAlgorithm? - this needs to be checked
         guard let signatureData = signature.signatureAlgorithm?.rawValue else { throw Error.receiptNotSigned }
         let algorithm = SecKeyAlgorithm(rawValue: signature.disgestAlgorithmName! as NSString)
 
+        // TODO: From which base should we compute the sha1 hash?
         let data = pkcs7.derData
         var computedHash = [UInt8](repeating: 0, count: 20)
         var sha1Context = CC_SHA1_CTX()
@@ -197,6 +201,10 @@ private extension AppReceiptValidator {
 
         // Try to decrypt the signature data
         let result2 = CCryptoBoringSSL_RSA_public_decrypt(signatureData.count, &result, &out, rsa3, RSA_NO_PADDING)
+        // TODO: Check Hash
+
+
+        
       //  let result = SecKeyCreateEncryptedData(key, .r, signatureData as NSData, &error)
 //        let result = SecKeyVerifySignature(key, .rsaSignatureDigestPKCS1v15SHA1,
 //                                           computedHashData as NSData,
