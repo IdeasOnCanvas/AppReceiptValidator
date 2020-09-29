@@ -9,6 +9,15 @@
           "revision": "2c9c893dc5cf0d35f2634b58772d418e51f97d55",
           "version": null
         }
+      },
+      {
+        "package": "swift-crypto",
+        "repositoryURL": "https://github.com/apple/swift-crypto",
+        "state": {
+          "branch": null,
+          "revision": "afe4c9b5f65b612a2bd4b1cb5ac70eb5841f278e",
+          "version": "1.1.0"
+        }
       }
     ]
   },

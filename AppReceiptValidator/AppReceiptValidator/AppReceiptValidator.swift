@@ -7,8 +7,10 @@
 //
 
 import Foundation
-import ASN1Decoder
+@testable import ASN1Decoder
+import Crypto
 import CommonCrypto
+import CCryptoBoringSSL
 
 /// Apple guide: https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Introduction.html
 ///
@@ -43,7 +45,6 @@ public struct AppReceiptValidator {
 
                 try self.checkSignatureAuthenticity(pkcs7: receiptContainer, appleRootCertificateData: appleRootCertificateData)
             }
-
             let receipt = try self.parseReceipt(pkcs7: receiptContainer).receipt
 
             try self.validateProperties(receipt: receipt, validations: parameters.propertyValidations)
@@ -141,7 +142,7 @@ private extension AppReceiptValidator {
 
 private extension AppReceiptValidator {
 
-    func extractPKCS7Container(data: Data) throws -> PKCS7 {
+    func extractPKCS7Container(data: Data) throws -> ASN1Decoder.PKCS7 {
         do {
             return try PKCS7(data: data)
         } catch {
@@ -154,24 +155,53 @@ private extension AppReceiptValidator {
 
 private extension AppReceiptValidator {
 
-    func checkSignaturePresence(pkcs7: PKCS7) throws {
+    func checkSignaturePresence(pkcs7: ASN1Decoder.PKCS7) throws {
         guard pkcs7.signatures?.isEmpty == false else { throw Error.receiptNotSigned }
     }
 
-    func checkSignatureAuthenticity(pkcs7: PKCS7, appleRootCertificateData: Data) throws {
+    func checkSignatureAuthenticity(pkcs7: ASN1Decoder.PKCS7, appleRootCertificateData: Data) throws {
         guard let certificate = SecCertificateCreateWithData(nil, appleRootCertificateData as NSData) else { throw Error.malformedAppleRootCertificate }
         guard let key = SecCertificateCopyKey(certificate) else { throw Error.malformedAppleRootCertificate }
         guard let signature = pkcs7.signatures?.first else { throw Error.receiptNotSigned }
         guard let signatureData = signature.signatureAlgorithm?.rawValue else { throw Error.receiptNotSigned }
-
-        /*
         let algorithm = SecKeyAlgorithm(rawValue: signature.disgestAlgorithmName! as NSString)
+
+        let data = pkcs7.derData
+        var computedHash = [UInt8](repeating: 0, count: 20)
+        var sha1Context = CC_SHA1_CTX()
+
+        CC_SHA1_Init(&sha1Context)
+
+        pkcs7.derData.withUnsafeBytes { pointer -> Void in
+            CC_SHA1_Update(&sha1Context, pointer.baseAddress, UInt32(data.count))
+        }
+        CC_SHA1_Final(&computedHash, &sha1Context)
+        let computedHashData = Data(bytes: &computedHash, count: 20)
         var error: Unmanaged<CFError>? = nil
-        SecKeyVerifySignature(key, .rsaSignatureMessagePKCS1v15SHA1,
-                              pkcs7.data! as NSData,
-                              signatureData as NSData,
-                              &error)
-        dump(error)*/
+
+
+        var result = Array(signatureData)
+
+        var rsa = RSA()
+        var error2: Unmanaged<CFError>?
+        guard let keyData = SecKeyCopyExternalRepresentation(key, &error2) as? Data else {
+            dump(error2)
+            return
+        }
+
+        var keyDataArray = Array(keyData)
+        var key2: UnsafePointer<UInt8>? = UnsafePointer(&keyDataArray)
+        var rsa2: UnsafeMutablePointer<RSA>? = UnsafeMutablePointer(&rsa)
+        let rsa3 = CCryptoBoringSSL_RSA_public_key_from_bytes(&keyDataArray, keyDataArray.count)
+        var out = [UInt8](repeating: 0, count: 256)
+
+        // Try to decrypt the signature data
+        let result2 = CCryptoBoringSSL_RSA_public_decrypt(signatureData.count, &result, &out, rsa3, RSA_NO_PADDING)
+      //  let result = SecKeyCreateEncryptedData(key, .r, signatureData as NSData, &error)
+//        let result = SecKeyVerifySignature(key, .rsaSignatureDigestPKCS1v15SHA1,
+//                                           computedHashData as NSData,
+//                                           signatureData as NSData,
+//                                           &error)
 
 //        let appleRootCertificateBIO = BIOWrapper(data: appleRootCertificateData)
 //
@@ -183,7 +213,7 @@ private extension AppReceiptValidator {
 //        try self.verifyAuthenticity(x509Certificate: appleRootCertificateX509, pkcs7: pkcs7)
     }
 
-    private func verifyAuthenticity(x509Certificate: OpaquePointer, pkcs7: PKCS7) throws {
+    private func verifyAuthenticity(x509Certificate: OpaquePointer, pkcs7: ASN1Decoder.PKCS7) throws {
 //        let x509CertificateStore = X509_STORE_new()
 //        defer {
 //            X509_STORE_free(x509CertificateStore)
@@ -202,7 +232,7 @@ private extension AppReceiptValidator {
 private extension AppReceiptValidator {
 
     // swiftlint:disable:next cyclomatic_complexity
-    func parseReceipt(pkcs7: PKCS7, parseUnofficialParts: Bool = false) throws -> (receipt: Receipt, unofficialReceipt: UnofficialReceipt) {
+    func parseReceipt(pkcs7: ASN1Decoder.PKCS7, parseUnofficialParts: Bool = false) throws -> (receipt: Receipt, unofficialReceipt: UnofficialReceipt) {
         guard let contents = pkcs7.receipt() else { throw Error.malformedReceipt }
 
         var receipt = Receipt()
