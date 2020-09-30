@@ -166,50 +166,46 @@ private extension AppReceiptValidator {
         guard let key = SecCertificateCopyKey(certificate) else { throw Error.malformedAppleRootCertificate }
         guard let signature = pkcs7.signatures?.first else { throw Error.receiptNotSigned }
         // TODO: Signature data seems to be parsed into signatureAlgorithm? - this needs to be checked
+
+        // 1. signatureData is correct, checked with ASN1Crypto
         guard let signatureData = signature.signatureAlgorithm?.rawValue else { throw Error.receiptNotSigned }
-        let algorithm = SecKeyAlgorithm(rawValue: signature.disgestAlgorithmName! as NSString)
 
-        // TODO: From which base should we compute the sha1 hash?
-        let data = pkcs7.derData
-        var computedHash = [UInt8](repeating: 0, count: 20)
-        var sha1Context = CC_SHA1_CTX()
+        // 2. Receipt Data matches, checked with ASN1Crypto
+        guard let receiptData = pkcs7.mainBlock.findOid(.pkcs7data)?.parent?.sub?.last?.sub(0)?.rawValue else { throw Error.receiptNotSigned }
 
-        CC_SHA1_Init(&sha1Context)
-
-        pkcs7.derData.withUnsafeBytes { pointer -> Void in
-            CC_SHA1_Update(&sha1Context, pointer.baseAddress, UInt32(data.count))
-        }
-        CC_SHA1_Final(&computedHash, &sha1Context)
-        let computedHashData = Data(bytes: &computedHash, count: 20)
-        var error: Unmanaged<CFError>? = nil
-
-
-        var result = Array(signatureData)
-
-        var rsa = RSA()
-        var error2: Unmanaged<CFError>?
-        guard let keyData = SecKeyCopyExternalRepresentation(key, &error2) as? Data else {
-            dump(error2)
+        var error: Unmanaged<CFError>?
+        guard let keyData = SecKeyCopyExternalRepresentation(key, &error) as? Data else {
+            dump(error)
             return
         }
 
+//        var computedHash = [UInt8](repeating: 0, count: 20)
+//        var sha1Context = CC_SHA1_CTX()
+//
+//        CC_SHA1_Init(&sha1Context)
+//        receiptData.withUnsafeBytes { pointer -> Void in
+//            CC_SHA1_Update(&sha1Context, pointer.baseAddress, UInt32(receiptData.count))
+//        }
+//        CC_SHA1_Final(&computedHash, &sha1Context)
+//        let computedHashData = Data(bytes: &computedHash, count: 20)
+
         var keyDataArray = Array(keyData)
-        var key2: UnsafePointer<UInt8>? = UnsafePointer(&keyDataArray)
-        var rsa2: UnsafeMutablePointer<RSA>? = UnsafeMutablePointer(&rsa)
-        let rsa3 = CCryptoBoringSSL_RSA_public_key_from_bytes(&keyDataArray, keyDataArray.count)
+        let rsaKey = CCryptoBoringSSL_RSA_public_key_from_bytes(&keyDataArray, keyDataArray.count)
         var out = [UInt8](repeating: 0, count: 256)
 
         // Try to decrypt the signature data
-        let result2 = CCryptoBoringSSL_RSA_public_decrypt(signatureData.count, &result, &out, rsa3, RSA_NO_PADDING)
+        var signatureDataArray = Array(signatureData)
+        let rsaResult = CCryptoBoringSSL_RSA_public_decrypt(signatureDataArray.count, &signatureDataArray, &out, rsaKey, RSA_NO_PADDING)
+        dump(rsaResult)
         // TODO: Check Hash
 
 
         
-      //  let result = SecKeyCreateEncryptedData(key, .r, signatureData as NSData, &error)
-//        let result = SecKeyVerifySignature(key, .rsaSignatureDigestPKCS1v15SHA1,
-//                                           computedHashData as NSData,
-//                                           signatureData as NSData,
-//                                           &error)
+//        let result123 = SecKeyVerifySignature(key, .sha1,
+//                                              receiptData as NSData,
+//                                              signatureData as NSData,
+//                                              &error)
+//        print(result123)
 
 //        let appleRootCertificateBIO = BIOWrapper(data: appleRootCertificateData)
 //
