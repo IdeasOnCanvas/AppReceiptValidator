@@ -44,3 +44,14 @@ enum TestAssetLoadingError: Error {
 
     case fileNotReadable(filename: String)
 }
+
+#if IS_FRAMEWORK_TARGET
+
+private extension Bundle {
+
+    /// In packages a .module static var is automatically available, here we "create" one for the framework build.
+    /// Note, that this one doesn't work within package builds.
+    static var module: Bundle { class BundleToken {}; return Bundle(for: BundleToken.self) }
+}
+
+#endif
