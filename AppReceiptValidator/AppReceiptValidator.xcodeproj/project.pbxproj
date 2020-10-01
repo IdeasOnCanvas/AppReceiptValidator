@@ -3,17 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BA09A90224E136CA00798DBC /* openssl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA09A90124E136CA00798DBC /* openssl.xcframework */; };
 		D114544621A6BDE6001BEC61 /* DeviceIdentifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114544521A6BDE6001BEC61 /* DeviceIdentifierTests.swift */; };
 		D1239FFF1F6A7B5000D0421E /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = D19095C41F601DEA0095729B /* AppleIncRootCertificate.cer */; };
 		D13E5B7D20331B9B001880F0 /* DropAcceptingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E5B7C20331B9B001880F0 /* DropAcceptingTextView.swift */; };
 		D14FA7321F61476700545540 /* mac_mindnode_rebought_receipt in Resources */ = {isa = PBXBuildFile; fileRef = D14FA7311F61472400545540 /* mac_mindnode_rebought_receipt */; };
-		D14FA7381F6181C700545540 /* OpenSSLWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA7371F6181C700545540 /* OpenSSLWrappers.swift */; };
-		D14FA73B1F618B0100545540 /* ASN1Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14FA73A1F618B0100545540 /* ASN1Helpers.swift */; };
 		D150A0E41F6694990026ED04 /* mindnode_ios_michaelsandbox_receipt1.b64 in Resources */ = {isa = PBXBuildFile; fileRef = D150A0E21F66936B0026ED04 /* mindnode_ios_michaelsandbox_receipt1.b64 */; };
 		D150A0EA1F66989A0026ED04 /* mindnode_ios_michaelsandbox_receipt2.b64 in Resources */ = {isa = PBXBuildFile; fileRef = D150A0E81F6698950026ED04 /* mindnode_ios_michaelsandbox_receipt2.b64 */; };
 		D150A0EE1F669A880026ED04 /* AppReceiptValidationInAppPurchaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D150A0ED1F669A880026ED04 /* AppReceiptValidationInAppPurchaseTests.swift */; };
@@ -101,13 +98,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		BA09A90124E136CA00798DBC /* openssl.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = openssl.xcframework; sourceTree = "<group>"; };
 		D114544521A6BDE6001BEC61 /* DeviceIdentifierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceIdentifierTests.swift; sourceTree = "<group>"; };
 		D13E5B7C20331B9B001880F0 /* DropAcceptingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropAcceptingTextView.swift; sourceTree = "<group>"; };
 		D14FA72E1F6143C400545540 /* Date+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Convenience.swift"; sourceTree = "<group>"; };
 		D14FA7311F61472400545540 /* mac_mindnode_rebought_receipt */ = {isa = PBXFileReference; lastKnownFileType = file; path = mac_mindnode_rebought_receipt; sourceTree = "<group>"; };
-		D14FA7371F6181C700545540 /* OpenSSLWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSSLWrappers.swift; sourceTree = "<group>"; };
-		D14FA73A1F618B0100545540 /* ASN1Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASN1Helpers.swift; sourceTree = "<group>"; };
 		D150A0E21F66936B0026ED04 /* mindnode_ios_michaelsandbox_receipt1.b64 */ = {isa = PBXFileReference; lastKnownFileType = text; path = mindnode_ios_michaelsandbox_receipt1.b64; sourceTree = "<group>"; };
 		D150A0E81F6698950026ED04 /* mindnode_ios_michaelsandbox_receipt2.b64 */ = {isa = PBXFileReference; lastKnownFileType = text; path = mindnode_ios_michaelsandbox_receipt2.b64; sourceTree = "<group>"; };
 		D150A0ED1F669A880026ED04 /* AppReceiptValidationInAppPurchaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReceiptValidationInAppPurchaseTests.swift; sourceTree = "<group>"; };
@@ -172,7 +166,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA09A90224E136CA00798DBC /* openssl.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,16 +180,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D14FA7341F614A9C00545540 /* OpenSSL */ = {
-			isa = PBXGroup;
-			children = (
-				BA09A90124E136CA00798DBC /* openssl.xcframework */,
-				D14FA7371F6181C700545540 /* OpenSSLWrappers.swift */,
-				D14FA73A1F618B0100545540 /* ASN1Helpers.swift */,
-			);
-			path = OpenSSL;
-			sourceTree = "<group>";
-		};
 		D153589F1F62BE3200F297D0 /* Other Receipts */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,7 +290,6 @@
 			isa = PBXGroup;
 			children = (
 				D19095C41F601DEA0095729B /* AppleIncRootCertificate.cer */,
-				D14FA7341F614A9C00545540 /* OpenSSL */,
 				D1D6F5271F5D863900E86FE1 /* Supporting Files */,
 				D1D6F53E1F5D89D000E86FE1 /* AppReceiptValidator.swift */,
 				D1FE343C1F604F020029576B /* Receipt.swift */,
@@ -622,8 +604,6 @@
 				D19095C31F6019FC0095729B /* DeviceIdentifier+installedDeviceIdentifier_iOS.swift in Sources */,
 				D1DFC5DA20037B8400C7B99B /* KnownOrUnknown.swift in Sources */,
 				D1FE343D1F604F020029576B /* Receipt.swift in Sources */,
-				D14FA73B1F618B0100545540 /* ASN1Helpers.swift in Sources */,
-				D14FA7381F6181C700545540 /* OpenSSLWrappers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -691,10 +671,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "AppReceiptValidator Demo macOS/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.AppReceiptValidator-Demo-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -712,10 +689,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "AppReceiptValidator Demo macOS/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.AppReceiptValidator-Demo-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -731,11 +705,7 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "AppReceiptValidator Tests iOS/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.AppReceiptValidator-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -748,11 +718,7 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "AppReceiptValidator Tests iOS/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.AppReceiptValidator-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -874,8 +840,7 @@
 				PRODUCT_NAME = AppReceiptValidator;
 				SUPPORTED_PLATFORMS = "macosx appletvsimulator appletvos iphonesimulator iphoneos";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = IS_FRAMEWORK_TARGET;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,6";
 				TVOS_DEPLOYMENT_TARGET = 11.0;
@@ -896,11 +861,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "$(SRCROOT)/AppReceiptValidator/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ideasoncanvas.AppReceiptValidator;
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
@@ -924,11 +885,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "$(SRCROOT)/AppReceiptValidator/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ideasoncanvas.AppReceiptValidator;
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
@@ -945,10 +902,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "AppReceiptValidator Demo iOS/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.AppReceiptValidator.Demo-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -967,10 +921,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "AppReceiptValidator Demo iOS/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.AppReceiptValidator.Demo-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
