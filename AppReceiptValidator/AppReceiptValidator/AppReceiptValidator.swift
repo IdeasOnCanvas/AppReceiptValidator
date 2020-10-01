@@ -162,59 +162,41 @@ private extension AppReceiptValidator {
     }
 
     func checkSignatureAuthenticity(pkcs7: ASN1Decoder.PKCS7, appleRootCertificateData: Data) throws {
-        guard let certificate = SecCertificateCreateWithData(nil, appleRootCertificateData as NSData) else { throw Error.malformedAppleRootCertificate }
-        guard let key = SecCertificateCopyKey(certificate) else { throw Error.malformedAppleRootCertificate }
         guard let signature = pkcs7.signatures?.first else { throw Error.receiptNotSigned }
-        // TODO: Signature data seems to be parsed into signatureAlgorithm? - this needs to be checked
-
         // 1. signatureData is correct, checked with ASN1Crypto
         guard let signatureData = signature.signatureAlgorithm?.rawValue else { throw Error.receiptNotSigned }
-
         // 2. Receipt Data matches, checked with ASN1Crypto
         guard let receiptData = pkcs7.mainBlock.findOid(.pkcs7data)?.parent?.sub?.last?.sub(0)?.rawValue else { throw Error.receiptNotSigned }
 
-        var error: Unmanaged<CFError>?
-        guard let keyData = SecKeyCopyExternalRepresentation(key, &error) as? Data else {
-            dump(error)
-            return
+        // 1. Read public key from cert
+        let bio = CCryptoBoringSSL_BIO_new(CCryptoBoringSSL_BIO_s_mem())
+        _ = appleRootCertificateData.withUnsafeBytes { pointer in
+            CCryptoBoringSSL_BIO_write(bio, pointer.baseAddress, Int32(appleRootCertificateData.count))
+        }
+        let cert = CCryptoBoringSSL_d2i_X509_bio(bio, nil)
+        let pubKey = CCryptoBoringSSL_X509_get_pubkey(cert)
+
+        // 2. Init verify digest
+        let ctx = CCryptoBoringSSL_EVP_MD_CTX_create()
+        CCryptoBoringSSL_EVP_MD_CTX_init(ctx)
+        let resultInit = CCryptoBoringSSL_EVP_DigestVerifyInit(ctx,
+                                                               nil,
+                                                               CCryptoBoringSSL_EVP_sha1(),
+                                                               nil,
+                                                               pubKey)
+        let receiptDataArray = Array(receiptData)
+        var resultUpdate: Int32 = 0
+        // 3. Add message to be checked
+        receiptDataArray.withUnsafeBytes { pointer in
+            resultUpdate = CCryptoBoringSSL_EVP_DigestVerifyUpdate(ctx, pointer.baseAddress, receiptDataArray.count)
         }
 
-//        var computedHash = [UInt8](repeating: 0, count: 20)
-//        var sha1Context = CC_SHA1_CTX()
-//
-//        CC_SHA1_Init(&sha1Context)
-//        receiptData.withUnsafeBytes { pointer -> Void in
-//            CC_SHA1_Update(&sha1Context, pointer.baseAddress, UInt32(receiptData.count))
-//        }
-//        CC_SHA1_Final(&computedHash, &sha1Context)
-//        let computedHashData = Data(bytes: &computedHash, count: 20)
-
-        var keyDataArray = Array(keyData)
-        let rsaKey = CCryptoBoringSSL_RSA_public_key_from_bytes(&keyDataArray, keyDataArray.count)
-        var out = [UInt8](repeating: 0, count: 256)
-
-        // Try to decrypt the signature data
+        // 4. Verify signature
         var signatureDataArray = Array(signatureData)
-        let rsaResult = CCryptoBoringSSL_RSA_public_decrypt(signatureDataArray.count, &signatureDataArray, &out, rsaKey, RSA_NO_PADDING)
-        dump(rsaResult)
-        // TODO: Check Hash
+        let resultFinal = CCryptoBoringSSL_EVP_DigestVerifyFinal(ctx, &signatureDataArray, signatureDataArray.count)
 
-
-        
-//        let result123 = SecKeyVerifySignature(key, .sha1,
-//                                              receiptData as NSData,
-//                                              signatureData as NSData,
-//                                              &error)
-//        print(result123)
-
-//        let appleRootCertificateBIO = BIOWrapper(data: appleRootCertificateData)
-//
-//        guard let appleRootCertificateX509 = d2i_X509_bio(appleRootCertificateBIO.bio, nil)
-//
-//        defer {
-//            X509_free(appleRootCertificateX509)
-//        }
-//        try self.verifyAuthenticity(x509Certificate: appleRootCertificateX509, pkcs7: pkcs7)
+        // TODO: Fix final step, cleanup ssl resources
+        print("Results init \(resultInit) update \(resultUpdate) final \(resultFinal)")
     }
 
     private func verifyAuthenticity(x509Certificate: OpaquePointer, pkcs7: ASN1Decoder.PKCS7) throws {
