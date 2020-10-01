@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D10ABF2525263865002CD808 /* ASN1Decoder in Frameworks */ = {isa = PBXBuildFile; productRef = D10ABF2425263865002CD808 /* ASN1Decoder */; };
+		D10ABF2A25263882002CD808 /* Crypto in Frameworks */ = {isa = PBXBuildFile; productRef = D10ABF2925263882002CD808 /* Crypto */; };
 		D114544621A6BDE6001BEC61 /* DeviceIdentifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114544521A6BDE6001BEC61 /* DeviceIdentifierTests.swift */; };
 		D1239FFF1F6A7B5000D0421E /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = D19095C41F601DEA0095729B /* AppleIncRootCertificate.cer */; };
 		D13E5B7D20331B9B001880F0 /* DropAcceptingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E5B7C20331B9B001880F0 /* DropAcceptingTextView.swift */; };
@@ -166,6 +168,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D10ABF2525263865002CD808 /* ASN1Decoder in Frameworks */,
+				D10ABF2A25263882002CD808 /* Crypto in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,6 +404,10 @@
 			dependencies = (
 			);
 			name = AppReceiptValidator;
+			packageProductDependencies = (
+				D10ABF2425263865002CD808 /* ASN1Decoder */,
+				D10ABF2925263882002CD808 /* Crypto */,
+			);
 			productName = AppReceiptValidator_iOS;
 			productReference = D1D6F4B51F5D684C00E86FE1 /* AppReceiptValidator.framework */;
 			productType = "com.apple.product-type.framework";
@@ -469,6 +477,10 @@
 				Base,
 			);
 			mainGroup = D1D6F4921F5D67E600E86FE1;
+			packageReferences = (
+				D10ABF2325263865002CD808 /* XCRemoteSwiftPackageReference "ASN1Decoder" */,
+				D10ABF2825263882002CD808 /* XCRemoteSwiftPackageReference "swift-crypto" */,
+			);
 			productRefGroup = D1D6F49C1F5D67E600E86FE1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1010,6 +1022,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D10ABF2325263865002CD808 /* XCRemoteSwiftPackageReference "ASN1Decoder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/IdeasOnCanvas/ASN1Decoder";
+			requirement = {
+				branch = enhancement/storeBundleIDDataInReceipt;
+				kind = branch;
+			};
+		};
+		D10ABF2825263882002CD808 /* XCRemoteSwiftPackageReference "swift-crypto" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-crypto";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D10ABF2425263865002CD808 /* ASN1Decoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D10ABF2325263865002CD808 /* XCRemoteSwiftPackageReference "ASN1Decoder" */;
+			productName = ASN1Decoder;
+		};
+		D10ABF2925263882002CD808 /* Crypto */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D10ABF2825263882002CD808 /* XCRemoteSwiftPackageReference "swift-crypto" */;
+			productName = Crypto;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D1D6F4931F5D67E600E86FE1 /* Project object */;
 }
