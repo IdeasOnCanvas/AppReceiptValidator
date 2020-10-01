@@ -22,7 +22,6 @@ let package = Package(
                                .product(name: "Crypto", package: "swift-crypto")],
                 path: "AppReceiptValidator/AppReceiptValidator",
                 exclude: [
-                    "OpenSSL/openssl.xcframework",
                     "Supporting Files/Info.plist",
                 ],
                 resources: [
