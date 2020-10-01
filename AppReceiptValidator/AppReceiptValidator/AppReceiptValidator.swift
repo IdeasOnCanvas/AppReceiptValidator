@@ -9,8 +9,6 @@
 import Foundation
 @testable import ASN1Decoder
 import Crypto
-// TODO remove Common Crypto
-import CommonCrypto
 import CCryptoBoringSSL
 
 /// Apple guide: https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Introduction.html
@@ -114,25 +112,22 @@ private extension AppReceiptValidator {
         guard let receiptBundleIdData = receipt.bundleIdData else { throw Error.incorrectHash }
         guard let receiptHashData = receipt.sha1Hash else { throw Error.incorrectHash }
 
-        // TODO: Use Swift crypto instead of CC
-        // Set up the hashing context
         var computedHash = [UInt8](repeating: 0, count: 20)
-        var sha1Context = CC_SHA1_CTX()
+        var ctx = SHA_CTX()
 
-        CC_SHA1_Init(&sha1Context)
+        CCryptoBoringSSL_SHA1_Init(&ctx)
         deviceIdentifierData.withUnsafeBytes { pointer -> Void in
-            CC_SHA1_Update(&sha1Context, pointer.baseAddress, UInt32(deviceIdentifierData.count))
+            CCryptoBoringSSL_SHA1_Update(&ctx, pointer.baseAddress, deviceIdentifierData.count)
         }
         receiptOpaqueValueData.withUnsafeBytes { pointer -> Void in
-            CC_SHA1_Update(&sha1Context, pointer.baseAddress, UInt32(receiptOpaqueValueData.count))
+            CCryptoBoringSSL_SHA1_Update(&ctx, pointer.baseAddress, receiptOpaqueValueData.count)
         }
         receiptBundleIdData.withUnsafeBytes { pointer -> Void in
-            CC_SHA1_Update(&sha1Context, pointer.baseAddress, UInt32(receiptBundleIdData.count))
+            CCryptoBoringSSL_SHA1_Update(&ctx, pointer.baseAddress, receiptBundleIdData.count)
         }
-        CC_SHA1_Final(&computedHash, &sha1Context)
+        CCryptoBoringSSL_SHA1_Final(&computedHash, &ctx)
 
         let computedHashData = Data(bytes: &computedHash, count: 20)
-
         // Compare the computed hash with the receipt's hash
         if computedHashData != receiptHashData {
             throw Error.incorrectHash
