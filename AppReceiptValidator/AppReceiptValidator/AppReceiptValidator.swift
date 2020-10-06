@@ -190,20 +190,28 @@ private extension AppReceiptValidator {
         var signatureDataArray = Array(signatureData)
         let resultFinal = CCryptoBoringSSL_EVP_DigestVerifyFinal(ctx, &signatureDataArray, signatureDataArray.count)
 
-        // TODO: Fix final step, cleanup ssl resources
+        let rootCert =  pkcs7.certificates[0]
+        try self.verifyAuthenticity(x509Certificate: rootCert, receiptData: receiptData, signatureData: signatureData)
+        // TODO: Remove redudant CCrypto* based signature verification,  uncomment all lines in below method to enable Sec* based verification, cleanup ssl resources
         print("Results init \(resultInit) update \(resultUpdate) final \(resultFinal)")
     }
 
-    private func verifyAuthenticity(x509Certificate: OpaquePointer, pkcs7: ASN1Decoder.PKCS7) throws {
-//        let x509CertificateStore = X509_STORE_new()
-//        defer {
-//            X509_STORE_free(x509CertificateStore)
-//        }
-//        X509_STORE_add_cert(x509CertificateStore, x509Certificate)
-//        let result = PKCS7_verify(pkcs7.pkcs7, nil, x509CertificateStore, nil, nil, 0)
+    func verifyAuthenticity(x509Certificate: X509Certificate, receiptData: Data, signatureData: Data) throws {
+//        let keyDict: [String:Any] = [kSecAttrKeyClass as String: kSecAttrKeyClassPublic,
+//                                     kSecAttrKeyType as String: kSecAttrKeyTypeRSA,
+//                                     kSecAttrKeySizeInBits as String: 2048]
+//        var secureKeyError: Unmanaged<CFError>? = nil
+//        guard let rootCertKeyDERData = x509Certificate.publicKey?.rawDERData,
+//              let secureKey = SecKeyCreateWithData(rootCertKeyDERData as CFData, keyDict as CFDictionary, &secureKeyError),
+//              secureKeyError == nil else { return }
 //
-//        if result != 1 {
-//            throw Error.receiptSignatureInvalid
+//        var verifyError: Unmanaged<CFError>? = nil
+//        // TODO: This shouldn't be hardcoded. Should be read from the receipt instead.
+//        let alg =  SecKeyAlgorithm.rsaSignatureMessagePKCS1v15SHA1
+//        guard SecKeyVerifySignature(secureKey, alg, receiptData as CFData, signatureData as CFData, &verifyError),
+//              verifyError == nil else {
+//
+            throw Error.receiptSignatureInvalid
 //        }
     }
 }
