@@ -88,16 +88,6 @@ public struct AppReceiptValidator {
         let receiptContainer = try self.extractPKCS7Container(data: receiptData)
         return try parseReceipt(pkcs7: receiptContainer, parseUnofficialParts: true)
     }
-
-    /// Uses receipt-conform representation of dates like "2017-01-01T12:00:00Z"
-    public static let asn1DateFormatter: DateFormatter = {
-        // Date formatter code from https://www.objc.io/issues/17-security/receipt-validation/#parsing-the-receipt
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"
-        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-        return dateFormatter
-    }()
 }
 
 // MARK: - Full Validation
@@ -349,6 +339,59 @@ private extension AppReceiptValidator {
         case cancellationDate = 1712
         case webOrderLineItemId = 1711
     }
+}
+
+// MARK: - ReceiptDateFormatter
+
+extension AppReceiptValidator {
+
+    /// Static formatting methods to use for string encoded date values in receipts
+    public enum ReceiptDateFormatter {
+
+        /// Uses receipt-conform representation of dates like "2017-01-01T12:00:00Z",
+        /// as a fallback, dates like "2017-01-01T12:00:00.123Z" are also parsed.
+        public static func date(from string: String) -> Date? {
+            return self.asn1DateFormatter.date(from: string) // expected
+                ?? self.fallbackDateFormatterWithMS.date(from: string) // try again with milliseconds
+        }
+
+        /// Returns receipt-conform string representation of dates like "2017-01-01T12:00:00Z",
+        /// but if the date has sub-second fractions a millisecond representation like "2017-01-01T12:00:00.123Z" is returned.
+        public static func string(from date: Date) -> String {
+            if floor(date.timeIntervalSince1970) == date.timeIntervalSince1970 {
+                // Integer seconds granularity is what we expect
+                return self.asn1DateFormatter.string(from: date)
+            } else {
+                // millis seconds granularity is what we expect
+                return self.fallbackDateFormatterWithMS.string(from: date)
+            }
+        }
+
+        /// Uses receipt-conform representation of dates like "2017-01-01T12:00:00Z"
+        static let asn1DateFormatter: DateFormatter = {
+            // Date formatter code from https://www.objc.io/issues/17-security/receipt-validation/#parsing-the-receipt
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"
+            dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+            return dateFormatter
+        }()
+
+        /// Uses receipt-conform representation of dates like "2017-01-01T12:00:00.123Z"
+        ///
+        /// This is not the officially intended format, but added after hearing reports about new format adding ms https://twitter.com/depth42/status/1314179654811607041
+        private static let fallbackDateFormatterWithMS: DateFormatter = {
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSS'Z'"
+            dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+            return dateFormatter
+        }()
+    }
+
+    /// Uses receipt-conform representation of dates like "2017-01-01T12:00:00Z"
+    @available(*, deprecated, message: "Use AppReceiptValidator.ReceiptDateFormatter.string(from:) or AppReceiptValidator.ReceiptDateFormatter.date(from:) instead, to cover unexpected date formats")
+    public static let asn1DateFormatter: DateFormatter = ReceiptDateFormatter.asn1DateFormatter
 }
 
 // MARK: - Result
