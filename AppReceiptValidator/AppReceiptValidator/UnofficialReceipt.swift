@@ -61,7 +61,7 @@ public enum KnownUnofficialReceiptAttribute: Int32 {
     var parsingType: ParsingType {
         switch self {
         case .date1, .date2, .date3:
-            return .string
+            return .date
         case .provisioningType, .ageRating, .clientName:
             return .string
         }
