@@ -115,7 +115,7 @@ extension UnofficialReceipt.Entry.Value: CustomStringConvertible {
         case .string(let value):
             return "\"\(value)\""
         case .date(let date):
-            return AppReceiptValidator.asn1DateFormatter.string(from: date)
+            return AppReceiptValidator.ReceiptDateFormatter.string(from: date)
         case .bytes(let bytes):
             if bytes.count == 2 && bytes.first == 12 && bytes.dropFirst().first == 0 {
                 return "2 bytes (12, 0)"
