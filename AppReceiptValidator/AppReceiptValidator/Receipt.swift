@@ -294,7 +294,7 @@ private struct StringFormatter {
     func format(_ date: Date?) -> String {
         guard let date = date else { return fallback }
 
-        return quoted(AppReceiptValidator.asn1DateFormatter.string(from: date))
+        return quoted(AppReceiptValidator.ReceiptDateFormatter.string(from: date))
     }
 
     func format(_ string: String?) -> String {
@@ -318,7 +318,7 @@ private func parseBase64(string: String) -> Data? {
 
 // Parses a string of type "2017-01-01T12:00:00Z"
 private func parseDate(string: String) -> Date? {
-    guard let date = AppReceiptValidator.asn1DateFormatter.date(from: string) else {
+    guard let date = AppReceiptValidator.ReceiptDateFormatter.date(from: string) else {
         assertionFailure("Date could not be parsed from string '\(string)', make sure it has a correct format, example  `2017-01-01T12:00:00Z`")
         return nil
     }
