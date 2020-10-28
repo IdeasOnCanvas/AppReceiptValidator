@@ -5,9 +5,9 @@
         "package": "ASN1Decoder",
         "repositoryURL": "https://github.com/filom/ASN1Decoder",
         "state": {
-          "branch": null,
-          "revision": "f2534c402d4791fb4fc960cd2043852124f01d87",
-          "version": "1.3.3"
+          "branch": "master",
+          "revision": "c448d25104e60fbe65a79809fe4eb5fce7c83c98",
+          "version": null
         }
       },
       {
