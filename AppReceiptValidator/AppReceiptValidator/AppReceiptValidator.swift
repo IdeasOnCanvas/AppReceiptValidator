@@ -159,7 +159,7 @@ private extension AppReceiptValidator {
     func checkSignatureAuthenticity(pkcs7: ASN1Decoder.PKCS7, appleRootCertificateData: Data) throws {
         guard let signature = pkcs7.signatures?.first else { throw Error.receiptNotSigned }
         // 1. signatureData is correct, checked with ASN1Crypto
-        guard let signatureData = signature.signatureAlgorithm?.rawValue else { throw Error.receiptNotSigned }
+        guard let signatureData = signature.signatureData else { throw Error.receiptNotSigned }
         // 2. Receipt Data matches, checked with ASN1Crypto
         guard let receiptData = pkcs7.mainBlock.findOid(.pkcs7data)?.parent?.sub?.last?.sub(0)?.rawValue else { throw Error.receiptNotSigned }
 
@@ -197,22 +197,22 @@ private extension AppReceiptValidator {
     }
 
     func verifyAuthenticity(x509Certificate: X509Certificate, receiptData: Data, signatureData: Data) throws {
-//        let keyDict: [String:Any] = [kSecAttrKeyClass as String: kSecAttrKeyClassPublic,
-//                                     kSecAttrKeyType as String: kSecAttrKeyTypeRSA,
-//                                     kSecAttrKeySizeInBits as String: 2048]
-//        var secureKeyError: Unmanaged<CFError>? = nil
-//        guard let rootCertKeyDERData = x509Certificate.publicKey?.rawDERData,
-//              let secureKey = SecKeyCreateWithData(rootCertKeyDERData as CFData, keyDict as CFDictionary, &secureKeyError),
-//              secureKeyError == nil else { return }
-//
-//        var verifyError: Unmanaged<CFError>? = nil
-//        // TODO: This shouldn't be hardcoded. Should be read from the receipt instead.
-//        let alg =  SecKeyAlgorithm.rsaSignatureMessagePKCS1v15SHA1
-//        guard SecKeyVerifySignature(secureKey, alg, receiptData as CFData, signatureData as CFData, &verifyError),
-//              verifyError == nil else {
-//
+        let keyDict: [String:Any] = [kSecAttrKeyClass as String: kSecAttrKeyClassPublic,
+                                     kSecAttrKeyType as String: kSecAttrKeyTypeRSA,
+                                     kSecAttrKeySizeInBits as String: 2048]
+        var secureKeyError: Unmanaged<CFError>? = nil
+        guard let rootCertKeyDERData = x509Certificate.publicKey?.rawDERData,
+              let secureKey = SecKeyCreateWithData(rootCertKeyDERData as CFData, keyDict as CFDictionary, &secureKeyError),
+              secureKeyError == nil else { throw Error.receiptSignatureInvalid }
+
+        var verifyError: Unmanaged<CFError>? = nil
+        // TODO: This shouldn't be hardcoded. Should be read from the receipt instead.
+        let alg = SecKeyAlgorithm.rsaSignatureMessagePKCS1v15SHA1
+        guard SecKeyVerifySignature(secureKey, alg, receiptData as CFData, signatureData as CFData, &verifyError),
+              verifyError == nil else {
+
             throw Error.receiptSignatureInvalid
-//        }
+        }
     }
 }
 
@@ -349,5 +349,25 @@ extension AppReceiptValidator {
         case couldNotGetExpectedPropertyValue
         case propertyValueMismatch
         case unknown
+    }
+}
+
+// MARK: -  X509PublicKey DER Header
+
+private extension X509PublicKey {
+
+    var rawDERData: Data? {
+        // TODO: Re-enable as soon as `rawKey` gets exposed upstream
+        return nil
+//        guard let rawKey = self.rawKey else { return nil }
+//
+//        let header: [UInt8] = [0x30, 0x82, 0x01, 0x22,
+//                               0x30, 0x0D,
+//                               0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x01, 0x01,
+//                               0x05, 0x00,
+//                               0x03, 0x82, 0x01, 0x0F, 0x00]
+//        var rawDERKey = Data(header)
+//        rawDERKey.append(rawKey)
+//        return rawDERKey
     }
 }
