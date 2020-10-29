@@ -201,7 +201,7 @@ private extension AppReceiptValidator {
                                      kSecAttrKeyType as String: kSecAttrKeyTypeRSA,
                                      kSecAttrKeySizeInBits as String: 2048]
         var secureKeyError: Unmanaged<CFError>? = nil
-        guard let rootCertKeyDERData = x509Certificate.publicKey?.rawDERData,
+        guard let rootCertKeyDERData = x509Certificate.publicKey?.rawDERKey,
               let secureKey = SecKeyCreateWithData(rootCertKeyDERData as CFData, keyDict as CFDictionary, &secureKeyError),
               secureKeyError == nil else { throw Error.receiptSignatureInvalid }
 
@@ -356,7 +356,7 @@ extension AppReceiptValidator {
 
 private extension X509PublicKey {
 
-    var rawDERData: Data? {
+    var rawDERKey: Data? {
         // TODO: Re-enable as soon as `rawKey` gets exposed upstream
         return nil
 //        guard let rawKey = self.rawKey else { return nil }
