@@ -197,13 +197,7 @@ private extension AppReceiptValidator {
     }
 
     func verifyAuthenticity(x509Certificate: X509Certificate, receiptData: Data, signatureData: Data) throws {
-        let keyDict: [String:Any] = [kSecAttrKeyClass as String: kSecAttrKeyClassPublic,
-                                     kSecAttrKeyType as String: kSecAttrKeyTypeRSA,
-                                     kSecAttrKeySizeInBits as String: 2048]
-        var secureKeyError: Unmanaged<CFError>? = nil
-        guard let rootCertKeyDERData = x509Certificate.publicKey?.rawDERKey,
-              let secureKey = SecKeyCreateWithData(rootCertKeyDERData as CFData, keyDict as CFDictionary, &secureKeyError),
-              secureKeyError == nil else { throw Error.receiptSignatureInvalid }
+        guard let secureKey = x509Certificate.publicKey?.secKey else { throw Error.receiptSignatureInvalid }
 
         var verifyError: Unmanaged<CFError>? = nil
         // TODO: This shouldn't be hardcoded. Should be read from the receipt instead.
@@ -352,22 +346,22 @@ extension AppReceiptValidator {
     }
 }
 
-// MARK: -  X509PublicKey DER Header
+// MARK: -  X509PublicKey SecKey
 
-private extension X509PublicKey {
+extension X509PublicKey {
 
-    var rawDERKey: Data? {
-        // TODO: Re-enable as soon as `rawKey` gets exposed upstream
-        return nil
-//        guard let rawKey = self.rawKey else { return nil }
-//
-//        let header: [UInt8] = [0x30, 0x82, 0x01, 0x22,
-//                               0x30, 0x0D,
-//                               0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x01, 0x01,
-//                               0x05, 0x00,
-//                               0x03, 0x82, 0x01, 0x0F, 0x00]
-//        var rawDERKey = Data(header)
-//        rawDERKey.append(rawKey)
-//        return rawDERKey
+    var secKey: SecKey? {
+        guard let publicKeyDerEncoded = derEncodedKey else { return nil }
+        var attributes: [String: Any] = [kSecAttrKeyClass as String: kSecAttrKeyClassPublic]
+        switch algOid {
+        case OID.rsaEncryption.rawValue:
+            attributes[kSecAttrKeyType as String] = kSecAttrKeyTypeRSA
+        case OID.ecPublicKey.rawValue:
+            attributes[kSecAttrKeyType as String] = kSecAttrKeyTypeEC
+        default:
+            return nil
+        }
+        var error: Unmanaged<CFError>?
+        return SecKeyCreateWithData(publicKeyDerEncoded as CFData, attributes as CFDictionary, &error)
     }
 }

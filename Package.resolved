@@ -5,9 +5,9 @@
         "package": "ASN1Decoder",
         "repositoryURL": "https://github.com/filom/ASN1Decoder",
         "state": {
-          "branch": "master",
-          "revision": "c448d25104e60fbe65a79809fe4eb5fce7c83c98",
-          "version": null
+          "branch": null,
+          "revision": "5e9b8f76433c53ce3ad6510bdf7172b1f7c03e80",
+          "version": "1.6.0"
         }
       },
       {
@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/apple/swift-crypto",
         "state": {
           "branch": null,
-          "revision": "afe4c9b5f65b612a2bd4b1cb5ac70eb5841f278e",
-          "version": "1.1.0"
+          "revision": "9680b7251cd2be22caaed8f1468bd9e8915a62fb",
+          "version": "1.1.2"
         }
       }
     ]
