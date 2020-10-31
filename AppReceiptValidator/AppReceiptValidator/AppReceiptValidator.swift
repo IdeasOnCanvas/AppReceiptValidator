@@ -197,12 +197,11 @@ private extension AppReceiptValidator {
     }
 
     func verifyAuthenticity(x509Certificate: X509Certificate, receiptData: Data, signatureData: Data) throws {
-        guard let secureKey = x509Certificate.publicKey?.secKey else { throw Error.receiptSignatureInvalid }
+        guard let key = x509Certificate.publicKey?.secKey,
+              let algorithm = x509Certificate.publicKey?.secAlgorithm else { throw Error.receiptSignatureInvalid }
 
         var verifyError: Unmanaged<CFError>? = nil
-        // TODO: This shouldn't be hardcoded. Should be read from the receipt instead.
-        let alg = SecKeyAlgorithm.rsaSignatureMessagePKCS1v15SHA1
-        guard SecKeyVerifySignature(secureKey, alg, receiptData as CFData, signatureData as CFData, &verifyError),
+        guard SecKeyVerifySignature(key, algorithm, receiptData as CFData, signatureData as CFData, &verifyError),
               verifyError == nil else {
 
             throw Error.receiptSignatureInvalid
@@ -351,17 +350,33 @@ extension AppReceiptValidator {
 extension X509PublicKey {
 
     var secKey: SecKey? {
-        guard let publicKeyDerEncoded = derEncodedKey else { return nil }
+        guard let oid = self.algOid,
+              let algorithm = OID(rawValue: oid),
+              let publicKeyDerEncoded = derEncodedKey else { return nil }
+
         var attributes: [String: Any] = [kSecAttrKeyClass as String: kSecAttrKeyClassPublic]
-        switch algOid {
-        case OID.rsaEncryption.rawValue:
+        switch algorithm {
+        case .rsaEncryption:
             attributes[kSecAttrKeyType as String] = kSecAttrKeyTypeRSA
-        case OID.ecPublicKey.rawValue:
+        case .ecPublicKey:
             attributes[kSecAttrKeyType as String] = kSecAttrKeyTypeEC
         default:
             return nil
         }
         var error: Unmanaged<CFError>?
         return SecKeyCreateWithData(publicKeyDerEncoded as CFData, attributes as CFDictionary, &error)
+    }
+
+    var secAlgorithm: SecKeyAlgorithm? {
+        guard let oid = self.algOid,
+              let algorithm = OID(rawValue: oid) else { return nil }
+
+        switch algorithm {
+        // We only support RSA for now
+        case .rsaEncryption:
+            return .rsaSignatureMessagePKCS1v15SHA1
+        default:
+            return nil
+        }
     }
 }
