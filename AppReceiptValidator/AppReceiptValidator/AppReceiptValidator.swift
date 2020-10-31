@@ -179,21 +179,23 @@ private extension AppReceiptValidator {
                                                                CCryptoBoringSSL_EVP_sha1(),
                                                                nil,
                                                                pubKey)
+        guard resultInit == 1 else { throw Error.receiptSignatureInvalid }
+
         let receiptDataArray = Array(receiptData)
         var resultUpdate: Int32 = 0
         // 3. Add message to be checked
         receiptDataArray.withUnsafeBytes { pointer in
             resultUpdate = CCryptoBoringSSL_EVP_DigestVerifyUpdate(ctx, pointer.baseAddress, receiptDataArray.count)
         }
+        guard resultUpdate == 1 else { throw Error.receiptSignatureInvalid }
 
         // 4. Verify signature
         var signatureDataArray = Array(signatureData)
         let resultFinal = CCryptoBoringSSL_EVP_DigestVerifyFinal(ctx, &signatureDataArray, signatureDataArray.count)
+        guard resultFinal == 1 else { throw Error.receiptSignatureInvalid }
 
         let rootCert =  pkcs7.certificates[0]
         try self.verifyAuthenticity(x509Certificate: rootCert, receiptData: receiptData, signatureData: signatureData)
-        // TODO: Remove redudant CCrypto* based signature verification,  uncomment all lines in below method to enable Sec* based verification, cleanup ssl resources
-        print("Results init \(resultInit) update \(resultUpdate) final \(resultFinal)")
     }
 
     func verifyAuthenticity(x509Certificate: X509Certificate, receiptData: Data, signatureData: Data) throws {
@@ -203,7 +205,6 @@ private extension AppReceiptValidator {
         var verifyError: Unmanaged<CFError>? = nil
         guard SecKeyVerifySignature(key, algorithm, receiptData as CFData, signatureData as CFData, &verifyError),
               verifyError == nil else {
-
             throw Error.receiptSignatureInvalid
         }
     }
