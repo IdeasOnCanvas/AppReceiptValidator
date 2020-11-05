@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BA09A90224E136CA00798DBC /* openssl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA09A90124E136CA00798DBC /* openssl.xcframework */; };
-		D114544621A6BDE6001BEC61 /* DeviceIdentifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114544521A6BDE6001BEC61 /* DeviceIdentifierTests.swift */; };
+		D114544721A6BDE6001BEC61 /* DeviceIdentifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114544521A6BDE6001BEC61 /* DeviceIdentifierTests.swift */; };
 		D11B81CF2530687D00E19863 /* ReceiptDateFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11B81CE2530687D00E19863 /* ReceiptDateFormatterTests.swift */; };
 		D11B81D02530687D00E19863 /* ReceiptDateFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11B81CE2530687D00E19863 /* ReceiptDateFormatterTests.swift */; };
 		D1239FFF1F6A7B5000D0421E /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = D19095C41F601DEA0095729B /* AppleIncRootCertificate.cer */; };
