@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BA09A90224E136CA00798DBC /* openssl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA09A90124E136CA00798DBC /* openssl.xcframework */; };
-		D114544721A6BDE6001BEC61 /* DeviceIdentifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114544521A6BDE6001BEC61 /* DeviceIdentifierTests.swift */; };
 		D11B81CF2530687D00E19863 /* ReceiptDateFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11B81CE2530687D00E19863 /* ReceiptDateFormatterTests.swift */; };
-		D11B81D02530687D00E19863 /* ReceiptDateFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11B81CE2530687D00E19863 /* ReceiptDateFormatterTests.swift */; };
 		D1239FFF1F6A7B5000D0421E /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = D19095C41F601DEA0095729B /* AppleIncRootCertificate.cer */; };
 		D13E5B7D20331B9B001880F0 /* DropAcceptingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E5B7C20331B9B001880F0 /* DropAcceptingTextView.swift */; };
 		D14FA7321F61476700545540 /* mac_mindnode_rebought_receipt in Resources */ = {isa = PBXBuildFile; fileRef = D14FA7311F61472400545540 /* mac_mindnode_rebought_receipt */; };
@@ -453,7 +451,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "IdeasOnCanvas GmbH";
 				TargetAttributes = {
 					D19095801F6000A40095729B = {
@@ -611,7 +609,6 @@
 				D1AA845C1F6ABB59007F2558 /* AppReceiptPropertyValidationTests.swift in Sources */,
 				D150A0EE1F669A880026ED04 /* AppReceiptValidationInAppPurchaseTests.swift in Sources */,
 				D11B81CF2530687D00E19863 /* ReceiptDateFormatterTests.swift in Sources */,
-				D114544621A6BDE6001BEC61 /* DeviceIdentifierTests.swift in Sources */,
 				D150A0F11F67E0990026ED04 /* Date+Convenience.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -693,6 +690,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "AppReceiptValidator Demo macOS/Info.plist";
@@ -714,6 +712,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "AppReceiptValidator Demo macOS/Info.plist";
@@ -825,7 +824,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,6";
-				TVOS_DEPLOYMENT_TARGET = 11.0;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Debug;
 		};
@@ -883,7 +882,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,6";
-				TVOS_DEPLOYMENT_TARGET = 11.0;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
