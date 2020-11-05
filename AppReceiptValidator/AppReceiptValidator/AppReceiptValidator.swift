@@ -158,41 +158,8 @@ private extension AppReceiptValidator {
 
     func checkSignatureAuthenticity(pkcs7: ASN1Decoder.PKCS7, appleRootCertificateData: Data) throws {
         guard let signature = pkcs7.signatures?.first else { throw Error.receiptNotSigned }
-        // 1. signatureData is correct, checked with ASN1Crypto
         guard let signatureData = signature.signatureData else { throw Error.receiptNotSigned }
-        // 2. Receipt Data matches, checked with ASN1Crypto
         guard let receiptData = pkcs7.mainBlock.findOid(.pkcs7data)?.parent?.sub?.last?.sub(0)?.rawValue else { throw Error.receiptNotSigned }
-
-        // 1. Read public key from cert
-        let bio = CCryptoBoringSSL_BIO_new(CCryptoBoringSSL_BIO_s_mem())
-        _ = appleRootCertificateData.withUnsafeBytes { pointer in
-            CCryptoBoringSSL_BIO_write(bio, pointer.baseAddress, Int32(appleRootCertificateData.count))
-        }
-        let cert = CCryptoBoringSSL_d2i_X509_bio(bio, nil)
-        let pubKey = CCryptoBoringSSL_X509_get_pubkey(cert)
-
-        // 2. Init verify digest
-        let ctx = CCryptoBoringSSL_EVP_MD_CTX_create()
-        CCryptoBoringSSL_EVP_MD_CTX_init(ctx)
-        let resultInit = CCryptoBoringSSL_EVP_DigestVerifyInit(ctx,
-                                                               nil,
-                                                               CCryptoBoringSSL_EVP_sha1(),
-                                                               nil,
-                                                               pubKey)
-        guard resultInit == 1 else { throw Error.receiptSignatureInvalid }
-
-        let receiptDataArray = Array(receiptData)
-        var resultUpdate: Int32 = 0
-        // 3. Add message to be checked
-        receiptDataArray.withUnsafeBytes { pointer in
-            resultUpdate = CCryptoBoringSSL_EVP_DigestVerifyUpdate(ctx, pointer.baseAddress, receiptDataArray.count)
-        }
-        guard resultUpdate == 1 else { throw Error.receiptSignatureInvalid }
-
-        // 4. Verify signature
-        var signatureDataArray = Array(signatureData)
-        let resultFinal = CCryptoBoringSSL_EVP_DigestVerifyFinal(ctx, &signatureDataArray, signatureDataArray.count)
-        guard resultFinal == 1 else { throw Error.receiptSignatureInvalid }
 
         let rootCert =  pkcs7.certificates[0]
         try self.verifyAuthenticity(x509Certificate: rootCert, receiptData: receiptData, signatureData: signatureData)
