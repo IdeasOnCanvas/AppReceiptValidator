@@ -6,10 +6,10 @@
 //  Copyright © 2017 IdeasOnCanvas GmbH. All rights reserved.
 //
 
-import Foundation
 @testable import ASN1Decoder
-import Crypto
 import CCryptoBoringSSL
+import Crypto
+import Foundation
 
 /// Apple guide: https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Introduction.html
 ///
@@ -151,7 +151,7 @@ private extension AppReceiptValidator {
         guard let signatureData = signature.signatureData else { throw Error.receiptNotSigned }
         guard let receiptData = pkcs7.mainBlock.findOid(.pkcs7data)?.parent?.sub?.last?.sub(0)?.rawValue else { throw Error.receiptNotSigned }
 
-        let rootCert =  pkcs7.certificates[0]
+        let rootCert = pkcs7.certificates[0]
         try self.verifyAuthenticity(x509Certificate: rootCert, receiptData: receiptData, signatureData: signatureData)
     }
 
@@ -159,7 +159,7 @@ private extension AppReceiptValidator {
         guard let key = x509Certificate.publicKey?.secKey,
               let algorithm = x509Certificate.publicKey?.secAlgorithm else { throw Error.receiptSignatureInvalid }
 
-        var verifyError: Unmanaged<CFError>? = nil
+        var verifyError: Unmanaged<CFError>?
         guard SecKeyVerifySignature(key, algorithm, receiptData as CFData, signatureData as CFData, &verifyError),
               verifyError == nil else {
             throw Error.receiptSignatureInvalid
@@ -171,7 +171,6 @@ private extension AppReceiptValidator {
 
 private extension AppReceiptValidator {
 
-    // swiftlint:disable:next cyclomatic_complexity
     func parseReceipt(pkcs7: ASN1Decoder.PKCS7, parseUnofficialParts: Bool = false) throws -> (receipt: Receipt, unofficialReceipt: UnofficialReceipt) {
         guard let contents = pkcs7.receipt() else { throw Error.malformedReceipt }
 
@@ -356,7 +355,7 @@ extension AppReceiptValidator {
     }
 }
 
-// MARK: -  X509PublicKey SecKey
+// MARK: - X509PublicKey SecKey
 
 extension X509PublicKey {
 
