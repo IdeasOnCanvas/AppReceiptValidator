@@ -6,6 +6,7 @@
 //  Copyright © 2017 IdeasOnCanvas GmbH. All rights reserved.
 //
 
+#if canImport(UIKit) && !targetEnvironment(macCatalyst)
 import UIKit
 
 extension AppReceiptValidator.Parameters.DeviceIdentifier {
@@ -15,3 +16,4 @@ extension AppReceiptValidator.Parameters.DeviceIdentifier {
         return UIDevice.current.identifierForVendor?.data
     }
 }
+#endif

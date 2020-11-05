@@ -11,21 +11,21 @@ import XCTest
 
 extension XCTestCase {
 
-    func assertB64TestAsset(filename: String, file: StaticString = #file, line: UInt = #line) -> Data? {
-        guard let data = assertTestAsset(filename: filename, file: file, line: line) else { return nil }
+    func assertB64TestAsset(filename: String) -> Data? {
+        guard let data = assertTestAsset(filename: filename) else { return nil }
         guard let decoded = Data(base64Encoded: data, options: Data.Base64DecodingOptions.ignoreUnknownCharacters)  else {
-            XCTFail("Failed to decode base64 of test asset file \(filename)", file: file, line: line)
+            XCTFail("Failed to decode base64 of test asset file \(filename)")
             return nil
         }
 
         return decoded
     }
 
-    func assertTestAsset(filename: String, file: StaticString = #file, line: UInt = #line) -> Data? {
+    func assertTestAsset(filename: String) -> Data? {
         do {
             return try loadTestAsset(filename: filename, requester: self)
         } catch {
-            XCTFail("Failed to load test asset file \(filename), make sure you added it to the test target(s)", file: file, line: line)
+            XCTFail("Failed to load test asset file \(filename), make sure you added it to the test target(s)")
             return nil
         }
     }

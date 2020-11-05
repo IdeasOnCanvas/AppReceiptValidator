@@ -6,6 +6,7 @@
 //  Copyright © 2017 IdeasOnCanvas GmbH. All rights reserved.
 //
 
+#if canImport(IOKit)
 import Foundation
 import IOKit
 
@@ -56,3 +57,4 @@ extension AppReceiptValidator.Parameters.DeviceIdentifier {
         return (data: Data(address), addressString: addressString)
     }
 }
+#endif
