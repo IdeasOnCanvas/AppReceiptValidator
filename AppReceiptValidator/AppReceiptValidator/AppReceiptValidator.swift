@@ -201,7 +201,37 @@ private extension AppReceiptValidator {
         receipt.originalAppVersion = contents.originalApplicationVersion
         receipt.expirationDate = contents.receiptExpirationDate
 
-        return (receipt: receipt, unofficialReceipt: .init(entries: []))
+        return (receipt: receipt, unofficialReceipt: (parseUnofficialParts ? self.parseUnofficialReceipt(pkcs7: pkcs7) : .init(entries: [])))
+    }
+
+    func parseUnofficialReceipt(pkcs7: ASN1Decoder.PKCS7) -> UnofficialReceipt {
+        guard let receiptBlock = pkcs7.mainBlock.findOid(.pkcs7data)?.parent?.sub?.last?.sub(0)?.sub(0),
+              let items = receiptBlock.sub else { return .init(entries: []) }
+
+        let entries: [UnofficialReceipt.Entry] = items.compactMap { item in
+            guard let fieldType = (item.sub(0)?.value as? Data)?.toIntValue(),
+                  KnownReceiptAttribute(rawValue: fieldType) == nil else { return nil }
+
+            let fieldValueString = item.sub(2)?.asString
+            if let meaning = KnownUnofficialReceiptAttribute(rawValue: fieldType) {
+                switch meaning.parsingType {
+                case .string:
+                    if let string = fieldValueString {
+                        return UnofficialReceipt.Entry(attributeNumber: fieldType, meaning: meaning, value: .string(string))
+                    }
+                case .data:
+                    if let data = item.sub(2)?.rawValue {
+                        return UnofficialReceipt.Entry(attributeNumber: fieldType, meaning: meaning, value: .bytes(data))
+                    }
+                }
+            }
+
+            if let string = fieldValueString {
+                return UnofficialReceipt.Entry(attributeNumber: fieldType, meaning: nil, value: .string(string))
+            }
+            return UnofficialReceipt.Entry(attributeNumber: fieldType, meaning: nil, value: item.sub(2)?.rawValue.map { .bytes($0) })
+        }
+        return UnofficialReceipt(entries: entries)
     }
 }
 
@@ -210,7 +240,7 @@ private extension AppReceiptValidator {
 private extension AppReceiptValidator {
 
     /// See Receipt.swift for details and a link to Apple reference
-    enum KnownReceiptAttribute: Int32 {
+    enum KnownReceiptAttribute: UInt64 {
         case bundleIdentifier = 2
         case appVersion = 3
         case opaqueValue = 4
@@ -222,7 +252,7 @@ private extension AppReceiptValidator {
     }
 
     /// See Receipt.swift for details and a link to Apple reference
-    enum KnownInAppPurchaseAttribute: Int32 {
+    enum KnownInAppPurchaseAttribute: UInt64 {
         case quantity = 1701
         case productIdentifier = 1702
         case transactionIdentifier = 1703

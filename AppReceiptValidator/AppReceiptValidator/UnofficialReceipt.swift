@@ -22,7 +22,7 @@ public struct UnofficialReceipt {
             case bytes(Data)
         }
 
-        public internal(set) var attributeNumber: Int32
+        public internal(set) var attributeNumber: UInt64
         public internal(set) var meaning: KnownUnofficialReceiptAttribute?
         public internal(set) var value: Value?
     }
@@ -42,7 +42,7 @@ public struct UnofficialReceipt {
     }
 }
 
-public enum KnownUnofficialReceiptAttribute: Int32 {
+public enum KnownUnofficialReceiptAttribute: UInt64 {
 
     case provisioningType = 0 // String, probably Provisioning-Type, Encountered Values: "Production", "ProductionSandbox", "ProductionVPP"
     case date1 = 8 // some date, same as receiptCreationDate possibly
@@ -54,15 +54,12 @@ public enum KnownUnofficialReceiptAttribute: Int32 {
 
     enum ParsingType {
         case string
-        case date
         case data
     }
 
     var parsingType: ParsingType {
         switch self {
-        case .date1, .date2, .date3:
-            return .date
-        case .provisioningType, .ageRating, .clientName:
+        case .provisioningType, .ageRating, .clientName, .date1, .date2, .date3:
             return .string
         }
     }
