@@ -282,10 +282,6 @@ extension AppReceiptValidator {
             return dateFormatter
         }()
     }
-
-    /// Uses receipt-conform representation of dates like "2017-01-01T12:00:00Z"
-    @available(*, deprecated, message: "Use AppReceiptValidator.ReceiptDateFormatter.string(from:) or AppReceiptValidator.ReceiptDateFormatter.date(from:) instead, to cover unexpected date formats")
-    public static let asn1DateFormatter: DateFormatter = ReceiptDateFormatter.asn1DateFormatter
 }
 
 // MARK: - Result
