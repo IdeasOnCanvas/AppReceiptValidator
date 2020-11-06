@@ -219,6 +219,10 @@ private extension AppReceiptValidator {
                     if let string = fieldValueString {
                         return UnofficialReceipt.Entry(attributeNumber: fieldType, meaning: meaning, value: .string(string))
                     }
+                case .date:
+                    if let string = fieldValueString, let date = ReceiptDateFormatter.date(from: string) {
+                        return UnofficialReceipt.Entry(attributeNumber: fieldType, meaning: meaning, value: .date(date))
+                    }
                 case .data:
                     if let data = item.sub(2)?.rawValue {
                         return UnofficialReceipt.Entry(attributeNumber: fieldType, meaning: meaning, value: .bytes(data))

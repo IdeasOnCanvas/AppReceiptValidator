@@ -53,15 +53,18 @@ public enum KnownUnofficialReceiptAttribute: UInt64 {
 
     enum ParsingType {
         case string
+        case date
         case data
     }
 
     var parsingType: ParsingType {
-        switch self {
-        case .provisioningType, .ageRating, .clientName, .date1, .date2, .date3:
-            return .string
+            switch self {
+            case .date1, .date2, .date3:
+                return .date
+            case .provisioningType, .ageRating, .clientName:
+                return .string
+            }
         }
-    }
 }
 
 /// See Receipt.swift for details and a link to Apple reference
