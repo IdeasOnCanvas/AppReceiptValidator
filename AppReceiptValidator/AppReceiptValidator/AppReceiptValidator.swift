@@ -102,6 +102,9 @@ private extension AppReceiptValidator {
         guard let receiptBundleIdData = receipt.bundleIdData else { throw Error.incorrectHash }
         guard let receiptHashData = receipt.sha1Hash else { throw Error.incorrectHash }
 
+        // Compute the hash for your app & device
+
+        // Set up the hashing context
         var computedHash = [UInt8](repeating: 0, count: 20)
         var ctx = SHA_CTX()
 
