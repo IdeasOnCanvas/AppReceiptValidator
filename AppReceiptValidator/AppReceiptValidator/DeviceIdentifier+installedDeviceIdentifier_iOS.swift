@@ -13,7 +13,11 @@ extension AppReceiptValidator.Parameters.DeviceIdentifier {
 
     /// On iOS this is the UIDevice's identifierForVendor UUID data
     static var installedDeviceIdentifierData: Data? {
+        #if os(watchOS)
+        return nil
+        #else
         return UIDevice.current.identifierForVendor?.data
+        #endif
     }
 }
 #endif

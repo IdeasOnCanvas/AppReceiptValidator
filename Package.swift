@@ -5,9 +5,10 @@ import PackageDescription
 let package = Package(
     name: "AppReceiptValidator",
     platforms: [
-        .iOS("13.4"),
         .macOS(.v10_15),
-        .tvOS(.v11)
+        .iOS(.v13),
+        .tvOS(.v13),
+        // .watchOS(.v6) watchOS doesn't have UIDevice.current so we can parse, but not validate hash, also, it cannot run XCTest
     ],
     products: [
         .library(name: "AppReceiptValidator", targets: ["AppReceiptValidator"]),
