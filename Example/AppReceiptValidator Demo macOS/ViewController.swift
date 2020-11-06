@@ -90,7 +90,14 @@ private extension ViewController {
             url = subURLInApplication
         }
         if let data = try? Data(contentsOf: url) {
-            let base64 = data.base64EncodedString()
+            var decodedData: Data {
+                if let alreadyEncodedData = Data(base64Encoded: data, options: .ignoreUnknownCharacters) {
+                    return alreadyEncodedData
+                } else {
+                    return data
+                }
+            }
+            let base64 = decodedData.base64EncodedString()
             self.inputTextView.string = base64
             self.update(base64String: base64)
         } else {
