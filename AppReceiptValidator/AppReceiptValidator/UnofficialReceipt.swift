@@ -9,7 +9,6 @@
 import Foundation
 
 /// This collects unofficial ASN1 values
-
 public struct UnofficialReceipt {
 
     public internal(set) var entries: [Entry]
@@ -63,6 +62,19 @@ public enum KnownUnofficialReceiptAttribute: UInt64 {
             return .string
         }
     }
+}
+
+/// See Receipt.swift for details and a link to Apple reference
+/// (these are used by AppReceiptValidator only to exclude them from the Unofficial part)
+enum KnownReceiptAttribute: UInt64 {
+    case bundleIdentifier = 2
+    case appVersion = 3
+    case opaqueValue = 4
+    case sha1Hash = 5
+    case inAppPurchaseReceipts = 17
+    case receiptCreationDate = 12
+    case originalAppVersion = 19
+    case expirationDate = 21
 }
 
 extension UnofficialReceipt: CustomStringConvertible {

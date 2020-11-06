@@ -235,36 +235,6 @@ private extension AppReceiptValidator {
     }
 }
 
-// MARK: Receipt ASN1 Sequence Attribute Types
-
-private extension AppReceiptValidator {
-
-    /// See Receipt.swift for details and a link to Apple reference
-    enum KnownReceiptAttribute: UInt64 {
-        case bundleIdentifier = 2
-        case appVersion = 3
-        case opaqueValue = 4
-        case sha1Hash = 5
-        case inAppPurchaseReceipts = 17
-        case receiptCreationDate = 12
-        case originalAppVersion = 19
-        case expirationDate = 21
-    }
-
-    /// See Receipt.swift for details and a link to Apple reference
-    enum KnownInAppPurchaseAttribute: UInt64 {
-        case quantity = 1701
-        case productIdentifier = 1702
-        case transactionIdentifier = 1703
-        case originalTransactionIdentifier = 1705
-        case purchaseDate = 1704
-        case originalPurchaseDate = 1706
-        case subscriptionExpirationDate = 1708
-        case cancellationDate = 1712
-        case webOrderLineItemId = 1711
-    }
-}
-
 // MARK: - ReceiptDateFormatter
 
 extension AppReceiptValidator {
