@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		D13E5B7D20331B9B001880F0 /* DropAcceptingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E5B7C20331B9B001880F0 /* DropAcceptingTextView.swift */; };
+		D1817D2A25555D2E00DE04E9 /* AppReceiptValidator in Frameworks */ = {isa = PBXBuildFile; productRef = D1817D2925555D2E00DE04E9 /* AppReceiptValidator */; };
+		D1817D2E25555D3800DE04E9 /* AppReceiptValidator in Frameworks */ = {isa = PBXBuildFile; productRef = D1817D2D25555D3800DE04E9 /* AppReceiptValidator */; };
 		D19095841F6000A40095729B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19095831F6000A40095729B /* AppDelegate.swift */; };
 		D19095861F6000A40095729B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19095851F6000A40095729B /* ViewController.swift */; };
 		D19095881F6000A40095729B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D19095871F6000A40095729B /* Assets.xcassets */; };
@@ -55,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1817D2E25555D3800DE04E9 /* AppReceiptValidator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,12 +65,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1817D2A25555D2E00DE04E9 /* AppReceiptValidator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D1817D2C25555D3800DE04E9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D19095821F6000A40095729B /* AppReceiptValidator Demo macOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +99,7 @@
 				D1D6F4E51F5D691400E86FE1 /* AppReceiptValidator Demo iOS */,
 				D19095821F6000A40095729B /* AppReceiptValidator Demo macOS */,
 				D1D6F49C1F5D67E600E86FE1 /* Products */,
+				D1817D2C25555D3800DE04E9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,6 +142,9 @@
 			dependencies = (
 			);
 			name = "AppReceiptValidator Demo macOS";
+			packageProductDependencies = (
+				D1817D2D25555D3800DE04E9 /* AppReceiptValidator */,
+			);
 			productName = "AppReceiptValidator Demo macOS";
 			productReference = D19095811F6000A40095729B /* AppReceiptValidator Demo macOS.app */;
 			productType = "com.apple.product-type.application";
@@ -149,6 +164,9 @@
 			dependencies = (
 			);
 			name = "AppReceiptValidator Demo iOS";
+			packageProductDependencies = (
+				D1817D2925555D2E00DE04E9 /* AppReceiptValidator */,
+			);
 			productName = "Demo iOS";
 			productReference = D1D6F4E41F5D691400E86FE1 /* AppReceiptValidator Demo iOS.app */;
 			productType = "com.apple.product-type.application";
@@ -189,6 +207,9 @@
 				Base,
 			);
 			mainGroup = D1D6F4921F5D67E600E86FE1;
+			packageReferences = (
+				D1817D2825555D2E00DE04E9 /* XCRemoteSwiftPackageReference "AppReceiptValidator" */,
+			);
 			productRefGroup = D1D6F49C1F5D67E600E86FE1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -321,7 +342,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "AppReceiptValidator Demo macOS/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.AppReceiptValidator-Demo-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -339,7 +363,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "AppReceiptValidator Demo macOS/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.AppReceiptValidator-Demo-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -457,7 +484,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -471,7 +499,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "AppReceiptValidator Demo iOS/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.AppReceiptValidator.Demo-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -488,7 +519,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "AppReceiptValidator Demo iOS/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.AppReceiptValidator.Demo-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -527,6 +561,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D1817D2825555D2E00DE04E9 /* XCRemoteSwiftPackageReference "AppReceiptValidator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/IdeasOnCanvas/AppReceiptValidator.git";
+			requirement = {
+				branch = experiment/useASN1Decoder;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D1817D2925555D2E00DE04E9 /* AppReceiptValidator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D1817D2825555D2E00DE04E9 /* XCRemoteSwiftPackageReference "AppReceiptValidator" */;
+			productName = AppReceiptValidator;
+		};
+		D1817D2D25555D3800DE04E9 /* AppReceiptValidator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D1817D2825555D2E00DE04E9 /* XCRemoteSwiftPackageReference "AppReceiptValidator" */;
+			productName = AppReceiptValidator;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D1D6F4931F5D67E600E86FE1 /* Project object */;
 }
