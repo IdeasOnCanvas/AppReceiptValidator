@@ -121,11 +121,15 @@ public extension AppReceiptValidator.Parameters {
             case .data(let data):
                 return data
             case .currentDevice:
+                #if !os(Linux)
                 if let data = DeviceIdentifier.installedDeviceIdentifierData {
                     return data
                 } else {
                     return nil
                 }
+                #else
+                return nil
+                #endif
             }
         }
     }
