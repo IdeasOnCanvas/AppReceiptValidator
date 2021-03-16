@@ -13,6 +13,7 @@ class AppReceiptPropertyValidationTests: XCTestCase {
 
     private let receiptValidator = AppReceiptValidator()
 
+    #if !os(Linux)
     func testCorrectMainBundlePropertiesiOS() {
         let receipt = Receipt(bundleIdentifier: Bundle.main.bundleIdentifier,
                               bundleIdData: nil,
@@ -52,6 +53,7 @@ class AppReceiptPropertyValidationTests: XCTestCase {
             XCTFail("validation failed unexpectedly")
         }
     }
+    #endif
 
     func testSpecificHardcodedPropertyMatches() {
         let receipt = Receipt(bundleIdentifier: "bundleIdentifier",
@@ -116,6 +118,7 @@ class AppReceiptPropertyValidationTests: XCTestCase {
             $0.propertyValidations = [.string(\.bundleIdentifier, expected: "mismatching property"),
                                       .string(\.appVersion, expected: "mismatching property") ]
         }
+        #if !os(Linux)
         assertPropertyMismatch {
             $0.propertyValidations = [.bundleIdMatchingMainBundle]
         }
@@ -125,5 +128,6 @@ class AppReceiptPropertyValidationTests: XCTestCase {
         assertPropertyMismatch {
             $0.propertyValidations = [.appVersionMatchingMainBundleMacOS]
         }
+        #endif
     }
 }
