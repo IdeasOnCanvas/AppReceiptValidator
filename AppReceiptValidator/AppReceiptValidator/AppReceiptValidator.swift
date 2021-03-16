@@ -159,6 +159,8 @@ private extension AppReceiptValidator {
     }
 
     func verifyAuthenticity(x509Certificate: X509Certificate, receiptData: Data, signatureData: Data) throws {
+        // TODO: Migrate this from Security.framework to BoringSSL/Cryptokit to allow compilation on Linux
+        #if !os(Linux)
         guard let key = x509Certificate.publicKey?.secKey,
               let algorithm = x509Certificate.publicKey?.secAlgorithm else { throw Error.receiptSignatureInvalid }
 
@@ -167,6 +169,7 @@ private extension AppReceiptValidator {
               verifyError == nil else {
             throw Error.receiptSignatureInvalid
         }
+        #endif
     }
 }
 
@@ -362,6 +365,7 @@ extension AppReceiptValidator {
 
 extension X509PublicKey {
 
+    #if !os(Linux)
     var secKey: SecKey? {
         guard let oid = self.algOid,
               let algorithm = OID(rawValue: oid),
@@ -392,4 +396,5 @@ extension X509PublicKey {
             return nil
         }
     }
+    #endif
 }
