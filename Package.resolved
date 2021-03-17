@@ -3,11 +3,11 @@
     "pins": [
       {
         "package": "ASN1Decoder",
-        "repositoryURL": "https://github.com/filom/ASN1Decoder",
+        "repositoryURL": "https://github.com/IdeasOnCanvas/ASN1Decoder",
         "state": {
-          "branch": null,
-          "revision": "3d472cf1b906bd3478378a10959f11751d9bbb99",
-          "version": "1.7.1"
+          "branch": "exposeSubAndParent",
+          "revision": "4b7a3efbdefad0677dc77c3fdbcb97ca5f9ba703",
+          "version": null
         }
       },
       {

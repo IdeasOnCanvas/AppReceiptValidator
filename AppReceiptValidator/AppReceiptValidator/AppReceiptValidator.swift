@@ -6,7 +6,7 @@
 //  Copyright © 2017 IdeasOnCanvas GmbH. All rights reserved.
 //
 
-@testable import ASN1Decoder
+import ASN1Decoder
 import CCryptoBoringSSL
 import Crypto
 import Foundation
@@ -42,7 +42,7 @@ public struct AppReceiptValidator {
             if case .shouldValidate(let rootCertificateOrigin) = parameters.signatureValidation {
                 guard let appleRootCertificateData = rootCertificateOrigin.loadData() else { throw Error.appleRootCertificateNotFound }
 
-                try self.checkSignatureAuthenticity(pkcs7: receiptContainer, appleRootCertificateData: appleRootCertificateData)
+                try self.checkSignatureAuthenticity(pkcs7: receiptContainer, appleRootCertificateData: appleRootCertificateData, rawData: data)
             }
             let receipt = try self.parseReceipt(pkcs7: receiptContainer).receipt
 
@@ -149,7 +149,7 @@ private extension AppReceiptValidator {
         guard pkcs7.signatures?.isEmpty == false else { throw Error.receiptNotSigned }
     }
 
-    func checkSignatureAuthenticity(pkcs7: ASN1Decoder.PKCS7, appleRootCertificateData: Data) throws {
+    func checkSignatureAuthenticity(pkcs7: ASN1Decoder.PKCS7, appleRootCertificateData: Data, rawData: Data?) throws {
         guard let signature = pkcs7.signatures?.first else { throw Error.receiptNotSigned }
         guard let signatureData = signature.signatureData else { throw Error.receiptNotSigned }
         guard let receiptData = pkcs7.mainBlock.findOid(.pkcs7data)?.parent?.sub?.last?.sub(0)?.rawValue else { throw Error.receiptNotSigned }
