@@ -62,7 +62,7 @@ class AppReceiptValidationInAppPurchaseTests: XCTestCase {
                     originalPurchaseDate: Date.demoDate(string: "2015-08-07T20:37:55Z"),
                     subscriptionExpirationDate: nil,
                     cancellationDate: nil,
-                    webOrderLineItemId: 0
+                    webOrderLineItemId: nil
                 ),
                 InAppPurchaseReceipt(
                     quantity: 1,

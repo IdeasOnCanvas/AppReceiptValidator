@@ -5,8 +5,8 @@
         "package": "ASN1Decoder",
         "repositoryURL": "https://github.com/IdeasOnCanvas/ASN1Decoder",
         "state": {
-          "branch": "exposeSubAndParent",
-          "revision": "4b7a3efbdefad0677dc77c3fdbcb97ca5f9ba703",
+          "branch": "bugfix/intParsing",
+          "revision": "86539b0d1db6027b37ceb1b9cedf6c24bfee5c5e",
           "version": null
         }
       },
