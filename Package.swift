@@ -11,7 +11,7 @@ let package = Package(
         // .watchOS(.v6) watchOS doesn't have UIDevice.current so we can parse, but not validate hash, also, it cannot run XCTest
     ],
     products: [
-        .library(name: "AppReceiptValidator", targets: ["AppReceiptValidator"]),
+        .library(name: "AppReceiptValidator", type: .dynamic, targets: ["AppReceiptValidator"]),
     ],
     dependencies: [
 		// We currently can't use semantic versioning because the repo uses invalid version strings (e.g. "1.5" instead of "1.5.0")
