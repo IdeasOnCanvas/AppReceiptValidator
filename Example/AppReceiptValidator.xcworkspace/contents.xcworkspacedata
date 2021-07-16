@@ -5,6 +5,6 @@
       location = "group:..">
    </FileRef>
    <FileRef
-      location = "container:AppReceiptValidator.xcodeproj">
+      location = "group:AppReceiptValidator.xcodeproj">
    </FileRef>
 </Workspace>

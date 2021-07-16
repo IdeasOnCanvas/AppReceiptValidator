@@ -1,5 +1,5 @@
 //
-//  AppReceiptValidationTests.swift
+//  AppReceiptValidatorTests.swift
 //  AppReceiptValidator_macOSTests
 //
 //  Created by Hannes Oud on 04.09.17.
@@ -9,7 +9,7 @@
 import AppReceiptValidator
 import XCTest
 
-class AppReceiptValidationTests: XCTestCase {
+class AppReceiptValidatorTests: XCTestCase {
 
     private let receiptValidator = AppReceiptValidator()
 

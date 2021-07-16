@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA10B2E126A1ABE200E23EDD /* AppReceiptValidator in Frameworks */ = {isa = PBXBuildFile; productRef = BA10B2E026A1ABE200E23EDD /* AppReceiptValidator */; };
+		BA10B2E226A1ABE200E23EDD /* AppReceiptValidator in Embed Frameworks */ = {isa = PBXBuildFile; productRef = BA10B2E026A1ABE200E23EDD /* AppReceiptValidator */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		BA10B2E426A1ABE900E23EDD /* AppReceiptValidator in Frameworks */ = {isa = PBXBuildFile; productRef = BA10B2E326A1ABE900E23EDD /* AppReceiptValidator */; };
+		BA10B2E526A1ABE900E23EDD /* AppReceiptValidator in Embed Frameworks */ = {isa = PBXBuildFile; productRef = BA10B2E326A1ABE900E23EDD /* AppReceiptValidator */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D13E5B7D20331B9B001880F0 /* DropAcceptingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E5B7C20331B9B001880F0 /* DropAcceptingTextView.swift */; };
-		D1817D2A25555D2E00DE04E9 /* AppReceiptValidator in Frameworks */ = {isa = PBXBuildFile; productRef = D1817D2925555D2E00DE04E9 /* AppReceiptValidator */; };
-		D1817D2E25555D3800DE04E9 /* AppReceiptValidator in Frameworks */ = {isa = PBXBuildFile; productRef = D1817D2D25555D3800DE04E9 /* AppReceiptValidator */; };
 		D19095841F6000A40095729B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19095831F6000A40095729B /* AppDelegate.swift */; };
 		D19095861F6000A40095729B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19095851F6000A40095729B /* ViewController.swift */; };
 		D19095881F6000A40095729B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D19095871F6000A40095729B /* Assets.xcassets */; };
@@ -22,12 +24,24 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		BA10B2E626A1ABE900E23EDD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BA10B2E526A1ABE900E23EDD /* AppReceiptValidator in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D1D6F5071F5D696800E86FE1 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				BA10B2E226A1ABE200E23EDD /* AppReceiptValidator in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -57,7 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1817D2E25555D3800DE04E9 /* AppReceiptValidator in Frameworks */,
+				BA10B2E426A1ABE900E23EDD /* AppReceiptValidator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,7 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1817D2A25555D2E00DE04E9 /* AppReceiptValidator in Frameworks */,
+				BA10B2E126A1ABE200E23EDD /* AppReceiptValidator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +150,7 @@
 				D190957E1F6000A40095729B /* Frameworks */,
 				D190957F1F6000A40095729B /* Resources */,
 				D1DEE48D20EBAEE800F95036 /* Swiftlint */,
+				BA10B2E626A1ABE900E23EDD /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -143,7 +158,7 @@
 			);
 			name = "AppReceiptValidator Demo macOS";
 			packageProductDependencies = (
-				D1817D2D25555D3800DE04E9 /* AppReceiptValidator */,
+				BA10B2E326A1ABE900E23EDD /* AppReceiptValidator */,
 			);
 			productName = "AppReceiptValidator Demo macOS";
 			productReference = D19095811F6000A40095729B /* AppReceiptValidator Demo macOS.app */;
@@ -165,7 +180,7 @@
 			);
 			name = "AppReceiptValidator Demo iOS";
 			packageProductDependencies = (
-				D1817D2925555D2E00DE04E9 /* AppReceiptValidator */,
+				BA10B2E026A1ABE200E23EDD /* AppReceiptValidator */,
 			);
 			productName = "Demo iOS";
 			productReference = D1D6F4E41F5D691400E86FE1 /* AppReceiptValidator Demo iOS.app */;
@@ -194,7 +209,6 @@
 					D1D6F4E31F5D691400E86FE1 = {
 						CreatedOnToolsVersion = 9.0;
 						LastSwiftMigration = 1020;
-						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -208,7 +222,6 @@
 			);
 			mainGroup = D1D6F4921F5D67E600E86FE1;
 			packageReferences = (
-				D1817D2825555D2E00DE04E9 /* XCRemoteSwiftPackageReference "AppReceiptValidator" */,
 			);
 			productRefGroup = D1D6F49C1F5D67E600E86FE1 /* Products */;
 			projectDirPath = "";
@@ -498,6 +511,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "AppReceiptValidator Demo iOS/Info.plist";
@@ -507,6 +521,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.AppReceiptValidator.Demo-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -518,6 +533,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "AppReceiptValidator Demo iOS/Info.plist";
@@ -527,6 +543,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ideasoncanvas.AppReceiptValidator.Demo-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -564,26 +581,13 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		D1817D2825555D2E00DE04E9 /* XCRemoteSwiftPackageReference "AppReceiptValidator" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/IdeasOnCanvas/AppReceiptValidator.git";
-			requirement = {
-				branch = experiment/useASN1Decoder;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		D1817D2925555D2E00DE04E9 /* AppReceiptValidator */ = {
+		BA10B2E026A1ABE200E23EDD /* AppReceiptValidator */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D1817D2825555D2E00DE04E9 /* XCRemoteSwiftPackageReference "AppReceiptValidator" */;
 			productName = AppReceiptValidator;
 		};
-		D1817D2D25555D3800DE04E9 /* AppReceiptValidator */ = {
+		BA10B2E326A1ABE900E23EDD /* AppReceiptValidator */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D1817D2825555D2E00DE04E9 /* XCRemoteSwiftPackageReference "AppReceiptValidator" */;
 			productName = AppReceiptValidator;
 		};
 /* End XCSwiftPackageProductDependency section */

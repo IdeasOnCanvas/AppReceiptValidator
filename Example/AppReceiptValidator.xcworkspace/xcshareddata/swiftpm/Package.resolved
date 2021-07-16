@@ -3,11 +3,11 @@
     "pins": [
       {
         "package": "ASN1Decoder",
-        "repositoryURL": "https://github.com/filom/ASN1Decoder.git",
+        "repositoryURL": "https://github.com/IdeasOnCanvas/ASN1Decoder",
         "state": {
-          "branch": null,
-          "revision": "5d5e1693a8537267379242021055ead5c0bed41d",
-          "version": "1.7.0"
+          "branch": "bugfix/intParsing",
+          "revision": "86539b0d1db6027b37ceb1b9cedf6c24bfee5c5e",
+          "version": null
         }
       },
       {
@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/apple/swift-crypto",
         "state": {
           "branch": null,
-          "revision": "9680b7251cd2be22caaed8f1468bd9e8915a62fb",
-          "version": "1.1.2"
+          "revision": "3bea268b223651c4ab7b7b9ad62ef9b2d4143eb6",
+          "version": "1.1.6"
         }
       }
     ]

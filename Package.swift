@@ -22,19 +22,23 @@ let package = Package(
         .target(name: "AppReceiptValidator",
                 dependencies: ["ASN1Decoder",
                                .product(name: "Crypto", package: "swift-crypto")],
-                path: "AppReceiptValidator/AppReceiptValidator",
-                exclude: [
-                    "Supporting Files/Info.plist",
-                ],
                 resources: [
-                    .copy("AppleIncRootCertificate.cer")
+                    .copy("Resources/AppleIncRootCertificate.cer")
                 ]
         ),
         .testTarget(name: "AppReceiptValidatorTests",
                     dependencies: ["AppReceiptValidator"],
-                    path: "AppReceiptValidator/AppReceiptValidator Tests Shared",
                     resources: [
-                        .process("Test Assets")
+                        .copy("Resources/deprecatedSinglesTypeExpiredAppleCert_receipt.b64"),
+                        .copy("Resources/grandUnifiedExpiredAppleCert_receipt.b64"),
+                        .copy("Resources/hannes_mac_mindnode_Info.plist"),
+                        .copy("Resources/hannes_mac_mindnode_pro_Info.plist"),
+                        .copy("Resources/hannes_mac_mindnode_pro_receipt"),
+                        .copy("Resources/hannes_mac_mindnode_receipt"),
+                        .copy("Resources/mac_mindnode_rebought_receipt"),
+                        .copy("Resources/mindnode_ios_michaelsandbox_receipt1.b64"),
+                        .copy("Resources/mindnode_ios_michaelsandbox_receipt2.b64"),
+                        .copy("Resources/not_a_receipt")
                     ])
     ],
     swiftLanguageVersions: [.v5]
