@@ -15,7 +15,7 @@ let package = Package(
     ],
     dependencies: [
 		// We currently can't use semantic versioning because the repo uses invalid version strings (e.g. "1.5" instead of "1.5.0")
-        .package(url: "https://github.com/IdeasOnCanvas/ASN1Decoder", .branch("bugfix/intParsing")),
+        .package(url: "https://github.com/IdeasOnCanvas/ASN1Decoder", .revision("6f36ef23becd7f9266ef6b026af4798996a1a8be")),
         .package(url: "https://github.com/apple/swift-crypto", from: "1.1.0")
     ],
     targets: [

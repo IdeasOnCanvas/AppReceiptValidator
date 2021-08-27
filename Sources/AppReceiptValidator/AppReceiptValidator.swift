@@ -212,7 +212,7 @@ private extension AppReceiptValidator {
               let items = receiptBlock.sub else { return .init(entries: []) }
 
         let entries: [UnofficialReceipt.Entry] = items.compactMap { item in
-            guard let fieldType = (item.sub(0)?.value as? Data)?.toIntValue(),
+            guard let fieldType = (item.sub(0)?.value as? Data)?.uint64Value,
                   KnownReceiptAttribute(rawValue: fieldType) == nil else { return nil }
 
             let fieldValueString = item.sub(2)?.asString
