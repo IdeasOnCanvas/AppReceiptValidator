@@ -70,7 +70,7 @@ private extension ViewController {
     // MARK: Updating
 
     func update(base64String: String) {
-        guard let data = Data(base64Encoded: base64String, options: .ignoreUnknownCharacters) else {
+        guard let data = Data(base64Encoded: base64String, options: []) else {
             self.render(string: "Base64 decoding failed.")
             return
         }
@@ -91,7 +91,7 @@ private extension ViewController {
         }
         if let data = try? Data(contentsOf: url) {
             var decodedData: Data {
-                if let alreadyEncodedData = Data(base64Encoded: data, options: .ignoreUnknownCharacters) {
+                if let alreadyEncodedData = Data(base64Encoded: data, options: []) {
                     return alreadyEncodedData
                 } else {
                     return data

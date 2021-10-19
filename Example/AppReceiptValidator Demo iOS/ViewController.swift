@@ -71,7 +71,7 @@ private extension ViewController {
     @discardableResult
     func autoPaste() -> Bool {
         guard let string = UIPasteboard.general.string,
-            Data(base64Encoded: string, options: .ignoreUnknownCharacters) != nil else { return false }
+            Data(base64Encoded: string, options: []) != nil else { return false }
 
         self.inputTextView.text = string
         self.update(base64String: string)
@@ -79,7 +79,7 @@ private extension ViewController {
     }
 
     func update(base64String: String) {
-        guard let data = Data(base64Encoded: base64String, options: .ignoreUnknownCharacters) else {
+        guard let data = Data(base64Encoded: base64String, options: []) else {
             self.render(string: "Base64 decoding failed.")
             return
         }
