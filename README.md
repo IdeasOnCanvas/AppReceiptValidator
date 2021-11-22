@@ -152,6 +152,9 @@ If you have no receipt (happens in development builds) or your receipt is invali
 - [ASN1Decoder](https://github.com/filom/ASN1Decoder) package for decoding the PKCS#7 and ASN1 receipt components
 - [Swift-Crypto](https://github.com/apple/swift-crypto) for hash & signature verification, using the BoringSSL shims parts of it
 
+##### Alternative: StoreKit2
+Apple's Storekit2 can provide some of similar functionality, while offering different levels of control and has higher os requirements.
+
 ##### Alternative: Validation Server to Server
 An app can send its receipt file to a backend from where Apples receipt API can be called. See Resources.
 
@@ -171,6 +174,7 @@ Advantages doing it locally:
 - WWDC 2016 - 702 Using Store Kit for In-App Purchases with Swift 3
 - **WWDC 2017 - 304 What's New in Storekit**
 - **WWDC 2017 - 305 Advanced StoreKit**: Receipt checking and it's internals
+- [Storekit2 announcement] (https://developer.apple.com/news/?id=1mmydqta)
 - [SwiftyStoreKit](https://github.com/bizz84/SwiftyStoreKit)
 - [AppStoreReceiptChecker](https://github.com/delicious-monster/AppStoreReceiptChecker) - macOS, uses CMSDecoder and a Swift ASN1 Implementation
 
