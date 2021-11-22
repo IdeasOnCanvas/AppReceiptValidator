@@ -14,8 +14,7 @@ let package = Package(
         .library(name: "AppReceiptValidator", type: .dynamic, targets: ["AppReceiptValidator"]),
     ],
     dependencies: [
-		// We currently can't use semantic versioning because the repo uses invalid version strings (e.g. "1.5" instead of "1.5.0")
-        .package(url: "https://github.com/IdeasOnCanvas/ASN1Decoder", .revision("6f36ef23becd7f9266ef6b026af4798996a1a8be")),
+        .package(url: "https://github.com/IdeasOnCanvas/ASN1Decoder", from: "1.8.1"),
         .package(url: "https://github.com/apple/swift-crypto", from: "1.1.0")
     ],
     targets: [
