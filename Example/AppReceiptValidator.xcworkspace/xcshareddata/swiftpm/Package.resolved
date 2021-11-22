@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "ASN1Decoder",
+        "repositoryURL": "https://github.com/IdeasOnCanvas/ASN1Decoder",
+        "state": {
+          "branch": null,
+          "revision": "6f36ef23becd7f9266ef6b026af4798996a1a8be",
+          "version": null
+        }
+      },
+      {
+        "package": "swift-crypto",
+        "repositoryURL": "https://github.com/apple/swift-crypto",
+        "state": {
+          "branch": null,
+          "revision": "3bea268b223651c4ab7b7b9ad62ef9b2d4143eb6",
+          "version": "1.1.6"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -1,9 +1,9 @@
 # AppReceiptValidator
 
-[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-![Platforms iOS, macOS](https://img.shields.io/badge/Platform-iOS%20|%20macOS-blue.svg "Platforms iOS, macOS")
-![Language Swift](https://img.shields.io/badge/Language-Swift%205.0-orange.svg "Swift 5.0")
-[![License Apache 2.0 + OpenSSL](https://img.shields.io/badge/License-Apache%202.0%20|%20OpenSSL%20-aaaaff.svg "License")](LICENSE)
+[![SPM compatible](https://img.shields.io/badge/SPM-compatible-4BC51D.svg?style=flat)](https://swift.org/package-manager/)
+![Platforms iOS, macOS, Linux](https://img.shields.io/badge/Platform-iOS%20|%20macOS%20|%20tvOS|%20Linux-blue.svg "Platforms iOS, macOS, tvOS, Linux")
+![Language Swift](https://img.shields.io/badge/Language-Swift%205.3-orange.svg "Swift 5.3")
+[![License Apache 2.0](https://img.shields.io/badge/License-Apache%202.0%20-aaaaff.svg "License")](LICENSE)
 [![Build Status](https://travis-ci.org/IdeasOnCanvas/AppReceiptValidator.svg?branch=master)](https://travis-ci.org/IdeasOnCanvas/AppReceiptValidator)
 [![Twitter: @hannesoid](https://img.shields.io/badge/Twitter-@hannesoid-red.svg?style=flat)](https://twitter.com/hannesoid)
 
@@ -12,17 +12,18 @@ An iOS and macOS library intended for dealing with App Store receipts, offering 
 
 Provides Demo Apps on iOS and macOS to inspect receipt files.
 
+## Integration with SPM
 
-## Integration with Carthage
+To install using Swift Package Manager, add this to the `dependencies:` section in your Package.swift file:
+```swift
+.package(url: "https://github.com/IdeasOnCanvas/AppReceiptValidator.git", from: "1.0.0"),
+```
 
-Add this line to your Cartfile.
-```
-github "IdeasOnCanvas/AppReceiptValidator"
-```
+Earlier carthage support has been removed, in order to reduce maintainance work. SPM is the preferred mechanism now. For legacy versions, which support carthage integration you can refer to tags < 1.0.0. For a version supporting integration via xcframework refer to branch `experiment/openSSLXCFramework`.
 
 ## Usage in Code
 
-Apple advises to write your own code for receipt validation, and build and link OpenSSL statically to your app target. Anyways this repo might be a starting point for you, or be used as a dependency at your own risk, or might just be helpful for you to inspect receipts.
+Apple advises to write your own code for receipt validation. Anyways this repo might be a starting point for you, or be used as a dependency at your own risk, or might just be helpful for you to inspect receipts.
 
 ### Just parsing a receipt
 
@@ -93,7 +94,6 @@ switch result {
 }
 ```
 
-
 ### Customize validation dependencies or steps
 
 Take `AppReceiptValidator.Parameters.default` and customize it, then pass it to `validateReceipt(parameters:)`, like so:
@@ -138,7 +138,6 @@ This framework currently doesn't deal with StoreKit. But the receipt file might 
 
 If you have no receipt (happens in development builds) or your receipt is invalid, see resources on how to update it using StoreKit functionality. Known caveats:
 
-- `SKReceiptRefreshRequest` might not complete on certain macOS Versions, but reliable on iOS - [openradar](https://openradar.appspot.com/radar?id=4998688879411200)
 - `SKPaymentQueue.restoreCompletedTransactions()` might not update the the receipt, especially if no IAPs were made or the receipt is valid - [openradar](https://openradar.appspot.com/radar?id=6080726030090240)
 - `exit(173)` only works on macOS
 - Make some kind of purchase, i.e. App Store transaction, to update it
@@ -148,24 +147,15 @@ If you have no receipt (happens in development builds) or your receipt is invali
 
 ## How it Works
 
-### AppReceiptValidator Uses OpenSSL
+### AppReceiptValidator Uses 
 
-OpenSSL is used for PKCS#7 container parsing and signature validation, and also for parsing the ASN1 payload of the PKCS#7, which contains the receipts attributes.
+- [ASN1Decoder](https://github.com/filom/ASN1Decoder) package for decoding the PKCS#7 and ASN1 receipt components
+- [Swift-Crypto](https://github.com/apple/swift-crypto) for hash & signature verification, using the BoringSSL shims parts of it
 
-### Other Options
+##### Alternative: StoreKit2
+Apple's Storekit2 can provide some of similar functionality, while offering different levels of control and has higher os requirements.
 
-##### Alternatives to PKCS#7 of OpenSSL
-
-- `Security.framework` - `CMSDecoder` for PKCS#7 interaction *only available on macOS*, [AppStoreReceiptChecker](https://github.com/delicious-monster/AppStoreReceiptChecker) uses this.
-- `BoringSSL` instead of OpenSSL, seems included as frameworks in modern iOS and macOS, but not officially supported?
-
-##### Alternatives to ASN1 of OpenSSL
-
-- [decoding-asn1-der-sequences-in-swift](http://nspasteboard.com/2016/10/23/decoding-asn1-der-sequences-in-swift/) implemented [here](https://gist.github.com/Jugale/2daaec0715d4f6d7347534d42bfa7110)
-- [Asn1Parser.swift](https://github.com/TakeScoop/SwiftyRSA/blob/03250be7319d8c54159234e5258ead395ea4de4c/SwiftyRSA/Asn1Parser.swift)
-- [AppStoreReceiptChecker](https://github.com/delicious-monster/AppStoreReceiptChecker)
-
-##### Validation Server to Server
+##### Alternative: Validation Server to Server
 An app can send its receipt file to a backend from where Apples receipt API can be called. See Resources.
 
 Advantages doing it locally:
@@ -178,15 +168,13 @@ Advantages doing it locally:
 
 - [Apple guide](https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Introduction.html)
 - [objc.io guide](https://www.objc.io/issues/17-security/receipt-validation/)
-- [Andrew Bancroft complete guide](https://www.andrewcbancroft.com/2017/08/01/local-receipt-validation-swift-start-finish/), or directly [ReceiptValidator.swift](https://github.com/andrewcbancroft/SwiftyAppReceiptValidator/blob/master/ReceiptValidator.swift). This is what the AppReceiptValidator implementation is originally based on, thanks Andrew!!
-- [OpenSSL-Universal Pod](https://github.com/krzyzanowskim/OpenSSL)
+- [Andrew Bancroft complete guide](https://www.andrewcbancroft.com/2017/08/01/local-receipt-validation-swift-start-finish/), or directly [ReceiptValidator.swift](https://github.com/andrewcbancroft/SwiftyAppReceiptValidator/blob/master/ReceiptValidator.swift). This is what the AppReceiptValidator implementation was _originally_ based on, thanks Andrew!
 - WWDC 2013 - 308 Using Receipts to Protect Your Digital Sales
 - WWDC 2014 - 305 Preventing Unauthorized Purchases with Receipts
 - WWDC 2016 - 702 Using Store Kit for In-App Purchases with Swift 3
 - **WWDC 2017 - 304 What's New in Storekit**
 - **WWDC 2017 - 305 Advanced StoreKit**: Receipt checking and it's internals
-- [nsomar about Module Maps 1](http://nsomar.com/project-and-private-headers-in-a-swift-and-objective-c-framework/)
-- [nsomar about Module Maps 2](http://nsomar.com/modular-framework-creating-and-using-them/)
+- [Storekit2 announcement] (https://developer.apple.com/news/?id=1mmydqta)
 - [SwiftyStoreKit](https://github.com/bizz84/SwiftyStoreKit)
 - [AppStoreReceiptChecker](https://github.com/delicious-monster/AppStoreReceiptChecker) - macOS, uses CMSDecoder and a Swift ASN1 Implementation
 
@@ -197,19 +185,5 @@ let myParameters = AppReceiptValidator.Parameters.default.with {
     $0.signatureValidation = .shouldValidate(.data(myAppleRootCertData))
 }
 ```
-
-
-## Updating OpenSSL
-For convenience, AppReceiptValidator contains a pre-built binaries of OpenSSL. The [AppReceiptValidator.modulemap](AppReceiptValidator/AppReceiptValidator/Supporting%20Files/AppReceiptValidator.modulemap) exposes these *only on demand* via `import AppReceiptValidator.OpenSSL`.
-If you are not comfortable using pre-built binary or want to update OpenSSL: 
-
-1. build or find prebuilt static libraries for iOS and macOS. They can for example be obtained from the [OpenSSL-Universal Pod](https://github.com/krzyzanowskim/OpenSSL). To build, you might download the openssl sources and use [his gist](https://gist.githubusercontent.com/krzyzanowskim/7fd1c081929fbe32a5cfee4692f87873/raw/c184828589160c6e9b145f267309597c23e31c17/build.sh).
-2. Replace the OpenSSL related `.a` and `.h` files in the project
-3. After replacing the files, make sure the .h files use direct includes like `#include "asn1.h"` instead of `#include "<OpenSSL/ans1.h>"`. In Xcode regex-batch-replace `#(\s*)include <openssl\/([^>]+)>` with `#$1include "$2"`
-4. Make sure the OpenSSL related headers are in the *private* headers of the framework AppReceiptValidator iOS and AppReceiptValidator macOS targets respectively
-5. Make sure the OpenSSL related headers are listed in the [AppReceiptValidator.modulemap](AppReceiptValidator/AppReceiptValidator/Supporting%20Files/AppReceiptValidator.modulemap) file
-
-Anybody want to automate this, or find a more elegant way?
-
 ## Credits
 AppReceiptValidator is brought to you by [IdeasOnCanvas GmbH](https://ideasoncanvas.com), the creator of [MindNode for iOS, macOS & watchOS](https://mindnode.com).
