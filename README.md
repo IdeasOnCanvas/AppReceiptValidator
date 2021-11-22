@@ -16,14 +16,14 @@ Provides Demo Apps on iOS and macOS to inspect receipt files.
 
 To install using Swift Package Manager, add this to the `dependencies:` section in your Package.swift file:
 ```swift
-.package(url: "https://github.com/IdeasOnCanvas/AppReceiptValidator.git", .branch("experiment/useASN1Decoder")),
+.package(url: "https://github.com/IdeasOnCanvas/AppReceiptValidator.git", from: "1.0.0"),
 ```
 
-Earlier carthage support has been removed, in order to reduce maintainance work. SPM is the preferred mechanism now.
+Earlier carthage support has been removed, in order to reduce maintainance work. SPM is the preferred mechanism now. For legacy versions, which support carthage integration you can refer to tags < 1.0.0. For a version supporting integration via xcframework refer to branch `experiment/openSSLXCFramework`.
 
 ## Usage in Code
 
-Apple advises to write your own code for receipt validation, and build and link OpenSSL statically to your app target. Anyways this repo might be a starting point for you, or be used as a dependency at your own risk, or might just be helpful for you to inspect receipts.
+Apple advises to write your own code for receipt validation. Anyways this repo might be a starting point for you, or be used as a dependency at your own risk, or might just be helpful for you to inspect receipts.
 
 ### Just parsing a receipt
 
