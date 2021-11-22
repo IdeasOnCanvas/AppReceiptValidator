@@ -174,7 +174,7 @@ Advantages doing it locally:
 - WWDC 2016 - 702 Using Store Kit for In-App Purchases with Swift 3
 - **WWDC 2017 - 304 What's New in Storekit**
 - **WWDC 2017 - 305 Advanced StoreKit**: Receipt checking and it's internals
-- [Storekit2 announcement] (https://developer.apple.com/news/?id=1mmydqta)
+- [Storekit2 announcement](https://developer.apple.com/news/?id=1mmydqta)
 - [SwiftyStoreKit](https://github.com/bizz84/SwiftyStoreKit)
 - [AppStoreReceiptChecker](https://github.com/delicious-monster/AppStoreReceiptChecker) - macOS, uses CMSDecoder and a Swift ASN1 Implementation
 
