@@ -154,8 +154,34 @@ private extension AppReceiptValidator {
         guard let signatureData = signature.signatureData else { throw Error.receiptNotSigned }
         guard let receiptData = pkcs7.mainBlock.findOid(.pkcs7data)?.parent?.sub?.last?.sub(0)?.rawValue else { throw Error.receiptNotSigned }
 
-        let rootCert = pkcs7.certificates[0]
-        try self.verifyAuthenticity(x509Certificate: rootCert, receiptData: receiptData, signatureData: signatureData)
+        let rootCert1 = pkcs7.certificates[0]
+        let rootCert2: X509Certificate = try .init(data: appleRootCertificateData)
+
+        do {
+            func validateChain() {
+                let rootCert = SecCertificateCreateWithData(nil, appleRootCertificateData as CFData)
+                let receiptCerts = pkcs7.certificatesData.compactMap { SecCertificateCreateWithData(nil, $0 as CFData) }
+
+                let policy = SecPolicyCreateBasicX509()
+                var optionalTrust: SecTrust?
+                let status = SecTrustCreateWithCertificates([rootCert] as AnyObject,
+                                                            policy,
+                                                            &optionalTrust)
+                if status == errSecSuccess {
+                    let trust = optionalTrust! // Safe to force unwrap now
+                    SecTrustSetAnchorCertificates(trust, [receiptCerts] as CFArray)
+                    var error: CFError?
+                    print("Veryfing result: ", SecTrustEvaluateWithError(trust, &error))
+                    print(error)
+                }
+                else {
+                    print("error")
+                }
+            }
+            validateChain()
+        }
+
+        try self.verifyAuthenticity(x509Certificate: rootCert2, receiptData: receiptData, signatureData: signatureData)
     }
 
     func verifyAuthenticity(x509Certificate: X509Certificate, receiptData: Data, signatureData: Data) throws {
@@ -164,6 +190,10 @@ private extension AppReceiptValidator {
         guard let key = x509Certificate.publicKey?.secKey,
               let algorithm = x509Certificate.publicKey?.secAlgorithm else { throw Error.receiptSignatureInvalid }
 
+//
+//
+//        guard SecTrustCreateWithCertificates(<#T##certificates: CFTypeRef##CFTypeRef#>, <#T##policies: CFTypeRef?##CFTypeRef?#>, <#T##trust: UnsafeMutablePointer<SecTrust?>##UnsafeMutablePointer<SecTrust?>#>)
+//
         var verifyError: Unmanaged<CFError>?
         guard SecKeyVerifySignature(key, algorithm, receiptData as CFData, signatureData as CFData, &verifyError),
               verifyError == nil else {
