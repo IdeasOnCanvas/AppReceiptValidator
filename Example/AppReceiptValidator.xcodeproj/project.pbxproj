@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D1150C78274BA3AD007FA109 /* AppReceiptValidator in Frameworks */ = {isa = PBXBuildFile; productRef = D1150C77274BA3AD007FA109 /* AppReceiptValidator */; };
-		D1150C79274BA3AD007FA109 /* AppReceiptValidator in Embed Frameworks */ = {isa = PBXBuildFile; productRef = D1150C77274BA3AD007FA109 /* AppReceiptValidator */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		D1150C7B274BA3B1007FA109 /* AppReceiptValidator in Frameworks */ = {isa = PBXBuildFile; productRef = D1150C7A274BA3B1007FA109 /* AppReceiptValidator */; };
-		D1150C7C274BA3B1007FA109 /* AppReceiptValidator in Embed Frameworks */ = {isa = PBXBuildFile; productRef = D1150C7A274BA3B1007FA109 /* AppReceiptValidator */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		80AB3E2F276CA8E100C4AB61 /* AppReceiptValidator in Frameworks */ = {isa = PBXBuildFile; productRef = 80AB3E2E276CA8E100C4AB61 /* AppReceiptValidator */; };
+		80AB3E30276CA8E100C4AB61 /* AppReceiptValidator in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 80AB3E2E276CA8E100C4AB61 /* AppReceiptValidator */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		80AB3E32276CA8E500C4AB61 /* AppReceiptValidator in Frameworks */ = {isa = PBXBuildFile; productRef = 80AB3E31276CA8E500C4AB61 /* AppReceiptValidator */; };
+		80AB3E33276CA8E500C4AB61 /* AppReceiptValidator in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 80AB3E31276CA8E500C4AB61 /* AppReceiptValidator */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D13E5B7D20331B9B001880F0 /* DropAcceptingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E5B7C20331B9B001880F0 /* DropAcceptingTextView.swift */; };
 		D19095841F6000A40095729B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19095831F6000A40095729B /* AppDelegate.swift */; };
 		D19095861F6000A40095729B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19095851F6000A40095729B /* ViewController.swift */; };
@@ -30,7 +30,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D1150C7C274BA3B1007FA109 /* AppReceiptValidator in Embed Frameworks */,
+				80AB3E33276CA8E500C4AB61 /* AppReceiptValidator in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -41,7 +41,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D1150C79274BA3AD007FA109 /* AppReceiptValidator in Embed Frameworks */,
+				80AB3E30276CA8E100C4AB61 /* AppReceiptValidator in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,7 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1150C7B274BA3B1007FA109 /* AppReceiptValidator in Frameworks */,
+				80AB3E32276CA8E500C4AB61 /* AppReceiptValidator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,7 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1150C78274BA3AD007FA109 /* AppReceiptValidator in Frameworks */,
+				80AB3E2F276CA8E100C4AB61 /* AppReceiptValidator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,7 +160,7 @@
 			);
 			name = "AppReceiptValidator Demo macOS";
 			packageProductDependencies = (
-				D1150C7A274BA3B1007FA109 /* AppReceiptValidator */,
+				80AB3E31276CA8E500C4AB61 /* AppReceiptValidator */,
 			);
 			productName = "AppReceiptValidator Demo macOS";
 			productReference = D19095811F6000A40095729B /* AppReceiptValidator Demo macOS.app */;
@@ -182,7 +182,7 @@
 			);
 			name = "AppReceiptValidator Demo iOS";
 			packageProductDependencies = (
-				D1150C77274BA3AD007FA109 /* AppReceiptValidator */,
+				80AB3E2E276CA8E100C4AB61 /* AppReceiptValidator */,
 			);
 			productName = "Demo iOS";
 			productReference = D1D6F4E41F5D691400E86FE1 /* AppReceiptValidator Demo iOS.app */;
@@ -224,7 +224,6 @@
 			);
 			mainGroup = D1D6F4921F5D67E600E86FE1;
 			packageReferences = (
-				D1150C73274BA2C8007FA109 /* XCRemoteSwiftPackageReference "AppReceiptValidator" */,
 			);
 			productRefGroup = D1D6F49C1F5D67E600E86FE1 /* Products */;
 			projectDirPath = "";
@@ -584,26 +583,13 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		D1150C73274BA2C8007FA109 /* XCRemoteSwiftPackageReference "AppReceiptValidator" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/IdeasOnCanvas/AppReceiptValidator";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		D1150C77274BA3AD007FA109 /* AppReceiptValidator */ = {
+		80AB3E2E276CA8E100C4AB61 /* AppReceiptValidator */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D1150C73274BA2C8007FA109 /* XCRemoteSwiftPackageReference "AppReceiptValidator" */;
 			productName = AppReceiptValidator;
 		};
-		D1150C7A274BA3B1007FA109 /* AppReceiptValidator */ = {
+		80AB3E31276CA8E500C4AB61 /* AppReceiptValidator */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D1150C73274BA2C8007FA109 /* XCRemoteSwiftPackageReference "AppReceiptValidator" */;
 			productName = AppReceiptValidator;
 		};
 /* End XCSwiftPackageProductDependency section */
