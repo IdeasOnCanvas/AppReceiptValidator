@@ -247,6 +247,27 @@ class AppReceiptValidatorTests: XCTestCase {
         XCTAssertEqual(receipt, expected)
     }
 
+    func testUnofficialProvisioningTypes() throws {
+        do {
+            guard let data = assertB64TestAsset(filename: "mindnode_ios_michaelsandbox_receipt1.b64") else { return }
+
+            let result = try receiptValidator.parseUnofficialReceipt(origin: .data(data))
+            XCTAssertEqual(result.unofficialReceipt.provisioningType, .known(value: .productionSandbox))
+        }
+        do {
+            guard let data = assertB64TestAsset(filename: "mindnode_ios_michaelsandbox_receipt2.b64") else { return }
+
+            let result = try receiptValidator.parseUnofficialReceipt(origin: .data(data))
+            XCTAssertEqual(result.unofficialReceipt.provisioningType, .known(value: .productionSandbox))
+        }
+        do {
+            guard let data = assertB64TestAsset(filename: "hannes_mac_mindnode_receipt.b64") else { return }
+
+            let result = try receiptValidator.parseUnofficialReceipt(origin: .data(data))
+            XCTAssertEqual(result.unofficialReceipt.provisioningType, .known(value: .production))
+        }
+    }
+
     func testMindNodeiOSSandBoxReceipt2ParsingAndValidation() {
         guard let data = assertB64TestAsset(filename: "mindnode_ios_michaelsandbox_receipt2.b64") else { return }
 

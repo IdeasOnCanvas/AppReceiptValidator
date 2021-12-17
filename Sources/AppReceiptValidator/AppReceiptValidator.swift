@@ -212,7 +212,7 @@ private extension AppReceiptValidator {
               let items = receiptBlock.sub else { return .init(entries: []) }
 
         let entries: [UnofficialReceipt.Entry] = items.compactMap { item in
-            guard let fieldType = (item.sub(0)?.value as? Data)?.uint64Value,
+            guard let fieldType = (item.sub(0)?.value as? Data)?.uint64ValueOrZero, // provisioning fieldtype pops up here as empty Data, so we use uint64ValueOrZero
                   KnownReceiptAttribute(rawValue: fieldType) == nil else { return nil }
 
             let fieldValueString = item.sub(2)?.asString
@@ -397,4 +397,16 @@ extension X509PublicKey {
         }
     }
     #endif
+}
+
+// MARK: - Data + Unofficial Receipt FieldTypes
+
+private extension Data {
+
+    /// Decoded as by ASN1Decoder's Data.uint64Value extension, or as 0 if empty
+    var uint64ValueOrZero: UInt64? {
+        if self.isEmpty { return 0 }
+
+        return self.uint64Value
+    }
 }
