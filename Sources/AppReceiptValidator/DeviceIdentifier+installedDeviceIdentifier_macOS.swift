@@ -18,7 +18,7 @@ extension AppReceiptValidator.Parameters.DeviceIdentifier {
     }
 
     /// Finds the MAC Address of the primary network interface.
-    /// Original implementation https://gist.github.com/mminer/82975d3781e2f42fc644d7fbfbf4f905
+    /// Based on: https://developer.apple.com/documentation/appstorereceipts/validating_receipts_on_the_device
     ///
     /// - Returns: The MAC Address as Data and String representation
     public static func getPrimaryNetworkMACAddress() -> (data: Data, addressString: String)? {
