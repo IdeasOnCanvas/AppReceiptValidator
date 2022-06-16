@@ -39,8 +39,10 @@ public struct AppReceiptValidator {
             if parameters.shouldValidateSignaturePresence {
                 try self.checkSignaturePresence(pkcs7: receiptContainer)
             }
-            if case .shouldValidate = parameters.signatureValidation {
-                try self.checkSignatureAuthenticity(pkcs7: receiptContainer, rawData: data)
+            if case .shouldValidate(let rootCertificateOrigin) = parameters.signatureValidation {
+                guard let appleRootCertificateData = rootCertificateOrigin.loadData() else { throw Error.appleRootCertificateNotFound }
+
+                try self.checkSignatureAuthenticity(pkcs7: receiptContainer, appleRootCertificateData: appleRootCertificateData, rawData: data)
             }
             let receipt = try self.parseReceipt(pkcs7: receiptContainer).receipt
 
@@ -147,7 +149,7 @@ private extension AppReceiptValidator {
         guard pkcs7.signatures?.isEmpty == false else { throw Error.receiptNotSigned }
     }
 
-    func checkSignatureAuthenticity(pkcs7: ASN1Decoder.PKCS7, rawData: Data?) throws {
+    func checkSignatureAuthenticity(pkcs7: ASN1Decoder.PKCS7, appleRootCertificateData: Data, rawData: Data?) throws {
         guard let signature = pkcs7.signatures?.first else { throw Error.receiptNotSigned }
         guard let signatureData = signature.signatureData else { throw Error.receiptNotSigned }
         guard let receiptData = pkcs7.mainBlock.findOid(.pkcs7data)?.parent?.sub?.last?.sub(0)?.rawValue else { throw Error.receiptNotSigned }
@@ -346,6 +348,7 @@ extension AppReceiptValidator {
         case couldNotFindReceipt
         case emptyReceiptContents
         case receiptNotSigned
+        case appleRootCertificateNotFound
         case receiptSignatureInvalid
         case malformedReceipt
         case malformedInAppPurchaseReceipt
