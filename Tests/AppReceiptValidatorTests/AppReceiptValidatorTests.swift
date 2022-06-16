@@ -261,7 +261,7 @@ class AppReceiptValidatorTests: XCTestCase {
             XCTAssertEqual(result.unofficialReceipt.provisioningType, .known(value: .productionSandbox))
         }
         do {
-            guard let data = assertB64TestAsset(filename: "hannes_mac_mindnode_receipt.b64") else { return }
+            guard let data = assertTestAsset(filename: "hannes_mac_mindnode_receipt") else { return }
 
             let result = try receiptValidator.parseUnofficialReceipt(origin: .data(data))
             XCTAssertEqual(result.unofficialReceipt.provisioningType, .known(value: .production))
