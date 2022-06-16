@@ -14,7 +14,7 @@ let package = Package(
         .library(name: "AppReceiptValidator", type: .dynamic, targets: ["AppReceiptValidator"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/IdeasOnCanvas/ASN1Decoder", from: "1.8.1"),
+        .package(url: "https://github.com/IdeasOnCanvas/ASN1Decoder", from: "1.8.2"),
         .package(url: "https://github.com/apple/swift-crypto", from: "1.1.0")
     ],
     targets: [
