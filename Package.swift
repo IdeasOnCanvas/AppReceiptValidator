@@ -37,7 +37,8 @@ let package = Package(
                         .copy("Resources/mac_mindnode_rebought_receipt"),
                         .copy("Resources/mindnode_ios_michaelsandbox_receipt1.b64"),
                         .copy("Resources/mindnode_ios_michaelsandbox_receipt2.b64"),
-                        .copy("Resources/not_a_receipt")
+                        .copy("Resources/not_a_receipt"),
+                        .copy("Resources/frank4dd-cacert.der")
                     ])
     ],
     swiftLanguageVersions: [.v5]

@@ -102,6 +102,19 @@ class AppReceiptValidatorTests: XCTestCase {
         XCTAssertEqual(receipt, expected)
     }
 
+    func testInvalidRootCertificate() {
+        guard let data = assertTestAsset(filename: "hannes_mac_mindnode_pro_receipt") else { return }
+        guard let notAppleRootCert = assertTestAsset(filename: "frank4dd-cacert.der") else { return } // from https://fm4dd.com/openssl/certexamples.shtm
+
+        let result = receiptValidator.validateReceipt {
+            $0.receiptOrigin = .data(data)
+            $0.shouldValidateHash = false // the original device identifier is unknown
+            $0.signatureValidation = .shouldValidate(rootCertificateOrigin: .data(notAppleRootCert))
+        }
+
+        XCTAssertNotNil(result.error)
+    }
+
     func testCustomerReceiptParsing() {
         // "Receipt that was bought by a user recently, after having a refund requested 2 years ago", obtained by Marcus
         guard let data = assertTestAsset(filename: "mac_mindnode_rebought_receipt") else { return }
