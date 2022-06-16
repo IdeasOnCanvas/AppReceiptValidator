@@ -115,7 +115,7 @@ private extension ViewController {
             AppReceiptValidator.Parameters.DeviceIdentifier(base64Encoded: sanitized)
         guard let identifier = deviceIdentifier else { return "<Receipt not Validated\nIdentifier not parseable>" }
 
-        let parameters = AppReceiptValidator.Parameters(receiptOrigin: .data(data), shouldValidateSignaturePresence: true, signatureValidation: .shouldValidate(rootCertificateOrigin: .cerFileBundledWithAppReceiptValidator), shouldValidateHash: true, deviceIdentifier: identifier, propertyValidations: [])
+        let parameters = AppReceiptValidator.Parameters(receiptOrigin: .data(data), shouldValidateSignaturePresence: true, signatureValidation: .shouldValidate, shouldValidateHash: true, deviceIdentifier: identifier, propertyValidations: [])
         let result = AppReceiptValidator().validateReceipt(parameters: parameters)
 
         switch result {

@@ -52,15 +52,13 @@
       </MacroExpansion>
       <Testables>
          <TestableReference
-            skipped = "NO"
-            parallelizable = "YES"
-            testExecutionOrdering = "random">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D19095911F6000A40095729B"
-               BuildableName = "AppReceiptValidator Tests macOS.xctest"
-               BlueprintName = "AppReceiptValidator Tests macOS"
-               ReferencedContainer = "container:AppReceiptValidator.xcodeproj">
+               BlueprintIdentifier = "AppReceiptValidatorTests"
+               BuildableName = "AppReceiptValidatorTests"
+               BlueprintName = "AppReceiptValidatorTests"
+               ReferencedContainer = "container:..">
             </BuildableReference>
          </TestableReference>
       </Testables>

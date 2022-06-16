@@ -20,10 +20,7 @@ let package = Package(
     targets: [
         .target(name: "AppReceiptValidator",
                 dependencies: ["ASN1Decoder",
-                               .product(name: "Crypto", package: "swift-crypto")],
-                resources: [
-                    .copy("Resources/AppleIncRootCertificate.cer")
-                ]
+                               .product(name: "Crypto", package: "swift-crypto")]
         ),
         .testTarget(name: "AppReceiptValidatorTests",
                     dependencies: ["AppReceiptValidator"],

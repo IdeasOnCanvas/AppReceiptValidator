@@ -18,7 +18,7 @@ public extension AppReceiptValidator {
 
         public var receiptOrigin: ReceiptOrigin = .installedInMainBundle
         public var shouldValidateSignaturePresence: Bool = true
-        public var signatureValidation: SignatureValidation = .shouldValidate(rootCertificateOrigin: .cerFileBundledWithAppReceiptValidator)
+        public var signatureValidation: SignatureValidation = .shouldValidate
         public var shouldValidateHash: Bool = true
         public var deviceIdentifier: DeviceIdentifier = .currentDevice
         public var propertyValidations: [PropertyValidation] = []
@@ -142,35 +142,10 @@ extension AppReceiptValidator.Parameters {
     /// Used for verifying the signature
     ///
     /// - skip: The signature authenticity is not validated
-    /// - shouldValidate: The signature is verified against the provided root certificate
+    /// - shouldValidate: The signature is verified
     public enum SignatureValidation {
         case skip
-        case shouldValidate(rootCertificateOrigin: RootCertificateOrigin)
-    }
-}
-
-// MARK: - RootCertificateOrigin
-
-extension AppReceiptValidator.Parameters {
-
-    /// Instructs how to find the Apple root certificate for receipt validation.
-    ///
-    /// - cerFileBundledWithAppReceiptValidator: Uses the "AppleIncRootCertificate.cer" bundled with AppReceiptValidator
-    /// - data: Specific Data to use
-    public enum RootCertificateOrigin {
-        case cerFileBundledWithAppReceiptValidator
-        case data(Data)
-
-        public func loadData() -> Data? {
-            switch self {
-            case .data(let data):
-                return data
-            case .cerFileBundledWithAppReceiptValidator:
-                guard let appleRootCertificateURL = Bundle.module.url(forResource: "AppleIncRootCertificate", withExtension: "cer") else { return nil }
-
-                return try? Data(contentsOf: appleRootCertificateURL)
-            }
-        }
+        case shouldValidate
     }
 }
 
