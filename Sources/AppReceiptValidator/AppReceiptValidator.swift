@@ -152,10 +152,23 @@ private extension AppReceiptValidator {
     func checkSignatureAuthenticity(pkcs7: ASN1Decoder.PKCS7, appleRootCertificateData: Data, rawData: Data?) throws {
         guard let signature = pkcs7.signatures?.first else { throw Error.receiptNotSigned }
         guard let signatureData = signature.signatureData else { throw Error.receiptNotSigned }
+        guard let appStoreCertFromReceipt = pkcs7.certificates.first else { throw Error.receiptMissingCertificates }
         guard let receiptData = pkcs7.mainBlock.findOid(.pkcs7data)?.parent?.sub?.last?.sub(0)?.rawValue else { throw Error.receiptNotSigned }
 
-        let rootCert = pkcs7.certificates[0]
-        try self.verifyAuthenticity(x509Certificate: rootCert, receiptData: receiptData, signatureData: signatureData)
+        try self.verifyCertificates(pkcs7.certificates, appleRootCertificate: try X509Certificate(data: appleRootCertificateData))
+        try self.verifyAuthenticity(x509Certificate: appStoreCertFromReceipt, receiptData: receiptData, signatureData: signatureData)
+    }
+
+    func verifyCertificates(_ certificates: [X509Certificate], appleRootCertificate: X509Certificate) throws {
+        guard let rootCertFromReceipt = certificates.last else { throw Error.receiptMissingCertificates }
+        guard let expectedRootCertKey = appleRootCertificate.publicKey?.derEncodedKey else { throw Error.appleRootCertificateNotFound }
+        guard let rootCertFromReceiptKey = rootCertFromReceipt.publicKey?.derEncodedKey else { throw Error.receiptMissingCertificates }
+
+        if rootCertFromReceiptKey != expectedRootCertKey {
+            throw Error.receiptRootCertificateMismatch
+        }
+
+        // Ideally we would now validate that the certificate chain (pkcs7.certificates[last ... first]) is valid too
     }
 
     func verifyAuthenticity(x509Certificate: X509Certificate, receiptData: Data, signatureData: Data) throws {
@@ -348,6 +361,8 @@ extension AppReceiptValidator {
         case couldNotFindReceipt
         case emptyReceiptContents
         case receiptNotSigned
+        case receiptMissingCertificates
+        case receiptRootCertificateMismatch
         case appleRootCertificateNotFound
         case receiptSignatureInvalid
         case malformedReceipt
