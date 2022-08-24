@@ -152,10 +152,47 @@ private extension AppReceiptValidator {
     func checkSignatureAuthenticity(pkcs7: ASN1Decoder.PKCS7, appleRootCertificateData: Data, rawData: Data?) throws {
         guard let signature = pkcs7.signatures?.first else { throw Error.receiptNotSigned }
         guard let signatureData = signature.signatureData else { throw Error.receiptNotSigned }
+        guard let appStoreCertFromReceipt = pkcs7.certificates.first else { throw Error.receiptMissingCertificates }
         guard let receiptData = pkcs7.mainBlock.findOid(.pkcs7data)?.parent?.sub?.last?.sub(0)?.rawValue else { throw Error.receiptNotSigned }
 
-        let rootCert = pkcs7.certificates[0]
-        try self.verifyAuthenticity(x509Certificate: rootCert, receiptData: receiptData, signatureData: signatureData)
+        try self.verifyCertificates(pkcs7: pkcs7, appleRootCertificateData: appleRootCertificateData)
+        try self.verifyAuthenticity(x509Certificate: appStoreCertFromReceipt, receiptData: receiptData, signatureData: signatureData)
+    }
+
+    func verifyCertificates(pkcs7: ASN1Decoder.PKCS7, appleRootCertificateData: Data) throws {
+        let appleRootCertificate = try X509Certificate(data: appleRootCertificateData)
+        guard let rootCertFromReceipt = pkcs7.certificates.last else { throw Error.receiptMissingCertificates }
+        guard let expectedRootCertKey = appleRootCertificate.publicKey?.derEncodedKey else { throw Error.appleRootCertificateNotFound }
+        guard let rootCertFromReceiptKey = rootCertFromReceipt.publicKey?.derEncodedKey else { throw Error.receiptMissingCertificates }
+
+        if rootCertFromReceiptKey != expectedRootCertKey {
+            throw Error.receiptRootCertificateMismatch
+        }
+
+        // TODO: Migrate this from Security.framework to BoringSSL/Cryptokit to allow compilation on Linux
+        #if !os(Linux)
+
+        // The expected certificate chain here is:
+        // [appstore certificate, intermediate, apple root], we add our own apple root certificate to the mix in order to also verify
+        // it in the upcoming SecTrustCreateWithCertificates call
+        let secCertificates = (pkcs7.certificates.compactMap(\.derData) + [appleRootCertificateData]).compactMap {
+            SecCertificateCreateWithData(nil, $0 as CFData)
+        }
+
+        var optionalTrust: SecTrust?
+        guard
+            SecTrustCreateWithCertificates(secCertificates as CFTypeRef, SecPolicyCreateBasicX509(), &optionalTrust) == errSecSuccess,
+            let trust = optionalTrust
+        else {
+            throw Error.certificateChainInvalid
+        }
+
+        var certificateErrorEvaluation: CFError?
+        guard SecTrustEvaluateWithError(trust, &certificateErrorEvaluation) else {
+            throw Error.certificateChainInvalid
+        }
+
+        #endif
     }
 
     func verifyAuthenticity(x509Certificate: X509Certificate, receiptData: Data, signatureData: Data) throws {
@@ -348,6 +385,9 @@ extension AppReceiptValidator {
         case couldNotFindReceipt
         case emptyReceiptContents
         case receiptNotSigned
+        case receiptMissingCertificates
+        case receiptRootCertificateMismatch
+        case certificateChainInvalid
         case appleRootCertificateNotFound
         case receiptSignatureInvalid
         case malformedReceipt

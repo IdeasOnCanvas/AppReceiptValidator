@@ -14,7 +14,7 @@ let package = Package(
         .library(name: "AppReceiptValidator", type: .dynamic, targets: ["AppReceiptValidator"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/IdeasOnCanvas/ASN1Decoder", from: "1.8.1"),
+        .package(url: "https://github.com/IdeasOnCanvas/ASN1Decoder", from: "1.8.2"),
         .package(url: "https://github.com/apple/swift-crypto", from: "1.1.0")
     ],
     targets: [
@@ -37,7 +37,8 @@ let package = Package(
                         .copy("Resources/mac_mindnode_rebought_receipt"),
                         .copy("Resources/mindnode_ios_michaelsandbox_receipt1.b64"),
                         .copy("Resources/mindnode_ios_michaelsandbox_receipt2.b64"),
-                        .copy("Resources/not_a_receipt")
+                        .copy("Resources/not_a_receipt"),
+                        .copy("Resources/frank4dd-cacert.der")
                     ])
     ],
     swiftLanguageVersions: [.v5]
