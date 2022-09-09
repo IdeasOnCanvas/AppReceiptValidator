@@ -30,8 +30,6 @@ let package = Package(
                     resources: [
                         .copy("Resources/deprecatedSinglesTypeExpiredAppleCert_receipt.b64"),
                         .copy("Resources/grandUnifiedExpiredAppleCert_receipt.b64"),
-                        .copy("Resources/hannes_mac_mindnode_Info.plist"),
-                        .copy("Resources/hannes_mac_mindnode_pro_Info.plist"),
                         .copy("Resources/hannes_mac_mindnode_pro_receipt"),
                         .copy("Resources/hannes_mac_mindnode_receipt"),
                         .copy("Resources/mac_mindnode_rebought_receipt"),
