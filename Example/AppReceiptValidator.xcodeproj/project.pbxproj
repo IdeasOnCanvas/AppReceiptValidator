@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		80AB3E2F276CA8E100C4AB61 /* AppReceiptValidator in Frameworks */ = {isa = PBXBuildFile; productRef = 80AB3E2E276CA8E100C4AB61 /* AppReceiptValidator */; };
-		80AB3E30276CA8E100C4AB61 /* AppReceiptValidator in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 80AB3E2E276CA8E100C4AB61 /* AppReceiptValidator */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		80AB3E32276CA8E500C4AB61 /* AppReceiptValidator in Frameworks */ = {isa = PBXBuildFile; productRef = 80AB3E31276CA8E500C4AB61 /* AppReceiptValidator */; };
-		80AB3E33276CA8E500C4AB61 /* AppReceiptValidator in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 80AB3E31276CA8E500C4AB61 /* AppReceiptValidator */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D13E5B7D20331B9B001880F0 /* DropAcceptingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13E5B7C20331B9B001880F0 /* DropAcceptingTextView.swift */; };
 		D19095841F6000A40095729B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19095831F6000A40095729B /* AppDelegate.swift */; };
 		D19095861F6000A40095729B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19095851F6000A40095729B /* ViewController.swift */; };
@@ -30,7 +28,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				80AB3E33276CA8E500C4AB61 /* AppReceiptValidator in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -41,7 +38,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				80AB3E30276CA8E100C4AB61 /* AppReceiptValidator in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
