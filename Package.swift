@@ -10,10 +10,7 @@ let package = Package(
         .tvOS(.v13),
         // .watchOS(.v6) watchOS doesn't have UIDevice.current so we can parse, but not validate hash, also, it cannot run XCTest
     ],
-    products: [
-        .library(name: "AppReceiptValidator", targets: ["AppReceiptValidator"]),
-        .library(name: "AppReceiptValidatorDynamic", type: .dynamic, targets: ["AppReceiptValidator"]),
-    ],
+    products: [.library(name: "AppReceiptValidator", targets: ["AppReceiptValidator"])],
     dependencies: [
         .package(url: "https://github.com/IdeasOnCanvas/ASN1Decoder", from: "1.8.2"),
         .package(url: "https://github.com/apple/swift-crypto", from: "1.1.0")
