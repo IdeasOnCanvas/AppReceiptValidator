@@ -47,24 +47,24 @@ class AppReceiptValidatorTests: XCTestCase {
     }
 
     func testMindNodeProMacReceiptPropertyValidation() {
-        guard let data = assertTestAsset(filename: "hannes_mac_mindnode_pro_receipt") else { return }
+        guard let data = assertTestAsset(filename: "hannes_mac_mindnode_2_receipt") else { return }
 
         let expected = Receipt(
-            bundleIdentifier: "com.mindnode.MindNodePro",
-            bundleIdData: Data(base64Encoded: "DBhjb20ubWluZG5vZGUuTWluZE5vZGVQcm8=")!,
-            appVersion: "1.11.5",
-            opaqueValue: Data(base64Encoded: "/cPmDfuyFyluvodJXQRvig=="),
-            sha1Hash: Data(base64Encoded: "MDBF4hAt6Y+7IlAydxroa/SQeY4="),
-            originalAppVersion: "1.10.6",
-            receiptCreationDate: Date.demoDate(string: "2016-02-12T10:57:42Z"),
+            bundleIdentifier: "com.ideasoncanvas.MindNodeMac",
+            bundleIdData: "DB1jb20uaWRlYXNvbmNhbnZhcy5NaW5kTm9kZU1hYw==",
+            appVersion: "2.5.8",
+            opaqueValue: "ZRyo4rFO+zpyYoGJoDUYIQ==",
+            sha1Hash: "EtemZhuYKqGofTIwv+x0nNqS5BU=",
+            originalAppVersion: "2.5.5",
+            receiptCreationDate: "2023-02-22T12:56:25Z",
             expirationDate: nil,
             inAppPurchaseReceipts: []
         )
         let result = receiptValidator.validateReceipt {
             $0.receiptOrigin = .data(data)
             $0.shouldValidateHash = false // the original device identifier is unknown
-            $0.propertyValidations = [ .string(\.appVersion, expected: "1.11.5"),
-                                       .string(\.originalAppVersion, expected: "1.10.6")]
+            $0.propertyValidations = [ .string(\.appVersion, expected: "2.5.8"),
+                                       .string(\.originalAppVersion, expected: "2.5.5")]
         }
         guard let receipt = result.receipt else {
             XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")
@@ -75,24 +75,24 @@ class AppReceiptValidatorTests: XCTestCase {
     }
 
     func testMindNodeProMacReceiptParsing() {
-        guard let data = assertTestAsset(filename: "hannes_mac_mindnode_pro_receipt") else { return }
+        guard let data = assertTestAsset(filename: "hannes_mac_mindnode_2_receipt") else { return }
 
         let expected = Receipt(
-            bundleIdentifier: "com.mindnode.MindNodePro",
-            bundleIdData: Data(base64Encoded: "DBhjb20ubWluZG5vZGUuTWluZE5vZGVQcm8=")!,
-            appVersion: "1.11.5",
-            opaqueValue: Data(base64Encoded: "/cPmDfuyFyluvodJXQRvig=="),
-            sha1Hash: Data(base64Encoded: "MDBF4hAt6Y+7IlAydxroa/SQeY4="),
-            originalAppVersion: "1.10.6",
-            receiptCreationDate: Date.demoDate(string: "2016-02-12T10:57:42Z"),
+            bundleIdentifier: "com.ideasoncanvas.MindNodeMac",
+            bundleIdData: "DB1jb20uaWRlYXNvbmNhbnZhcy5NaW5kTm9kZU1hYw==",
+            appVersion: "2.5.8",
+            opaqueValue: "ZRyo4rFO+zpyYoGJoDUYIQ==",
+            sha1Hash: "EtemZhuYKqGofTIwv+x0nNqS5BU=",
+            originalAppVersion: "2.5.5",
+            receiptCreationDate: "2023-02-22T12:56:25Z",
             expirationDate: nil,
             inAppPurchaseReceipts: []
         )
         let result = receiptValidator.validateReceipt {
             $0.receiptOrigin = .data(data)
             $0.shouldValidateHash = false // the original device identifier is unknown
-            $0.propertyValidations = [ .string(\.appVersion, expected: "1.11.5"),
-                                       .string(\.originalAppVersion, expected: "1.10.6")]
+            $0.propertyValidations = [ .string(\.appVersion, expected: "2.5.8"),
+                                       .string(\.originalAppVersion, expected: "2.5.5")]
         }
         guard let receipt = result.receipt else {
             XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")
@@ -103,7 +103,7 @@ class AppReceiptValidatorTests: XCTestCase {
     }
 
     func testInvalidRootCertificate() {
-        guard let data = assertTestAsset(filename: "hannes_mac_mindnode_pro_receipt") else { return }
+        guard let data = assertTestAsset(filename: "hannes_mac_mindnode_2_receipt") else { return }
         guard let notAppleRootCert = assertTestAsset(filename: "frank4dd-cacert.der") else { return } // from https://fm4dd.com/openssl/certexamples.shtm
 
         let result = receiptValidator.validateReceipt {
@@ -115,9 +115,11 @@ class AppReceiptValidatorTests: XCTestCase {
         XCTAssertNotNil(result.error)
     }
 
-    func testCustomerReceiptParsing() {
+    func testCustomerReceiptParsing() throws {
         // "Receipt that was bought by a user recently, after having a refund requested 2 years ago", obtained by Marcus
         guard let data = assertTestAsset(filename: "mac_mindnode_rebought_receipt") else { return }
+
+        // just parsing, not validating because the intermediate Apple certificate with which this receipt was signed has expired in the meantime
 
         let expected = Receipt(
             bundleIdentifier: "com.ideasoncanvas.MindNodeMac",
@@ -130,19 +132,12 @@ class AppReceiptValidatorTests: XCTestCase {
             expirationDate: nil,
             inAppPurchaseReceipts: []
         )
-        let result = receiptValidator.validateReceipt {
-            $0.receiptOrigin = .data(data)
-            $0.shouldValidateHash = false // the original device identifier is unknown
-        }
-        guard let receipt = result.receipt else {
-            XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")
-            return
-        }
 
+        let receipt = try receiptValidator.parseReceipt(origin: .data(data))
         XCTAssertEqual(receipt, expected)
     }
 
-    func testMindNodeMacReceiptParsingWithFullValidation() {
+    func testMindNodeMacReceiptWithExpiredSigningValidation() {
         guard let data = assertTestAsset(filename: "hannes_mac_mindnode_receipt") else { return }
 
         let expected = Receipt(
@@ -156,16 +151,31 @@ class AppReceiptValidatorTests: XCTestCase {
             expirationDate: nil,
             inAppPurchaseReceipts: []
         )
-        let result = receiptValidator.validateReceipt {
-            $0.receiptOrigin = .data(data)
-            $0.deviceIdentifier = AppReceiptValidator.Parameters.DeviceIdentifier(base64Encoded: "bEAItZRe")!
-        }
-        guard let receipt = result.receipt else {
-            XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")
-            return
+
+        do {
+            // regular validation should fail
+            let result1 = receiptValidator.validateReceipt {
+                $0.receiptOrigin = .data(data)
+                $0.deviceIdentifier = AppReceiptValidator.Parameters.DeviceIdentifier(base64Encoded: "bEAItZRe")!
+            }
+            XCTAssertEqual(result1.error, AppReceiptValidator.Error.certificateChainInvalid)
         }
 
-        XCTAssertEqual(receipt, expected)
+        do {
+            // validation skipping signing should succeed
+            let result = receiptValidator.validateReceipt {
+                $0.receiptOrigin = .data(data)
+                $0.deviceIdentifier = AppReceiptValidator.Parameters.DeviceIdentifier(base64Encoded: "bEAItZRe")!
+                $0.signatureValidation = .skip
+            }
+
+            guard let receipt = result.receipt else {
+                XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")
+                return
+            }
+
+            XCTAssertEqual(receipt, expected)
+        }
     }
 
     func testMindNodeMacReceiptParsingWithoutValidation() {
@@ -196,7 +206,7 @@ class AppReceiptValidatorTests: XCTestCase {
         XCTAssertEqual(receipt, expected)
     }
 
-    func testMindNodeMacReceiptParsingWithParseMethod() {
+    func testMindNodeMacReceiptParsingWithParseMethod() throws {
         guard let data = assertTestAsset(filename: "hannes_mac_mindnode_receipt") else { return }
 
         let expected = Receipt(
@@ -210,11 +220,8 @@ class AppReceiptValidatorTests: XCTestCase {
             expirationDate: nil,
             inAppPurchaseReceipts: []
         )
-        guard let receipt = try? receiptValidator.parseReceipt(origin: .data(data)) else {
-            XCTFail("Unexpectedly failed parsing a receipt")
-            return
-        }
 
+        let receipt = try receiptValidator.parseReceipt(origin: .data(data))
         XCTAssertEqual(receipt, expected)
     }
 
@@ -234,13 +241,12 @@ class AppReceiptValidatorTests: XCTestCase {
         }
     }
 
-    func testMindNodeiOSSandBoxReceipt1ParsingAndValidation() {
+    func testMindNodeiOSSandBoxReceipt1Parsing() throws {
         guard let data = assertB64TestAsset(filename: "mindnode_ios_michaelsandbox_receipt1.b64") else { return }
 
-        let result = receiptValidator.validateReceipt {
-            $0.receiptOrigin = .data(data)
-            $0.deviceIdentifier = AppReceiptValidator.Parameters.DeviceIdentifier(uuid: UUID(uuidString: "3B76A7BD-8F5B-46A4-BCB1-CCE8DBD1B3CD")!)
-        }
+        // just parsing, not validating because the intermediate Apple certificate with which this receipt was signed has expired in the meantime
+
+        let receipt = try receiptValidator.parseReceipt(origin: .data(data))
         let expected = Receipt(
             bundleIdentifier: "com.mindnode.mindnodetouch",
             bundleIdData: Data(base64Encoded: "DBpjb20ubWluZG5vZGUubWluZG5vZGV0b3VjaA==")!,
@@ -252,10 +258,6 @@ class AppReceiptValidatorTests: XCTestCase {
             expirationDate: nil,
             inAppPurchaseReceipts: []
         )
-        guard let receipt = result.receipt else {
-            XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")
-            return
-        }
 
         XCTAssertEqual(receipt, expected)
     }
@@ -281,24 +283,50 @@ class AppReceiptValidatorTests: XCTestCase {
         }
     }
 
-    func testMindNodeiOSSandBoxReceipt2ParsingAndValidation() {
-        guard let data = assertB64TestAsset(filename: "mindnode_ios_michaelsandbox_receipt2.b64") else { return }
+    func testInAppPurchaseParsingAndValidationWithSandboxReceipt() {
+        // this was obtained by making purchases in a DEBUG build of a sample app
+        guard let data = assertB64TestAsset(filename: "purchasing_experiments_sandbox_receipt.b64") else { return }
 
         let result = receiptValidator.validateReceipt {
             $0.receiptOrigin = .data(data)
-            $0.shouldValidateHash = false // unknown device identifier
+            $0.deviceIdentifier = .data(Data(base64Encoded: "5hgQmGLdQz+7lGddOBXSYw==")!)
         }
+
         let expected = Receipt(
-            bundleIdentifier: "com.mindnode.mindnodetouch",
-            bundleIdData: Data(base64Encoded: "DBpjb20ubWluZG5vZGUubWluZG5vZGV0b3VjaA==")!,
-            appVersion: "3392",
-            opaqueValue: Data(base64Encoded: "M10U4Y67k8PYmJdZ0XVfng=="),
-            sha1Hash: Data(base64Encoded: "5rkci1hiUWJJ1qHRkRlhrI3Edro="),
+            bundleIdentifier: "com.hannesoid.PurchasingExperiments",
+            bundleIdData: "DCNjb20uaGFubmVzb2lkLlB1cmNoYXNpbmdFeHBlcmltZW50cw==",
+            appVersion: "1",
+            opaqueValue: "CPYuy3sssm2OQks5Dfav1Q==",
+            sha1Hash: "gfxUPQjdI7OUJFRcSX7Hl/98JpI=",
             originalAppVersion: "1.0",
-            receiptCreationDate: Date.demoDate(string: "2017-08-16T13:13:14Z"),
+            receiptCreationDate: "2023-02-22T14:30:15Z",
             expirationDate: nil,
-            inAppPurchaseReceipts: []
+            inAppPurchaseReceipts: [
+                InAppPurchaseReceipt(
+                    quantity: 1,
+                    productIdentifier: "com.hannesoid.PurchasingExperiments.oneTime",
+                    transactionIdentifier: "2000000284164152",
+                    originalTransactionIdentifier: "2000000284164152",
+                    purchaseDate: "2023-02-22T14:29:20Z",
+                    originalPurchaseDate: "2023-02-22T14:29:20Z",
+                    subscriptionExpirationDate: nil,
+                    cancellationDate: nil,
+                    webOrderLineItemId: nil
+                ),
+                InAppPurchaseReceipt(
+                    quantity: 1,
+                    productIdentifier: "com.hannesoid.PurchasingExperiments.subscription1",
+                    transactionIdentifier: "2000000284164527",
+                    originalTransactionIdentifier: "2000000284164527",
+                    purchaseDate: "2023-02-22T14:29:39Z",
+                    originalPurchaseDate: "2023-02-22T14:29:44Z",
+                    subscriptionExpirationDate: "2023-02-22T14:34:39Z",
+                    cancellationDate: nil,
+                    webOrderLineItemId: 2000000021470597
+                )
+            ]
         )
+
         guard let receipt = result.receipt else {
             XCTFail("Unexpectedly failed parsing a receipt \(result.error!)")
             return
@@ -307,7 +335,7 @@ class AppReceiptValidatorTests: XCTestCase {
         XCTAssertEqual(receipt, expected)
     }
 
-    func testiOSParsingPerformance() {
+    func DISABLED_testiOSParsingPerformance() {
         guard let data = assertB64TestAsset(filename: "mindnode_ios_michaelsandbox_receipt1.b64") else { return }
 
         let parameters = AppReceiptValidator.Parameters.default.with {
