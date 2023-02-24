@@ -77,7 +77,7 @@ class AppReceiptPropertyValidationTests: XCTestCase {
     }
 
     func testMindNodeProMacReceiptPropertyMismatches() {
-        guard let data = assertTestAsset(filename: "hannes_mac_mindnode_pro_receipt") else { return }
+        guard let data = assertTestAsset(filename: "hannes_mac_mindnode_2_receipt") else { return }
 
         @discardableResult
         func assertPropertyMismatch(line: UInt = #line, configuration: (inout AppReceiptValidator.Parameters) -> Void) -> Bool {

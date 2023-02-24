@@ -31,11 +31,12 @@ let package = Package(
                     resources: [
                         .copy("Resources/deprecatedSinglesTypeExpiredAppleCert_receipt.b64"),
                         .copy("Resources/grandUnifiedExpiredAppleCert_receipt.b64"),
-                        .copy("Resources/hannes_mac_mindnode_pro_receipt"),
                         .copy("Resources/hannes_mac_mindnode_receipt"),
+                        .copy("Resources/hannes_mac_mindnode_2_receipt"),
                         .copy("Resources/mac_mindnode_rebought_receipt"),
                         .copy("Resources/mindnode_ios_michaelsandbox_receipt1.b64"),
                         .copy("Resources/mindnode_ios_michaelsandbox_receipt2.b64"),
+                        .copy("Resources/purchasing_experiments_sandbox_receipt.b64"),
                         .copy("Resources/not_a_receipt"),
                         .copy("Resources/frank4dd-cacert.der")
                     ])
