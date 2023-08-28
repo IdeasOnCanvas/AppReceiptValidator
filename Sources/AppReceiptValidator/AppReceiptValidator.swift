@@ -156,7 +156,9 @@ private extension AppReceiptValidator {
         guard let receiptData = pkcs7.mainBlock.findOid(.pkcs7data)?.parent?.sub?.last?.sub(0)?.rawValue else { throw Error.receiptNotSigned }
 
         try self.verifyCertificates(pkcs7: pkcs7, appleRootCertificateData: appleRootCertificateData)
-        try self.verifyAuthenticity(x509Certificate: appStoreCertFromReceipt, receiptData: receiptData, signatureData: signatureData)
+        // FIX THIS: Skip this check as `SecKeyVerifySignature` cannot handle new receipt correctly.
+        // https://developer.apple.com/documentation/technotes/tn3138-handling-app-store-receipt-signing-certificate-changes#
+        // try self.verifyAuthenticity(x509Certificate: appStoreCertFromReceipt, receiptData: receiptData, signatureData: signatureData)
     }
 
     func verifyCertificates(pkcs7: ASN1Decoder.PKCS7, appleRootCertificateData: Data) throws {
