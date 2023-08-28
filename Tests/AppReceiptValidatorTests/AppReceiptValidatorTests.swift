@@ -336,7 +336,6 @@ class AppReceiptValidatorTests: XCTestCase {
     }
 
     func testSHA256SignedReceipt() {
-        XCTExpectFailure("SHA256 not implemented yet") // TODO: remove this line when implemented
         guard let data = assertTestAsset(filename: "mindnode_mac_sha256_receipt") else { return }
 
         let parameters = AppReceiptValidator.Parameters.default.with {
