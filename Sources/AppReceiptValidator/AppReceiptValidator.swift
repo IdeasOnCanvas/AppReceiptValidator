@@ -199,7 +199,7 @@ private extension AppReceiptValidator {
         // TODO: Migrate this from Security.framework to BoringSSL/Cryptokit to allow compilation on Linux
         #if !os(Linux)
         guard let key = x509Certificate.publicKey?.secKey,
-              let algorithm = x509Certificate.publicKey?.secAlgorithm else { throw Error.receiptSignatureInvalid }
+              let algorithm = x509Certificate.secSignatureAlgorithm else { throw Error.receiptSignatureInvalid }
 
         var verifyError: Unmanaged<CFError>?
         guard SecKeyVerifySignature(key, algorithm, receiptData as CFData, signatureData as CFData, &verifyError),
@@ -424,14 +424,24 @@ extension X509PublicKey {
         return SecKeyCreateWithData(publicKeyDerEncoded as CFData, attributes as CFDictionary, &error)
     }
 
-    var secAlgorithm: SecKeyAlgorithm? {
-        guard let oid = self.algOid,
+    #endif
+}
+
+// MARK: - X509Certificate + SecKeyAlgorithm
+
+extension X509Certificate {
+
+    #if !os(Linux)
+    var secSignatureAlgorithm: SecKeyAlgorithm? {
+        guard let oid = self.sigAlgOID,
               let algorithm = OID(rawValue: oid) else { return nil }
 
         switch algorithm {
         // We only support RSA for now
-        case .rsaEncryption:
+        case .sha1WithRSAEncryption:
             return .rsaSignatureMessagePKCS1v15SHA1
+        case .sha256WithRSAEncryption:
+            return .rsaSignatureMessagePKCS1v15SHA256
         default:
             return nil
         }

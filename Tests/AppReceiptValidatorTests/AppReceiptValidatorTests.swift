@@ -335,6 +335,62 @@ class AppReceiptValidatorTests: XCTestCase {
         XCTAssertEqual(receipt, expected)
     }
 
+    func testSHA256SignedReceipt() {
+        guard let data = assertTestAsset(filename: "mindnode_mac_sha256_receipt") else { return }
+
+        let parameters = AppReceiptValidator.Parameters.default.with {
+            $0.receiptOrigin = .data(data)
+            $0.deviceIdentifier = .init(macAddress: "f8:ff:c2:1e:91:82")!
+        }
+        let result = receiptValidator.validateReceipt(parameters: parameters)
+        let expected = Receipt(
+            bundleIdentifier: "com.ideasoncanvas.mindnode.macos",
+            bundleIdData: "DCBjb20uaWRlYXNvbmNhbnZhcy5taW5kbm9kZS5tYWNvcw==",
+            appVersion: "2023.2.2",
+            opaqueValue: "VmWS/KFzfC1svdKl/fE28w==",
+            sha1Hash: "qDMXlx3d0G20ClaveV6dpPPHDRg=",
+            originalAppVersion: "5.0",
+            receiptCreationDate: "2023-08-28T10:24:05Z",
+            expirationDate: nil,
+            inAppPurchaseReceipts: [
+                InAppPurchaseReceipt(
+                    quantity: 1,
+                    productIdentifier: "com.ideasoncanvas.mindnode.macos.iap.trial",
+                    transactionIdentifier: "710000250371060",
+                    originalTransactionIdentifier: "710000250371060",
+                    purchaseDate: "2017-11-28T11:13:57Z",
+                    originalPurchaseDate: "2017-11-28T11:13:57Z",
+                    subscriptionExpirationDate: nil,
+                    cancellationDate: nil,
+                    webOrderLineItemId: nil
+                ),
+                InAppPurchaseReceipt(
+                    quantity: 1,
+                    productIdentifier: "com.ideasoncanvas.mindnode.macos.iap.fullversionfree",
+                    transactionIdentifier: "710000253893482",
+                    originalTransactionIdentifier: "710000253893482",
+                    purchaseDate: "2017-12-13T14:04:33Z",
+                    originalPurchaseDate: "2017-12-13T14:04:33Z",
+                    subscriptionExpirationDate: nil,
+                    cancellationDate: nil,
+                    webOrderLineItemId: nil
+                ),
+                InAppPurchaseReceipt(
+                    quantity: 1,
+                    productIdentifier: "com.ideasoncanvas.mindnode.macos.subscription.yearly",
+                    transactionIdentifier: "710000831465389",
+                    originalTransactionIdentifier: "710000831465389",
+                    purchaseDate: "2021-09-10T12:37:29Z",
+                    originalPurchaseDate: "2021-09-10T12:37:34Z",
+                    subscriptionExpirationDate: "2022-09-24T12:37:29Z",
+                    cancellationDate: nil,
+                    webOrderLineItemId: 710000353660114
+                )
+            ]
+        )
+        XCTAssertEqual(expected, result.receipt)
+    }
+
     func DISABLED_testiOSParsingPerformance() {
         guard let data = assertB64TestAsset(filename: "mindnode_ios_michaelsandbox_receipt1.b64") else { return }
 
