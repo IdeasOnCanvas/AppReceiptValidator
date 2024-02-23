@@ -16,7 +16,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/IdeasOnCanvas/ASN1Decoder", from: "1.8.2"),
-        .package(url: "https://github.com/apple/swift-crypto", from: "1.1.0")
+        .package(url: "https://github.com/apple/swift-crypto", "2.0.0" ..< "3.0.0")
     ],
     targets: [
         .target(name: "AppReceiptValidator",
