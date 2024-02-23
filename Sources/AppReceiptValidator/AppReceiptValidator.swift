@@ -7,7 +7,6 @@
 //
 
 import ASN1Decoder
-import CCryptoBoringSSL
 import Crypto
 import Foundation
 
@@ -105,24 +104,19 @@ private extension AppReceiptValidator {
         // Compute the hash for your app & device
 
         // Set up the hashing context
-        var computedHash = [UInt8](repeating: 0, count: 20)
-        var ctx = SHA_CTX()
-
-        CCryptoBoringSSL_SHA1_Init(&ctx)
+        var sha1 = Insecure.SHA1()
         deviceIdentifierData.withUnsafeBytes { pointer -> Void in
-            CCryptoBoringSSL_SHA1_Update(&ctx, pointer.baseAddress, deviceIdentifierData.count)
+            sha1.update(bufferPointer: pointer)
         }
         receiptOpaqueValueData.withUnsafeBytes { pointer -> Void in
-            CCryptoBoringSSL_SHA1_Update(&ctx, pointer.baseAddress, receiptOpaqueValueData.count)
+            sha1.update(bufferPointer: pointer)
         }
         receiptBundleIdData.withUnsafeBytes { pointer -> Void in
-            CCryptoBoringSSL_SHA1_Update(&ctx, pointer.baseAddress, receiptBundleIdData.count)
+            sha1.update(bufferPointer: pointer)
         }
-        CCryptoBoringSSL_SHA1_Final(&computedHash, &ctx)
-
-        let computedHashData = Data(bytes: &computedHash, count: 20)
+        let digest = sha1.finalize()
         // Compare the computed hash with the receipt's hash
-        if computedHashData != receiptHashData {
+        if Data(digest) != receiptHashData {
             throw Error.incorrectHash
         }
     }
