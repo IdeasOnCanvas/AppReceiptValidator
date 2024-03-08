@@ -84,7 +84,7 @@ extension AppReceiptValidator.Parameters.DeviceIdentifier {
 private extension AppReceiptValidator.Parameters.DeviceIdentifier {
 
     // Returns an object with a +1 retain count; the caller must release.
-    static func io_service(named name: String, wantBuiltIn: Bool) -> io_service_t? {
+    static func io_service(named name: String, requireBuiltIn: Bool) -> io_service_t? {
         let default_port = kIOMasterPortDefault
         var iterator = io_iterator_t()
         defer {
@@ -104,14 +104,26 @@ private extension AppReceiptValidator.Parameters.DeviceIdentifier {
 
         var candidate = IOIteratorNext(iterator)
         while candidate != IO_OBJECT_NULL {
-            if let cftype = IORegistryEntryCreateCFProperty(candidate,
-                                                            "IOBuiltin" as CFString,
-                                                            kCFAllocatorDefault,
-                                                            0) {
-                let isBuiltIn = cftype.takeRetainedValue() as! CFBoolean
-                if wantBuiltIn == CFBooleanGetValue(isBuiltIn) {
-                    return candidate
-                }
+            guard let cftype = IORegistryEntryCreateCFProperty(
+                candidate,
+                "IOBuiltin" as CFString,
+                kCFAllocatorDefault,
+                0
+            ) else {
+                return candidate
+            }
+
+            // the following behaviour is modelled after https://github.com/IdeasOnCanvas/AppReceiptValidator/issues/83#issuecomment-1966283436
+            let isBuiltIn = cftype.takeRetainedValue() as! CFBoolean
+            if CFBooleanGetValue(isBuiltIn) == true {
+                // built-in interfaces are always accepted
+                return candidate
+            } else if requireBuiltIn == false {
+                // if built-in isn't required, any candidate will be accepted
+                return candidate
+            } else {
+              // This one is not built in but we would have wanted built in,
+              // …keep iterating looking for further interfaces that match what we are looking for.
             }
 
             IOObjectRelease(candidate)
@@ -125,9 +137,11 @@ private extension AppReceiptValidator.Parameters.DeviceIdentifier {
         // Prefer built-in network interfaces.
         // For example, an external Ethernet adaptor could displace
         // the built-in Wi-Fi as en0.
-        guard let service = io_service(named: "en0", wantBuiltIn: true)
-                ?? io_service(named: "en1", wantBuiltIn: true)
-                ?? io_service(named: "en0", wantBuiltIn: false)
+
+        // Apple sample code uses `requireBuiltIn: true` for en1, but as discussed in  https://github.com/IdeasOnCanvas/AppReceiptValidator/issues/83#issuecomment-1966283436 their internal implementations seem to do `requireBuiltIn: false`
+        guard let service = io_service(named: "en0", requireBuiltIn: true)
+                ?? io_service(named: "en1", requireBuiltIn: false)
+                ?? io_service(named: "en0", requireBuiltIn: false)
         else { return nil }
         defer { IOObjectRelease(service) }
 
