@@ -16,32 +16,37 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/IdeasOnCanvas/ASN1Decoder", from: "1.8.2"),
-        .package(url: "https://github.com/apple/swift-crypto", "2.0.0" ..< "3.0.0")
+        .package(url: "https://github.com/apple/swift-crypto", "3.0.0" ..< "4.0.0")
     ],
     targets: [
-        .target(name: "AppReceiptValidator",
-                dependencies: ["ASN1Decoder",
-                               .product(name: "Crypto", package: "swift-crypto")],
-                resources: [
-                    .copy("Resources/AppleIncRootCertificate.cer"),
-                    .copy("Resources/PrivacyInfo.xcprivacy")
-                ]
+        .target(
+            name: "AppReceiptValidator",
+            dependencies: [
+                "ASN1Decoder",
+                .product(name: "Crypto", package: "swift-crypto")
+            ],
+            resources: [
+                .copy("Resources/AppleIncRootCertificate.cer"),
+                .copy("Resources/PrivacyInfo.xcprivacy")
+            ]
         ),
-        .testTarget(name: "AppReceiptValidatorTests",
-                    dependencies: ["AppReceiptValidator"],
-                    resources: [
-                        .copy("Resources/deprecatedSinglesTypeExpiredAppleCert_receipt.b64"),
-                        .copy("Resources/grandUnifiedExpiredAppleCert_receipt.b64"),
-                        .copy("Resources/hannes_mac_mindnode_receipt"),
-                        .copy("Resources/hannes_mac_mindnode_2_receipt"),
-                        .copy("Resources/mac_mindnode_rebought_receipt"),
-                        .copy("Resources/mindnode_ios_michaelsandbox_receipt1.b64"),
-                        .copy("Resources/mindnode_ios_michaelsandbox_receipt2.b64"),
-                        .copy("Resources/purchasing_experiments_sandbox_receipt.b64"),
-                        .copy("Resources/not_a_receipt"),
-                        .copy("Resources/mindnode_mac_sha256_receipt"),
-                        .copy("Resources/frank4dd-cacert.der")
-                    ])
+        .testTarget(
+            name: "AppReceiptValidatorTests",
+            dependencies: ["AppReceiptValidator"],
+            resources: [
+                .copy("Resources/deprecatedSinglesTypeExpiredAppleCert_receipt.b64"),
+                .copy("Resources/grandUnifiedExpiredAppleCert_receipt.b64"),
+                .copy("Resources/hannes_mac_mindnode_receipt"),
+                .copy("Resources/hannes_mac_mindnode_2_receipt"),
+                .copy("Resources/mac_mindnode_rebought_receipt"),
+                .copy("Resources/mindnode_ios_michaelsandbox_receipt1.b64"),
+                .copy("Resources/mindnode_ios_michaelsandbox_receipt2.b64"),
+                .copy("Resources/purchasing_experiments_sandbox_receipt.b64"),
+                .copy("Resources/not_a_receipt"),
+                .copy("Resources/mindnode_mac_sha256_receipt"),
+                .copy("Resources/frank4dd-cacert.der")
+            ]
+        )
     ],
     swiftLanguageVersions: [.v5]
 )
